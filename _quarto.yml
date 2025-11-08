@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 book:
-  title: "Foundations of Animal Breeding: Principles and Practice"
+  title: "Fundamentals of Animal Breeding: Principles and Practice"
   subtitle: "A Practical Introduction for Undergraduate Students"
   author: "Austin Putz"
   date: today
