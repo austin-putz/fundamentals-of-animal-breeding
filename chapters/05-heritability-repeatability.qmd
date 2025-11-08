@@ -1,0 +1,302 @@
+# Heritability and Repeatability {#sec-heritability}
+
+<div class="learning-objectives">
+### Learning Objectives {.unnumbered}
+
+By the end of this chapter, you will be able to:
+
+1. Define heritability and calculate it from variance components
+2. Interpret heritability values for livestock traits
+3. Avoid common misconceptions about heritability
+4. Distinguish between heritability and repeatability
+5. Explain permanent environmental effects and their importance
+
+</div>
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+# Load required packages
+library(tidyverse)
+library(knitr)
+
+# Set default theme for plots
+theme_set(theme_minimal(base_size = 12))
+```
+
+## Introduction
+
+[Content to be developed: Heritability is one of the most important parameters in animal breeding. It tells us how much of the phenotypic variation is due to additive genetics.]
+
+## Heritability (h²)
+
+[Content to be developed: Define heritability.]
+
+### Definition
+
+[Content to be developed:]
+
+$$
+h^2 = \frac{\sigma^2_A}{\sigma^2_P}
+$$
+
+Where:
+
+- h² = narrow-sense heritability
+- σ²_A = additive genetic variance
+- σ²_P = phenotypic variance
+
+### Interpretation
+
+[Content to be developed: h² represents the proportion of phenotypic variation due to additive genetic effects. Range: 0 to 1.]
+
+### What Heritability Tells Us
+
+[Content to be developed:]
+
+1. **Resemblance between relatives**: Higher h² means closer resemblance
+2. **Response to selection**: Higher h² means faster response
+3. **Accuracy of selection**: Higher h² allows more accurate EBV estimation
+
+### What Heritability Does NOT Tell Us
+
+[Content to be developed: Common misconceptions]
+
+- **NOT** the proportion "caused" by genes (all traits are 100% genetic AND 100% environmental)
+- **NOT** whether a trait can be changed
+- **NOT** importance of genetics vs. environment
+- **NOT** fixed - heritability is population- and environment-specific
+
+## Heritability of Livestock Traits
+
+[Content to be developed: Provide typical heritability ranges for various traits.]
+
+### High Heritability (h² > 0.40)
+
+[Content to be developed:]
+
+- Body weight, growth rate
+- Carcass traits (backfat, loin depth, marbling)
+- Egg weight
+- Milk fat and protein percentage
+
+### Moderate Heritability (h² = 0.20-0.40)
+
+[Content to be developed:]
+
+- Milk yield
+- Feed efficiency (RFI)
+- Egg production
+- Weaning weight
+
+### Low Heritability (h² < 0.20)
+
+[Content to be developed:]
+
+- Reproductive traits (litter size, fertility, calving ease)
+- Disease resistance
+- Longevity, stayability
+- Temperament
+
+### Why Reproductive Traits Have Low Heritability
+
+[Content to be developed: Reproductive traits are fitness-related and have been under natural selection for millennia. Most variation is environmental.]
+
+## Estimating Heritability
+
+[Content to be developed: Methods for estimating h².]
+
+### Parent-Offspring Regression
+
+[Content to be developed:]
+
+$$
+h^2 = b_{offspring,parent}
+$$
+
+(For one parent; double the regression coefficient if using midparent)
+
+### Half-Sib Correlation
+
+[Content to be developed:]
+
+$$
+h^2 = 4 \times t_{HS}
+$$
+
+Where t_HS is the intraclass correlation among half-sibs.
+
+### Full-Sib Correlation
+
+[Content to be developed: Includes dominance, so overestimates h².]
+
+### REML from Mixed Models
+
+[Content to be developed: Modern approach using restricted maximum likelihood. Mention briefly, details beyond scope.]
+
+## R Demonstration: Calculating Heritability
+
+[Content to be developed:]
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Calculate heritability from variance components
+sigma2_A <- 12.5   # Additive genetic variance (e.g., kg² for milk yield)
+sigma2_E <- 32.5   # Environmental variance
+sigma2_P <- sigma2_A + sigma2_E   # Phenotypic variance
+
+h2 <- sigma2_A / sigma2_P
+cat("Heritability:", round(h2, 3))
+
+# Parent-offspring regression example
+# (Simulated data)
+set.seed(123)
+n_families <- 100
+parent_BV <- rnorm(n_families, mean = 0, sd = sqrt(sigma2_A))
+offspring_BV <- 0.5 * parent_BV + rnorm(n_families, mean = 0, sd = sqrt(0.5 * sigma2_A))
+offspring_pheno <- offspring_BV + rnorm(n_families, mean = 0, sd = sqrt(sigma2_E))
+
+# Regression
+model <- lm(offspring_pheno ~ parent_BV)
+h2_estimated <- coef(model)[2]
+cat("Estimated h² from regression:", round(h2_estimated, 3))
+```
+
+## Repeatability (r)
+
+[Content to be developed: For traits measured multiple times on the same animal.]
+
+### Definition
+
+[Content to be developed:]
+
+$$
+r = \frac{\sigma^2_A + \sigma^2_{PE}}{\sigma^2_P}
+$$
+
+Where:
+
+- r = repeatability
+- σ²_PE = permanent environmental variance
+- σ²_P = phenotypic variance (including temporary environmental variance σ²_TE)
+
+### Interpretation
+
+[Content to be developed: r is the correlation between repeated records on the same animal. It sets an upper bound on heritability.]
+
+### Relationship to Heritability
+
+[Content to be developed:]
+
+$$
+h^2 \leq r
+$$
+
+If r = h², there are no permanent environmental effects.
+
+## Permanent Environmental Effects (PE)
+
+[Content to be developed: Environmental factors that permanently affect an animal's performance across all records.]
+
+### Definition
+
+[Content to be developed: Non-genetic effects that persist across records.]
+
+### Examples
+
+[Content to be developed:]
+
+- **Dairy**: Udder damage, pelvic size (affects all lactations)
+- **Swine**: Sow's pelvic size, teat number (affects all litters)
+- **Poultry**: Cage effects, hen's body condition
+
+### Importance
+
+[Content to be developed: PE effects cause repeated records on the same animal to be correlated, but this correlation is not genetic.]
+
+## Examples of Repeatability
+
+[Content to be developed:]
+
+### Litter Size in Swine
+
+- h² ≈ 0.10-0.15
+- r ≈ 0.15-0.20
+- PE exists but small
+
+### Milk Yield in Dairy
+
+- h² ≈ 0.25-0.35
+- r ≈ 0.45-0.55
+- Substantial PE (udder capacity, body frame)
+
+## R Demonstration: Repeatability
+
+[Content to be developed:]
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Simulate repeated records with permanent environmental effects
+set.seed(456)
+n_animals <- 100
+n_records <- 5  # records per animal
+
+sigma2_A <- 10
+sigma2_PE <- 15
+sigma2_TE <- 25  # Temporary environmental variance
+sigma2_P <- sigma2_A + sigma2_PE + sigma2_TE
+
+# Simulate
+BV <- rnorm(n_animals, mean = 0, sd = sqrt(sigma2_A))
+PE <- rnorm(n_animals, mean = 0, sd = sqrt(sigma2_PE))
+
+data <- expand.grid(animal = 1:n_animals, record = 1:n_records)
+data$BV <- BV[data$animal]
+data$PE <- PE[data$animal]
+data$TE <- rnorm(nrow(data), mean = 0, sd = sqrt(sigma2_TE))
+data$phenotype <- data$BV + data$PE + data$TE
+
+# Calculate repeatability as correlation between records
+library(lme4)
+model <- lmer(phenotype ~ (1 | animal), data = data)
+var_components <- as.data.frame(VarCorr(model))
+r_estimated <- var_components$vcov[1] / (var_components$vcov[1] + var_components$vcov[2])
+cat("Estimated repeatability:", round(r_estimated, 3))
+```
+
+## Summary
+
+[Content to be developed.]
+
+### Key Points
+
+- Heritability (h²) quantifies the proportion of phenotypic variance due to additive genetic effects
+- Higher h² → faster response to selection
+- Heritability is population- and environment-specific
+- Repeatability (r) is the upper limit of heritability
+- Permanent environmental effects cause repeated records to be correlated beyond genetics
+
+## Practice Problems
+
+[Problems to be developed]
+
+1. A trait has σ²_A = 20 and σ²_P = 100. Calculate the heritability.
+
+2. Explain why reproductive traits generally have low heritability.
+
+3. For litter size in swine, h² = 0.12 and r = 0.18. Calculate the permanent environmental variance as a proportion of phenotypic variance.
+
+4. A student says "This trait has 30% heritability, so environment is more important than genetics." Explain what is wrong with this statement.
+
+## Further Reading
+
+[References to be added]
+
+- Falconer and Mackay: Introduction to Quantitative Genetics
+- Published heritability estimates for livestock traits

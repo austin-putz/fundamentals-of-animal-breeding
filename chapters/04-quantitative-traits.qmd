@@ -1,0 +1,222 @@
+# Quantitative vs. Simply Inherited Traits {#sec-quantitative-traits}
+
+<div class="learning-objectives">
+### Learning Objectives {.unnumbered}
+
+By the end of this chapter, you will be able to:
+
+1. Distinguish between quantitative and simply inherited traits
+2. Provide examples of each type in livestock species
+3. Explain why most economically important traits are quantitative
+4. Describe how breeding approaches differ for the two types of traits
+5. Understand the concept of threshold traits
+
+</div>
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+# Load required packages
+library(tidyverse)
+library(knitr)
+
+# Set default theme for plots
+theme_set(theme_minimal(base_size = 12))
+```
+
+## Introduction
+
+[Content to be developed: Not all traits inherit in the same way. Understanding the genetic architecture helps us choose appropriate breeding strategies.]
+
+## Simply Inherited Traits
+
+[Content to be developed: Traits controlled by one or a few genes with major effects.]
+
+### Characteristics
+
+[Content to be developed:]
+
+- Mendelian inheritance (follows simple ratios)
+- Qualitative expression (discrete categories)
+- Major gene effects
+- Can be eliminated or fixed through selection
+- Molecular tests available for many
+
+### Examples in Livestock
+
+[Content to be developed:]
+
+#### Coat Color
+
+- Cattle: MC1R gene (red vs. black)
+- Horses: Multiple loci (bay, chestnut, black, white patterns)
+
+#### Polled/Horned Status
+
+- Cattle: POLLED gene (polled is dominant)
+
+#### Genetic Defects
+
+- Swine: Halothane sensitivity (RYR1 gene)
+- Cattle: Hypotrichosis (hairlessness)
+- Cattle: Arthrogryposis, lethal recessives
+
+#### Muscular Hypertrophy
+
+- Cattle: Myostatin mutation (double muscling in Belgian Blue)
+- Sheep: Myostatin mutation (Texel, Beltex)
+
+### Breeding Approaches
+
+[Content to be developed: Genotype and select/eliminate based on marker tests.]
+
+## Quantitative Traits
+
+[Content to be developed: Traits controlled by many genes, each with small effect.]
+
+### Characteristics
+
+[Content to be developed:]
+
+- Polygenic inheritance (many loci)
+- Continuous distribution
+- Small effect per locus
+- Strongly influenced by environment
+- Require statistical methods for genetic evaluation
+
+### Examples in Livestock
+
+[Content to be developed:]
+
+#### Growth and Feed Efficiency
+
+- Average daily gain
+- Feed conversion ratio
+- Residual feed intake
+
+#### Reproductive Performance
+
+- Litter size in swine
+- Fertility in cattle
+- Age at puberty
+
+#### Production Traits
+
+- Milk yield and components
+- Egg production
+- Carcass composition
+
+#### Health and Fitness
+
+- Disease resistance
+- Longevity
+- Leg soundness
+
+### Why Most Economic Traits are Quantitative
+
+[Content to be developed: Complex traits like growth, reproduction, and production involve many physiological processes, each influenced by multiple genes.]
+
+### Breeding Approaches
+
+[Content to be developed: Estimate breeding values, apply selection based on EBVs, use genomic selection.]
+
+## Threshold Traits
+
+[Content to be developed: Traits that appear categorical but have an underlying continuous distribution.]
+
+### Concept
+
+[Content to be developed: Liability scale with threshold. When liability exceeds threshold, trait is expressed.]
+
+### Examples
+
+[Content to be developed:]
+
+- Calving difficulty (normal vs. difficult)
+- Teat number defects in swine (normal vs. inverted)
+- Retained placenta in cattle
+
+### Genetic Analysis
+
+[Content to be developed: Can be analyzed on observed (0/1) scale or underlying liability scale.]
+
+## Mixed Model Traits
+
+[Content to be developed: Mostly quantitative with a major gene effect.]
+
+### Example: Halothane in Swine
+
+[Content to be developed: Growth and meat quality are quantitative, but RYR1 gene has major effect on stress susceptibility and meat quality.]
+
+### Modern Genomics Approach
+
+[Content to be developed: Genomic selection captures both polygenic and major QTL effects.]
+
+## Comparing Simply Inherited and Quantitative Traits
+
+[Content to be developed: Table comparing characteristics, examples, and breeding approaches.]
+
+## R Demonstration: Simulating Different Trait Types
+
+[Content to be developed:]
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Simulate simply inherited trait (single locus, two alleles)
+set.seed(42)
+n <- 1000
+allele1 <- sample(c("A", "a"), n, replace = TRUE, prob = c(0.7, 0.3))
+allele2 <- sample(c("A", "a"), n, replace = TRUE, prob = c(0.7, 0.3))
+genotype <- paste0(allele1, allele2)
+phenotype_simple <- case_when(
+  genotype %in% c("AA", "Aa", "aA") ~ "Dominant",
+  genotype == "aa" ~ "Recessive"
+)
+
+# Simulate quantitative trait (100 loci, each with small effect)
+n_loci <- 100
+effects <- rnorm(n_loci, mean = 0, sd = 0.5)
+genotype_matrix <- matrix(sample(0:2, n * n_loci, replace = TRUE), nrow = n, ncol = n_loci)
+genetic_value <- genotype_matrix %*% effects
+environmental_effect <- rnorm(n, mean = 0, sd = 2)
+phenotype_quant <- genetic_value + environmental_effect
+
+# Plot distributions
+par(mfrow = c(1, 2))
+barplot(table(phenotype_simple), main = "Simply Inherited Trait", ylab = "Frequency")
+hist(phenotype_quant, main = "Quantitative Trait", xlab = "Phenotype", col = "lightblue")
+```
+
+## Summary
+
+[Content to be developed.]
+
+### Key Points
+
+- Simply inherited traits: single gene, major effect, qualitative, can be fixed or eliminated
+- Quantitative traits: many genes, small effects each, continuous distribution, gradual improvement
+- Most economically important traits are quantitative
+- Breeding strategies differ between trait types
+- Modern genomics helps identify major genes within quantitative traits
+
+## Practice Problems
+
+[Problems to be developed]
+
+1. Classify each trait as simply inherited or quantitative: (a) coat color in horses, (b) milk yield in dairy cattle, (c) polled status in cattle, (d) litter size in swine.
+
+2. Explain why litter size in swine cannot be controlled by a single gene.
+
+3. A breeder wants to eliminate a recessive lethal defect from a population. Describe a breeding strategy using molecular testing.
+
+## Further Reading
+
+[References to be added]
+
+- Genetic defects in livestock
+- QTL mapping studies
+- Major genes affecting economic traits

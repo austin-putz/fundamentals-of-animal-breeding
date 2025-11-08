@@ -1,0 +1,76 @@
+# Dairy Cattle Breeding {#sec-dairy-cattle-breeding}
+
+## Overview
+
+This chapter provides a deep dive into dairy cattle breeding, focusing on the transition to genomic selection.
+
+## Learning Objectives
+
+By the end of this chapter, you should be able to:
+
+1. Describe the structure of the dairy breeding industry
+2. Explain how genomic selection transformed dairy cattle breeding
+3. Identify key traits and genetic parameters in dairy cattle
+4. Interpret selection indices (Net Merit, Cheese Merit)
+5. Understand antagonistic genetic correlations affecting breeding objectives
+
+## Global Dairy Industry Structure
+
+::: {.callout-note}
+## Chapter Status
+This chapter is currently under development. Content will cover:
+
+- Major breeds (Holstein, Jersey, Brown Swiss)
+- AI organizations (Select Sires, ABS Global, CRV, Semex, Alta Genetics)
+- Genomic testing companies
+- International semen trade
+:::
+
+## Key Traits and Heritabilities
+
+### Production Traits
+
+- Milk yield: h² = 0.25-0.40
+- Fat yield: h² = 0.25-0.40
+- Protein yield: h² = 0.25-0.40
+
+### Fertility and Reproduction
+
+- Daughter pregnancy rate: h² = 0.05-0.10
+- Calving ease: h² = 0.05-0.10
+
+### Health Traits
+
+- Mastitis resistance: h² = 0.05-0.15
+- Lameness: h² = 0.05-0.15
+
+## Genetic Correlations
+
+- Milk yield vs. fertility: r_A ≈ -0.3 to -0.4 (antagonistic)
+- Milk yield vs. health: r_A ≈ -0.2 to -0.3 (antagonistic)
+
+## Selection Indices
+
+Content to be developed covering:
+
+- Net Merit (NM$)
+- Cheese Merit (CM$)
+- Fluid Merit (FM$)
+
+## Genomic Selection Revolution
+
+Content to be developed covering:
+
+- Implementation timeline (~2009 in US)
+- Doubled rate of genetic gain
+- Reduced generation interval from 6-7 years to 2-3 years
+
+## Summary
+
+Dairy cattle breeding was revolutionized by genomic selection, which increased accuracy while reducing generation interval.
+
+## Key Points
+
+- Genomic selection increased accuracy while reducing generation interval
+- Balancing production with fertility and health is critical
+- Economic indices guide selection decisions

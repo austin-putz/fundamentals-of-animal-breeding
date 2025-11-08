@@ -1,0 +1,424 @@
+# R Resources for Animal Breeding {#sec-r-resources .unnumbered}
+
+This appendix provides a guide to R packages, tools, and learning resources specifically relevant to animal breeding and quantitative genetics.
+
+## Essential R Packages
+
+### Data Manipulation and Visualization
+
+#### tidyverse
+
+**Purpose**: Collection of packages for data science (includes dplyr, ggplot2, tidyr, readr)
+
+**Install**:
+```r
+install.packages("tidyverse")
+```
+
+**Key functions**:
+
+- `read_csv()`: Read data files
+- `filter()`, `select()`, `mutate()`: Data manipulation
+- `ggplot()`: Creating visualizations
+- `group_by()`, `summarize()`: Group operations
+
+**Learn more**: [tidyverse.org](https://www.tidyverse.org)
+
+---
+
+### Pedigree and Relationship Matrices
+
+#### pedigree
+
+**Purpose**: Pedigree manipulation, inbreeding calculation
+
+**Install**:
+```r
+install.packages("pedigree")
+```
+
+**Key functions**:
+
+- `pedigree()`: Create pedigree object
+- `calcInbreeding()`: Calculate inbreeding coefficients
+- `calcA()`: Calculate numerator relationship matrix (A)
+
+---
+
+#### nadiv
+
+**Purpose**: (Non)Additive genetic relatedness matrices
+
+**Install**:
+```r
+install.packages("nadiv")
+```
+
+**Key functions**:
+
+- `makeA()`: Additive relationship matrix
+- `makeD()`: Dominance relationship matrix
+- `makeAA()`: Epistatic relationship matrix
+
+**Learn more**: CRAN documentation
+
+---
+
+#### AGHmatrix
+
+**Purpose**: Relationship matrices for diploid and autopolyploid species
+
+**Install**:
+```r
+install.packages("AGHmatrix")
+```
+
+**Key functions**:
+
+- `Gmatrix()`: Genomic relationship matrix (G)
+- `Amatrix()`: Pedigree relationship matrix (A)
+- `Hmatrix()`: Combined H matrix (pedigree + genomic)
+
+**Learn more**: [CRAN AGHmatrix](https://cran.r-project.org/package=AGHmatrix)
+
+---
+
+### Mixed Models and Genetic Evaluation
+
+#### lme4
+
+**Purpose**: Linear mixed-effects models
+
+**Install**:
+```r
+install.packages("lme4")
+```
+
+**Key functions**:
+
+- `lmer()`: Fit linear mixed model
+- `VarCorr()`: Extract variance components
+- Random effects for animal breeding models
+
+**Learn more**: [lme4 documentation](https://cran.r-project.org/package=lme4)
+
+---
+
+#### lmerTest
+
+**Purpose**: Tests and p-values for lme4 models
+
+**Install**:
+```r
+install.packages("lmerTest")
+```
+
+**Provides**: Significance tests for fixed and random effects
+
+---
+
+#### MCMCglmm
+
+**Purpose**: Bayesian mixed models using MCMC
+
+**Install**:
+```r
+install.packages("MCMCglmm")
+```
+
+**Key functions**:
+
+- `MCMCglmm()`: Fit Bayesian mixed model
+- Variance component estimation
+- Pedigree-based animal models
+
+**Learn more**: Course notes by Jarrod Hadfield
+
+---
+
+### Genomic Prediction
+
+#### BGLR
+
+**Purpose**: Bayesian genomic linear regression
+
+**Install**:
+```r
+install.packages("BGLR")
+```
+
+**Key functions**:
+
+- `BGLR()`: Fit genomic prediction models
+- Methods: BayesA, BayesB, BayesC, Bayesian Lasso, RKHS
+
+**Learn more**: [BGLR GitHub](https://github.com/gdlc/BGLR-R)
+
+---
+
+#### rrBLUP
+
+**Purpose**: Ridge regression and genomic prediction
+
+**Install**:
+```r
+install.packages("rrBLUP")
+```
+
+**Key functions**:
+
+- `kin.blup()`: Genomic BLUP (GBLUP)
+- `mixed.solve()`: Solve mixed model equations
+- `A.mat()`: Genomic relationship matrix
+
+**Learn more**: [rrBLUP documentation](https://cran.r-project.org/package=rrBLUP)
+
+---
+
+#### brms
+
+**Purpose**: Bayesian regression models using Stan
+
+**Install**:
+```r
+install.packages("brms")
+```
+
+**Key features**:
+
+- Flexible Bayesian modeling
+- Can be used for genomic prediction
+- User-friendly interface to Stan
+
+**Learn more**: [brms website](https://paul-buerkner.github.io/brms/)
+
+---
+
+### Simulation
+
+#### AlphaSimR
+
+**Purpose**: Stochastic simulation of breeding programs
+
+**Install**:
+```r
+install.packages("AlphaSimR")
+```
+
+**Key features**:
+
+- Simulate populations, selection, mating
+- Genomic and conventional selection
+- Multi-generation breeding programs
+
+**Learn more**: [AlphaSimR documentation](https://CRAN.R-project.org/package=AlphaSimR)
+
+---
+
+### Database Interfaces
+
+#### DBI and RSQLite
+
+**Purpose**: Interface to SQL databases
+
+**Install**:
+```r
+install.packages(c("DBI", "RSQLite"))
+```
+
+**Key functions**:
+
+- `dbConnect()`: Connect to database
+- `dbGetQuery()`: Execute SQL query
+- `dbDisconnect()`: Close connection
+
+**Used in**: Chapter 14 (SQL demonstrations)
+
+---
+
+### Additional Utilities
+
+#### knitr
+
+**Purpose**: Dynamic report generation
+
+**Install**:
+```r
+install.packages("knitr")
+```
+
+**Used for**: R Markdown and Quarto documents
+
+---
+
+#### kableExtra
+
+**Purpose**: Enhanced tables for R Markdown
+
+**Install**:
+```r
+install.packages("kableExtra")
+```
+
+---
+
+## Installing All Packages
+
+To install all packages used in this book at once:
+
+```r
+# Core packages
+install.packages(c(
+  # Data manipulation and visualization
+  "tidyverse",
+
+  # Pedigree and relationships
+  "pedigree", "nadiv", "AGHmatrix",
+
+  # Mixed models
+  "lme4", "lmerTest", "MCMCglmm",
+
+  # Genomic prediction
+  "BGLR", "rrBLUP", "brms",
+
+  # Simulation
+  "AlphaSimR",
+
+  # Database
+  "DBI", "RSQLite",
+
+  # Utilities
+  "knitr", "kableExtra", "MASS"
+))
+```
+
+---
+
+## Learning R
+
+### Online Resources
+
+#### R for Data Science (Free Online Book)
+
+**URL**: [r4ds.had.co.nz](https://r4ds.had.co.nz)
+
+**Topics**: tidyverse, data visualization, data transformation, R Markdown
+
+**Highly recommended** for beginners and intermediate users
+
+---
+
+#### RStudio Education
+
+**URL**: [education.rstudio.com](https://education.rstudio.com)
+
+**Resources**: Tutorials, cheatsheets, webinars
+
+---
+
+#### Swirl
+
+**Purpose**: Learn R interactively within R
+
+**Install**:
+```r
+install.packages("swirl")
+library(swirl)
+swirl()
+```
+
+---
+
+### Animal Breeding-Specific Resources
+
+#### Introduction to Quantitative Genetics (Book)
+
+**Authors**: Falconer and Mackay
+
+**Focus**: Theoretical foundations (some R code in newer editions)
+
+---
+
+#### Genetics and Analysis of Quantitative Traits (Book)
+
+**Authors**: Lynch and Walsh
+
+**Focus**: Advanced quantitative genetics
+
+---
+
+#### Linear Models for the Prediction of Animal Breeding Values (Book)
+
+**Author**: Raphael Mrode
+
+**Focus**: BLUP, mixed models, genetic evaluation
+
+**Includes**: Numerical examples, some SAS code (can be translated to R)
+
+---
+
+## Getting Help
+
+### Within R
+
+```r
+# Get help on a function
+?lmer
+help(lmer)
+
+# Search for topics
+??genomic
+
+# Package vignettes
+vignette("lme4")
+browseVignettes("BGLR")
+```
+
+### Online Communities
+
+- **Stack Overflow**: [stackoverflow.com](https://stackoverflow.com) (tag your questions with `[r]`)
+- **RStudio Community**: [community.rstudio.com](https://community.rstudio.com)
+- **r/rstats** (Reddit): Friendly community for R questions
+
+---
+
+## Reproducibility and Best Practices
+
+### R Projects
+
+Use RStudio Projects (`.Rproj` files) to organize your work:
+
+- Keeps all files in one directory
+- Sets working directory automatically
+- Easier to share and reproduce
+
+### R Markdown and Quarto
+
+Create reproducible reports combining code, results, and narrative:
+
+- **R Markdown**: [rmarkdown.rstudio.com](https://rmarkdown.rstudio.com)
+- **Quarto**: [quarto.org](https://quarto.org) (used for this book)
+
+### Version Control (Git/GitHub)
+
+Track changes to your code and data:
+
+- **Git**: Version control system
+- **GitHub**: Online platform for sharing code
+- **Resource**: [happygitwithr.com](https://happygitwithr.com)
+
+---
+
+## Summary
+
+This appendix provides a starting point for R resources in animal breeding. As you progress through the book, refer back to this appendix for package documentation and learning resources.
+
+**Key packages to master**:
+
+- **tidyverse** (data manipulation)
+- **lme4** (mixed models)
+- **AGHmatrix** (relationship matrices)
+- **rrBLUP** or **BGLR** (genomic prediction)
+- **AlphaSimR** (simulation)
+
+Happy coding!

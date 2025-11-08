@@ -1,0 +1,315 @@
+# Multiple Trait Selection and Selection Index {#sec-selection-index}
+
+<div class="learning-objectives">
+### Learning Objectives {.unnumbered}
+
+By the end of this chapter, you will be able to:
+
+1. Distinguish between breeding goal (H) and selection index (I)
+2. Explain why economic weights are necessary for multi-trait selection
+3. Describe how genetic correlations influence selection index weights
+4. Calculate a simple selection index
+5. Interpret index values and rank animals for selection
+
+</div>
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+# Load required packages
+library(tidyverse)
+library(knitr)
+
+# Set default theme for plots
+theme_set(theme_minimal(base_size = 12))
+```
+
+## Introduction
+
+[Content to be developed: Most breeding programs have multiple objectives. Selection index theory provides the optimal method for combining information to maximize genetic merit.]
+
+## The Need for Multi-Trait Selection
+
+[Content to be developed: Why we can't select for a single trait in isolation.]
+
+### Multiple Objectives
+
+[Content to be developed: Breeding goals typically include production, efficiency, health, reproduction, and quality traits.]
+
+### Genetic Correlations
+
+[Content to be developed: Traits are genetically correlated (Chapter 8), so selecting for one affects others.]
+
+### Economic Trade-offs
+
+[Content to be developed: Traits have different economic values. A 1% improvement in trait A may be worth more or less than 1% in trait B.]
+
+## Breeding Goal (H) vs. Selection Index (I)
+
+[Content to be developed: Key distinction.]
+
+### Breeding Goal (H)
+
+[Content to be developed:]
+
+- The **traits we want to improve**, weighted by their economic importance
+- Aggregate genotype
+- Not directly observable
+
+$$
+H = v_1 BV_1 + v_2 BV_2 + \ldots + v_n BV_n
+$$
+
+Where v_i are economic weights.
+
+### Selection Index (I)
+
+[Content to be developed:]
+
+- The **information we use** to predict H and rank animals
+- Linear combination of phenotypes or EBVs
+- Observable
+
+$$
+I = b_1 X_1 + b_2 X_2 + \ldots + b_m X_m
+$$
+
+Where b_i are index weights, X_i are information sources (phenotypes, EBVs).
+
+### Why H and I May Differ
+
+[Content to be developed:]
+
+- Some traits in H are hard or expensive to measure (not in I)
+- Correlated traits can provide indirect information (in I but not H)
+- Example: Select on backfat ultrasound (in I) to improve carcass leanness (in H)
+
+## Economic Weights
+
+[Content to be developed: How much is each trait worth economically?]
+
+### Definition
+
+[Content to be developed: Economic value (v) is the change in profit per unit change in the trait, holding all other traits constant.]
+
+**Units**: $/unit (e.g., $/kg, $/egg, $/day)
+
+### Deriving Economic Weights
+
+[Content to be developed:]
+
+1. Define profit function (revenue - costs)
+2. Take partial derivatives with respect to each trait
+3. Evaluate at current population means
+
+### Example: Dairy Cattle
+
+[Content to be developed:]
+
+**Traits and economic values** (simplified):
+
+- Milk yield: +$0.30/kg
+- Fat yield: +$4.00/kg
+- Protein yield: +$6.00/kg
+- Fertility (days open): -$3.00/day
+- Longevity (lactations): +$200/lactation
+
+### Relative vs. Absolute Economic Weights
+
+[Content to be developed: Relative weights (ratios) are sufficient for ranking animals. Absolute weights needed for economic simulations.]
+
+## Selection Index Theory
+
+[Content to be developed: How to calculate optimal index weights.]
+
+### Objective
+
+[Content to be developed: Choose index weights (b) to maximize the correlation between I and H.]
+
+$$
+\max \ \text{cor}(I, H)
+$$
+
+### Index Equation
+
+[Content to be developed:]
+
+$$
+\mathbf{b} = \mathbf{P}^{-1} \mathbf{G} \mathbf{v}
+$$
+
+Where:
+
+- **b** = vector of index weights
+- **P** = phenotypic (co)variance matrix
+- **G** = genetic (co)variance matrix (additive)
+- **v** = vector of economic weights
+
+### Interpretation of Index Weights
+
+[Content to be developed:]
+
+- Index weights (b) differ from economic weights (v) because:
+  1. They account for heritabilities (traits with higher h² get more weight)
+  2. They account for genetic correlations (to avoid double-counting)
+  3. They reflect measurement error
+
+- **Sign of b can differ from sign of v** when traits are genetically correlated
+
+## Calculating a Simple Selection Index
+
+[Content to be developed: Two-trait example.]
+
+### Example: Swine Growth and Backfat
+
+[Content to be developed:]
+
+**Breeding goal traits**:
+
+- Average daily gain (ADG): v_ADG = $2.00/kg per day
+- Backfat thickness (BF): v_BF = -$10.00/mm (negative because thinner is better)
+
+**Genetic parameters**:
+
+- h²_ADG = 0.30, h²_BF = 0.50
+- r_A(ADG, BF) = 0.30 (positive, unfavorable)
+- σ_P(ADG) = 0.10 kg/day, σ_P(BF) = 3 mm
+
+**Calculate index weights**:
+
+[Content to be developed: Step-by-step calculation using the index equation]
+
+### Ranking Animals
+
+[Content to be developed: Calculate index value for each animal and rank. Animals with highest I are selected.]
+
+## Examples of Selection Indices in Practice
+
+[Content to be developed: Real-world indices used in livestock breeding.]
+
+### Dairy: Net Merit Index
+
+[Content to be developed:]
+
+- Includes milk, fat, protein, fertility, health, longevity, calving ease
+- Published by CDCB (Council on Dairy Cattle Breeding)
+- Widely used in US dairy industry
+
+### Beef: Terminal Index vs. Maternal Index
+
+[Content to be developed:]
+
+- **Terminal index**: Emphasizes growth, feed efficiency, carcass quality
+- **Maternal index**: Emphasizes reproduction, maternal ability, longevity
+
+### Swine: Sow Productivity Index vs. Growth Index
+
+[Content to be developed:]
+
+- **Sow index**: Litter size, piglet survival, sow longevity
+- **Growth/carcass index**: ADG, feed efficiency, backfat, loin depth
+
+### Layers: Egg Production Index
+
+[Content to be developed:]
+
+- Egg production, egg weight, shell quality, feed efficiency, mortality
+
+## R Demonstration: Calculating Selection Index
+
+[Content to be developed:]
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Two-trait selection index example
+
+# Economic weights
+v <- c(2.0, -10.0)  # ADG ($/kg per day), BF ($/ mm, negative)
+
+# Genetic parameters
+h2 <- c(0.30, 0.50)
+r_A <- 0.30
+sigma_P <- c(0.10, 3.0)
+
+# Calculate genetic and phenotypic (co)variances
+sigma2_A <- h2 * sigma_P^2
+sigma_A <- sqrt(sigma2_A)
+cov_A <- r_A * sigma_A[1] * sigma_A[2]
+sigma2_P <- sigma_P^2
+
+# Genetic (co)variance matrix G
+G <- matrix(c(sigma2_A[1], cov_A,
+              cov_A, sigma2_A[2]), nrow = 2)
+
+# Phenotypic (co)variance matrix P (assuming r_P = r_A for simplicity)
+cov_P <- r_A * sigma_P[1] * sigma_P[2]
+P <- matrix(c(sigma2_P[1], cov_P,
+              cov_P, sigma2_P[2]), nrow = 2)
+
+# Calculate index weights
+b <- solve(P) %*% G %*% v
+cat("Index weights:\n")
+cat("  ADG:", round(b[1], 3), "\n")
+cat("  Backfat:", round(b[2], 3), "\n")
+
+# Rank animals
+# Example animals (phenotypes)
+animals <- data.frame(
+  ID = 1:5,
+  ADG = c(0.85, 0.90, 0.88, 0.82, 0.92),
+  BF = c(12, 10, 11, 14, 9)
+)
+
+# Calculate index values
+animals$Index <- b[1] * animals$ADG + b[2] * animals$BF
+
+# Rank
+animals <- animals %>% arrange(desc(Index))
+print(animals)
+```
+
+## Restrictions on Index Weights
+
+[Content to be developed: Sometimes we want to constrain selection.]
+
+### Zero Economic Weight (Maintain Current Level)
+
+[Content to be developed: Set economic weight to zero for traits we don't want to change.]
+
+### Desired Gains Index
+
+[Content to be developed: Specify desired genetic change for each trait, and index weights are calculated to achieve those changes.]
+
+## Summary
+
+[Content to be developed.]
+
+### Key Points
+
+- Multi-trait selection requires balancing improvements across traits
+- Breeding goal (H): traits we want to improve, weighted by economic value
+- Selection index (I): information we use to predict H
+- Economic weights (v) reflect the value of each trait
+- Index weights (b) are calculated optimally: b = P⁻¹ G v
+- Selection indices are widely used in commercial breeding programs
+
+## Practice Problems
+
+[Problems to be developed]
+
+1. Explain the difference between the breeding goal (H) and the selection index (I). Why might they include different traits?
+
+2. Given economic weights v_1 = $5 and v_2 = $3, explain why the index weights b_1 and b_2 are not necessarily in a 5:3 ratio.
+
+3. A dairy breeding program selects only for milk yield, ignoring fertility and health. After 10 years, profitability has not improved as expected. Explain why and propose a solution.
+
+## Further Reading
+
+[References to be added]
+
+- Hazel (1943): The genetic basis for constructing selection indexes
+- Modern selection indices: Net Merit (dairy), $W (beef)

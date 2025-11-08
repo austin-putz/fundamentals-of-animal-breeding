@@ -1,0 +1,65 @@
+# Beef Cattle Breeding {#sec-beef-cattle-breeding}
+
+## Overview
+
+This chapter explains beef cattle breeding with emphasis on the seedstock industry, EPDs, and crossbreeding.
+
+## Learning Objectives
+
+By the end of this chapter, you should be able to:
+
+1. Describe the structure of the beef cattle breeding industry
+2. Interpret EPDs and use them for sire selection
+3. Compare terminal and maternal breeding objectives
+4. Design a crossbreeding system for commercial beef production
+5. Explain the benefits of heterosis in beef cattle
+
+## Beef Industry Structure
+
+::: {.callout-note}
+## Chapter Status
+This chapter is currently under development.
+:::
+
+## Breed Diversity
+
+- **British breeds**: Angus, Hereford, Red Angus, Shorthorn
+- **Continental breeds**: Charolais, Simmental, Limousin, Gelbvieh
+- **Composite breeds**: Brangus, Beefmaster, Santa Gertrudis
+- **Brahman influence**: Heat tolerance, parasite resistance
+
+## Key Traits and Heritabilities
+
+### Growth Traits
+
+- Birth weight: h² = 0.30-0.50
+- Weaning weight: h² = 0.30-0.50
+- Yearling weight: h² = 0.30-0.50
+
+### Carcass Traits
+
+- Marbling: h² = 0.35-0.50
+- Ribeye area: h² = 0.35-0.50
+
+### Maternal Traits
+
+- Milk production: h² = 0.10-0.30
+- Calving ease: h² = 0.10-0.30
+
+## EPDs (Expected Progeny Differences)
+
+Content to be developed.
+
+## Selection Indices
+
+- Terminal indices (growth and carcass value)
+- Maternal indices (calving ease, maternal ability)
+- All-purpose indices
+
+## Crossbreeding Systems
+
+Content to be developed.
+
+## Summary
+
+Beef cattle breeding is decentralized with many independent breeders. EPDs are the standard genetic evaluation tool.

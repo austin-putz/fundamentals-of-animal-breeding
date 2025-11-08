@@ -1,0 +1,218 @@
+# The Basic Genetic Model {#sec-genetic-model}
+
+<div class="learning-objectives">
+### Learning Objectives {.unnumbered}
+
+By the end of this chapter, you will be able to:
+
+1. Partition a phenotype into genetic and environmental components
+2. Distinguish between additive, dominance, and epistatic genetic effects
+3. Explain why additive effects are the primary focus of animal breeding
+4. Understand the concept of variance partitioning
+5. Calculate breeding values from a simple genetic model
+
+</div>
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+# Load required packages
+library(tidyverse)
+library(knitr)
+
+# Set default theme for plots
+theme_set(theme_minimal(base_size = 12))
+```
+
+## Introduction
+
+[Content to be developed: Introduce the need for a genetic model to partition phenotypes into heritable and non-heritable components.]
+
+## The Basic Model: y = μ + A + E
+
+[Content to be developed: Present the fundamental genetic model.]
+
+### Components of the Model
+
+[Content to be developed: Define each component:]
+
+- **y**: Phenotype (observed value)
+- **μ**: Population mean
+- **A**: Additive genetic effect (breeding value)
+- **E**: Environmental deviation (everything else)
+
+### Why This Model Matters
+
+[Content to be developed: This simple model is the foundation of animal breeding. It allows us to separate genetic merit from environmental effects.]
+
+## Types of Genetic Effects
+
+[Content to be developed: Not all genetic effects are created equal.]
+
+### Additive Genetic Effects
+
+[Content to be developed:]
+
+- Definition: Sum of average effects of alleles at all loci
+- Breed true (passed from parent to offspring)
+- Determine breeding value
+- Primary target of selection
+
+### Dominance Effects
+
+[Content to be developed:]
+
+- Definition: Within-locus interaction between alleles (heterozygote deviates from midparent)
+- Do NOT breed true
+- Not transmitted reliably to offspring
+- Contribute to heterosis in crossbreeding
+
+### Epistatic Effects
+
+[Content to be developed:]
+
+- Definition: Between-locus interactions
+- Complex and difficult to predict
+- May contribute to heterosis
+- Not reliably transmitted
+
+## Why Focus on Additive Effects?
+
+[Content to be developed: Explain the primacy of additive effects in animal breeding:]
+
+1. Additive effects are **predictably transmitted** from parent to offspring
+2. **Response to selection** depends on additive genetic variance
+3. **Breeding values** (what we estimate) are additive effects
+4. Dominance and epistasis don't breed true
+
+## Variance Partitioning
+
+[Content to be developed: Total phenotypic variance can be partitioned into genetic and environmental components.]
+
+### The Variance Equation
+
+[Content to be developed:]
+
+$$
+\sigma^2_P = \sigma^2_G + \sigma^2_E
+$$
+
+Where:
+
+- σ²_P = phenotypic variance
+- σ²_G = genetic variance (total)
+- σ²_E = environmental variance
+
+### Further Partitioning Genetic Variance
+
+[Content to be developed:]
+
+$$
+\sigma^2_G = \sigma^2_A + \sigma^2_D + \sigma^2_I
+$$
+
+Where:
+
+- σ²_A = additive genetic variance
+- σ²_D = dominance variance
+- σ²_I = epistatic (interaction) variance
+
+### Why Variance Matters
+
+[Content to be developed: Variance components determine heritability (Chapter 5) and response to selection (Chapter 6).]
+
+## Examples Across Species
+
+[Content to be developed: Show the basic genetic model applied to real traits.]
+
+### Example 1: Weaning Weight in Swine
+
+[Content to be developed: Numerical example showing phenotype, genetic effect, and environmental deviation.]
+
+### Example 2: Milk Yield in Dairy Cattle
+
+[Content to be developed: Numerical example.]
+
+### Example 3: Body Weight in Broilers
+
+[Content to be developed: Numerical example.]
+
+## Parent-Offspring Relationships
+
+[Content to be developed: How additive effects create resemblance between relatives.]
+
+### Offspring Breeding Value
+
+[Content to be developed:]
+
+$$
+BV_{offspring} = \frac{1}{2} BV_{sire} + \frac{1}{2} BV_{dam} + Mendelian \ sampling
+$$
+
+### Mendelian Sampling
+
+[Content to be developed: Offspring deviate from midparent average due to random sampling of parental alleles.]
+
+## R Demonstration: Simulating the Basic Model
+
+[Content to be developed: R code to simulate phenotypes from genetic and environmental components.]
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Simulate phenotypes from genetic and environmental effects
+set.seed(123)
+n_animals <- 1000
+
+# Population parameters
+mu <- 100          # Population mean (e.g., kg for weaning weight)
+sigma_A <- 5       # Additive genetic SD
+sigma_E <- 10      # Environmental SD
+
+# Simulate breeding values (additive genetic effects)
+A <- rnorm(n_animals, mean = 0, sd = sigma_A)
+
+# Simulate environmental deviations
+E <- rnorm(n_animals, mean = 0, sd = sigma_E)
+
+# Calculate phenotypes
+y <- mu + A + E
+
+# Summarize
+data.frame(
+  Component = c("Mean", "SD(A)", "SD(E)", "SD(y)"),
+  Value = c(mean(y), sd(A), sd(E), sd(y))
+)
+```
+
+## Summary
+
+[Content to be developed: Recap main points.]
+
+### Key Points
+
+- Phenotype = Genetic + Environment (y = μ + A + E)
+- Genetic effects include additive, dominance, and epistatic components
+- Additive effects breed true and are the focus of selection
+- Variance partitioning separates genetic from environmental variation
+- Only additive genetic variance contributes to response to selection
+
+## Practice Problems
+
+[Problems to be developed]
+
+1. A pig has a phenotype of 25 kg for weaning weight. The population mean is 23 kg, and the pig's breeding value is +3 kg. What is the environmental deviation for this pig?
+
+2. Explain why dominance effects do not contribute to long-term response to selection.
+
+3. If σ²_P = 100, σ²_A = 30, and σ²_E = 60, what is σ²_D + σ²_I?
+
+## Further Reading
+
+[References to be added]
+
+- Falconer and Mackay: Introduction to Quantitative Genetics (Chapter 7)
+- Lynch and Walsh: Genetics and Analysis of Quantitative Traits

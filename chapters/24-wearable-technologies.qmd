@@ -1,0 +1,135 @@
+# Wearable Technologies in Livestock {#sec-wearable-technologies}
+
+## Overview
+
+This chapter provides a detailed examination of wearable sensors (collars, ear tags, leg bands) for monitoring livestock.
+
+## Learning Objectives
+
+By the end of this chapter, you should be able to:
+
+1. Identify major types of wearable sensors and their applications
+2. Explain how accelerometers are used for estrus detection and health monitoring
+3. Understand how wearable data can be used in genetic evaluations
+4. Recognize challenges in deploying wearable technologies
+5. Interpret activity and behavior data from wearable sensors
+
+## Types of Wearable Sensors
+
+::: {.callout-note}
+## Chapter Status
+This chapter is currently under development.
+:::
+
+### Collars
+
+- Accelerometers
+- GPS
+- Microphones
+- Body temperature sensors
+
+### Ear Tags
+
+- RFID (identification)
+- Accelerometers
+- Temperature sensors
+
+### Leg Bands
+
+- Accelerometers
+- Pedometers (step counting)
+
+### Rumen Boluses
+
+- pH monitoring
+- Temperature
+- Pressure
+
+## Accelerometers and Activity Monitoring
+
+### Measured Parameters
+
+- Activity level
+- Lying time
+- Standing time
+- Step count
+- Rumination time
+
+### Applications
+
+1. **Estrus detection**: Increased activity during estrus (dairy cows)
+2. **Calving/farrowing detection**: Changes in lying patterns before parturition
+3. **Lameness detection**: Reduced activity, altered gait, increased lying time
+4. **Health monitoring**: Reduced activity as early indicator of disease
+5. **Welfare assessment**: Lying time, rumination time as welfare indicators
+
+### Commercial Systems
+
+- Allflex
+- SCR by Allflex
+- IceQube
+- RumiWatch
+- Nedap
+
+## Temperature Sensors
+
+### Core Body Temperature
+
+Early indicator of:
+- Fever
+- Heat stress
+- Disease
+
+### Rumen Boluses
+
+Continuous temperature and pH monitoring
+
+## GPS and Location Tracking
+
+### Applications
+
+- Grazing behavior
+- Pasture utilization
+- Locating animals in large pastures or rangeland
+- Social interactions and resource use
+
+## Acoustic Sensors (Microphones)
+
+### Applications
+
+- Cough detection (respiratory disease)
+- Vocalization analysis (stress, pain, estrus)
+- Rumination detection
+
+## Wearables for Genetic Evaluation
+
+### Novel Phenotypes
+
+- **Feed efficiency**: Activity data helps explain variation in energy expenditure
+- **Health traits**: Early disease detection enables phenotyping for resistance
+- **Fertility**: Improved estrus detection increases accuracy of fertility EBVs
+- **Temperament**: Activity patterns indicate stress response
+
+## Data Quality and Validation
+
+- Comparing sensor data to gold-standard measurements
+- Calibration and drift correction
+- Battery life and maintenance
+- Missing data due to sensor failure or loss
+
+## Challenges
+
+- Cost per animal (especially for large herds)
+- Battery life and replacement
+- Data management infrastructure
+- Validation of sensor accuracy
+
+## Summary
+
+Wearable sensors enable continuous, automated monitoring of behavior and physiology, providing novel phenotypes for genetic evaluation.
+
+## Key Points
+
+- Accelerometers are widely adopted for estrus and health detection
+- Wearable data provides novel phenotypes for genetic evaluation
+- Data quality and validation are critical for reliable use

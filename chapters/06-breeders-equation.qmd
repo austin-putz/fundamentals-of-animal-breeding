@@ -1,0 +1,335 @@
+# The Breeder's Equation and Selection Response {#sec-breeders-equation}
+
+<div class="learning-objectives">
+### Learning Objectives {.unnumbered}
+
+By the end of this chapter, you will be able to:
+
+1. State and apply the breeder's equation
+2. Explain how each of the four factors influences response to selection
+3. Describe trade-offs between accuracy, intensity, and generation interval
+4. Compare different selection strategies using the breeder's equation
+5. Calculate expected response to selection
+
+</div>
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+# Load required packages
+library(tidyverse)
+library(knitr)
+
+# Set default theme for plots
+theme_set(theme_minimal(base_size = 12))
+```
+
+## Introduction
+
+[Content to be developed: The breeder's equation predicts how much genetic progress we can achieve per unit time. Understanding the four factors and their trade-offs is fundamental to designing breeding programs.]
+
+## The Breeder's Equation
+
+[Content to be developed: Present the equation.]
+
+### The Equation
+
+$$
+R = \frac{i \times r \times \sigma_A}{L}
+$$
+
+Where:
+
+- **R** = response to selection per year (or per generation if L = 1)
+- **i** = selection intensity (standardized selection differential)
+- **r** = accuracy of selection (correlation between EBV and TBV)
+- **σ_A** = additive genetic standard deviation
+- **L** = generation interval (years)
+
+### Interpreting the Equation
+
+[Content to be developed: Each factor contributes multiplicatively to genetic gain. Improving any factor increases R.]
+
+## Selection Intensity (i)
+
+[Content to be developed: How hard we select.]
+
+### Definition
+
+[Content to be developed: i is the standardized selection differential. It depends on the proportion of animals selected as parents.]
+
+### Relationship to Proportion Selected (p)
+
+[Content to be developed:]
+
+$$
+i = \frac{S}{\sigma_P}
+$$
+
+Where S is the selection differential (mean of selected - population mean).
+
+For a given p, i can be looked up in a table or calculated.
+
+### Examples of Selection Intensity
+
+[Content to be developed:]
+
+| Proportion Selected (p) | Selection Intensity (i) |
+|-------------------------|-------------------------|
+| 0.01 (1%)              | 2.67                    |
+| 0.05 (5%)              | 2.06                    |
+| 0.10 (10%)             | 1.76                    |
+| 0.20 (20%)             | 1.40                    |
+| 0.50 (50%)             | 0.80                    |
+
+### Factors Limiting Intensity
+
+[Content to be developed:]
+
+- Genetic diversity (can't select too few parents)
+- Number of offspring needed
+- Sex-limited traits (can only select females or males)
+- Practical constraints (cost, facilities)
+
+### Species Differences
+
+[Content to be developed:]
+
+- **Poultry**: High intensity possible (thousands of candidates, high reproduction)
+- **Dairy**: Moderate intensity in males (AI), lower in females
+- **Beef/Swine**: Moderate intensity
+- **Horses**: Low intensity (low reproduction rate)
+
+## Accuracy of Selection (r)
+
+[Content to be developed: How well we predict true breeding values.]
+
+### Definition
+
+[Content to be developed: r is the correlation between estimated breeding value (EBV) and true breeding value (TBV).]
+
+$$
+r = \text{cor}(EBV, TBV)
+$$
+
+Range: 0 to 1. Higher r means better prediction.
+
+### Factors Affecting Accuracy
+
+[Content to be developed:]
+
+1. **Heritability**: Higher h² → higher r
+2. **Amount of information**:
+   - Own performance
+   - Pedigree (parents, ancestors)
+   - Progeny performance
+   - Sibs and other relatives
+   - Genomic data
+3. **Quality of information** (measurement error)
+
+### Accuracy by Information Source
+
+[Content to be developed:]
+
+| Information Source | Typical Accuracy (r) |
+|--------------------|----------------------|
+| Parent average (no own record) | 0.30-0.45 |
+| Own performance (h²=0.30) | 0.55 |
+| Own + progeny (n=20) | 0.75-0.85 |
+| Genomic selection (young animal) | 0.50-0.70 |
+
+### Progeny Testing vs. Genomic Selection
+
+[Content to be developed: Progeny testing increases accuracy but requires waiting for progeny. Genomic selection provides moderate accuracy at birth.]
+
+## Genetic Standard Deviation (σ_A)
+
+[Content to be developed: The amount of additive genetic variation in the population.]
+
+### Definition
+
+[Content to be developed:]
+
+$$
+\sigma_A = \sqrt{\sigma^2_A} = \sqrt{h^2 \times \sigma^2_P}
+$$
+
+### Factors Affecting σ_A
+
+[Content to be developed:]
+
+- Amount of genetic variation (historical effective population size)
+- Selection gradually reduces σ_A (reduces variation)
+- Mutation adds variation (very slowly)
+- Migration/crossbreeding can increase σ_A
+
+### Why We Can't Easily Change σ_A
+
+[Content to be developed: Unlike i, r, and L, σ_A is largely determined by the population's genetic variation. Breeders have limited control.]
+
+## Generation Interval (L)
+
+[Content to be developed: Average age of parents when offspring are born.]
+
+### Definition
+
+[Content to be developed:]
+
+$$
+L = \frac{L_{sires} + L_{dams}}{2}
+$$
+
+### Species Differences
+
+[Content to be developed:]
+
+| Species | Typical L (years) |
+|---------|-------------------|
+| Poultry | 1.0               |
+| Swine   | 1.5-2.0           |
+| Sheep   | 2.5-3.5           |
+| Dairy cattle | 4.0-6.0     |
+| Beef cattle | 4.0-7.0      |
+| Horses  | 8.0-12.0          |
+
+### Factors Affecting L
+
+[Content to be developed:]
+
+- Age at sexual maturity
+- Age when sufficient information is available (progeny testing)
+- Reproductive rate
+- Economic and facility constraints
+
+## Trade-offs Among the Four Factors
+
+[Content to be developed: The four factors are not independent. Optimizing one may compromise another.]
+
+### Accuracy vs. Generation Interval
+
+[Content to be developed: The classic trade-off]
+
+- **Progeny testing**: High accuracy (r ≈ 0.80-0.90) but long L (6-8 years in dairy)
+- **Genomic selection**: Moderate accuracy (r ≈ 0.50-0.70) but short L (2-3 years in dairy)
+- **Net effect**: Genomic selection often yields higher annual genetic gain despite lower accuracy
+
+### Intensity vs. Generation Interval
+
+[Content to be developed: Selecting very few parents (high i) may require keeping animals longer to obtain enough offspring.]
+
+### Intensity vs. Inbreeding
+
+[Content to be developed: Very high intensity reduces effective population size and increases inbreeding.]
+
+## Comparing Selection Strategies
+
+[Content to be developed: Use the breeder's equation to compare different approaches.]
+
+### Example 1: Dairy Bull Selection
+
+[Content to be developed:]
+
+**Progeny testing**:
+
+- i = 2.06 (5% selected)
+- r = 0.85 (progeny-tested)
+- σ_A = 450 kg (for milk yield)
+- L = 6 years
+- R = (2.06 × 0.85 × 450) / 6 = 131 kg/year
+
+**Genomic selection**:
+
+- i = 2.06
+- r = 0.65 (genomic EBV)
+- σ_A = 450 kg
+- L = 2.5 years
+- R = (2.06 × 0.65 × 450) / 2.5 = 241 kg/year
+
+**Result**: Genomic selection yields ~84% higher annual gain despite lower accuracy.
+
+### Example 2: Swine Growth Rate
+
+[Content to be developed: Numerical example comparing mass selection vs. progeny testing.]
+
+## R Demonstration: Breeder's Equation Calculations
+
+[Content to be developed:]
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Function to calculate response to selection
+calculate_response <- function(i, r, sigma_A, L) {
+  R <- (i * r * sigma_A) / L
+  return(R)
+}
+
+# Example: Dairy milk yield
+# Progeny testing
+R_progeny <- calculate_response(i = 2.06, r = 0.85, sigma_A = 450, L = 6)
+cat("Progeny testing R =", round(R_progeny, 1), "kg/year\n")
+
+# Genomic selection
+R_genomic <- calculate_response(i = 2.06, r = 0.65, sigma_A = 450, L = 2.5)
+cat("Genomic selection R =", round(R_genomic, 1), "kg/year\n")
+
+# Improvement
+improvement <- (R_genomic / R_progeny - 1) * 100
+cat("Genomic selection improves annual gain by", round(improvement, 1), "%\n")
+```
+
+## Simulating Multi-Generation Selection
+
+[Content to be developed:]
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Simulate genetic trend over 20 years
+years <- 0:20
+R_per_year <- 100  # kg per year for some trait
+genetic_mean <- years * R_per_year
+
+# Plot
+data.frame(Year = years, Genetic_Mean = genetic_mean) %>%
+  ggplot(aes(x = Year, y = Genetic_Mean)) +
+  geom_line(color = "blue", size = 1.2) +
+  geom_point(color = "blue", size = 2) +
+  labs(title = "Genetic Trend Over Time",
+       x = "Year",
+       y = "Genetic Mean (kg)") +
+  theme_minimal()
+```
+
+## Summary
+
+[Content to be developed.]
+
+### Key Points
+
+- The breeder's equation predicts response to selection: R = (i × r × σ_A) / L
+- Four factors: intensity, accuracy, genetic SD, generation interval
+- Trade-offs exist, especially between accuracy and generation interval
+- Genomic selection resolves the r vs. L trade-off
+- Use the equation to compare strategies and optimize breeding programs
+
+## Practice Problems
+
+[Problems to be developed]
+
+1. Calculate the expected annual response to selection for a trait with i = 1.76, r = 0.60, σ_A = 8 kg, and L = 2 years.
+
+2. A dairy breeding program achieves R = 150 kg/year for milk yield using genomic selection. If they switched back to progeny testing with r = 0.90 (instead of genomic r = 0.65) but L increased from 2.5 to 6 years, what would the new R be? Should they make the switch?
+
+3. Explain why poultry breeding programs can achieve much faster genetic gain than cattle programs.
+
+## Further Reading
+
+[References to be added]
+
+- Falconer and Mackay: Introduction to Quantitative Genetics (Chapter 11)
+- Papers on genomic selection and its impact on genetic gain

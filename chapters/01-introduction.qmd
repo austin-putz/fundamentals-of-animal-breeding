@@ -1,0 +1,781 @@
+# The Role and Tools of the Modern Animal Breeder {#sec-introduction}
+
+<div class="learning-objectives">
+### Learning Objectives {.unnumbered}
+
+By the end of this chapter, you will be able to:
+
+1. Define the goal of animal breeding (genetic change over time) and its universal application
+2. Identify the core multidisciplinary skills required to be a modern animal breeder
+3. Describe the hierarchical structure of a breeding pyramid in livestock (Nucleus, Multiplier, Commercial)
+4. Explain the economic drivers and product streams of major livestock breeding companies
+5. Summarize the central process of selection: from phenotyping to genetic evaluation
+6. Differentiate between individual and non-individual identification methods in breeding programs
+
+</div>
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+# Load required packages
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+
+# Set default theme for plots
+theme_set(theme_minimal(base_size = 12))
+```
+
+## Introduction
+
+Animal breeding is both an ancient art and a modern science. For thousands of years, humans have selected superior animals as parents of the next generation, gradually transforming wild species into the highly productive domestic animals we know today. However, modern animal breeding has evolved far beyond simple selection—it now integrates advanced quantitative genetics, massive databases, sophisticated statistical models, economic analysis, and cutting-edge genomic technologies.
+
+This chapter introduces you to the **role and tools** of today's animal breeder. You'll learn that successful breeding programs require a diverse skillset spanning multiple disciplines, from statistics to economics to molecular biology. You'll discover how breeding companies are structured, how they generate revenue, and how genetics flows from elite nucleus populations to commercial farms. Finally, you'll see that while the species may differ—swine, poultry, dairy cattle, beef cattle, or even aquaculture—the fundamental principles of genetic improvement remain universal.
+
+Welcome to the world of modern animal breeding!
+
+---
+
+## 1.1 The Universal Science of Genetic Improvement
+
+### 1.1.1 Defining Animal Breeding
+
+At its core, animal breeding has a **simple goal**:
+
+> Select the best animals to be parents of the next generation.
+
+But what does "best" mean? And best for what purpose? The answer depends on the **breeding objective**—the traits we want to improve. For dairy cattle, "best" might mean cows that produce more milk with better fertility and health. For swine, it might mean pigs that grow faster, more efficiently, and produce leaner carcasses. For broiler chickens, it might mean birds that reach market weight quickly with excellent feed conversion.
+
+The **ultimate goal** of animal breeding is more precise:
+
+> Increase the mean genetic merit of a population over time.
+
+This change in genetic merit over time is called **genetic gain** or, mathematically, **ΔG** (delta G, the change in genetic mean). Genetic gain is cumulative—improvements made in one generation are passed to the next, compounding over decades to create dramatic transformations in livestock productivity.
+
+::: {.callout-note}
+## Genetic Gain is Permanent
+
+Unlike environmental improvements (better nutrition, housing, or management), genetic improvements are **permanent and cumulative**. Once superior genes are fixed in a population, they remain in future generations. This is why animal breeding creates lasting value.
+:::
+
+### 1.1.2 Universal Principles
+
+The principles you'll learn in this course—quantitative genetics, selection theory, genetic evaluation, mating strategies—apply **universally** to all domesticated species:
+
+- **Livestock**: Swine, cattle (dairy and beef), sheep, goats
+- **Poultry**: Broilers (meat), layers (eggs), turkeys, ducks
+- **Aquaculture**: Salmon, trout, tilapia, shrimp
+- **Companion animals**: Dogs, cats, horses
+- **Even plants**: The same statistical methods and breeding theories apply to crop improvement
+
+No matter the species, the fundamental challenges are the same:
+
+1. Define the breeding objective (what to improve)
+2. Measure traits accurately (phenotyping)
+3. Estimate genetic merit (breeding values)
+4. Select superior parents
+5. Design optimal matings
+6. Manage genetic diversity
+
+This universality is powerful. The skills you develop in this course will prepare you for careers across the entire animal agriculture industry—and beyond.
+
+### 1.1.3 Breeding vs. Production: Changing Genes vs. Changing Environment
+
+It's critical to distinguish between **breeding** and **production management**:
+
+| Aspect | **Breeding** | **Production** |
+|--------|-------------|----------------|
+| **Focus** | Changing **allele frequencies** | Changing **environment** |
+| **Timeframe** | Long-term (generations) | Short-term (immediate) |
+| **Effect** | Permanent and cumulative | Temporary (must be maintained) |
+| **Tools** | Selection, mating, genomics | Nutrition, housing, health management |
+| **Cost** | Front-loaded (data collection, evaluation) | Ongoing (feed, labor, facilities) |
+
+**Example**: Improving feed efficiency
+
+- **Production approach**: Optimize feed formulation, reduce waste, improve gut health with additives
+  - Effect: Immediate improvement
+  - Duration: Only while management continues
+
+- **Breeding approach**: Select animals with superior genetic feed efficiency (low RFI)
+  - Effect: Builds over generations
+  - Duration: Permanent—efficient genes pass to offspring
+
+Both approaches are necessary and complementary, but **breeding creates permanent, compounding value** that continues long after the initial investment.
+
+---
+
+## 1.2 The Breeder's Multidisciplinary Skill Set
+
+Modern animal breeding is not a single discipline—it's an integration of multiple fields. A successful breeder must be part statistician, part biologist, part economist, and part data scientist. Let's explore the essential skills and why each matters.
+
+### 1.2.1 Quantitative Genetics & Statistics
+
+At the heart of animal breeding lies **quantitative genetics**—the study of traits controlled by many genes, each with small effects. Most economically important traits (growth rate, milk production, litter size, feed efficiency) are quantitative, not simply inherited.
+
+**Key concepts** you'll master in this course:
+
+- **Heritability (h²)**: The proportion of phenotypic variation due to additive genetic effects. Determines how fast we can improve a trait through selection.
+
+- **Genetic correlations**: How traits are genetically linked. Selecting for one trait (e.g., growth rate) inevitably affects others (e.g., backfat thickness).
+
+- **Breeding values**: An animal's genetic merit as a parent. The **Estimated Breeding Value (EBV)** or **Expected Progeny Difference (EPD)** is our best guess at an animal's true genetic merit based on available data.
+
+**Statistical models** are essential for estimating breeding values:
+
+- **Linear mixed models**: Account for fixed effects (e.g., contemporary groups) and random effects (genetic merit)
+- **Best Linear Unbiased Prediction (BLUP)**: The gold standard for estimating breeding values, using information from the individual, parents, progeny, and all relatives simultaneously
+- **Genomic prediction models**: Incorporate DNA marker information to increase accuracy, especially for young animals
+
+::: {.callout-tip}
+## Why Statistics?
+
+Phenotypes (what we observe) are influenced by **both genetics and environment**. Statistics allows us to partition variation:
+
+$$
+\text{Phenotype} = \text{Genetics} + \text{Environment}
+$$
+
+Only by accurately separating genetic from environmental effects can we identify the truly superior animals.
+:::
+
+### 1.2.2 Databases and Data Management
+
+Breeding programs generate **massive amounts of data**:
+
+- **Phenotypes**: Birth weights, growth rates, ultrasound measurements, feed intake, reproductive records, health events
+- **Pedigrees**: Parentage for thousands or millions of animals
+- **Genotypes**: SNP chip data (50,000 to 800,000 markers per animal)
+- **Management data**: Contemporary groups, pen assignments, treatment histories
+
+**Data integrity is paramount**. A famous saying in computer science applies perfectly to animal breeding:
+
+> "Garbage in, garbage out."
+
+If phenotypic data are inaccurate (e.g., swapped IDs, incorrect dates, measurement errors), the genetic evaluations will be flawed, and selection decisions will be wrong.
+
+**Relational databases** are the foundation of breeding programs:
+
+- **Tables**: Animals, Pedigree, Phenotypes, Genotypes
+- **Keys**: Unique animal IDs link records across tables
+- **Queries**: Extract data for analysis (using SQL)
+
+Modern breeders must be comfortable working with databases, performing quality control, and ensuring data flows correctly from field collection to genetic evaluation.
+
+### 1.2.3 Economics and Economic Value
+
+Not all genetic improvement is created equal. Improving **milk yield by 100 kg** is not equally valuable to improving **fertility by 5 days to conception**—even though both might have similar heritabilities.
+
+This is where **economics** enters breeding:
+
+- **Economic weights (v)**: The value of a one-unit improvement in a trait, holding all others constant. Usually expressed in dollars per unit (e.g., $0.30 per kg of milk, $3 per day reduction in days open).
+
+- **Selection indices**: Combine multiple traits weighted by their economic values to create a single selection criterion that maximizes profit. Examples: Net Merit (dairy), $W (beef), Sow Productivity Index (swine).
+
+**Cost-benefit analysis** guides breeding decisions:
+
+- Is it worth the cost of installing expensive automated feeders to measure individual feed intake, given the genetic gain expected in feed efficiency?
+- Should we genotype all selection candidates ($50 per animal) or rely only on pedigree and phenotypes?
+
+Breeders must constantly balance genetic gain against cost, accuracy against speed, and short-term profit against long-term improvement.
+
+### 1.2.4 Production and Animal Science Knowledge
+
+Accurate **phenotyping**—measuring traits correctly—requires deep knowledge of animal biology and production systems:
+
+- **Growth traits**: Proper weighing procedures, accounting for gut fill, standardizing age
+- **Carcass traits**: Ultrasound or CT scanning techniques, carcass dissection protocols
+- **Reproductive traits**: Estrus detection, pregnancy diagnosis, litter recording at birth
+- **Feed efficiency**: Electronic feeders (e.g., GrowSafe, FIRE), individual vs. group housing
+- **Health traits**: Disease challenge studies, immune response assays, diagnostic lab results
+
+**Environmental effects** must be understood and modeled:
+
+- **Contemporary groups**: Animals raised together in the same environment (herd-year-season)
+- **Management factors**: Pen effects, batch effects, parity effects (for reproductive traits)
+- **Seasonal effects**: Temperature, day length, feed availability
+
+Without solid animal science knowledge, breeders cannot collect accurate data or properly account for environmental variation—leading to biased genetic evaluations.
+
+---
+
+## 1.3 The Industry Structure: The Breeding Pyramid
+
+Most livestock breeding industries are organized as hierarchical **pyramid structures**. Genetic improvement originates at the top (the nucleus) and flows downward through multiplier levels to the commercial production base. Understanding this structure is key to understanding how breeding programs operate.
+
+### 1.3.1 The Breeding Pyramid Model
+
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 6
+#| fig-cap: "Hierarchical structure of a breeding pyramid (e.g., swine). Selection intensity is highest at the nucleus, and genetics flow downward to commercial production."
+
+# Create a simple visualization of breeding pyramid
+library(ggplot2)
+
+pyramid_data <- data.frame(
+  Level = factor(c("Nucleus", "Multiplier", "Commercial"),
+                 levels = c("Commercial", "Multiplier", "Nucleus")),
+  Animals = c(10000000, 100000, 5000),
+  Selection_Intensity = c("Low", "Moderate", "High"),
+  Genetic_Gain = c("Consumer of genetics", "Propagator of genetics", "Producer of genetics")
+)
+
+ggplot(pyramid_data, aes(x = 1, y = Animals, fill = Level)) +
+  geom_col(position = "stack", color = "black", width = 0.8) +
+  scale_fill_manual(values = c("Nucleus" = "#E41A1C",
+                                "Multiplier" = "#377EB8",
+                                "Commercial" = "#4DAF4A")) +
+  scale_y_log10(labels = scales::comma) +
+  coord_flip() +
+  labs(title = "Breeding Pyramid Structure",
+       y = "Number of Animals (log scale)",
+       x = "",
+       fill = "Level") +
+  theme_minimal() +
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        legend.position = "right")
+```
+
+The pyramid has three main levels:
+
+#### **1. Nucleus (Apex)**
+
+- **Population**: Small, elite group of purebred animals (typically 2,000-10,000 breeding animals)
+- **Goal**: Maximize genetic gain through intense selection and advanced technologies
+- **Selection intensity**: **Highest** (top 1-10% selected as parents)
+- **Tools**: Complete phenotyping, pedigree analysis, genomic selection, progeny testing
+- **Ownership**: Genetics companies own and operate nucleus herds/flocks
+
+**Examples**:
+- **Swine**: Genus (PIC, Hypor), Topigs Norsvin nucleus farms with purebred Large White, Landrace, Duroc, Pietrain lines
+- **Poultry**: Cobb-Vantress, Aviagen great-grandparent lines (proprietary genetics)
+- **Dairy**: Elite bull dams and young genomic sires at AI studs (Select Sires, ABS Global, Alta Genetics)
+
+#### **2. Multiplier (Middle Tier)**
+
+- **Population**: Larger population (~50,000-500,000 animals) that receives genetics from the nucleus
+- **Goal**: **Propagate** superior genetics, often creating crossbred maternal lines (F₁ females)
+- **Selection intensity**: Moderate (primarily for reproductive success, not genetic improvement)
+- **Function**: Expand numbers to supply commercial production
+
+**Examples**:
+- **Swine**: Multiplier farms produce F₁ gilts (Large White × Landrace) that are sold to commercial producers
+- **Poultry**: Grandparent and parent stock farms that produce hatching eggs
+- **Dairy**: Not applicable (semen disseminated directly via AI)
+
+#### **3. Commercial (Base)**
+
+- **Population**: Vast (millions to billions of animals globally)
+- **Goal**: **Maximize production and profit** using crossbred genetics from above
+- **Selection intensity**: Minimal or none (animals typically slaughtered or culled after production cycle)
+- **Focus**: Production management, not genetic improvement
+
+**Examples**:
+- **Swine**: Commercial sow farms using F₁ gilts mated to terminal sires (Duroc, Pietrain) to produce market hogs
+- **Poultry**: Commercial broiler farms raising chickens from 1 day to ~42 days (slaughter)
+- **Dairy**: Commercial dairy farms using semen from elite bulls
+
+### 1.3.2 Species-Specific Pyramids
+
+#### **Swine: A Classic Three-Tier Pyramid**
+
+The swine industry exemplifies the pyramid structure:
+
+**Nucleus** → Purebred lines (Large White, Landrace, Duroc, Pietrain) maintained by genetics companies
+
+**Multiplier** → Produces F₁ crossbred gilts:
+- (Large White ♂ × Landrace ♀) → F₁ gilt (maternal line, excellent reproductive traits)
+
+**Commercial** → F₁ gilts mated to terminal sire:
+- (F₁ ♀ × Duroc ♂) → Market pigs (three-way cross, optimized for growth and carcass)
+
+**Genetic flow**: One-directional, from nucleus → multiplier → commercial
+
+**Key companies**:
+- Genus (PIC, Hypor): ~$500M annual revenue
+- Topigs Norsvin: European leader, cooperative structure
+- Genesus: Smaller but growing, direct-to-farm model
+
+---
+
+#### **Poultry: Four-Tier Proprietary Genetics**
+
+Poultry (broilers and layers) use a **four-tier structure** with proprietary synthetic lines (not breed-based):
+
+**Great-Grandparent (GGP)** → Elite nucleus lines (pure lines A, B, C, D)
+
+**Grandparent (GP)** → Crosses of pure lines (AB × CD)
+
+**Parent Stock (PS)** → Commercial layer that produces hatching eggs
+
+**Commercial** → Broilers (slaughter at ~6 weeks) or layers (egg production)
+
+**Ownership**: Highly concentrated—3-4 companies control ~90% of global broiler genetics:
+- Cobb-Vantress (Tyson Foods): ~40% market share
+- Aviagen (EW Group): ~35% market share
+- Hubbard (Groupe Grimaud): ~15%
+- Hybrid Turkeys (Hendrix Genetics): Turkeys
+
+**Genetic flow**: Strictly controlled through contracts; multiplier farms cannot breed their own replacements.
+
+---
+
+#### **Dairy: AI-Based Dissemination**
+
+Dairy cattle breeding does **not** follow a strict pyramid—instead, it relies on **artificial insemination (AI)** to disseminate elite bull genetics globally.
+
+**Elite nucleus** → Bull dams and young genomic sires selected through progeny testing or genomic evaluation
+
+**AI studs** → Collect, process, and distribute semen from proven or genomic bulls
+
+**Commercial farms** → Use AI to breed cows, selecting bulls based on **Net Merit** index or other breeding goals
+
+**Key companies**:
+- Select Sires: US cooperative, farmer-owned
+- ABS Global: Private, international
+- Alta Genetics: Canadian cooperative
+- CRV: Dutch cooperative
+
+**Genetic flow**: Primarily through semen; some embryo transfer (ET) for elite females.
+
+---
+
+#### **Beef: Seedstock Producers and Breed Associations**
+
+Beef cattle breeding is more decentralized:
+
+**Seedstock producers** → Registered purebred herds (Angus, Hereford, Simmental, etc.), focus on selling breeding stock (bulls, heifers) and semen
+
+**Commercial cow-calf operations** → Purchase bulls or semen from seedstock producers, often crossbreed for hybrid vigor
+
+**Breed associations** → Perform genetic evaluations, publish EPDs (Expected Progeny Differences), maintain registries
+
+**Key organizations**:
+- American Angus Association: Largest beef breed registry (~300,000 members)
+- Red Angus Association of America
+- Simmental, Hereford, Charolais breed associations
+
+**Genetic flow**: Bulls and semen from seedstock producers → commercial herds.
+
+---
+
+### 1.3.3 The Role of Artificial Insemination (AI)
+
+**Artificial insemination** is the most important technology for disseminating superior male genetics:
+
+#### **How AI Works**
+
+1. **Semen collection**: Males trained to mount dummy or live female; semen collected via artificial vagina
+2. **Evaluation**: Sperm count, motility, morphology assessed
+3. **Extension and dilution**: Semen diluted with extender (nutrients, antibiotics, cryoprotectant)
+4. **Freezing**: Packaged in straws (0.5 mL or 0.25 mL), frozen in liquid nitrogen (-196°C)
+5. **Storage**: Indefinite storage in liquid nitrogen tanks
+6. **Distribution**: Shipped globally to farms, thawed at point of use
+7. **Insemination**: Deposited into female reproductive tract (cervix or uterus) at optimal time
+
+#### **Impact of AI**
+
+AI dramatically increases the **selection intensity** for males:
+
+- **Without AI**: A bull might sire 20-50 calves per year (natural mating)
+- **With AI**: A single ejaculate can produce hundreds of doses; elite bulls sire thousands to tens of thousands of offspring globally
+
+**Example**: A top Holstein bull may have >100,000 daughters worldwide, allowing extremely accurate progeny testing (before genomics) or validation of genomic predictions.
+
+#### **AI by Species**
+
+| Species | AI Adoption Rate | Primary Use |
+|---------|-----------------|-------------|
+| **Dairy cattle** | >90% (USA, Europe) | Nearly universal for breeding |
+| **Beef cattle** | ~10-15% (USA) | Mainly seedstock herds; natural mating common in commercial herds |
+| **Swine** | >95% (commercial) | Standard practice; boar studs supply semen |
+| **Poultry** | <5% | Natural mating predominates (roosters kept with hens) |
+| **Sheep** | 5-10% | Seasonal breeding, labor-intensive |
+
+---
+
+## 1.4 The Business of Genetics: How Companies Make Money
+
+Genetics is a **valuable, traded commodity**. Understanding the economic model helps you appreciate why companies invest heavily in breeding programs.
+
+### 1.4.1 Product Streams by Species
+
+#### **Swine**
+
+Revenue comes from selling:
+
+1. **Crossbred gilts** (F₁ maternal line, e.g., Large White × Landrace)
+   - Sold to commercial farms for ~$200-$350 per gilt
+   - Companies sell millions of gilts annually
+
+2. **Terminal sire semen** (Duroc, Pietrain)
+   - Sold to commercial farms for ~$5-$15 per dose
+   - Each commercial sow bred 2-3× per year → high semen demand
+
+3. **Genetic licensing and royalties** (in some markets)
+
+**Example**: PIC (part of Genus) generates ~$300M+ annually from swine genetics.
+
+---
+
+#### **Poultry**
+
+Revenue from:
+
+1. **Day-old chicks (broilers)** or **pullets (layers)**
+   - Sold to integrators or commercial farms
+   - Broiler chicks: $0.30-$0.50 each
+   - Layer pullets: $2-$5 each (18-20 weeks old, ready to lay)
+
+2. **Hatching eggs** (sold to hatcheries)
+
+3. **Licensing and contracts** with parent stock farms
+
+**Example**: Cobb-Vantress (Tyson) and Aviagen dominate the global market; billions of chicks sold annually.
+
+---
+
+#### **Dairy**
+
+Revenue primarily from:
+
+1. **Semen sales**
+   - Conventional semen: $10-$30 per straw
+   - Sexed semen (female-sorted): $40-$60 per straw
+   - Elite genomic young sires: Premium pricing
+
+2. **Embryos**
+   - High-value females: $200-$1,000+ per embryo
+
+3. **Genomic testing services**
+   - Genotyping young animals: $30-$50 per test
+
+**Example**: Select Sires, ABS Global, Alta Genetics each generate hundreds of millions in annual revenue.
+
+---
+
+#### **Beef**
+
+Revenue from:
+
+1. **Breeding stock sales** (bulls, heifers)
+   - Registered purebred bulls: $3,000-$10,000+ (elite bulls >$50,000)
+
+2. **Semen sales**
+   - Proven sires: $15-$50 per straw
+   - Elite sires: $100+ per straw
+
+3. **Embryos** (high-value females)
+
+4. **Membership fees and registrations** (breed associations)
+
+---
+
+### 1.4.2 The Value of Cumulative Genetic Gain
+
+Small annual genetic gains **compound dramatically** over time:
+
+**Example**: Dairy milk yield genetic gain
+
+- Annual genetic gain: ~100 kg per year (due to genomic selection)
+- Over 20 years: 2,000 kg increase in genetic merit
+- At $0.40 per kg milk → $800 extra revenue per lactation
+- Across millions of cows → billions of dollars in cumulative value
+
+**Example**: Broiler feed efficiency
+
+- Annual genetic gain: ~1-2% improvement in feed conversion ratio (FCR)
+- Over 30 years: 30-50% improvement
+- Translates to billions of kg of feed saved globally → massive economic and environmental impact
+
+This is why genetics companies invest heavily ($10M-$100M+ annually) in breeding programs—the long-term return on investment is enormous.
+
+---
+
+## 1.5 The Central Process: Selection and Evaluation
+
+At the heart of every breeding program lies a **systematic process** for identifying and selecting superior animals. Let's walk through the steps.
+
+### 1.5.1 Step 1: Defining the Breeding Objective
+
+The first critical question: **What traits should we improve?**
+
+This depends on:
+- **Market demands**: What do customers value? (lean meat, milk components, egg size, growth rate)
+- **Production costs**: What drives profitability? (feed efficiency, reproductive rate, health)
+- **Sustainability goals**: Environmental impact, animal welfare
+
+**Common breeding objectives**:
+
+| Species | Key Traits in Breeding Objective |
+|---------|----------------------------------|
+| **Swine** | Growth rate, feed efficiency, litter size, carcass leanness, meat quality |
+| **Broilers** | Body weight at 42 days, feed conversion, breast meat yield, leg health |
+| **Layers** | Egg production, egg weight, shell quality, feed efficiency, mortality |
+| **Dairy** | Milk yield, milk fat %, milk protein %, fertility, udder health, longevity |
+| **Beef** | Weaning weight, yearling weight, carcass weight, marbling, tenderness, calving ease |
+
+Most breeding programs target **5-15 traits simultaneously**, requiring **multi-trait selection** (covered in Chapter 9).
+
+---
+
+### 1.5.2 Step 2: Phenotyping and Data Acquisition
+
+**Phenotyping** is the process of accurately measuring traits on individual animals or groups.
+
+#### **Challenges in Phenotyping**
+
+- **Cost**: Automated feeders for individual feed intake cost $50,000-$100,000+ per pen
+- **Time**: Some traits (e.g., longevity) require years to measure
+- **Invasiveness**: Carcass traits require slaughter; some health traits require biopsies or blood samples
+- **Accuracy**: Measurement error reduces heritability and slows genetic gain
+
+#### **Modern Phenotyping Technologies**
+
+- **Automated feeders** (e.g., GrowSafe, FIRE): Measure individual feed intake in group-housed pigs or cattle
+- **Walk-over-weighing (WOW)**: Automatic scales record weights as animals pass through
+- **Ultrasound**: Non-invasive carcass trait measurement (backfat, loin depth)
+- **CT/MRI scanning**: High-resolution carcass composition in live animals
+- **Milking robots**: Automatically record milk yield, components, and milking speed per cow
+- **Automated egg counters**: Track individual hen production via RFID nest boxes
+- **Wearable sensors**: Activity monitors, rumination sensors, estrus detection collars
+- **Lab assays**: Immune response, metabolic profiles, gene expression
+
+**Example**: Swine feed efficiency (Residual Feed Intake, RFI)
+
+- **Traditional**: Hand-feeding, weighing back refused feed → labor-intensive, inaccurate
+- **Modern**: Electronic RFID feeders record each pig's daily feed intake automatically over 8-12 weeks → accurate, high-throughput
+
+---
+
+### 1.5.3 Step 3: Genetic Evaluation (Estimating Breeding Values)
+
+Once phenotypes are collected, we must **estimate genetic merit** for each animal.
+
+#### **Why Not Just Select on Phenotype?**
+
+Phenotype = Genetics + Environment
+
+An animal with a high phenotype might:
+- Be genetically superior (we want to select this animal)
+- Be in a favorable environment (e.g., best pen, best management)
+- Have favorable non-additive effects (dominance, epistasis) that don't pass to offspring
+
+We need to **separate genetic from environmental effects** and estimate each animal's **breeding value**.
+
+#### **Estimated Breeding Values (EBVs)**
+
+The **breeding value** is the sum of the additive effects of an animal's genes. It represents genetic merit as a parent.
+
+The **Estimated Breeding Value (EBV)** is our statistical prediction of true breeding value based on:
+- The animal's own phenotype
+- Phenotypes of relatives (parents, siblings, offspring)
+- Pedigree information
+- Genomic information (DNA markers)
+
+**Modern methods**:
+- **BLUP (Best Linear Unbiased Prediction)**: Uses linear mixed models to estimate breeding values, accounting for fixed effects (contemporary groups) and relationships among all animals
+- **Genomic BLUP (GBLUP)**: Incorporates SNP chip data to improve accuracy, especially for young animals without phenotypes
+
+We'll cover EBV estimation in detail in Chapter 7.
+
+---
+
+### 1.5.4 Step 4: Introduction to Genomic Selection
+
+Traditional selection relied on:
+- **Own performance**: Requires waiting for the animal to mature and have phenotypes
+- **Progeny testing**: Requires waiting for offspring to be born and measured (slow!)
+
+**Genomic selection** changed everything:
+
+By genotyping animals with **SNP chips** (DNA arrays measuring 50,000-800,000 genetic markers), we can:
+- Predict breeding values **at birth** (or even as embryos)
+- Increase **accuracy** for traits that are expensive to measure (e.g., feed efficiency, carcass quality, disease resistance)
+- Reduce **generation interval** (time between generations) by selecting young animals
+
+**Impact**:
+- **Dairy**: Generation interval reduced from ~6 years (progeny testing) to ~2.5 years (genomic selection) → doubled rate of genetic gain
+- **Swine**: Enabled selection for feed efficiency (RFI) without phenotyping all candidates
+- **Poultry**: High accuracy for traits like disease resistance and leg health
+
+We'll explore genomic selection in Chapters 12-13.
+
+---
+
+## 1.6 Operationalizing the Program: Identification
+
+To implement selection, we must track individual animals throughout their lives. This requires robust **identification systems**.
+
+### 1.6.1 Individual Identification Methods
+
+For most livestock species, **individual identification** is essential for maintaining pedigrees and linking phenotypes to animals.
+
+#### **Visual Identification**
+
+- **Ear tags**: Plastic or metal tags with unique numbers
+  - Pros: Inexpensive ($0.50-$2), easy to apply
+  - Cons: Can be lost, hard to read from distance, not suitable for automation
+
+- **Tattoos**: Permanent ink markings inside ear or on skin
+  - Pros: Permanent
+  - Cons: Hard to read without restraint, fades over time
+
+- **Branding**: Hot iron or freeze branding
+  - Pros: Permanent, visible from distance
+  - Cons: Painful, aesthetic concerns, damage to hide
+
+#### **Electronic Identification (RFID)**
+
+- **Passive RFID ear tags**: Microchip in ear tag, read by handheld or fixed readers
+  - Pros: Automatic reading, long-range, integrates with automated systems
+  - Cost: $2-$5 per tag
+
+- **Injectable transponders**: Microchip injected subcutaneously
+  - Common in companion animals, less common in livestock
+
+**Example**: Automated feeders in swine
+
+- Pigs wear RFID ear tags
+- When a pig enters the feeder, the RFID reader identifies the animal
+- Daily feed intake is recorded automatically and linked to the pig's ID
+- Data uploaded to central database → used for genetic evaluation of feed efficiency
+
+#### **DNA-Based Parentage Verification**
+
+- **Microsatellites** or **SNP panels**: Genotype parents and offspring to verify or assign parentage
+- **Uses**:
+  - Correct pedigree errors (mis-identified sires or dams)
+  - Assign parentage in natural mating (multiple sires per pen)
+  - Detect sample swaps in lab
+
+- **Cost**: ~$20-$50 per animal (using SNP chips, which also provide data for genomic selection)
+
+**Benefit**: Accurate pedigrees are critical for BLUP—incorrect pedigrees bias breeding value estimates.
+
+---
+
+### 1.6.2 Non-Individual Identification: Mass Selection and Group-Based Systems
+
+In some species or systems, individual identification is impractical or impossible.
+
+#### **Aquaculture: Tank, Cage, or Family Groups**
+
+- **Challenge**: Fish or shrimp cannot be individually tagged when very small (fry, post-larvae)
+- **Solutions**:
+  - **Family-based selection**: Spawn individual families in separate tanks, rear to measurable size, select best families
+  - **Genomic parentage assignment**: Genotype adults and a sample of offspring; assign parentage computationally → enables family-based BLUP
+  - **Mass spawning with communal rearing**: Sacrifice individual pedigree, rely on genomic relationships
+
+**Example**: Atlantic salmon breeding
+
+- Spawn 100+ families (each sire × dam pair in separate tank)
+- Mix families in common rearing tanks after PIT tagging (Passive Integrated Transponder, implanted subcutaneously)
+- Measure growth, disease resistance, fillet quality
+- Use BLUP with family and genomic information to estimate breeding values
+
+#### **Insects: Black Soldier Flies, Honeybees**
+
+- **Black soldier fly larvae**: Produced in millions, cannot be individually tagged
+  - Selection based on **mass performance** (e.g., average weight of 1,000 larvae from a family)
+  - Genomic selection from pooled DNA samples
+
+- **Honeybees**: Queen mates with 10-20 drones in flight (polyandry)
+  - Selection on colony performance (honey production, temperament, disease resistance)
+  - Queen breeding based on colony-level EBVs
+
+---
+
+## 1.7 Summary
+
+This chapter introduced you to the **world of modern animal breeding**—a multidisciplinary science that integrates genetics, statistics, economics, and data science to create permanent, cumulative genetic improvement in livestock populations.
+
+### Key Takeaways
+
+1. **The goal of animal breeding** is to increase the mean genetic merit of a population over time (genetic gain, ΔG).
+
+2. **Universal principles** apply across all species: define objectives, phenotype accurately, estimate breeding values, select superior parents, design matings, manage diversity.
+
+3. **Modern breeders** require diverse skills:
+   - Quantitative genetics and statistics (h², BLUP, genomic models)
+   - Data management and databases
+   - Economics (economic weights, cost-benefit analysis)
+   - Animal science (phenotyping, environmental effects)
+
+4. **Breeding pyramids** structure most livestock industries:
+   - **Nucleus**: Elite genetics, maximum selection intensity
+   - **Multiplier**: Propagate genetics (often F₁ crosses)
+   - **Commercial**: Production focus, consume genetics
+
+5. **Genetics companies** generate revenue by selling:
+   - Females (gilts, pullets)
+   - Semen (boars, bulls)
+   - Embryos (elite females)
+   - Genomic testing services
+
+6. **The selection process** flows from objective definition → phenotyping → genetic evaluation (EBVs) → selection → mating.
+
+7. **Genomic selection** has revolutionized breeding by enabling early, accurate predictions using DNA markers.
+
+8. **Identification systems** are essential:
+   - Individual ID (ear tags, RFID, DNA parentage)
+   - Group-based systems (aquaculture, insects)
+
+---
+
+## Looking Ahead
+
+In **Chapter 2**, we'll dive deeper into the fundamentals of **selection**: defining traits, understanding phenotypes, data recording, and introducing the concept of **True Breeding Value (TBV)**—the unknown genetic merit we're trying to estimate.
+
+The journey into quantitative genetics begins!
+
+---
+
+## Practice Problems
+
+1. **Breeding vs. Production**: Explain the difference between improving feed efficiency through genetic selection (breeding) vs. improving feed formulation (production). Which creates permanent change?
+
+2. **Breeding Pyramid**: Draw and label the three tiers of a swine breeding pyramid. For each tier, indicate: (a) population size, (b) selection intensity, and (c) primary goal.
+
+3. **Economic Value**: A dairy breeding company estimates that improving milk yield by 100 kg per lactation increases profit by $30 per cow. If a bull has an EBV of +500 kg for milk, how much extra profit do his daughters generate compared to daughters of an average bull?
+
+4. **Multidisciplinary Skills**: List and briefly explain three disciplines (beyond biology) that are essential for a modern animal breeder.
+
+5. **AI Impact**: Explain how artificial insemination dramatically increases the selection intensity for males compared to natural mating.
+
+6. **Identification**: Compare RFID ear tags to visual ear tags. What are the advantages and disadvantages of each? When would you choose RFID?
+
+7. **Genomic Selection**: In your own words, explain how genomic selection (using DNA markers) allows breeders to estimate breeding values for young animals without waiting for phenotypes or progeny.
+
+---
+
+## Further Reading
+
+### Textbooks
+
+- Falconer, D.S., and Mackay, T.F.C. (1996). *Introduction to Quantitative Genetics*, 4th ed. Longman. (Chapters 1-2)
+- Bourdon, R.M. (2000). *Understanding Animal Breeding*, 2nd ed. Prentice Hall. (Chapter 1)
+
+### Industry Resources
+
+- **National Swine Improvement Federation (NSIF)**: [nsif.com](https://www.nsif.com) - Guidelines for recording and genetic evaluation in swine
+- **Beef Improvement Federation (BIF)**: [beefimprovement.org](https://beefimprovement.org) - Guidelines for beef cattle genetic evaluation
+- **Council on Dairy Cattle Breeding (CDCB)**: [uscdcb.com](https://uscdcb.com) - Dairy genetic evaluations and trends
+
+### Company Websites (Examples of Breeding Pyramids)
+
+- **Genus (PIC, Hypor)**: [genusplc.com](https://www.genusplc.com)
+- **Topigs Norsvin**: [topigsnorsvin.com](https://topigsnorsvin.com)
+- **Cobb-Vantress**: [cobb-vantress.com](https://www.cobb-vantress.com)
+- **Aviagen**: [aviagen.com](https://www.aviagen.com)
+- **Select Sires**: [selectsires.com](https://www.selectsires.com)
+
+### Scientific Papers
+
+- Meuwissen, T.H.E., Hayes, B.J., and Goddard, M.E. (2001). Prediction of total genetic value using genome-wide dense marker maps. *Genetics* 157:1819-1829. (Original genomic selection paper)
+- Hayes, B.J., Bowman, P.J., Chamberlain, A.J., and Goddard, M.E. (2009). Invited review: Genomic selection in dairy cattle: Progress and challenges. *J. Dairy Sci.* 92:433-443.

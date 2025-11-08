@@ -1,0 +1,94 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Foundations of Animal Breeding: Principles and Practice"
+  subtitle: "A Practical Introduction for Undergraduate Students"
+  author: "Austin Putz"
+  date: today
+
+  page-navigation: true
+
+  chapters:
+    - index.qmd
+    - part: "PART 1: FUNDAMENTALS"
+      chapters:
+        - chapters/01-introduction.qmd
+        - chapters/02-selection-basics.qmd
+        - chapters/03-genetic-model.qmd
+        - chapters/04-quantitative-traits.qmd
+        - chapters/05-heritability-repeatability.qmd
+    - part: "PART 2: SELECTION AND BREEDING STRATEGIES"
+      chapters:
+        - chapters/06-breeders-equation.qmd
+        - chapters/07-breeding-values.qmd
+        - chapters/08-genetic-correlations.qmd
+        - chapters/09-selection-index.qmd
+        - chapters/10-mating-strategies.qmd
+        - chapters/11-crossbreeding.qmd
+    - part: "PART 3: GENOMICS"
+      chapters:
+        - chapters/12-genomics-intro.qmd
+        - chapters/13-genomic-selection.qmd
+    - part: "PART 4: PRACTICAL SKILLS"
+      chapters:
+        - chapters/14-practical-skills.qmd
+    - part: "PART 5: SPECIES-SPECIFIC BREEDING"
+      chapters:
+        - chapters/15-swine-breeding.qmd
+        - chapters/16-poultry-breeding.qmd
+        - chapters/17-dairy-cattle-breeding.qmd
+        - chapters/18-beef-cattle-breeding.qmd
+        - chapters/19-sheep-breeding.qmd
+        - chapters/20-camelidae-breeding.qmd
+        - chapters/21-aquaculture-breeding.qmd
+        - chapters/22-companion-animal-breeding.qmd
+    - part: "PART 6: PRECISION LIVESTOCK FARMING"
+      chapters:
+        - chapters/23-plf-introduction.qmd
+        - chapters/24-wearable-technologies.qmd
+        - chapters/25-computer-vision.qmd
+
+  appendices:
+    - appendices/datasets.qmd
+    - appendices/r-resources.qmd
+    - appendices/glossary.qmd
+
+  sidebar:
+    style: "docked"
+    background: primary
+    search: true
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      light: [cosmo, custom.scss]
+    toc: true
+    toc-depth: 3
+    toc-location: right
+    toc-title: "Contents"
+    number-sections: true
+    number-depth: 3
+    code-fold: false
+    code-tools: true
+    code-copy: true
+    code-link: true
+    code-overflow: wrap
+    link-external-newwindow: true
+    link-external-icon: true
+    fig-width: 8
+    fig-height: 6
+    fig-align: center
+    df-print: paged
+    smooth-scroll: true
+    css: styles.css
+
+execute:
+  echo: true
+  warning: false
+  message: false
+  cache: false
+  freeze: auto

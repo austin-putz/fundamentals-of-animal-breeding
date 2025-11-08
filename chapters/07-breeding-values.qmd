@@ -1,0 +1,299 @@
+# Estimating Breeding Values {#sec-breeding-values}
+
+<div class="learning-objectives">
+### Learning Objectives {.unnumbered}
+
+By the end of this chapter, you will be able to:
+
+1. Estimate breeding values using simple methods (own performance, pedigree index, progeny average)
+2. Explain why contemporary groups must be accounted for
+3. Describe the purpose and advantages of BLUP
+4. Interpret EBVs and their accuracies
+5. Understand why EBVs can change over time as new data arrive
+
+</div>
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+# Load required packages
+library(tidyverse)
+library(knitr)
+
+# Set default theme for plots
+theme_set(theme_minimal(base_size = 12))
+```
+
+## Introduction
+
+[Content to be developed: True Breeding Value (TBV) is unknown, but we can estimate it (EBV) from available information. This chapter covers methods from simple to sophisticated.]
+
+## The Challenge: TBV is Unknown
+
+[Content to be developed: We want to rank animals by TBV, but we can only observe phenotypes. We must estimate TBV from phenotypes, pedigrees, and genomic data.]
+
+## Simple Estimation Methods
+
+[Content to be developed: Basic approaches to estimating breeding values.]
+
+### Method 1: Own Performance
+
+[Content to be developed:]
+
+$$
+\hat{BV} = h^2 (P - \mu)
+$$
+
+Where P is the individual's phenotype and μ is the population mean.
+
+**Accuracy**: $r = \sqrt{h^2}$
+
+**Example**: If h² = 0.36 and a pig weighs 100 kg while the mean is 90 kg, then EBV = 0.36 × (100 - 90) = 3.6 kg.
+
+### Method 2: Pedigree Index (Midparent BV)
+
+[Content to be developed:]
+
+$$
+\hat{BV}_{offspring} = \frac{1}{2} (EBV_{sire} + EBV_{dam})
+$$
+
+**Accuracy**: $r = \sqrt{\frac{h^2}{2}}$ (assuming parent EBVs are true BVs)
+
+Used for young animals without own records.
+
+### Method 3: Progeny Average
+
+[Content to be developed:]
+
+$$
+\hat{BV}_{parent} = 2 \times (\bar{P}_{progeny} - \mu)
+$$
+
+(Multiplied by 2 because progeny get half their genes from each parent)
+
+**Accuracy**: Increases with number of progeny. For n progeny: $r = \sqrt{\frac{n h^2}{4 + (n-1) h^2}}$
+
+### Limitations of Simple Methods
+
+[Content to be developed:]
+
+- Don't account for contemporary group effects (environmental differences)
+- Don't properly weight information sources by their accuracy
+- Don't use all relatives simultaneously (e.g., sibs, grandparents)
+
+## Contemporary Groups
+
+[Content to be developed: Animals must be compared within the same environment.]
+
+### Definition
+
+[Content to be developed: A contemporary group is a set of animals raised in the same environment and time period.]
+
+### Examples
+
+[Content to be developed:]
+
+- **Dairy**: Herd-year-season
+- **Beef**: Ranch-year-season, weaning group
+- **Swine**: Farm-batch, pen (for within-farm comparisons)
+- **Poultry**: House-batch, cage-row
+
+### Why Contemporary Groups Matter
+
+[Content to be developed: Without adjustment for environmental differences, animals in better environments appear genetically superior (false positive selection).]
+
+### Adjusting for Contemporary Groups
+
+[Content to be developed: Subtract contemporary group mean before estimating BV.]
+
+$$
+\hat{BV} = h^2 (P - \mu_{CG})
+$$
+
+Where μ_CG is the contemporary group mean.
+
+## Best Linear Unbiased Prediction (BLUP)
+
+[Content to be developed: The modern standard for estimating breeding values.]
+
+### What is BLUP?
+
+[Content to be developed:]
+
+- **Best**: Minimizes prediction error variance
+- **Linear**: Linear function of the data
+- **Unbiased**: Expected value equals true BV
+- **Prediction**: For random effects (breeding values, not fixed effects like contemporary groups)
+
+### Why BLUP?
+
+[Content to be developed:]
+
+1. **Uses all information**: Own records, parents, progeny, sibs, and more distant relatives
+2. **Accounts for fixed effects**: Contemporary groups and other systematic environmental effects
+3. **Optimal weighting**: Information sources weighted by their accuracy
+4. **Shrinkage**: EBVs shrink toward the population mean when information is sparse
+
+### BLUP Concepts (High-Level)
+
+[Content to be developed: No mixed model equations (MME) at this level. Focus on concepts.]
+
+- Animals with more information → EBVs closer to TBV
+- Animals with less information → EBVs closer to parent average or population mean
+- Relationships among animals are accounted for
+- BLUP simultaneously solves for contemporary group effects and breeding values
+
+### BLUP in Practice
+
+[Content to be developed: Most commercial breeding programs use BLUP or its extensions (genomic BLUP, single-step GBLUP).]
+
+## Understanding EBVs
+
+[Content to be developed: How to interpret estimated breeding values.]
+
+### EBV as a Deviation from the Base
+
+[Content to be developed: EBVs are expressed as deviations from a base population (often set to zero mean in a specific year).]
+
+### Comparing Animals
+
+[Content to be developed: Use the difference between EBVs, not absolute values.]
+
+**Example**: Bull A has EBV = +500 kg for milk, Bull B has EBV = +300 kg. Bull A is expected to produce daughters that give 200 kg more milk than Bull B's daughters (on average).
+
+### EBVs Change Over Time
+
+[Content to be developed: As new data arrive (own records, progeny, genomic info), EBVs are re-estimated. Animals can be re-ranked.]
+
+### EBVs for Young vs. Old Animals
+
+[Content to be developed:]
+
+- **Young**: Based on pedigree (parents) and possibly genomics → lower accuracy
+- **Old**: Based on own records, progeny, pedigree → higher accuracy
+
+## Accuracy of EBVs (Reliability)
+
+[Content to be developed: Measure of confidence in the EBV.]
+
+### Definition
+
+[Content to be developed:]
+
+$$
+\text{Reliability} = r^2 = \text{cor}^2(EBV, TBV)
+$$
+
+Range: 0 to 1.
+
+### Interpreting Reliability
+
+[Content to be developed:]
+
+- **r² = 0.90**: EBV is very close to TBV (highly confident)
+- **r² = 0.50**: EBV is moderately accurate (moderate confidence)
+- **r² = 0.20**: EBV is still close to parent average (low confidence)
+
+### Factors Affecting Reliability
+
+[Content to be developed:]
+
+1. Heritability
+2. Number of own records
+3. Number of progeny records
+4. Genomic information
+5. Number and relationship of relatives with records
+
+### Using Reliability in Selection Decisions
+
+[Content to be developed: Animals with high EBV but low reliability have more uncertainty. Consider both EBV and reliability when making selection decisions.]
+
+## R Demonstration: Simple BV Estimation
+
+[Content to be developed:]
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Example: Estimate BV from own performance
+h2 <- 0.30
+phenotype <- 95  # kg
+pop_mean <- 90   # kg
+
+EBV_own <- h2 * (phenotype - pop_mean)
+cat("EBV from own performance:", EBV_own, "kg\n")
+
+accuracy_own <- sqrt(h2)
+cat("Accuracy:", round(accuracy_own, 3), "\n")
+
+# Example: Midparent BV
+EBV_sire <- 8
+EBV_dam <- 6
+EBV_offspring <- (EBV_sire + EBV_dam) / 2
+cat("EBV from pedigree (midparent):", EBV_offspring, "kg\n")
+
+# Example: Progeny average
+progeny_mean <- 92
+n_progeny <- 20
+EBV_parent <- 2 * (progeny_mean - pop_mean)
+cat("EBV from progeny average:", EBV_parent, "kg\n")
+
+# Accuracy from progeny
+r_progeny <- sqrt((n_progeny * h2) / (4 + (n_progeny - 1) * h2))
+cat("Accuracy from", n_progeny, "progeny:", round(r_progeny, 3), "\n")
+```
+
+## Examples Across Species
+
+[Content to be developed: Real-world EBV systems.]
+
+### Dairy Cattle: Net Merit Index
+
+[Content to be developed: EBVs for milk, fat, protein, fertility, health, longevity. Combined into a single index (Net Merit).]
+
+### Beef Cattle: EPDs
+
+[Content to be developed: Expected Progeny Differences for birth weight, weaning weight, yearling weight, carcass traits.]
+
+### Swine: EBVs for Growth and Reproduction
+
+[Content to be developed: EBVs for average daily gain, backfat, feed efficiency, litter size.]
+
+### Poultry: EBVs in Breeding Lines
+
+[Content to be developed: EBVs for body weight, feed efficiency, egg production, egg quality (layers).]
+
+## Summary
+
+[Content to be developed.]
+
+### Key Points
+
+- True Breeding Value (TBV) is unknown but can be estimated (EBV)
+- Simple methods: own performance, pedigree index, progeny average
+- Contemporary groups must be accounted for to avoid environmental confounding
+- BLUP is the modern standard: uses all information, accounts for fixed effects, optimal weighting
+- EBVs are expressed as deviations from a base population
+- Accuracy (reliability) measures confidence in EBV
+- EBVs can change over time as new data arrive
+
+## Practice Problems
+
+[Problems to be developed]
+
+1. A heifer has a weaning weight of 240 kg. The contemporary group mean is 230 kg, and h² = 0.25. Estimate her breeding value.
+
+2. Bull A has 100 progeny with a mean weaning weight of 235 kg. The population mean is 230 kg, and h² = 0.25. Estimate the bull's breeding value and accuracy.
+
+3. Explain why an animal's EBV can change from one genetic evaluation to the next.
+
+## Further Reading
+
+[References to be added]
+
+- Mrode: Linear Models for the Prediction of Animal Breeding Values
+- Breed association EPD/EBV documentation (e.g., Angus, Holstein)

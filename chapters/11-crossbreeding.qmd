@@ -1,0 +1,356 @@
+# Crossbreeding and Hybrid Vigor {#sec-crossbreeding}
+
+<div class="learning-objectives">
+### Learning Objectives {.unnumbered}
+
+By the end of this chapter, you will be able to:
+
+1. Define crossbreeding and hybrid vigor (heterosis)
+2. Explain the genetic basis of heterosis
+3. Describe which traits exhibit high vs. low heterosis
+4. Compare different crossbreeding systems (terminal, rotational, composite)
+5. Understand industry breeding structures by species
+
+</div>
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+# Load required packages
+library(tidyverse)
+library(knitr)
+
+# Set default theme for plots
+theme_set(theme_minimal(base_size = 12))
+```
+
+## Introduction
+
+[Content to be developed: Crossbreeding is the mating of animals from different breeds or lines. It exploits hybrid vigor (heterosis) and breed complementarity to improve performance.]
+
+## What is Crossbreeding?
+
+[Content to be developed: Define crossbreeding.]
+
+### Definition
+
+[Content to be developed: Mating animals from different breeds, lines, or populations.]
+
+### Why Crossbreed?
+
+[Content to be developed:]
+
+1. **Heterosis (hybrid vigor)**: Crossbreds outperform purebreds
+2. **Breed complementarity**: Combine strengths of different breeds
+3. **Faster genetic improvement**: In some systems, select within purebreds while producing crossbred commercial animals
+
+### Species Where Crossbreeding is Common
+
+[Content to be developed:]
+
+- **Swine**: Universal (three-breed crosses)
+- **Beef cattle**: Very common (crossbred cows, terminal sires)
+- **Sheep**: Common (terminal sire systems)
+- **Poultry**: Universal (proprietary crosses)
+- **Dairy cattle**: Less common, mostly purebred Holsteins (some crossbreeding with Jersey, other breeds)
+- **Horses**: Rare (breed registries require purebreds)
+
+## Hybrid Vigor (Heterosis)
+
+[Content to be developed: The performance advantage of crossbreds.]
+
+### Definition
+
+[Content to be developed:]
+
+$$
+\text{Heterosis} = \text{Performance}_{F1} - \text{Average performance of purebred parents}
+$$
+
+Often expressed as percentage:
+
+$$
+\text{Heterosis (\%)} = \frac{\text{Performance}_{F1} - \text{Avg purebred}}{\text{Avg purebred}} \times 100
+$$
+
+### Example
+
+[Content to be developed:]
+
+- Breed A litter size: 10.0 pigs
+- Breed B litter size: 11.0 pigs
+- F₁ cross (A × B) litter size: 11.5 pigs
+- Midparent: (10.0 + 11.0) / 2 = 10.5
+- Heterosis: 11.5 - 10.5 = 1.0 pig (9.5%)
+
+## Genetic Basis of Heterosis
+
+[Content to be developed: What causes hybrid vigor?]
+
+### Dominance
+
+[Content to be developed:]
+
+- Crossbreds are more heterozygous (Aa) than purebreds (AA or aa)
+- Dominant alleles mask recessive deleterious alleles
+- Major contributor to heterosis
+
+### Overdominance
+
+[Content to be developed:]
+
+- Heterozygote (Aa) is superior to both homozygotes (AA, aa)
+- Rare, but may contribute to heterosis at some loci
+
+### Epistasis
+
+[Content to be developed:]
+
+- Favorable interactions between alleles from different breeds
+- Difficult to measure, but may contribute
+
+## Traits with High vs. Low Heterosis
+
+[Content to be developed: Heterosis varies by trait.]
+
+### High Heterosis (Reproductive and Fitness Traits)
+
+[Content to be developed:]
+
+| Trait | Typical Heterosis (%) |
+|-------|------------------------|
+| Litter size (swine) | 5-15% |
+| Piglet survival | 5-10% |
+| Fertility (cattle) | 5-10% |
+| Calf survival | 5-10% |
+| Longevity | 10-20% |
+
+### Moderate Heterosis (Growth and Efficiency)
+
+[Content to be developed:]
+
+| Trait | Typical Heterosis (%) |
+|-------|------------------------|
+| Average daily gain | 2-8% |
+| Feed efficiency | 2-5% |
+| Weaning weight | 3-8% |
+
+### Low Heterosis (Carcass and Production Traits)
+
+[Content to be developed:]
+
+| Trait | Typical Heterosis (%) |
+|-------|------------------------|
+| Backfat thickness | 0-3% |
+| Loin depth | 0-2% |
+| Milk yield | 0-5% |
+| Egg production | 0-3% |
+
+### Why Fitness Traits Show High Heterosis
+
+[Content to be developed: Fitness traits have been under natural selection for millennia. Deleterious recessive alleles persist at low frequency, and crossbreeding masks them.]
+
+## Crossbreeding Systems
+
+[Content to be developed: Different strategies for using crossbreeding.]
+
+### Terminal Cross
+
+[Content to be developed:]
+
+- Purebred or F₁ females × terminal sire breed
+- All offspring go to slaughter (none kept for breeding)
+- Maximizes heterosis in market animals
+- Common in beef (Angus, Charolais, Simmental sires on crossbred cows)
+
+### Two-Breed Rotation
+
+[Content to be developed:]
+
+- Alternate breeds each generation
+- Maintain ~67% heterosis after reaching equilibrium
+- Example: Angus cows bred to Hereford bulls → F₁ females bred back to Angus bulls → repeat
+
+### Three-Breed Rotation
+
+[Content to be developed:]
+
+- Rotate among three breeds
+- Maintain ~86% heterosis
+- Common in swine (e.g., Yorkshire, Landrace, Duroc)
+
+### Composite Breeds
+
+[Content to be developed:]
+
+- Fixed breed composition (e.g., 50% Breed A, 50% Breed B)
+- Maintain heterosis across loci that differ between breeds
+- Example: Beefmaster (50% Brahman, 25% Hereford, 25% Shorthorn)
+
+### Rotational-Terminal Cross
+
+[Content to be developed:]
+
+- Produce replacement females through rotation
+- Breed market animals using terminal sire
+- Combines heterosis in both females and market offspring
+
+## Industry Structure by Species
+
+[Content to be developed: How crossbreeding is implemented in commercial production.]
+
+### Swine
+
+[Content to be developed:]
+
+- **F₁ females**: Large White × Landrace (maternal traits)
+- **Terminal sire**: Duroc, Pietrain, or synthetic line (growth, carcass)
+- **Three-way cross**: (LW × LR) F₁ female × Duroc sire → market pigs
+- Nearly 100% of market pigs are three-way crosses
+
+### Beef Cattle
+
+[Content to be developed:]
+
+- **Crossbred cows**: Various maternal breeds (Angus, Hereford, Red Angus)
+- **Terminal sires**: Angus, Charolais, Simmental, Limousin
+- Rotational or terminal systems common
+
+### Poultry
+
+[Content to be developed:]
+
+- **Broilers**: Proprietary four-way crosses (great-grandparent → grandparent → parent → commercial)
+- **Layers**: Proprietary crosses (White Leghorn lines or brown egg layer lines)
+- Highly integrated, genetics controlled by 3-4 global companies
+
+### Sheep
+
+[Content to be developed:]
+
+- **Crossbred ewes**: Various maternal breeds
+- **Terminal sires**: Suffolk, Hampshire, Texel (meat production)
+
+### Dairy Cattle
+
+[Content to be developed:]
+
+- Mostly purebred (Holstein, Jersey)
+- Some crossbreeding: Holstein × Jersey, Holstein × Scandinavian Red
+- Heterosis in fertility and health, but less in milk yield
+
+## Genetic Evaluation in Crossbreeding Systems
+
+[Content to be developed: How to predict crossbred performance.]
+
+### Purebred vs. Crossbred Performance
+
+[Content to be developed: Selection in purebreds must predict performance in crossbred commercial animals.]
+
+### General Combining Ability (GCA)
+
+[Content to be developed: Average performance of a breed in crosses.]
+
+### Specific Combining Ability (SCA)
+
+[Content to be developed: Performance of a specific breed combination (beyond GCA).]
+
+### Modern Genomic Evaluations
+
+[Content to be developed: Genomic selection can estimate crossbred performance from purebred and crossbred data.]
+
+## R Demonstration: Calculating Heterosis
+
+[Content to be developed:]
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Calculate heterosis
+breed_A <- 10.0   # Litter size
+breed_B <- 11.0
+F1_cross <- 11.5
+
+midparent <- (breed_A + breed_B) / 2
+heterosis_absolute <- F1_cross - midparent
+heterosis_percent <- (heterosis_absolute / midparent) * 100
+
+cat("Breed A:", breed_A, "\n")
+cat("Breed B:", breed_B, "\n")
+cat("F1 cross:", F1_cross, "\n")
+cat("Midparent:", midparent, "\n")
+cat("Heterosis (absolute):", round(heterosis_absolute, 2), "\n")
+cat("Heterosis (%):", round(heterosis_percent, 2), "%\n")
+```
+
+## R Demonstration: Simulating Rotational Crossbreeding
+
+[Content to be developed:]
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Simulate breed composition in two-breed rotation
+generations <- 0:10
+breed_A_proportion <- numeric(length(generations))
+breed_A_proportion[1] <- 1.0  # Start with purebred A
+
+# Two-breed rotation: alternate between breeds
+for (i in 2:length(generations)) {
+  # Each generation, breed back to the other breed
+  # Offspring get 50% from sire (the other breed) and 50% from dam
+  if (i %% 2 == 0) {
+    breed_A_proportion[i] <- 0.5 * breed_A_proportion[i-1]
+  } else {
+    breed_A_proportion[i] <- 0.5 + 0.5 * breed_A_proportion[i-1]
+  }
+}
+
+# Plot
+data.frame(Generation = generations, Breed_A = breed_A_proportion) %>%
+  ggplot(aes(x = Generation, y = Breed_A)) +
+  geom_line(color = "blue", size = 1.2) +
+  geom_point(color = "blue", size = 2) +
+  geom_hline(yintercept = 2/3, linetype = "dashed", color = "red") +
+  labs(title = "Breed Composition in Two-Breed Rotation",
+       x = "Generation",
+       y = "Proportion of Breed A",
+       caption = "Red dashed line: Equilibrium at 2/3") +
+  theme_minimal()
+```
+
+## Summary
+
+[Content to be developed.]
+
+### Key Points
+
+- Crossbreeding exploits heterosis (hybrid vigor) and breed complementarity
+- Heterosis is highest for reproductive and fitness traits (5-20%)
+- Terminal crosses maximize heterosis in market animals
+- Rotational crosses maintain heterosis while producing replacement females
+- Swine and poultry industries rely heavily on structured crossbreeding
+- Genomic selection can predict crossbred performance from purebred data
+
+## Practice Problems
+
+[Problems to be developed]
+
+1. Breed X has average daily gain of 0.80 kg/day. Breed Y has 0.85 kg/day. The F₁ cross has 0.86 kg/day. Calculate heterosis in absolute and percentage terms.
+
+2. Explain why reproductive traits show much higher heterosis than carcass traits.
+
+3. Compare two-breed rotation and three-breed rotation crossbreeding systems. What are the trade-offs?
+
+4. Describe the three-way cross used in commercial swine production. Why is this system so widely used?
+
+## Further Reading
+
+[References to be added]
+
+- Breed complementarity and heterosis estimates
+- Papers on crossbreeding systems in swine, beef, poultry

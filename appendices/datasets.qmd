@@ -1,0 +1,140 @@
+# Datasets {#sec-datasets .unnumbered}
+
+This appendix describes all datasets used throughout the book. All datasets are available in the `data/` directory and are free to use for teaching and learning purposes.
+
+Datasets are realistic simulations based on published genetic parameters from the scientific literature. They are designed to illustrate breeding concepts while maintaining statistical properties consistent with real livestock data.
+
+## General Dataset Information
+
+### File Format
+
+All datasets are provided as comma-separated values (`.csv`) files with:
+
+- Header row with variable names
+- One row per observation
+- Missing values coded as `NA`
+
+### Loading Data in R
+
+```r
+library(tidyverse)
+
+# Example: Load swine growth data
+swine_data <- read_csv("data/swine_growth_heritability.csv")
+
+# View structure
+glimpse(swine_data)
+```
+
+---
+
+## Datasets by Chapter
+
+### Chapter 3: Basic Genetic Model
+
+#### `swine_growth_basic.csv`
+
+**Description**: Simulated growth data for 500 pigs to demonstrate the basic genetic model.
+
+**Variables**:
+
+- `pig_id`: Unique pig identifier
+- `breeding_value`: True breeding value (kg)
+- `environmental_effect`: Environmental deviation (kg)
+- `phenotype`: Observed weaning weight (kg)
+
+**Parameters**: h² = 0.30, σ²_P = 30 kg²
+
+---
+
+### Chapter 5: Heritability and Repeatability
+
+#### `swine_litter_size.csv`
+
+**Description**: Litter size records for 300 sows across 3 parities.
+
+**Variables**:
+
+- `sow_id`: Sow identifier
+- `parity`: 1, 2, or 3
+- `total_born`: Total pigs born
+- `born_alive`: Pigs born alive
+
+**Parameters**: h² = 0.12, r = 0.18
+
+---
+
+#### `dairy_milk_repeated.csv`
+
+**Description**: Milk yield across 3 lactations for 200 cows.
+
+**Variables**:
+
+- `cow_id`: Cow identifier
+- `lactation`: 1, 2, or 3
+- `milk_305`: 305-day milk yield (kg)
+
+**Parameters**: h² = 0.30, r = 0.50
+
+---
+
+### Chapter 7: Estimating Breeding Values
+
+#### `beef_weaning_weights.csv`
+
+**Description**: Weaning weights for 500 beef calves with pedigree.
+
+**Variables**:
+
+- `calf_id`, `sire_id`, `dam_id`: Identifiers
+- `contemporary_group`: Management group
+- `weaning_weight`: Weaning weight (kg)
+
+**Parameters**: h² = 0.25, 10 contemporary groups
+
+---
+
+### Chapter 8: Genetic Correlations
+
+#### `dairy_yield_fertility.csv`
+
+**Description**: Milk yield and fertility for 600 cows.
+
+**Variables**:
+
+- `cow_id`: Cow identifier
+- `milk_yield`: 305-day milk (kg)
+- `days_open`: Days from calving to conception
+- `BV_milk`, `BV_fertility`: True breeding values
+
+**Parameters**: h²_milk = 0.30, h²_fertility = 0.05, r_A = -0.35
+
+---
+
+### Chapter 11: Crossbreeding
+
+#### `swine_crossbreeding.csv`
+
+**Description**: Litter size for purebred and crossbred sows.
+
+**Variables**:
+
+- `sow_id`: Sow identifier
+- `breed_type`: "Large White", "Landrace", "LW x LR"
+- `litter_size`: Total born alive
+
+---
+
+### Chapter 12-13: Genomics
+
+#### `genotypes_example.csv`
+
+**Description**: SNP genotypes for 100 animals (1000 SNPs), coded 0, 1, 2.
+
+---
+
+## Data Citation
+
+When using these datasets, please cite:
+
+> Putz, A. (2025). *Animal Breeding and Genetics: A Practical Introduction for Undergraduate Students.*

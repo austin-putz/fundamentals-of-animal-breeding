@@ -1,0 +1,397 @@
+# Genomic Selection {#sec-genomic-selection}
+
+<div class="learning-objectives">
+### Learning Objectives {.unnumbered}
+
+By the end of this chapter, you will be able to:
+
+1. Explain the principles and advantages of genomic selection
+2. Distinguish GBLUP, SNP-BLUP, and Bayesian genomic prediction methods
+3. Understand single-step genomic BLUP and its practical importance
+4. Describe how genomic selection has impacted livestock breeding
+5. Calculate expected accuracy of genomic predictions
+
+</div>
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+# Load required packages
+library(tidyverse)
+library(knitr)
+
+# Set default theme for plots
+theme_set(theme_minimal(base_size = 12))
+```
+
+## Introduction
+
+[Content to be developed: Genomic selection uses genome-wide DNA markers to predict breeding values. It has revolutionized livestock breeding by dramatically increasing accuracy for young animals.]
+
+## What is Genomic Selection?
+
+[Content to be developed: Predicting breeding values (GEBV = Genomic Estimated Breeding Value) using SNP genotypes.]
+
+### Traditional Selection (Pre-Genomics)
+
+[Content to be developed:]
+
+- Relied on: pedigree, own performance, progeny testing
+- **Accuracy for young animals**: Low (r ≈ 0.30-0.40, based on parent average)
+- **Accuracy with progeny**: High (r ≈ 0.80-0.90), but long generation interval
+
+### Genomic Selection
+
+[Content to be developed:]
+
+- Uses: pedigree + SNP genotypes + phenotypes (training population)
+- **Accuracy for young animals**: Moderate to high (r ≈ 0.50-0.70 at birth)
+- **Advantage**: High accuracy without waiting for progeny → shorter generation interval
+
+## Why Genomic Selection Works
+
+[Content to be developed: The genetic basis.]
+
+### Linkage Disequilibrium (LD)
+
+[Content to be developed:]
+
+- SNPs are not the causal mutations, but they are in **linkage disequilibrium** (statistical association) with causal mutations
+- LD exists because of limited recombination and population structure
+- SNPs "tag" nearby causal variants
+
+### Capturing Additive Genetic Variance
+
+[Content to be developed:]
+
+- Thousands of SNPs across the genome capture most additive genetic variation
+- No need to know which SNPs are causal - just need enough markers in LD with causal loci
+
+### Training Population
+
+[Content to be developed:]
+
+- Animals with both **genotypes and phenotypes** (or EBVs)
+- Used to estimate the relationship between SNPs and breeding values
+- Larger training population → higher accuracy
+
+## Two Main Approaches to Genomic Prediction
+
+[Content to be developed: Animal models vs. marker effects models.]
+
+### Animal Model (GBLUP)
+
+[Content to be developed: Predict breeding values directly using genomic relationship matrix (G).]
+
+### Marker Effects Model
+
+[Content to be developed: Estimate effect of each SNP, then sum SNP effects to get GEBV.]
+
+## GBLUP (Genomic BLUP)
+
+[Content to be developed: Extension of traditional BLUP using genomic relationships.]
+
+### Genomic Relationship Matrix (G)
+
+[Content to be developed:]
+
+- Computed from SNP genotypes
+- Captures **realized relationships** (actual shared genome)
+- More accurate than pedigree-based relationship matrix (A)
+
+### Calculating G
+
+[Content to be developed:]
+
+$$
+G = \frac{(M - P)(M - P)'}{2 \sum p_j (1 - p_j)}
+$$
+
+Where:
+
+- M = matrix of SNP genotypes (0, 1, 2)
+- P = matrix of expected genotypes under HWE (2 × allele frequency)
+- p_j = allele frequency at SNP j
+
+### GBLUP Model
+
+[Content to be developed:]
+
+Same as traditional BLUP, but replace pedigree relationship matrix (A) with genomic relationship matrix (G).
+
+**Advantages**:
+
+- Accounts for Mendelian sampling (realized relationships)
+- Higher accuracy than parent average
+- Can be applied to young animals without phenotypes
+
+## SNP-BLUP and Marker Effects Models
+
+[Content to be developed: Estimate effects of individual SNPs.]
+
+### SNP-BLUP
+
+[Content to be developed:]
+
+- Estimate effect of each SNP (thousands of effects)
+- Assumes all SNPs have equal variance
+- Genomic breeding value: sum of SNP effects for an individual
+
+$$
+GEBV_i = \sum_{j=1}^{m} x_{ij} \hat{\beta}_j
+$$
+
+Where:
+
+- x_ij = genotype at SNP j for individual i (0, 1, or 2)
+- β_j = estimated effect of SNP j
+
+### Equivalence of GBLUP and SNP-BLUP
+
+[Content to be developed: Under certain assumptions, GBLUP and SNP-BLUP give identical results. They are two ways of parameterizing the same model.]
+
+## Bayesian Methods
+
+[Content to be developed: Allow SNPs to have different variances.]
+
+### Motivation
+
+[Content to be developed:]
+
+- SNP-BLUP assumes all SNPs have equal variance (unrealistic)
+- Some traits have large-effect QTL
+- Bayesian methods allow different SNPs to have different effects
+
+### Common Bayesian Methods
+
+[Content to be developed:]
+
+- **BayesA**: All SNPs have effects, variances differ (inverse chi-square prior)
+- **BayesB**: Some SNPs have zero effect (mixture prior), variances differ
+- **BayesC / BayesCπ**: Estimate proportion of SNPs with zero effect
+- **Bayesian Lasso**: Regularization approach (double exponential prior)
+
+### When Bayesian Methods Help
+
+[Content to be developed:]
+
+- Traits with major QTL (e.g., fat percentage in dairy, some disease resistance traits)
+- Can improve accuracy by 0-10% over GBLUP
+- More computationally intensive
+
+### Software
+
+[Content to be developed:]
+
+- **BGLR**: R package for Bayesian genomic prediction
+- **GenSel**: Standalone software
+- **brms**: General Bayesian modeling in R
+
+## Single-Step Genomic BLUP (ssGBLUP)
+
+[Content to be developed: The industry standard approach.]
+
+### Motivation
+
+[Content to be developed:]
+
+- Traditional approach: Two-step process (estimate SNP effects in training population, then predict for selection candidates)
+- Problem: Genotyped and non-genotyped animals analyzed separately
+
+### Single-Step Approach
+
+[Content to be developed:]
+
+- Combine pedigree (A) and genomic (G) relationship matrices into **H matrix**
+- Allows genotyped and non-genotyped animals in the same analysis
+- Uses all available information optimally
+
+### H Matrix
+
+[Content to be developed:]
+
+$$
+H^{-1} = A^{-1} + \begin{bmatrix} 0 & 0 \\ 0 & G^{-1} - A_{22}^{-1} \end{bmatrix}
+$$
+
+Where:
+
+- A = pedigree relationship matrix (all animals)
+- G = genomic relationship matrix (genotyped animals only)
+- A_22 = pedigree relationships among genotyped animals
+
+### Advantages of ssGBLUP
+
+[Content to be developed:]
+
+- All animals (genotyped and non-genotyped) in one analysis
+- Efficient use of all information
+- EBVs and GEBVs on the same scale
+- Widely used in dairy, beef, swine, poultry
+
+### Software
+
+[Content to be developed:]
+
+- **BLUPF90 family**: Free software, widely used
+- **ASReml**: Commercial software
+
+## Accuracy of Genomic Predictions
+
+[Content to be developed: Factors affecting accuracy.]
+
+### Factors Influencing Accuracy
+
+[Content to be developed:]
+
+1. **Size of training population**: Larger = higher accuracy
+2. **Heritability of trait**: Higher h² = higher accuracy
+3. **Relationship between training and selection candidates**: Closer = higher accuracy
+4. **Effective population size (N_e)**: Smaller N_e (longer LD) = higher accuracy
+5. **SNP density**: More SNPs = better coverage of genome
+
+### Typical Accuracies
+
+[Content to be developed:]
+
+| Scenario | Accuracy (r) |
+|----------|--------------|
+| Parent average (no genomics) | 0.30-0.45 |
+| Genomic prediction (young animal, h²=0.30, large training pop) | 0.50-0.70 |
+| Genomic + own phenotype | 0.60-0.80 |
+| Genomic + progeny (n=20) | 0.80-0.90 |
+
+### Deterministic Prediction of Accuracy
+
+[Content to be developed:]
+
+$$
+r = \sqrt{\frac{N h^2}{N h^2 + M_e}}
+$$
+
+Where:
+
+- N = number of records in training population
+- h² = heritability
+- M_e = effective number of chromosome segments
+
+## Impact of Genomic Selection on Livestock Breeding
+
+[Content to be developed: Genomics has transformed the industry.]
+
+### Dairy Cattle
+
+[Content to be developed:]
+
+- **Before genomics**: Bull studs used progeny testing (6-8 year generation interval)
+- **After genomics**: Bulls selected at 1-2 years based on GEBV (2-3 year generation interval)
+- **Result**: ~Doubled rate of genetic gain
+
+### Swine
+
+[Content to be developed:]
+
+- Enabled selection for expensive-to-measure traits (e.g., feed efficiency)
+- Increased accuracy for low-heritability traits (e.g., litter size)
+- Reduced generation interval
+
+### Poultry
+
+[Content to be developed:]
+
+- Very large training populations (thousands to tens of thousands)
+- High accuracies (r > 0.70 for many traits)
+- Fast genetic progress
+
+### Beef Cattle
+
+[Content to be developed:]
+
+- Genomic EPDs widely available
+- Increased accuracy for young bulls
+- Useful for hard-to-measure traits (e.g., carcass traits, feed efficiency)
+
+## R Demonstration: Genomic Relationship Matrix
+
+[Content to be developed:]
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Calculate genomic relationship matrix (G) from SNP genotypes
+library(AGHmatrix)
+
+# Simulate genotype matrix (5 animals, 1000 SNPs)
+set.seed(123)
+n_animals <- 5
+n_snps <- 1000
+M <- matrix(sample(0:2, n_animals * n_snps, replace = TRUE), nrow = n_animals, ncol = n_snps)
+rownames(M) <- paste0("Animal_", 1:n_animals)
+
+# Calculate G matrix
+G <- Gmatrix(M, method = "VanRaden")
+print(round(G, 3))
+
+# Compare to pedigree relationships (if available)
+```
+
+## R Demonstration: Simulating Genomic Prediction Accuracy
+
+[Content to be developed:]
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Deterministic prediction of genomic accuracy
+h2 <- 0.30
+training_sizes <- c(500, 1000, 2000, 5000, 10000)
+Me <- 1000  # Effective number of chromosome segments (example)
+
+accuracy <- sqrt((training_sizes * h2) / (training_sizes * h2 + Me))
+
+data.frame(Training_Size = training_sizes, Accuracy = accuracy) %>%
+  ggplot(aes(x = Training_Size, y = Accuracy)) +
+  geom_line(color = "blue", size = 1.2) +
+  geom_point(color = "blue", size = 3) +
+  labs(title = "Genomic Prediction Accuracy vs Training Population Size",
+       x = "Training Population Size",
+       y = "Accuracy of Genomic Prediction") +
+  theme_minimal()
+```
+
+## Summary
+
+[Content to be developed.]
+
+### Key Points
+
+- Genomic selection uses SNP genotypes to predict breeding values (GEBVs)
+- GBLUP uses genomic relationship matrix (G); SNP-BLUP estimates individual SNP effects
+- Bayesian methods allow SNPs to have different variances
+- Single-step GBLUP (ssGBLUP) is the industry standard
+- Genomic selection has dramatically increased rates of genetic gain (especially dairy)
+- Accuracy depends on training population size, heritability, and relationships
+
+## Practice Problems
+
+[Problems to be developed]
+
+1. Explain why genomic selection is particularly beneficial for traits with low heritability (e.g., fertility).
+
+2. A dairy breeding program has a training population of 5,000 bulls with phenotypes and genotypes. For a trait with h² = 0.25, estimate the accuracy of genomic predictions using the deterministic formula (assume M_e = 1200).
+
+3. Compare GBLUP and SNP-BLUP. When might Bayesian methods provide an advantage?
+
+4. Explain how single-step GBLUP (ssGBLUP) combines pedigree and genomic information.
+
+## Further Reading
+
+[References to be added]
+
+- Meuwissen, Hayes, Goddard (2001): Original genomic selection paper
+- VanRaden (2008): Efficient methods for genomic prediction
+- Genomic selection reviews for different species

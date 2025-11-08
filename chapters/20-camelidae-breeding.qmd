@@ -1,0 +1,56 @@
+# Camelidae Breeding {#sec-camelidae-breeding}
+
+## Overview
+
+This chapter introduces breeding of alpacas, llamas, and camels as emerging livestock species.
+
+## Learning Objectives
+
+By the end of this chapter, you should be able to:
+
+1. Describe the main camelidae species and their uses
+2. Identify key traits for alpaca fiber production
+3. Understand the challenges of breeding in small, closed populations
+4. Recognize opportunities for applying modern breeding methods
+
+## Camelidae Species Overview
+
+::: {.callout-note}
+## Chapter Status
+This chapter is currently under development.
+:::
+
+- **Alpacas** (Vicugna pacos): Fiber production
+- **Llamas** (Lama glama): Pack animals, fiber, guard animals
+- **Camels**: Dromedary and Bactrian
+
+## Alpaca Breeding
+
+### Primary Objective
+
+Fiber quality and quantity
+
+### Key Traits
+
+- Fiber fineness (micron): h² = 0.30-0.60
+- Fleece weight: h² = 0.30-0.60
+- Fiber length: h² = 0.30-0.60
+
+## Llama Breeding
+
+Objectives: Temperament, size, conformation
+
+## Camel Breeding
+
+Objectives: Milk production, meat, racing, fiber
+
+## Challenges and Opportunities
+
+- Small populations (especially alpacas outside South America)
+- Limited phenotypic data and genetic research
+- Inbreeding risk in closed populations
+- Opportunity for genomic tools to accelerate progress
+
+## Summary
+
+Camelidae breeding is less developed than traditional livestock. Small population sizes create genetic diversity challenges.

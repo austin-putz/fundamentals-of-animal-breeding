@@ -1,0 +1,86 @@
+# Swine Breeding {#sec-swine-breeding}
+
+## Overview
+
+This chapter provides a comprehensive overview of commercial swine breeding programs, traits, and industry structure.
+
+## Learning Objectives
+
+By the end of this chapter, you should be able to:
+
+1. Describe the three-tier swine breeding structure
+2. Explain the distinction between terminal and maternal breeding objectives
+3. Identify key traits and their genetic parameters in swine
+4. Design a crossbreeding program for commercial swine production
+5. Understand the role of genomic selection in modern swine breeding
+
+## Global Swine Industry Structure
+
+::: {.callout-note}
+## Chapter Status
+This chapter is currently under development. Content will cover:
+
+- Major breeding companies (Genus/PIC, Topigs Norsvin, Genesus, etc.)
+- Three-tier breeding pyramid (nucleus, multiplier, commercial)
+- Pure lines vs. crossbreds
+- Global genetics flow and regional adaptation
+:::
+
+## Key Traits and Heritabilities
+
+### Maternal Traits
+
+- Litter size (TNB, NBA, NW): h² = 0.10-0.15
+- Piglet survival
+- Weaning weight
+- Maternal ability
+
+### Growth Traits
+
+- Average daily gain (ADG): h² = 0.30-0.50
+- Backfat depth: h² = 0.30-0.50
+- Loin depth: h² = 0.30-0.50
+- Feed efficiency (RFI): h² = 0.30-0.50
+
+### Meat Quality
+
+- pH: h² = 0.20-0.40
+- Color: h² = 0.20-0.40
+- Marbling: h² = 0.20-0.40
+- Drip loss: h² = 0.20-0.40
+
+## Crossbreeding Systems
+
+Content to be developed covering:
+
+- Terminal sire lines (Duroc, Pietrain, synthetic lines)
+- Maternal lines (Large White, Landrace)
+- F₁ females in commercial production
+- Rotational systems for maintaining heterosis
+
+## Selection Indices
+
+Content to be developed covering:
+
+- Terminal sire index
+- Maternal index
+- Economic weights and derivation
+
+## Genomic Selection in Swine
+
+Content to be developed covering:
+
+- Implementation timeline
+- Genomic tools (PorcineSNP60, GeneSeek GGP-Porcine)
+- Impact on accuracy and generation interval
+
+## Summary
+
+This chapter introduced the commercial swine breeding industry, emphasizing the distinction between terminal and maternal breeding objectives and the role of genomic selection in modern swine improvement.
+
+## Key Points
+
+- Swine breeding is highly structured with distinct maternal and terminal lines
+- Crossbreeding exploits heterosis for reproductive traits
+- Genomic selection has accelerated genetic progress
+- Economic weights differ dramatically between maternal and terminal objectives

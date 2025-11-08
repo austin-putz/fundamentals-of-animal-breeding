@@ -1,0 +1,58 @@
+# Sheep Breeding {#sec-sheep-breeding}
+
+## Overview
+
+This chapter provides an overview of sheep breeding with emphasis on wool, meat, and dual-purpose breeds.
+
+## Learning Objectives
+
+By the end of this chapter, you should be able to:
+
+1. Describe breed types and their distinct breeding objectives
+2. Identify key traits and genetic parameters in sheep
+3. Explain the role of terminal sire crossbreeding in lamb production
+4. Understand genetic evaluation systems (LAMBPLAN, NSIP)
+5. Recognize challenges unique to sheep breeding
+
+## Global Sheep Industry
+
+::: {.callout-note}
+## Chapter Status
+This chapter is currently under development.
+:::
+
+## Breed Types and Objectives
+
+- **Wool breeds**: Merino (fine wool production)
+- **Meat breeds**: Suffolk, Hampshire, Dorset (terminal sires)
+- **Dual-purpose breeds**: Polypay, Columbia, Targhee
+- **Hair sheep**: Katahdin, Dorper
+
+## Key Traits and Heritabilities
+
+### Growth Traits
+
+- Birth weight: h² = 0.25-0.45
+- Weaning weight: h² = 0.25-0.45
+
+### Reproduction
+
+- Litter size: h² = 0.10-0.15
+
+### Wool Traits
+
+- Fleece weight: h² = 0.30-0.60
+- Fiber diameter: h² = 0.30-0.60
+
+## Genetic Evaluation
+
+- LAMBPLAN (Australia)
+- NSIP (US)
+
+## Crossbreeding Systems
+
+Terminal sire × maternal breed ewes
+
+## Summary
+
+Sheep breeding objectives vary widely (wool, meat, dual-purpose). Terminal sire crossbreeding is widely used in meat production.

@@ -1,0 +1,67 @@
+# Aquaculture Breeding {#sec-aquaculture-breeding}
+
+## Overview
+
+This chapter introduces aquaculture breeding with sections on salmon, trout, and shrimp.
+
+## Learning Objectives
+
+By the end of this chapter, you should be able to:
+
+1. Describe the unique features of aquaculture breeding
+2. Identify key traits for salmon, trout, and shrimp
+3. Explain the role of family-based selection and genomic tools
+4. Understand disease resistance as a major selection objective
+5. Recognize the importance of DNA-based parentage assignment
+
+## Aquaculture Industry Overview
+
+::: {.callout-note}
+## Chapter Status
+This chapter is currently under development.
+:::
+
+- Fastest-growing animal protein sector globally
+- Major species: Atlantic salmon, rainbow trout, tilapia, catfish, carp, shrimp
+
+## Unique Features of Aquaculture Breeding
+
+- **High fecundity**: Thousands to millions of offspring per female
+- **External fertilization**: Enables family-based selection designs
+- **Common environment**: Families reared together with DNA-based parentage
+- **Rapid generation intervals**: 2-4 years for most species
+
+## Salmon Breeding
+
+### Key Traits
+
+- Growth: h² = 0.25-0.40
+- Disease resistance: h² = 0.10-0.30
+- Flesh quality: h² = 0.20-0.40
+- Sexual maturation: h² = 0.30-0.50
+
+## Rainbow Trout Breeding
+
+### Key Traits
+
+- Growth rate: h² = 0.30-0.50
+- Disease resistance: h² = 0.10-0.40
+- Flesh quality
+
+## Shrimp Breeding
+
+### Key Traits (Pacific White Shrimp)
+
+- Growth: h² = 0.20-0.40
+- Survival: h² = 0.10-0.25
+- Disease resistance: h² = 0.05-0.20
+
+### Breeding Structure
+
+- SPF (Specific Pathogen Free) lines
+- Family-based selection with DNA parentage
+- Genomic selection emerging
+
+## Summary
+
+Aquaculture breeding exploits high fecundity and family structures. Disease resistance is critical in aquaculture breeding programs.

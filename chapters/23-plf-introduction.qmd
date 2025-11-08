@@ -1,0 +1,113 @@
+# Introduction to Precision Livestock Farming {#sec-plf-introduction}
+
+## Overview
+
+This chapter provides an overview of precision livestock farming (PLF) technologies and their role in phenotyping for animal breeding.
+
+## Learning Objectives
+
+By the end of this chapter, you should be able to:
+
+1. Define precision livestock farming and its objectives
+2. Identify major PLF technologies and their applications
+3. Explain how PLF enables high-throughput phenotyping for breeding
+4. Understand data management challenges with PLF
+5. Recognize opportunities for PLF to accelerate genetic improvement
+
+## What is Precision Livestock Farming (PLF)?
+
+::: {.callout-note}
+## Chapter Status
+This chapter is currently under development.
+:::
+
+**Definition**: Using sensors, automation, and data analytics to monitor and manage individual animals
+
+**Objectives**:
+- Improve animal welfare
+- Increase productivity
+- Enhance efficiency
+- Promote sustainability
+
+## PLF Technologies Overview
+
+### Sensors
+
+- Wearables (collars, ear tags, leg bands)
+- Cameras (2D, 3D, thermal)
+- Microphones
+- Environmental sensors
+- Feeding systems
+
+### Data Collection
+
+- Continuous, automated, high-resolution
+- Massive datasets requiring careful management
+
+### Data Analytics
+
+- Machine learning
+- Computer vision
+- Predictive models
+
+## PLF for Phenotyping in Animal Breeding
+
+### Advantages
+
+- **High-throughput phenotyping**: Measure thousands of animals automatically
+- **New traits**: Traits difficult or expensive to measure traditionally
+  - Individual feed intake
+  - Activity and behavior
+  - Health indicators
+- **Precision**: Reduced measurement error
+- **Longitudinal data**: Repeated measurements over time
+
+## Key Application Areas
+
+1. **Feed efficiency**: Individual feed intake (RFI, FCR)
+2. **Health monitoring**: Early disease detection, lameness, mastitis
+3. **Reproduction**: Estrus detection, calving/farrowing monitoring
+4. **Behavior and welfare**: Activity, lying time, social interactions
+5. **Growth and body composition**: Automated weighing, 3D imaging
+6. **Environmental impact**: Methane emissions, nitrogen excretion
+
+## Data Management Challenges
+
+- **Volume**: Massive datasets (terabytes per farm)
+- **Quality control**: Sensor errors, missing data, outliers
+- **Integration**: Linking sensor data with pedigree and genomic data
+- **Privacy and security**: Data ownership, sharing, security
+
+## PLF and Genetic Improvement
+
+PLF enables:
+
+- Selection for hard-to-measure traits (feed efficiency, methane, health)
+- Increased accuracy of genetic evaluations (more data per animal)
+- Identifying new traits (resilience, robustness, stress response)
+- Genotype-by-environment interactions
+
+## Challenges and Opportunities
+
+### Challenges
+
+- Cost of sensors and infrastructure
+- Validation of sensor data accuracy
+- Farmer adoption and training
+- Integration with breeding programs
+
+### Opportunities
+
+- Accelerate genetic improvement
+- Novel phenotypes for selection
+- Improved animal welfare monitoring
+
+## Summary
+
+Precision livestock farming enables automated, high-throughput phenotyping that can accelerate genetic improvement.
+
+## Key Points
+
+- PLF technologies generate vast amounts of data requiring careful management
+- PLF enables genetic selection for traits previously too expensive to measure
+- Integration of PLF data with breeding programs is an active research area

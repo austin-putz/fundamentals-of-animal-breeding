@@ -1,0 +1,252 @@
+# Glossary of Genetic Terms {#sec-glossary .unnumbered}
+
+This glossary provides concise definitions of key terms used throughout the book. Terms are listed alphabetically.
+
+---
+
+## A
+
+**Accuracy (r)**: Correlation between estimated breeding value (EBV) and true breeding value (TBV). Range: 0 to 1. Higher accuracy means more reliable prediction.
+
+**Additive genetic effect**: The sum of the average effects of alleles at all loci affecting a trait. Determines breeding value and is transmitted to offspring.
+
+**Additive genetic variance (σ²_A)**: Variance in breeding values within a population. Determines heritability and response to selection.
+
+**AI (Artificial Insemination)**: Technique for breeding animals by collecting and depositing semen artificially rather than through natural mating.
+
+**Allele**: One of two or more alternative forms of a gene at a specific locus.
+
+**Allele frequency**: Proportion of a specific allele in a population. Example: If 70% of alleles at a locus are "A", the allele frequency of A is 0.70.
+
+---
+
+## B
+
+**BLUP (Best Linear Unbiased Prediction)**: Statistical method for estimating breeding values that uses all available information (own records, relatives, genomic data) optimally.
+
+**Breeding goal (H)**: The aggregate genetic merit we want to improve, typically a weighted combination of multiple traits based on their economic importance.
+
+**Breeding value (BV)**: The sum of the average effects of an animal's alleles. Represents the genetic merit of an animal as a parent. Often estimated as EBV.
+
+---
+
+## C
+
+**Contemporary group**: A group of animals raised in the same environment and time period (e.g., same herd-year-season). Used to account for environmental effects in genetic evaluation.
+
+**Correlated response**: Change in one trait (Y) as a result of selection on another trait (X), due to genetic correlation between the traits.
+
+**Crossbreeding**: Mating animals from different breeds or lines to exploit heterosis and breed complementarity.
+
+---
+
+## D
+
+**Dominance effect**: Within-locus interaction between alleles, where the heterozygote deviates from the midparent value. Does not breed true.
+
+---
+
+## E
+
+**EBV (Estimated Breeding Value)**: Statistical prediction of an animal's true breeding value (TBV) based on available information (phenotypes, pedigree, genomics).
+
+**Environmental effect (E)**: All non-genetic factors affecting phenotype, including management, nutrition, health, measurement error, etc.
+
+**EPD (Expected Progeny Difference)**: Term used in beef cattle breeding for EBV. Predicts the expected difference in offspring performance compared to offspring of an average parent.
+
+**Epistasis**: Interaction between genes at different loci. Complex and generally not reliably transmitted to offspring.
+
+---
+
+## F
+
+**F₁ (First filial generation)**: The first generation offspring from a cross between two different breeds or inbred lines.
+
+---
+
+## G
+
+**GBLUP (Genomic BLUP)**: Extension of BLUP that uses genomic relationship matrix (G) instead of pedigree-based relationship matrix (A).
+
+**GEBV (Genomic Estimated Breeding Value)**: Breeding value estimated using genomic information (SNP genotypes) in addition to pedigree and phenotypes.
+
+**Generation interval (L)**: Average age of parents when their offspring are born. Shorter L allows faster genetic progress.
+
+**Genetic correlation (r_A)**: Correlation between additive genetic effects for two traits. Ranges from -1 to +1. Caused by pleiotropy or linkage.
+
+**Genetic variance (σ²_G)**: Total variance due to genetic effects. Can be partitioned into additive, dominance, and epistatic components.
+
+**Genome**: The complete set of DNA in an organism, including all genes.
+
+**Genomic relationship matrix (G)**: Matrix of relationships among animals calculated from SNP genotypes. Captures realized (actual) relationships.
+
+**Genomic selection**: Using genome-wide DNA markers (SNPs) to predict breeding values, enabling selection of young animals without waiting for phenotypes or progeny.
+
+**Genotype**: The genetic makeup of an individual at one or more loci.
+
+**Genotype-by-environment interaction (G×E)**: Different genotypes respond differently to environmental changes. Can complicate breeding across diverse environments.
+
+**GWAS (Genome-Wide Association Study)**: Statistical analysis to identify SNPs or genomic regions associated with traits.
+
+---
+
+## H
+
+**Heritability (h²)**: Proportion of phenotypic variance due to additive genetic effects. h² = σ²_A / σ²_P. Range: 0 to 1.
+
+**Heterosis (hybrid vigor)**: Superior performance of crossbred offspring compared to the average of the purebred parents. Most pronounced for fitness traits.
+
+**Heterozygote**: An individual with two different alleles at a locus (e.g., Aa).
+
+**Homozygote**: An individual with two identical alleles at a locus (e.g., AA or aa).
+
+---
+
+## I
+
+**Imputation**: Predicting missing or ungenotyped SNPs using information from a reference panel of animals genotyped at higher density.
+
+**Inbreeding**: Mating of related individuals. Increases homozygosity and can lead to inbreeding depression.
+
+**Inbreeding coefficient (F)**: Probability that two alleles at a locus are identical by descent. Range: 0 to 1.
+
+**Inbreeding depression**: Reduction in performance (especially for fitness traits) in inbred animals due to increased expression of deleterious recessive alleles.
+
+**Index (Selection Index)**: Linear combination of information sources (phenotypes or EBVs) used to rank animals for selection. Maximizes correlation with the breeding goal.
+
+---
+
+## L
+
+**Linkage**: Physical proximity of genes on the same chromosome. Linked genes are inherited together more often than expected by chance.
+
+**Linkage disequilibrium (LD)**: Non-random association between alleles at different loci. Basis for genomic selection (SNPs in LD with causal mutations).
+
+**Locus (plural: loci)**: A specific position on a chromosome where a gene or DNA marker is located.
+
+---
+
+## M
+
+**MAF (Minor Allele Frequency)**: Frequency of the less common allele at a locus in a population.
+
+**Marker**: A DNA sequence (e.g., SNP) with a known physical location on a chromosome, used to track inheritance.
+
+**Mendelian sampling**: Random sampling of parental alleles passed to offspring. Causes offspring to deviate from midparent average.
+
+**Mixed model**: Statistical model with both fixed effects (e.g., contemporary groups) and random effects (e.g., breeding values).
+
+---
+
+## N
+
+**Nucleus herd/flock**: Elite population at the top of a breeding pyramid where selection is most intense and genetic improvement originates.
+
+---
+
+## O
+
+**OCS (Optimum Contribution Selection)**: Method that simultaneously optimizes selection and mating decisions to maximize genetic gain while constraining inbreeding.
+
+---
+
+## P
+
+**Pedigree**: Record of an animal's ancestors (parents, grandparents, etc.).
+
+**Permanent environmental effect (PE)**: Non-genetic environmental effect that persists across all records on an animal (e.g., udder damage in dairy cows).
+
+**Phenotype**: Observable characteristic of an individual (e.g., body weight, milk yield). Determined by genotype and environment.
+
+**Phenotypic variance (σ²_P)**: Total variance in a trait observed in a population.
+
+**Pleiotropy**: A single gene affects multiple traits. Major cause of genetic correlations.
+
+**Polygenic trait**: Trait controlled by many genes, each with small effect. Most economically important traits are polygenic.
+
+---
+
+## Q
+
+**QTL (Quantitative Trait Locus)**: A region of DNA associated with variation in a quantitative trait. May contain one or more genes affecting the trait.
+
+**QTN (Quantitative Trait Nucleotide)**: A specific causal mutation (nucleotide change) affecting a quantitative trait.
+
+**Quantitative trait**: Trait with continuous distribution in a population, controlled by many genes and influenced by environment (e.g., growth rate, milk yield).
+
+---
+
+## R
+
+**Reliability (r²)**: Squared correlation between EBV and TBV. Measure of confidence in EBV. Same as accuracy squared.
+
+**Repeatability (r)**: Correlation between repeated records on the same animal. r = (σ²_A + σ²_PE) / σ²_P. Upper limit of heritability.
+
+**Response to selection (R)**: Genetic change per generation (or per year) resulting from selection. Predicted by breeder's equation.
+
+---
+
+## S
+
+**Selection differential (S)**: Difference between the mean of selected parents and the population mean. Expressed in phenotypic units.
+
+**Selection index**: See **Index**.
+
+**Selection intensity (i)**: Standardized selection differential (S / σ_P). Function of the proportion of animals selected.
+
+**Simply inherited trait**: Trait controlled by one or few genes with major effects (e.g., coat color). Follows Mendelian ratios.
+
+**SNP (Single Nucleotide Polymorphism)**: A single base pair difference in DNA sequence between individuals. Most common type of genetic marker.
+
+**SNP chip (array)**: Platform for genotyping thousands to millions of SNPs simultaneously.
+
+**ssGBLUP (Single-Step Genomic BLUP)**: Combines pedigree and genomic information in one analysis using H matrix. Industry standard for genomic evaluation.
+
+---
+
+## T
+
+**TBV (True Breeding Value)**: The actual (unknown) breeding value of an animal. Goal of genetic evaluation is to estimate TBV.
+
+**Terminal cross**: Crossbreeding system where all offspring are marketed (none retained for breeding). Maximizes heterosis in market animals.
+
+**Trait**: Any measurable or observable characteristic (e.g., body weight, litter size, milk yield, coat color).
+
+---
+
+## V
+
+**Variance component**: A component of phenotypic variance (e.g., σ²_A, σ²_E, σ²_PE). Estimated from data and used to calculate heritability and other parameters.
+
+---
+
+## W
+
+**WGS (Whole Genome Sequencing)**: Determining the complete DNA sequence of an organism's genome. Provides ultimate resolution but is expensive.
+
+---
+
+## Notes
+
+- Greek letters used frequently:
+  - **σ²** (sigma squared) = variance
+  - **σ** (sigma) = standard deviation
+  - **μ** (mu) = population mean
+  - **h²** = heritability
+  - **r** = correlation or repeatability (context-dependent)
+
+- Subscripts indicate the specific variance:
+  - **σ²_P** = phenotypic variance
+  - **σ²_A** = additive genetic variance
+  - **σ²_E** = environmental variance
+  - **σ²_PE** = permanent environmental variance
+
+---
+
+## Further Reading
+
+For more detailed definitions and mathematical derivations, see:
+
+- Falconer and Mackay (1996): *Introduction to Quantitative Genetics*
+- Lynch and Walsh (1998): *Genetics and Analysis of Quantitative Traits*
+- Mrode (2014): *Linear Models for the Prediction of Animal Breeding Values*

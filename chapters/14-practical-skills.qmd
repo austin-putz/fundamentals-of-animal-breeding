@@ -1,0 +1,438 @@
+# Practical Animal Breeding and Data Skills {#sec-practical-skills}
+
+<div class="learning-objectives">
+### Learning Objectives {.unnumbered}
+
+By the end of this chapter, you will be able to:
+
+1. Understand basics of SQL for querying breeding databases
+2. Explain what APIs are and how they're used to access breeding data
+3. Describe animal identification systems used in livestock
+4. Distinguish phenotypic culling from genetic selection
+5. Identify career opportunities and skills needed in animal breeding
+
+</div>
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| eval: false
+
+# Load required packages
+library(tidyverse)
+library(knitr)
+library(DBI)
+library(RSQLite)
+
+# Set default theme for plots
+theme_set(theme_minimal(base_size = 12))
+```
+
+## Introduction
+
+[Content to be developed: Theory is essential, but successful animal breeders also need practical skills: data management, database queries, animal identification, and software tools.]
+
+## Database Basics
+
+[Content to be developed: Animal breeding generates massive amounts of data. Understanding how data is stored and accessed is critical.]
+
+### Relational Databases
+
+[Content to be developed:]
+
+- Data organized into **tables** (e.g., animals, phenotypes, pedigrees)
+- Tables linked by **keys** (e.g., animal ID)
+- Efficient storage and retrieval of large datasets
+
+### Common Tables in Breeding Databases
+
+[Content to be developed:]
+
+1. **Animals table**: animal_id, birth_date, sex, breed
+2. **Pedigree table**: animal_id, sire_id, dam_id
+3. **Phenotypes table**: animal_id, trait, value, date, contemporary_group
+4. **Genotypes table**: animal_id, snp_id, genotype
+
+## SQL Basics
+
+[Content to be developed: Structured Query Language for querying databases.]
+
+### What is SQL?
+
+[Content to be developed: Language for managing and querying relational databases. Universal standard used across industries.]
+
+### Basic SQL Commands
+
+[Content to be developed: Focus on SELECT, WHERE, JOIN - the essentials for extracting data.]
+
+#### SELECT Statement
+
+[Content to be developed:]
+
+```sql
+SELECT animal_id, birth_weight
+FROM phenotypes
+WHERE birth_weight > 40;
+```
+
+Retrieves animal_id and birth_weight for animals with birth weight greater than 40 kg.
+
+#### Filtering with WHERE
+
+[Content to be developed:]
+
+```sql
+SELECT *
+FROM animals
+WHERE sex = 'F' AND birth_date > '2023-01-01';
+```
+
+Retrieves all female animals born after January 1, 2023.
+
+#### Joining Tables
+
+[Content to be developed:]
+
+```sql
+SELECT animals.animal_id, animals.birth_date, phenotypes.weaning_weight
+FROM animals
+JOIN phenotypes ON animals.animal_id = phenotypes.animal_id
+WHERE phenotypes.weaning_weight IS NOT NULL;
+```
+
+Combines data from animals and phenotypes tables.
+
+### SQL in Practice
+
+[Content to be developed: Used to extract data for genetic evaluation, generate reports, QC data.]
+
+## Using SQL in R
+
+[Content to be developed: R interfaces with databases.]
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Connect to SQLite database (example)
+library(DBI)
+library(RSQLite)
+
+con <- dbConnect(RSQLite::SQLite(), "breeding_data.db")
+
+# Simple query
+query <- "SELECT animal_id, birth_weight FROM phenotypes WHERE birth_weight > 40"
+result <- dbGetQuery(con, query)
+head(result)
+
+# Join query
+query2 <- "
+  SELECT a.animal_id, a.sex, p.weaning_weight
+  FROM animals a
+  JOIN phenotypes p ON a.animal_id = p.animal_id
+  WHERE p.weaning_weight IS NOT NULL
+"
+result2 <- dbGetQuery(con, query2)
+head(result2)
+
+# Disconnect
+dbDisconnect(con)
+```
+
+## APIs (Application Programming Interfaces)
+
+[Content to be developed: Accessing data and services programmatically.]
+
+### What is an API?
+
+[Content to be developed:]
+
+- Interface for software to communicate with other software
+- Allows querying databases or services over the internet
+- Common in modern breeding systems (genomic databases, genetic evaluation services)
+
+### Examples of APIs in Animal Breeding
+
+[Content to be developed:]
+
+- **CDCB (dairy)**: Query genomic evaluations for bulls
+- **Breed associations**: Access EPDs and pedigree data
+- **Genomic companies**: Submit samples, retrieve genomic predictions
+
+### Using APIs in R
+
+[Content to be developed:]
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Example: Query an API using httr package
+library(httr)
+library(jsonlite)
+
+# Example API endpoint (hypothetical)
+url <- "https://api.breedingservice.com/v1/ebv"
+params <- list(animal_id = 12345, trait = "milk_yield")
+
+# Make GET request
+response <- GET(url, query = params)
+
+# Parse JSON response
+if (status_code(response) == 200) {
+  data <- content(response, "text") %>% fromJSON()
+  print(data)
+} else {
+  cat("Error:", status_code(response), "\n")
+}
+```
+
+## Data Management
+
+[Content to be developed: Ensuring data quality and integrity.]
+
+### Data Entry and Validation
+
+[Content to be developed:]
+
+- Automated vs. manual data entry
+- Validation rules (range checks, consistency checks)
+- Error detection and correction
+
+### Data Cleaning and Quality Control
+
+[Content to be developed:]
+
+- Identify outliers (phenotypes > 3-4 SD from mean)
+- Check for missing data
+- Detect duplicate records
+- Verify pedigree consistency
+
+### Example: Data QC in R
+
+[Content to be developed:]
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Example: Detect outliers in weaning weight
+library(tidyverse)
+
+# Load data
+data <- read_csv("weaning_weights.csv")
+
+# Calculate mean and SD
+mean_ww <- mean(data$weaning_weight, na.rm = TRUE)
+sd_ww <- sd(data$weaning_weight, na.rm = TRUE)
+
+# Flag outliers (> 3 SD from mean)
+data <- data %>%
+  mutate(outlier = abs(weaning_weight - mean_ww) > 3 * sd_ww)
+
+# Print outliers
+outliers <- data %>% filter(outlier)
+cat("Number of outliers:", nrow(outliers), "\n")
+print(outliers)
+
+# Visualize
+ggplot(data, aes(x = weaning_weight, fill = outlier)) +
+  geom_histogram(bins = 30) +
+  labs(title = "Weaning Weight Distribution with Outliers",
+       x = "Weaning Weight (kg)", y = "Frequency") +
+  theme_minimal()
+```
+
+## Animal Identification Systems
+
+[Content to be developed: How to uniquely identify animals.]
+
+### Visual ID
+
+[Content to be developed:]
+
+- Ear tags (numbered)
+- Tattoos (permanent)
+- Brands (hot or freeze)
+- **Challenges**: Tags can be lost, numbers misread
+
+### Electronic ID (RFID)
+
+[Content to be developed:]
+
+- RFID ear tags or implants
+- Scanned automatically (readers at feeders, scales, gates)
+- More reliable than visual tags
+- **Cost**: Higher initial investment
+
+### DNA-Based Parentage Verification
+
+[Content to be developed:]
+
+- SNP genotyping used to verify sire and dam
+- Corrects pedigree errors
+- Especially useful when natural mating is used (multiple sires)
+
+### Record Linkage
+
+[Content to be developed: Matching records across databases (phenotypes, pedigrees, genotypes) using unique IDs.]
+
+## Phenotypic Culling vs. Genetic Selection
+
+[Content to be developed: Two different management decisions.]
+
+### Phenotypic Culling
+
+[Content to be developed:]
+
+- Remove animals that fail to meet **minimum standards**
+- Examples:
+  - Cows that don't breed after multiple services
+  - Pigs with leg problems
+  - Animals with severe health issues
+- **Not genetic selection** - based on individual performance, not breeding value
+
+### Genetic Selection
+
+[Content to be developed:]
+
+- Choose parents based on **estimated breeding values (EBVs)**
+- Goal: Improve genetic merit of next generation
+- Considers information from relatives, genomics
+
+### Both Are Important
+
+[Content to be developed:]
+
+- Phenotypic culling ensures only functional animals remain
+- Genetic selection drives long-term improvement
+- Do NOT confuse the two
+
+## Working with Breeding Companies
+
+[Content to be developed: Career paths and roles.]
+
+### Common Roles
+
+[Content to be developed:]
+
+- **Geneticist / Breeding Manager**: Design breeding programs, analyze data, make selection decisions
+- **Data Manager**: Maintain databases, QC data, generate reports
+- **Reproductive Technician**: AI, embryo transfer, estrus detection
+- **Field Staff / Technical Service**: Work with producers, collect data, troubleshoot
+- **Bioinformatician**: Process genomic data, develop prediction models
+
+### Data Flow in a Breeding Program
+
+[Content to be developed:]
+
+1. **Field**: Phenotypes collected (growth, reproduction, health)
+2. **Data entry**: Data entered into database, QC checks
+3. **Genetic evaluation**: Run BLUP or genomic prediction
+4. **Selection decisions**: Rank animals by EBV/GEBV, select parents
+5. **Mating decisions**: Allocate matings (OCS, MateSel)
+6. **Feedback**: Monitor genetic trends, adjust selection strategy
+
+### Software Used in Industry
+
+[Content to be developed:]
+
+- **BLUPF90**: Free software for genetic evaluation (widely used)
+- **ASReml**: Commercial software for mixed models
+- **MateSel**: Mating optimization
+- **AlphaSimR**: Stochastic simulation (research and teaching)
+- **Custom software**: Many companies develop proprietary tools
+
+## Professional Skills
+
+[Content to be developed: Beyond technical knowledge.]
+
+### Communication
+
+[Content to be developed:]
+
+- Explain genetics to producers (non-technical audience)
+- Write clear reports and documentation
+- Present results to management or clients
+
+### Collaboration
+
+[Content to be developed:]
+
+- Work with nutrition, health, and management teams
+- Coordinate across nucleus, multiplier, and commercial levels
+- Partner with university researchers
+
+### Ethics and Integrity
+
+[Content to be developed:]
+
+- Data integrity: Accurate, unbiased data collection
+- Animal welfare: Select for health and fitness, not just production
+- Transparency: Honest reporting of genetic trends and limitations
+
+## Career Paths in Animal Breeding
+
+[Content to be developed: Opportunities in industry, academia, government.]
+
+### Industry
+
+[Content to be developed:]
+
+- Genetics companies (PIC, Genus, Cobb, ABS, etc.)
+- Breed associations (Angus, Holstein, etc.)
+- AI studs and reproductive services
+
+### Academia
+
+[Content to be developed:]
+
+- University faculty (research and teaching)
+- Extension specialists (applied research, outreach)
+
+### Government
+
+[Content to be developed:]
+
+- USDA (genetic evaluation, research)
+- Regulatory agencies (genetic testing standards)
+
+### Consulting
+
+[Content to be developed:]
+
+- Independent consultant for breeding programs
+- Software development for breeding tools
+
+## Summary
+
+[Content to be developed.]
+
+### Key Points
+
+- SQL is essential for querying breeding databases
+- APIs enable programmatic access to data and services
+- Data management and QC are foundational to genetic improvement
+- Animal identification systems (visual, RFID, DNA) ensure accurate record keeping
+- Phenotypic culling and genetic selection serve different purposes
+- Career opportunities exist in industry, academia, and government
+- Communication, collaboration, and ethics are critical professional skills
+
+## Practice Problems
+
+[Problems to be developed]
+
+1. Write a SQL query to retrieve all animals born in 2024 with weaning weights greater than 250 kg.
+
+2. Explain the difference between phenotypic culling and genetic selection. Provide an example of each in dairy cattle.
+
+3. Why is DNA-based parentage verification important in breeding programs? What problems does it solve?
+
+## Further Reading
+
+[References to be added]
+
+- SQL tutorials (W3Schools, Khan Academy)
+- R database interfaces (DBI, RSQLite)
+- Career resources (Animal Breeding and Genetics jobs, professional societies)

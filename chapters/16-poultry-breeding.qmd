@@ -1,0 +1,81 @@
+# Poultry Breeding {#sec-poultry-breeding}
+
+## Overview
+
+This chapter explains unique features of poultry breeding with separate sections for broilers, layers, and turkeys.
+
+## Learning Objectives
+
+By the end of this chapter, you should be able to:
+
+1. Describe the structure of integrated poultry breeding companies
+2. Explain why poultry breeding allows rapid genetic progress
+3. Compare breeding objectives for broilers, layers, and turkeys
+4. Identify major genetic correlations affecting poultry breeding
+5. Understand the role of family-based selection in poultry
+
+## Global Poultry Industry Structure
+
+::: {.callout-note}
+## Chapter Status
+This chapter is currently under development. Content will cover:
+
+- Vertical integration (genetics, hatchery, grow-out, processing)
+- Major breeding companies (Cobb-Vantress, Aviagen, Hy-Line International)
+- Proprietary synthetic lines
+- Closed nucleus populations
+:::
+
+## Unique Features of Poultry Breeding
+
+- Short generation intervals (9-12 months)
+- High selection intensity
+- Family-based selection
+- Rapid genetic progress
+
+## Broiler Breeding
+
+### Key Traits
+
+- Body weight at processing age: h² = 0.30-0.50
+- Feed efficiency (FCR, RFI): h² = 0.25-0.40
+- Carcass traits: h² = 0.30-0.50
+- Leg health: h² = 0.10-0.30
+
+### Breeding Objectives
+
+Content to be developed.
+
+## Egg-Laying Hen Breeding
+
+### Key Traits
+
+- Egg production: h² = 0.20-0.40
+- Egg quality: h² = 0.30-0.60
+- Feed efficiency: h² = 0.25-0.35
+
+### Breeding Objectives
+
+Content to be developed.
+
+## Turkey Breeding
+
+### Key Traits
+
+- Growth: h² = 0.30-0.50
+- Carcass traits: h² = 0.30-0.50
+- Reproduction: h² = 0.05-0.15 (very low)
+
+### Unique Challenges
+
+Content to be developed.
+
+## Summary
+
+Poultry breeding is the most intensive and rapid form of livestock breeding, with short generation intervals enabling fast genetic progress.
+
+## Key Points
+
+- Short generation intervals and high selection intensity enable fast progress
+- Genetic correlations between production and welfare require balanced selection
+- Industry consolidation means a few companies supply global genetics

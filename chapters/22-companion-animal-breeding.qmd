@@ -1,0 +1,86 @@
+# Companion Animal Breeding {#sec-companion-animal-breeding}
+
+## Overview
+
+This chapter provides an overview of dog and cat breeding with emphasis on genetic health and breed standards.
+
+## Learning Objectives
+
+By the end of this chapter, you should be able to:
+
+1. Describe unique features of companion animal breeding
+2. Identify major genetic disorders in dogs and cats
+3. Explain the role of DNA testing in reducing disease prevalence
+4. Understand inbreeding concerns in closed breed populations
+5. Recognize ethical considerations in companion animal breeding
+
+## Companion Animal Breeding Context
+
+::: {.callout-note}
+## Chapter Status
+This chapter is currently under development.
+:::
+
+Breeding objectives differ from livestock:
+- Aesthetics, behavior, health vs. production
+- Breed standards and kennel clubs
+- Show breeding vs. working/performance breeding
+
+## Dog Breeding
+
+### Breed Diversity
+
+200+ recognized breeds
+
+### Breeding Objectives
+
+- Conformation to breed standard
+- Performance traits (working dogs)
+- Temperament and behavior
+- Health and longevity
+
+### Key Traits
+
+- **Conformation**: h² = 0.40-0.80
+- **Behavior**: h² = 0.10-0.40
+- **Health**: Hip dysplasia, elbow dysplasia, eye disorders
+
+### Genetic Diseases
+
+- Progressive retinal atrophy (PRA)
+- Degenerative myelopathy (DM)
+- von Willebrand disease (vWD)
+- DNA testing available for many conditions
+
+### Inbreeding Concerns
+
+- Limited effective population size in many breeds
+- Inbreeding depression: reduced litter size, increased disease
+- Coefficient of inbreeding (COI) awareness
+
+## Cat Breeding
+
+### Breed Diversity
+
+~70 recognized breeds
+
+### Key Health Issues
+
+- Polycystic kidney disease (PKD)
+- Hypertrophic cardiomyopathy (HCM)
+
+## Ethical and Welfare Considerations
+
+- Breeding for extreme conformation
+- Health vs. aesthetics trade-offs
+- Responsible breeding guidelines
+
+## Summary
+
+Companion animal breeding emphasizes health, temperament, and conformation. Many breeds suffer from inbreeding and genetic disease burden.
+
+## Key Points
+
+- DNA testing enables elimination of single-gene disorders
+- Ethical breeding prioritizes health and welfare over extreme aesthetics
+- Modern genomic tools can improve health in companion animals

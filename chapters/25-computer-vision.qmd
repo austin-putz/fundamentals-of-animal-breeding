@@ -1,0 +1,137 @@
+# Computer Vision and Camera Technologies {#sec-computer-vision}
+
+## Overview
+
+This chapter explores camera-based phenotyping using 2D and 3D imaging and computer vision techniques.
+
+## Learning Objectives
+
+By the end of this chapter, you should be able to:
+
+1. Describe types of cameras used in livestock monitoring (2D, 3D, thermal)
+2. Explain how computer vision is used for body condition scoring and weight estimation
+3. Understand the role of machine learning in video analysis
+4. Identify applications of camera-based phenotyping for genetic evaluation
+5. Recognize challenges in deploying computer vision on commercial farms
+
+## Introduction to Computer Vision in Livestock
+
+::: {.callout-note}
+## Chapter Status
+This chapter is currently under development.
+:::
+
+**Definition**: Using cameras and image analysis to extract phenotypic information
+
+**Advantages**:
+- Non-invasive
+- High-throughput
+- Automated
+
+**Types of Cameras**:
+- 2D cameras (RGB)
+- 3D cameras (depth sensors, stereo cameras, LiDAR)
+- Thermal cameras
+
+## 2D Image Analysis
+
+### Applications
+
+1. **Body condition scoring (BCS)**: Automated scoring using images of animals
+2. **Activity and behavior**: Posture classification, social interactions
+3. **Lameness detection**: Gait analysis from video
+4. **Identification**: Facial recognition, coat pattern identification
+
+### Computer Vision Techniques
+
+- Object detection (locate animals in images)
+- Image segmentation (separate animal from background)
+- Feature extraction (body shape, posture)
+- Deep learning (convolutional neural networks)
+
+### Commercial Systems
+
+- DeLaval body condition scoring
+- Cainthus (behavior monitoring)
+
+## 3D Imaging and Depth Sensors
+
+### Technologies
+
+- Time-of-flight cameras
+- Structured light
+- Stereo vision
+- LiDAR
+
+### Applications
+
+1. **Body weight estimation**: 3D body volume correlates with weight
+2. **Body composition**: Estimate muscle and fat distribution
+3. **Growth monitoring**: Automated weight tracking without handling animals
+4. **Conformation traits**: Measure body dimensions (height, length, chest girth)
+
+### Accuracy
+
+High correlation with manual measurements (r > 0.90 for weight in many systems)
+
+## Thermal Imaging
+
+### Applications
+
+1. **Health monitoring**: Elevated body temperature indicates fever or inflammation
+2. **Heat stress detection**: Monitor heat load in animals
+3. **Mastitis detection**: Udder temperature changes
+
+### Challenges
+
+Environmental factors affect measurements (ambient temperature, humidity)
+
+## Video Analysis for Behavior
+
+### Behaviors Tracked
+
+- Eating and drinking: Time spent at feeder/drinker, feeding rate
+- Social interactions: Aggression, mounting, grooming
+- Lying and standing behavior: Posture classification
+- Gait analysis: Lameness scoring from video
+- Farrowing/calving monitoring: Detect parturition events
+
+### Machine Learning
+
+Train models to classify behaviors from video
+
+## Computer Vision for Genetic Evaluation
+
+### Novel Phenotypes
+
+1. **Body composition traits**: 3D imaging provides accurate carcass predictions
+2. **Feed efficiency**: Video analysis of feeding behavior
+3. **Health traits**: Early disease detection (gait, posture, activity)
+4. **Conformation**: Automated measurement of body dimensions
+5. **Welfare traits**: Behavior-based indicators (fear response, social stress)
+
+## Challenges
+
+- **Environmental variability**: Lighting, dust, occlusions
+- **Computational requirements**: Processing large video datasets
+- **Model training**: Requires labeled data (ground truth)
+- **Generalization**: Models trained on one farm may not work on another
+- **Cost**: High-resolution cameras, computing infrastructure
+
+## Future Directions
+
+- Integration with genomic data (genotype-by-environment, resilience)
+- Real-time alerts for health and welfare issues
+- Scaling to commercial farms
+- Multi-modal sensing (combine video, wearables, environmental sensors)
+
+## Summary
+
+Computer vision enables non-invasive, high-throughput phenotyping that provides novel traits for genetic selection.
+
+## Key Points
+
+- 3D imaging accurately estimates body weight and composition
+- Machine learning is critical for analyzing video and image data
+- Camera-based phenotyping provides novel traits for genetic selection
+- Integration with breeding programs is expanding rapidly

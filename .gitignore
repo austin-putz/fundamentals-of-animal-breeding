@@ -1,0 +1,34 @@
+# Quarto
+/.quarto/
+/_site/
+/docs/
+/_freeze/
+
+# R
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+
+# macOS
+.DS_Store
+
+# Temporary files
+*~
+*.swp
+*.swo
+
+# R output
+*.html
+*.pdf
+*_files/
+*_cache/
+
+# LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg

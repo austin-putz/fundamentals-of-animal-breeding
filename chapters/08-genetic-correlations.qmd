@@ -1,0 +1,264 @@
+# Genetic Correlations and Correlated Response {#sec-genetic-correlations}
+
+<div class="learning-objectives">
+### Learning Objectives {.unnumbered}
+
+By the end of this chapter, you will be able to:
+
+1. Define genetic correlation and explain what causes it
+2. Interpret positive, negative, and zero genetic correlations
+3. Calculate correlated response to selection
+4. Explain why antagonistic correlations complicate breeding programs
+5. Provide examples of important genetic correlations in livestock
+
+</div>
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+# Load required packages
+library(tidyverse)
+library(knitr)
+library(MASS)  # for simulating correlated data
+
+# Set default theme for plots
+theme_set(theme_minimal(base_size = 12))
+```
+
+## Introduction
+
+[Content to be developed: Most breeding programs aim to improve multiple traits. Understanding genetic correlations is essential for predicting how selection on one trait affects other traits.]
+
+## What is Genetic Correlation?
+
+[Content to be developed: Define genetic correlation (r_A).]
+
+### Definition
+
+[Content to be developed:]
+
+$$
+r_A(X,Y) = \frac{\text{Cov}_A(X, Y)}{\sigma_A(X) \times \sigma_A(Y)}
+$$
+
+Where:
+
+- r_A(X,Y) = genetic correlation between traits X and Y
+- Cov_A(X,Y) = additive genetic covariance
+- σ_A(X), σ_A(Y) = additive genetic standard deviations
+
+**Range**: -1 to +1
+
+### Interpreting Genetic Correlations
+
+[Content to be developed:]
+
+- **r_A > 0 (Positive)**: Selecting for trait X increases trait Y
+- **r_A < 0 (Negative, antagonistic)**: Selecting for trait X decreases trait Y
+- **r_A ≈ 0**: Traits are genetically independent
+
+## Causes of Genetic Correlations
+
+[Content to be developed: Why are traits genetically correlated?]
+
+### Pleiotropy
+
+[Content to be developed: The same genes affect multiple traits. Example: Genes affecting overall growth rate influence multiple body weights (birth, weaning, yearling).]
+
+### Linkage Disequilibrium
+
+[Content to be developed: Genes affecting different traits are physically linked on the same chromosome. Creates temporary correlation that can be broken by recombination over generations.]
+
+### Distinguishing Pleiotropy from Linkage
+
+[Content to be developed: Pleiotropy is permanent (same gene); linkage is temporary (can be broken). In practice, most genetic correlations arise from pleiotropy.]
+
+## Examples of Genetic Correlations in Livestock
+
+[Content to be developed: Provide species-specific examples.]
+
+### Positive (Favorable) Genetic Correlations
+
+[Content to be developed:]
+
+- **Carcass traits**: Loin depth and % lean (r_A ≈ +0.6)
+- **Body weights at different ages**: Weaning weight and yearling weight (r_A ≈ +0.7)
+- **Milk components**: Fat yield and protein yield (r_A ≈ +0.7-0.8)
+
+### Positive (Unfavorable) Genetic Correlations
+
+[Content to be developed:]
+
+- **Swine backfat and growth rate**: Selecting for faster growth increases backfat (r_A ≈ +0.2 to +0.4)
+- **Broiler growth and leg problems**: Faster growth associated with leg soundness issues (r_A ≈ +0.3 to +0.5)
+
+### Negative (Antagonistic) Genetic Correlations
+
+[Content to be developed:]
+
+- **Dairy**: Milk yield and fertility (r_A ≈ -0.2 to -0.4)
+- **Dairy**: Milk yield and body condition score (r_A ≈ -0.3 to -0.5)
+- **Layers**: Egg production and egg weight (r_A ≈ -0.2 to -0.4)
+- **Swine**: Litter size and piglet birth weight (r_A ≈ -0.2 to -0.3)
+
+### Near-Zero Genetic Correlations
+
+[Content to be developed:]
+
+- **Beef**: Marbling and lean growth (r_A ≈ 0 to -0.1)
+- Traits affecting different physiological systems
+
+## Correlated Response to Selection
+
+[Content to be developed: How selection on trait X causes change in trait Y.]
+
+### Equation for Correlated Response
+
+[Content to be developed:]
+
+$$
+CR_Y = i \times r_X \times r_A(X,Y) \times \sigma_A(Y) \times \frac{1}{L}
+$$
+
+Where:
+
+- CR_Y = correlated response in trait Y (per year)
+- i = selection intensity on trait X
+- r_X = accuracy of selection on trait X
+- r_A(X,Y) = genetic correlation between X and Y
+- σ_A(Y) = additive genetic SD of trait Y
+- L = generation interval
+
+### Interpreting Correlated Response
+
+[Content to be developed:]
+
+- If r_A is positive, CR_Y is positive (Y increases when selecting for X)
+- If r_A is negative, CR_Y is negative (Y decreases when selecting for X)
+- Magnitude depends on r_A and genetic variation in Y
+
+### Example: Dairy Milk Yield and Fertility
+
+[Content to be developed:]
+
+If we select for increased milk yield:
+
+- Direct response: Milk increases (desired)
+- Correlated response: Fertility declines (undesired, because r_A ≈ -0.3)
+
+This creates the need for multi-trait selection (Chapter 9).
+
+## Why Genetic Correlations Complicate Breeding
+
+[Content to be developed: Antagonistic correlations prevent simultaneous improvement of all traits.]
+
+### Trade-offs
+
+[Content to be developed: Can't maximize all traits at once if correlations are negative. Must balance improvements.]
+
+### Need for Multi-Trait Selection
+
+[Content to be developed: Selection indices (Chapter 9) account for genetic correlations and economic weights to optimize overall genetic merit.]
+
+## R Demonstration: Simulating Genetic Correlations
+
+[Content to be developed:]
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Simulate two traits with genetic correlation
+library(MASS)
+set.seed(123)
+
+n <- 1000
+r_A <- -0.4  # Negative genetic correlation
+sigma_A_X <- 5
+sigma_A_Y <- 3
+sigma_E <- 8
+
+# Genetic covariance matrix
+Sigma_A <- matrix(c(sigma_A_X^2, r_A * sigma_A_X * sigma_A_Y,
+                    r_A * sigma_A_X * sigma_A_Y, sigma_A_Y^2), nrow = 2)
+
+# Simulate breeding values
+BV <- mvrnorm(n, mu = c(0, 0), Sigma = Sigma_A)
+colnames(BV) <- c("BV_X", "BV_Y")
+
+# Add environmental effects
+E_X <- rnorm(n, 0, sigma_E)
+E_Y <- rnorm(n, 0, sigma_E)
+
+# Phenotypes
+P_X <- BV[, "BV_X"] + E_X
+P_Y <- BV[, "BV_Y"] + E_Y
+
+# Plot
+data.frame(BV_X = BV[, "BV_X"], BV_Y = BV[, "BV_Y"]) %>%
+  ggplot(aes(x = BV_X, y = BV_Y)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", color = "red") +
+  labs(title = paste("Genetic Correlation r_A =", r_A),
+       x = "Breeding Value for Trait X",
+       y = "Breeding Value for Trait Y") +
+  theme_minimal()
+
+# Calculate correlation
+cor_genetic <- cor(BV[, "BV_X"], BV[, "BV_Y"])
+cat("Simulated genetic correlation:", round(cor_genetic, 3), "\n")
+```
+
+## R Demonstration: Correlated Response
+
+[Content to be developed:]
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Calculate correlated response
+i <- 1.76         # Selection intensity (top 10%)
+r_X <- 0.60       # Accuracy of selection on trait X
+r_A_XY <- -0.35   # Genetic correlation between X and Y
+sigma_A_Y <- 4    # Genetic SD of trait Y
+L <- 2            # Generation interval (years)
+
+CR_Y <- (i * r_X * r_A_XY * sigma_A_Y) / L
+cat("Correlated response in trait Y:", round(CR_Y, 2), "per year\n")
+cat("Note: Negative CR means trait Y declines when selecting for increased trait X\n")
+```
+
+## Summary
+
+[Content to be developed.]
+
+### Key Points
+
+- Genetic correlation (r_A) measures the degree to which two traits share genetic influences
+- Caused by pleiotropy (same genes) or linkage (genes on same chromosome)
+- Positive r_A: traits improve together
+- Negative r_A: improving one trait worsens the other (antagonistic)
+- Correlated response is the change in trait Y when selecting on trait X
+- Antagonistic correlations require multi-trait selection methods (Chapter 9)
+
+## Practice Problems
+
+[Problems to be developed]
+
+1. Traits X and Y have r_A = +0.60. If you select for increased trait X, what happens to trait Y? Explain.
+
+2. Milk yield and fertility in dairy cattle have r_A ≈ -0.30. Calculate the correlated response in fertility (in genetic SD units) if: i = 2.0, r_X = 0.70, σ_A(fertility) = 0.5, L = 4 years.
+
+3. Explain why genetic correlations caused by pleiotropy are more permanent than those caused by linkage.
+
+4. A breeder selects only for increased milk yield and ignores fertility. Over 10 years, fertility declines substantially. Explain why this happened and what should be done differently.
+
+## Further Reading
+
+[References to be added]
+
+- Published genetic parameters for livestock traits
+- Papers on antagonistic correlations in dairy, swine, poultry
