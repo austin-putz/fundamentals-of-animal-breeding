@@ -2,7 +2,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Foundations of Animal Breeding: Principles and Practice",
+    "title": "Fundamentals of Animal Breeding: Principles and Practice",
     "section": "",
     "text": "Welcome",
     "crumbs": [
@@ -12,7 +12,7 @@
   {
     "objectID": "index.html#animal-breeding-and-genetics-a-practical-introduction",
     "href": "index.html#animal-breeding-and-genetics-a-practical-introduction",
-    "title": "Foundations of Animal Breeding: Principles and Practice",
+    "title": "Fundamentals of Animal Breeding: Principles and Practice",
     "section": "Animal Breeding and Genetics: A Practical Introduction",
     "text": "Animal Breeding and Genetics: A Practical Introduction\nWelcome to Animal Breeding and Genetics—your comprehensive guide to understanding how we improve livestock populations through systematic genetic selection. This textbook is designed as the first course in animal breeding for undergraduate students in animal science programs.\n\n\n\n\n\n\nNote🎯 Quick Start\n\n\n\nNew to animal breeding? Start with Chapter 1 to understand the industry, then work through Chapters 2-6 for core concepts. Want to dive into genomics? Jump to Chapters 12-13 after covering the foundations.",
     "crumbs": [
@@ -22,7 +22,7 @@
   {
     "objectID": "index.html#why-animal-breeding-matters",
     "href": "index.html#why-animal-breeding-matters",
-    "title": "Foundations of Animal Breeding: Principles and Practice",
+    "title": "Fundamentals of Animal Breeding: Principles and Practice",
     "section": "Why Animal Breeding Matters",
     "text": "Why Animal Breeding Matters\nAnimal breeding has transformed livestock productivity over the past century:\n\n\nDairy cattle produce 4-5× more milk than their ancestors from the 1950s\n\nBroiler chickens reach market weight in half the time with dramatically improved feed efficiency\n\nSwine produce larger litters with leaner, faster-growing offspring\n\nBeef cattle exhibit improved carcass quality, feed efficiency, and maternal ability\n\nThese improvements directly impact:\n\n🌍 Food security: Efficient animal protein production for a growing population\n♻️ Sustainability: Reduced environmental footprint per unit of product\n💰 Economic viability: Improved profitability for livestock producers\n🐄 Animal welfare: Selection for health, longevity, and reduced stress\n\nUnderstanding animal breeding is essential for careers in production agriculture, genetics companies, breed associations, and agricultural research.",
     "crumbs": [
@@ -32,7 +32,7 @@
   {
     "objectID": "index.html#who-this-book-is-for",
     "href": "index.html#who-this-book-is-for",
-    "title": "Foundations of Animal Breeding: Principles and Practice",
+    "title": "Fundamentals of Animal Breeding: Principles and Practice",
     "section": "Who This Book Is For",
     "text": "Who This Book Is For\nPrimary Audience\n\n\nUndergraduate students (juniors/seniors) taking their first animal breeding course\n\nGraduate students seeking a practical foundation before advanced quantitative genetics\n\nIndustry professionals updating their knowledge of modern breeding methods\n\nLivestock producers wanting to understand genetic improvement\nPrerequisites\nTo get the most from this book, you should have completed:\n✅ Introductory genetics (Mendelian genetics, basic molecular biology) ✅ Basic statistics (mean, variance, correlation, simple linear regression) ✅ Introduction to R (or willingness to learn alongside the course)\n\n\n\n\n\n\nTipNew to R?\n\n\n\nDon’t worry! Appendix B provides comprehensive R resources. You can learn R as you work through the book.",
     "crumbs": [
@@ -42,7 +42,7 @@
   {
     "objectID": "index.html#what-youll-learn-chapter-by-chapter-overview",
     "href": "index.html#what-youll-learn-chapter-by-chapter-overview",
-    "title": "Foundations of Animal Breeding: Principles and Practice",
+    "title": "Fundamentals of Animal Breeding: Principles and Practice",
     "section": "What You’ll Learn: Chapter-by-Chapter Overview",
     "text": "What You’ll Learn: Chapter-by-Chapter Overview\nPart 1: Foundations of Animal Breeding\nChapter 1: Introduction to Animal Breeding\nLearn how the animal breeding industry works:\n\nWhat is animal breeding and why does it matter?\nHow genetics companies generate revenue (semen sales, females, embryos, genomic testing)\nIndustry structure by species (swine, poultry, dairy, beef, horses)\nMajor players: Genus/PIC, Cobb-Vantress, Select Sires, breed associations\nPyramid breeding structures (nucleus-multiplier-commercial)\n\nKey takeaway: Understand the business context that drives breeding decisions.\nChapter 2: Selection Basics\nMaster the fundamentals of genetic selection:\n\nTraits of economic importance (production, reproduction, health, efficiency, quality)\nPhenotyping: how we measure traits accurately\nData recording and quality control\nDefining breeding objectives\nIntroduction to True Breeding Value (TBV)\n\nKey takeaway: High-quality data is the foundation of genetic improvement.\nChapter 3: Basic Genetic Model\nLearn to partition phenotype into genetic and environmental components:\n\nThe basic model: y = μ + A + E\nAdditive vs. dominance vs. epistatic effects\nWhy additive effects drive selection response\nVariance partitioning (σ²_P = σ²_A + σ²_D + σ²_E)\nParent-offspring relationships\n\nKey takeaway: Only additive genetic effects are reliably transmitted to offspring.\nChapter 4: Quantitative vs. Simply Inherited Traits\nUnderstand different types of genetic architecture:\n\nSimply inherited traits (single genes, major effects): coat color, polled/horned, genetic defects\nQuantitative traits (many genes, small effects): growth, reproduction, production\nWhy most economic traits are quantitative\nThreshold traits and mixed models\nModern genomics bridges the gap\n\nKey takeaway: Breeding strategies differ for simply inherited vs. quantitative traits.\nPart 2: Genetic Parameters\nChapter 5: Heritability and Repeatability\nLearn the most important parameter in animal breeding:\n\nHeritability (h²): proportion of variance due to additive genetics\nInterpreting heritability (high: &gt;0.40; moderate: 0.20-0.40; low: &lt;0.20)\nCommon misconceptions about heritability\nRepeatability (r): upper limit of heritability\nPermanent environmental effects (PE)\n\nExamples: Growth traits (h² = 0.35), reproductive traits (h² = 0.10), carcass traits (h² = 0.45)\nKey takeaway: Higher heritability means faster response to selection.\nChapter 6: Breeder’s Equation and Selection Response\nPredict genetic progress with the breeder’s equation:\n\nThe equation: R = (i × r × σ_A) / L\nSelection intensity (i): how hard we select\nAccuracy (r): how well we predict breeding values\nGenetic standard deviation (σ_A): amount of genetic variation\nGeneration interval (L): age of parents when offspring are born\nTrade-offs among the four factors (especially accuracy vs. generation interval)\nComparing selection strategies (mass selection, progeny testing, genomic selection)\n\nKey takeaway: Genomic selection resolves the accuracy vs. generation interval trade-off.\nPart 3: Selection Methods\nChapter 7: Estimating Breeding Values\nLearn how to predict genetic merit:\n\nSimple methods: own performance, pedigree index, progeny average\nContemporary groups: accounting for environmental differences\nBLUP (Best Linear Unbiased Prediction) - the modern standard\nUnderstanding EBVs (Estimated Breeding Values)\nAccuracy and reliability of predictions\nExamples: Dairy Net Merit, Beef EPDs, Swine EBVs\n\nKey takeaway: BLUP uses all information optimally to estimate breeding values.\nChapter 8: Genetic Correlations and Correlated Response\nUnderstand how traits are genetically linked:\n\nGenetic correlation (r_A): correlation between breeding values for two traits\nCauses: pleiotropy (same genes) or linkage (genes on same chromosome)\nInterpreting correlations: positive, negative (antagonistic), zero\nCorrelated response to selection\nImportant examples:\n\nDairy: milk yield vs. fertility (r_A ≈ -0.35) ❌\nSwine: growth rate vs. backfat (r_A ≈ +0.30) ❌\nBeef: weaning weight vs. yearling weight (r_A ≈ +0.70) ✅\n\n\n\nKey takeaway: Negative genetic correlations require multi-trait selection.\nChapter 9: Multiple Trait Selection and Selection Index\nLearn to balance improvement across multiple traits:\n\nThe need for multi-trait selection\nBreeding goal (H) vs. selection index (I)\nEconomic weights: how much is each trait worth?\nSelection index theory: b = P⁻¹ G v\nCalculating and interpreting index weights\nReal-world examples: Dairy Net Merit, Beef Terminal Index, Swine Sow Index\n\nKey takeaway: Selection indices optimally combine traits based on economic value and genetic parameters.\nPart 4: Mating Systems and Crossbreeding\nChapter 10: Mating Strategies and Optimum Contribution Selection\nLearn to make smart mating decisions:\n\nSelection vs. mating decisions\nTypes of mating systems (random, assortative, compensatory)\nManaging inbreeding and genetic diversity\nInbreeding coefficient (F) and inbreeding depression\nOptimum Contribution Selection (OCS): maximize gain while constraining inbreeding\nSoftware tools: MateSel, AlphaMate\n\nKey takeaway: Mating decisions affect both genetic gain and long-term genetic diversity.\nChapter 11: Crossbreeding and Hybrid Vigor\nExploit heterosis for improved performance:\n\nWhat is crossbreeding and why crossbreed?\nHeterosis (hybrid vigor): superior performance of crossbreds\nGenetic basis: dominance, overdominance, epistasis\nTraits with high heterosis: reproductive traits (5-20%)\nCrossbreeding systems: terminal cross, rotational, composite breeds\nIndustry structure:\n\n\nSwine: (Large White × Landrace) F₁ × Duroc terminal sire\n\nBeef: Crossbred cows × terminal sire\n\nPoultry: Proprietary four-way crosses\n\n\n\nKey takeaway: Crossbreeding is nearly universal in commercial swine and poultry production.\nPart 5: Genomic Tools\nChapter 12: Introduction to Genomics\nLearn about DNA markers and genomic technologies:\n\nWhat is genomics in animal breeding?\nSNPs (Single Nucleotide Polymorphisms): the most common genetic markers\nSNP chips (arrays): genotyping thousands to millions of SNPs\nBioinformatics basics: quality control, imputation\nWhole genome sequencing (WGS)\nApplications: genomic selection, parentage verification, GWAS, inbreeding management\n\nKey takeaway: Genomic technologies have revolutionized animal breeding since ~2008.\nChapter 13: Genomic Selection\nUnderstand modern genomic prediction methods:\n\nWhat is genomic selection? Predicting breeding values from SNP data\nWhy it works: linkage disequilibrium (LD) between SNPs and causal mutations\nGenomic BLUP (GBLUP): using genomic relationship matrix (G)\nSNP-BLUP: estimating effects of individual SNPs\nBayesian methods: BayesA, BayesB, BayesC (allow SNPs to have different effects)\nSingle-step genomic BLUP (ssGBLUP): the industry standard\nImpact: doubled rate of genetic gain in dairy cattle\n\nKey takeaway: Genomic selection enables high-accuracy predictions for young animals without waiting for progeny.\nPart 6: Practical Applications\nChapter 14: Practical Animal Breeding and Data Skills\nBuild practical skills for industry careers:\n\nSQL basics for querying breeding databases\nAPIs for accessing genomic data and services\nData management and quality control\nAnimal identification systems (RFID, DNA-based parentage)\nPhenotypic culling vs. genetic selection\nCareer paths: geneticist, data manager, reproductive technician, bioinformatician\nSoftware used in industry: BLUPF90, ASReml, MateSel\n\nKey takeaway: Successful breeders need both theoretical knowledge and practical data skills.",
     "crumbs": [
@@ -52,7 +52,7 @@
   {
     "objectID": "index.html#appendices",
     "href": "index.html#appendices",
-    "title": "Foundations of Animal Breeding: Principles and Practice",
+    "title": "Fundamentals of Animal Breeding: Principles and Practice",
     "section": "Appendices",
     "text": "Appendices\nAppendix A: Datasets - Documentation of simulated datasets used throughout the book Appendix B: R Resources - Guide to R packages for animal breeding (tidyverse, lme4, AGHmatrix, BGLR, rrBLUP, AlphaSimR) Appendix C: Glossary - Alphabetical reference of genetic terms",
     "crumbs": [
@@ -62,7 +62,7 @@
   {
     "objectID": "index.html#what-makes-this-book-different",
     "href": "index.html#what-makes-this-book-different",
-    "title": "Foundations of Animal Breeding: Principles and Practice",
+    "title": "Fundamentals of Animal Breeding: Principles and Practice",
     "section": "What Makes This Book Different",
     "text": "What Makes This Book Different\n🐄 Livestock-Focused\n\nEvery example comes from real livestock breeding: swine, poultry, dairy, beef, horses, sheep\n📊 R Programming Integrated\n\nLearn to perform calculations and analyze data using R (code included but hidden by default)\n🏭 Industry Context\n\nUnderstand how genetics companies work and make money\n📈 Modern Genomics\n\nCovers genomic selection methods used in today’s breeding programs\n🎓 Undergraduate-Friendly\n\nClear explanations with intuition before equations; practical emphasis over mathematical proofs\n💡 Interactive Learning (Coming Soon)\nLinks to Shiny apps for hands-on exploration of breeding concepts",
     "crumbs": [
@@ -72,7 +72,7 @@
   {
     "objectID": "index.html#how-to-use-this-book",
     "href": "index.html#how-to-use-this-book",
-    "title": "Foundations of Animal Breeding: Principles and Practice",
+    "title": "Fundamentals of Animal Breeding: Principles and Practice",
     "section": "How to Use This Book",
     "text": "How to Use This Book\nFor a Full Course (14-16 weeks)\nWork through Chapters 1-13 sequentially, approximately one chapter per week. Use Chapter 14 as a capstone or integrate throughout.\nFor Self-Study\n\n\nCore sequence: Chapters 1-6 (foundations and genetic parameters)\n\nThen choose your path:\n\nSelection focus → Chapters 7-9\nCrossbreeding focus → Chapters 10-11\nGenomics focus → Chapters 12-13\nCareer preparation → Chapter 14\n\n\nTips for Success\n\n\nRead conceptually first - understand the “why” before the equations\n\nWork through examples - do calculations by hand before checking solutions\n\nRun the R code - experiment with changing parameters\n\nUse the practice problems - test your understanding at the end of each chapter\n\nRefer to appendices - datasets, R resources, and glossary as needed",
     "crumbs": [
@@ -82,7 +82,7 @@
   {
     "objectID": "index.html#software-requirements",
     "href": "index.html#software-requirements",
-    "title": "Foundations of Animal Breeding: Principles and Practice",
+    "title": "Fundamentals of Animal Breeding: Principles and Practice",
     "section": "Software Requirements",
     "text": "Software Requirements\nR and RStudio\nThis book uses R (version ≥ 4.0) and RStudio. Both are free and open-source.\nInstallation: 1. Download R from CRAN 2. Download RStudio from Posit\nKey R Packages\nInstall packages used throughout the book:\ninstall.packages(c(\n  # Data manipulation and visualization\n  \"tidyverse\",\n\n  # Pedigree and relationships\n  \"pedigree\", \"nadiv\", \"AGHmatrix\",\n\n  # Mixed models and genetic evaluation\n  \"lme4\", \"lmerTest\",\n\n  # Genomic prediction\n  \"BGLR\", \"rrBLUP\", \"brms\",\n\n  # Simulation\n  \"AlphaSimR\",\n\n  # Database and utilities\n  \"DBI\", \"RSQLite\", \"knitr\", \"kableExtra\"\n))\nSee Appendix B for detailed package descriptions and documentation.",
     "crumbs": [
@@ -92,7 +92,7 @@
   {
     "objectID": "index.html#about-the-author",
     "href": "index.html#about-the-author",
-    "title": "Foundations of Animal Breeding: Principles and Practice",
+    "title": "Fundamentals of Animal Breeding: Principles and Practice",
     "section": "About the Author",
     "text": "About the Author\nAustin Putz has extensive experience in animal breeding and quantitative genetics, with expertise in swine, beef cattle, and dairy cattle breeding programs. [Additional bio details to be added]",
     "crumbs": [
@@ -102,7 +102,7 @@
   {
     "objectID": "index.html#acknowledgments",
     "href": "index.html#acknowledgments",
-    "title": "Foundations of Animal Breeding: Principles and Practice",
+    "title": "Fundamentals of Animal Breeding: Principles and Practice",
     "section": "Acknowledgments",
     "text": "Acknowledgments\nThis book builds on decades of research and teaching in quantitative genetics and animal breeding. Special thanks to:\n\nThe pioneers of quantitative genetics whose work forms this field’s foundation\nIndustry partners who shared their expertise and real-world perspectives\nStudents whose questions shaped the explanations in this book\nColleagues who reviewed drafts and provided invaluable feedback",
     "crumbs": [
@@ -112,7 +112,7 @@
   {
     "objectID": "index.html#getting-started",
     "href": "index.html#getting-started",
-    "title": "Foundations of Animal Breeding: Principles and Practice",
+    "title": "Fundamentals of Animal Breeding: Principles and Practice",
     "section": "Getting Started",
     "text": "Getting Started\nReady to begin? Start with Chapter 1: Introduction to Animal Breeding to understand the industry context, then progress through the foundational concepts in Chapters 2-6.\nWelcome to the fascinating world of animal breeding and genetics!\n\nNote: This is an open educational resource. All code and datasets are freely available for teaching and learning.",
     "crumbs": [
