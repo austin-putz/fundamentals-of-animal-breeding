@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>8&nbsp; Genetic Correlations and Correlated Response – Foundations of Animal Breeding: Principles and Practice</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/09-selection-index.html" rel="next">
+<link href="../chapters/07-breeding-values.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dd8fe44f7e8d2a1c1a36222b42c75f52.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-f29d4b558c027fdd1c8e949aa5364f62.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><style>html{ scroll-behavior: smooth; }</style>
+<link href="../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../site_libs/pagedtable-1.1/js/pagedtable.js"></script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script><link rel="stylesheet" href="../styles.css">
+</head>
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/06-breeders-equation.html">PART 2: SELECTION AND BREEDING STRATEGIES</a></li><li class="breadcrumb-item"><a href="../chapters/08-genetic-correlations.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Genetic Correlations and Correlated Response</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Foundations of Animal Breeding: Principles and Practice</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">PART 1: FUNDAMENTALS</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/01-introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Role and Tools of the Modern Animal Breeder</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/02-selection-basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Selection Basics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/03-genetic-model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Basic Genetic Model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/04-quantitative-traits.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Quantitative vs.&nbsp;Simply Inherited Traits</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/05-heritability-repeatability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Heritability and Repeatability</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">PART 2: SELECTION AND BREEDING STRATEGIES</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/06-breeders-equation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Breeder’s Equation and Selection Response</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/07-breeding-values.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Estimating Breeding Values</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/08-genetic-correlations.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Genetic Correlations and Correlated Response</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/09-selection-index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Multiple Trait Selection and Selection Index</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/10-mating-strategies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Mating Strategies and Optimum Contribution Selection</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/11-crossbreeding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Crossbreeding and Hybrid Vigor</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">PART 3: GENOMICS</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/12-genomics-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Introduction to Genomics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/13-genomic-selection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Genomic Selection</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">PART 4: PRACTICAL SKILLS</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/14-practical-skills.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Practical Animal Breeding and Data Skills</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">PART 5: SPECIES-SPECIFIC BREEDING</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/15-swine-breeding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Swine Breeding</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/16-poultry-breeding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Poultry Breeding</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/17-dairy-cattle-breeding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Dairy Cattle Breeding</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/18-beef-cattle-breeding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Beef Cattle Breeding</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/19-sheep-breeding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Sheep Breeding</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/20-camelidae-breeding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Camelidae Breeding</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/21-aquaculture-breeding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Aquaculture Breeding</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/22-companion-animal-breeding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Companion Animal Breeding</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">PART 6: PRECISION LIVESTOCK FARMING</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/23-plf-introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Introduction to Precision Livestock Farming</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/24-wearable-technologies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Wearable Technologies in Livestock</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/25-computer-vision.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Computer Vision and Camera Technologies</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices/datasets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Datasets</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices/r-resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R Resources for Animal Breeding</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices/glossary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Glossary of Genetic Terms</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
+   
+  <ul>
+<li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">8.1</span> Introduction</a></li>
+  <li>
+<a href="#what-is-genetic-correlation" id="toc-what-is-genetic-correlation" class="nav-link" data-scroll-target="#what-is-genetic-correlation"><span class="header-section-number">8.2</span> What is Genetic Correlation?</a>
+  <ul class="collapse">
+<li><a href="#definition" id="toc-definition" class="nav-link" data-scroll-target="#definition"><span class="header-section-number">8.2.1</span> Definition</a></li>
+  <li><a href="#interpreting-genetic-correlations" id="toc-interpreting-genetic-correlations" class="nav-link" data-scroll-target="#interpreting-genetic-correlations"><span class="header-section-number">8.2.2</span> Interpreting Genetic Correlations</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#causes-of-genetic-correlations" id="toc-causes-of-genetic-correlations" class="nav-link" data-scroll-target="#causes-of-genetic-correlations"><span class="header-section-number">8.3</span> Causes of Genetic Correlations</a>
+  <ul class="collapse">
+<li><a href="#pleiotropy" id="toc-pleiotropy" class="nav-link" data-scroll-target="#pleiotropy"><span class="header-section-number">8.3.1</span> Pleiotropy</a></li>
+  <li><a href="#linkage-disequilibrium" id="toc-linkage-disequilibrium" class="nav-link" data-scroll-target="#linkage-disequilibrium"><span class="header-section-number">8.3.2</span> Linkage Disequilibrium</a></li>
+  <li><a href="#distinguishing-pleiotropy-from-linkage" id="toc-distinguishing-pleiotropy-from-linkage" class="nav-link" data-scroll-target="#distinguishing-pleiotropy-from-linkage"><span class="header-section-number">8.3.3</span> Distinguishing Pleiotropy from Linkage</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#examples-of-genetic-correlations-in-livestock" id="toc-examples-of-genetic-correlations-in-livestock" class="nav-link" data-scroll-target="#examples-of-genetic-correlations-in-livestock"><span class="header-section-number">8.4</span> Examples of Genetic Correlations in Livestock</a>
+  <ul class="collapse">
+<li><a href="#positive-favorable-genetic-correlations" id="toc-positive-favorable-genetic-correlations" class="nav-link" data-scroll-target="#positive-favorable-genetic-correlations"><span class="header-section-number">8.4.1</span> Positive (Favorable) Genetic Correlations</a></li>
+  <li><a href="#positive-unfavorable-genetic-correlations" id="toc-positive-unfavorable-genetic-correlations" class="nav-link" data-scroll-target="#positive-unfavorable-genetic-correlations"><span class="header-section-number">8.4.2</span> Positive (Unfavorable) Genetic Correlations</a></li>
+  <li><a href="#negative-antagonistic-genetic-correlations" id="toc-negative-antagonistic-genetic-correlations" class="nav-link" data-scroll-target="#negative-antagonistic-genetic-correlations"><span class="header-section-number">8.4.3</span> Negative (Antagonistic) Genetic Correlations</a></li>
+  <li><a href="#near-zero-genetic-correlations" id="toc-near-zero-genetic-correlations" class="nav-link" data-scroll-target="#near-zero-genetic-correlations"><span class="header-section-number">8.4.4</span> Near-Zero Genetic Correlations</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#correlated-response-to-selection" id="toc-correlated-response-to-selection" class="nav-link" data-scroll-target="#correlated-response-to-selection"><span class="header-section-number">8.5</span> Correlated Response to Selection</a>
+  <ul class="collapse">
+<li><a href="#equation-for-correlated-response" id="toc-equation-for-correlated-response" class="nav-link" data-scroll-target="#equation-for-correlated-response"><span class="header-section-number">8.5.1</span> Equation for Correlated Response</a></li>
+  <li><a href="#interpreting-correlated-response" id="toc-interpreting-correlated-response" class="nav-link" data-scroll-target="#interpreting-correlated-response"><span class="header-section-number">8.5.2</span> Interpreting Correlated Response</a></li>
+  <li><a href="#example-dairy-milk-yield-and-fertility" id="toc-example-dairy-milk-yield-and-fertility" class="nav-link" data-scroll-target="#example-dairy-milk-yield-and-fertility"><span class="header-section-number">8.5.3</span> Example: Dairy Milk Yield and Fertility</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#why-genetic-correlations-complicate-breeding" id="toc-why-genetic-correlations-complicate-breeding" class="nav-link" data-scroll-target="#why-genetic-correlations-complicate-breeding"><span class="header-section-number">8.6</span> Why Genetic Correlations Complicate Breeding</a>
+  <ul class="collapse">
+<li><a href="#trade-offs" id="toc-trade-offs" class="nav-link" data-scroll-target="#trade-offs"><span class="header-section-number">8.6.1</span> Trade-offs</a></li>
+  <li><a href="#need-for-multi-trait-selection" id="toc-need-for-multi-trait-selection" class="nav-link" data-scroll-target="#need-for-multi-trait-selection"><span class="header-section-number">8.6.2</span> Need for Multi-Trait Selection</a></li>
+  </ul>
+</li>
+  <li><a href="#r-demonstration-simulating-genetic-correlations" id="toc-r-demonstration-simulating-genetic-correlations" class="nav-link" data-scroll-target="#r-demonstration-simulating-genetic-correlations"><span class="header-section-number">8.7</span> R Demonstration: Simulating Genetic Correlations</a></li>
+  <li><a href="#r-demonstration-correlated-response" id="toc-r-demonstration-correlated-response" class="nav-link" data-scroll-target="#r-demonstration-correlated-response"><span class="header-section-number">8.8</span> R Demonstration: Correlated Response</a></li>
+  <li>
+<a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">8.9</span> Summary</a>
+  <ul class="collapse">
+<li><a href="#key-points" id="toc-key-points" class="nav-link" data-scroll-target="#key-points"><span class="header-section-number">8.9.1</span> Key Points</a></li>
+  </ul>
+</li>
+  <li><a href="#practice-problems" id="toc-practice-problems" class="nav-link" data-scroll-target="#practice-problems"><span class="header-section-number">8.10</span> Practice Problems</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">8.11</span> Further Reading</a></li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/06-breeders-equation.html">PART 2: SELECTION AND BREEDING STRATEGIES</a></li><li class="breadcrumb-item"><a href="../chapters/08-genetic-correlations.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Genetic Correlations and Correlated Response</span></a></li></ol></nav><div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title"><span id="sec-genetic-correlations" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Genetic Correlations and Correlated Response</span></span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><section id="learning-objectives" class="level3 unnumbered learning-objectives"><h3 class="unnumbered anchored" data-anchor-id="learning-objectives">Learning Objectives</h3>
+<p>By the end of this chapter, you will be able to:</p>
+<ol type="1">
+<li>Define genetic correlation and explain what causes it</li>
+<li>Interpret positive, negative, and zero genetic correlations</li>
+<li>Calculate correlated response to selection</li>
+<li>Explain why antagonistic correlations complicate breeding programs</li>
+<li>Provide examples of important genetic correlations in livestock</li>
+</ol></section><section id="introduction" class="level2" data-number="8.1"><h2 data-number="8.1" class="anchored" data-anchor-id="introduction">
+<span class="header-section-number">8.1</span> Introduction</h2>
+<p>[Content to be developed: Most breeding programs aim to improve multiple traits. Understanding genetic correlations is essential for predicting how selection on one trait affects other traits.]</p>
+</section><section id="what-is-genetic-correlation" class="level2" data-number="8.2"><h2 data-number="8.2" class="anchored" data-anchor-id="what-is-genetic-correlation">
+<span class="header-section-number">8.2</span> What is Genetic Correlation?</h2>
+<p>[Content to be developed: Define genetic correlation (r_A).]</p>
+<section id="definition" class="level3" data-number="8.2.1"><h3 data-number="8.2.1" class="anchored" data-anchor-id="definition">
+<span class="header-section-number">8.2.1</span> Definition</h3>
+<p>[Content to be developed:]</p>
+<p><span class="math display">\[
+r_A(X,Y) = \frac{\text{Cov}_A(X, Y)}{\sigma_A(X) \times \sigma_A(Y)}
+\]</span></p>
+<p>Where:</p>
+<ul>
+<li>r_A(X,Y) = genetic correlation between traits X and Y</li>
+<li>Cov_A(X,Y) = additive genetic covariance</li>
+<li>σ_A(X), σ_A(Y) = additive genetic standard deviations</li>
+</ul>
+<p><strong>Range</strong>: -1 to +1</p>
+</section><section id="interpreting-genetic-correlations" class="level3" data-number="8.2.2"><h3 data-number="8.2.2" class="anchored" data-anchor-id="interpreting-genetic-correlations">
+<span class="header-section-number">8.2.2</span> Interpreting Genetic Correlations</h3>
+<p>[Content to be developed:]</p>
+<ul>
+<li>
+<strong>r_A &gt; 0 (Positive)</strong>: Selecting for trait X increases trait Y</li>
+<li>
+<strong>r_A &lt; 0 (Negative, antagonistic)</strong>: Selecting for trait X decreases trait Y</li>
+<li>
+<strong>r_A ≈ 0</strong>: Traits are genetically independent</li>
+</ul></section></section><section id="causes-of-genetic-correlations" class="level2" data-number="8.3"><h2 data-number="8.3" class="anchored" data-anchor-id="causes-of-genetic-correlations">
+<span class="header-section-number">8.3</span> Causes of Genetic Correlations</h2>
+<p>[Content to be developed: Why are traits genetically correlated?]</p>
+<section id="pleiotropy" class="level3" data-number="8.3.1"><h3 data-number="8.3.1" class="anchored" data-anchor-id="pleiotropy">
+<span class="header-section-number">8.3.1</span> Pleiotropy</h3>
+<p>[Content to be developed: The same genes affect multiple traits. Example: Genes affecting overall growth rate influence multiple body weights (birth, weaning, yearling).]</p>
+</section><section id="linkage-disequilibrium" class="level3" data-number="8.3.2"><h3 data-number="8.3.2" class="anchored" data-anchor-id="linkage-disequilibrium">
+<span class="header-section-number">8.3.2</span> Linkage Disequilibrium</h3>
+<p>[Content to be developed: Genes affecting different traits are physically linked on the same chromosome. Creates temporary correlation that can be broken by recombination over generations.]</p>
+</section><section id="distinguishing-pleiotropy-from-linkage" class="level3" data-number="8.3.3"><h3 data-number="8.3.3" class="anchored" data-anchor-id="distinguishing-pleiotropy-from-linkage">
+<span class="header-section-number">8.3.3</span> Distinguishing Pleiotropy from Linkage</h3>
+<p>[Content to be developed: Pleiotropy is permanent (same gene); linkage is temporary (can be broken). In practice, most genetic correlations arise from pleiotropy.]</p>
+</section></section><section id="examples-of-genetic-correlations-in-livestock" class="level2" data-number="8.4"><h2 data-number="8.4" class="anchored" data-anchor-id="examples-of-genetic-correlations-in-livestock">
+<span class="header-section-number">8.4</span> Examples of Genetic Correlations in Livestock</h2>
+<p>[Content to be developed: Provide species-specific examples.]</p>
+<section id="positive-favorable-genetic-correlations" class="level3" data-number="8.4.1"><h3 data-number="8.4.1" class="anchored" data-anchor-id="positive-favorable-genetic-correlations">
+<span class="header-section-number">8.4.1</span> Positive (Favorable) Genetic Correlations</h3>
+<p>[Content to be developed:]</p>
+<ul>
+<li>
+<strong>Carcass traits</strong>: Loin depth and % lean (r_A ≈ +0.6)</li>
+<li>
+<strong>Body weights at different ages</strong>: Weaning weight and yearling weight (r_A ≈ +0.7)</li>
+<li>
+<strong>Milk components</strong>: Fat yield and protein yield (r_A ≈ +0.7-0.8)</li>
+</ul></section><section id="positive-unfavorable-genetic-correlations" class="level3" data-number="8.4.2"><h3 data-number="8.4.2" class="anchored" data-anchor-id="positive-unfavorable-genetic-correlations">
+<span class="header-section-number">8.4.2</span> Positive (Unfavorable) Genetic Correlations</h3>
+<p>[Content to be developed:]</p>
+<ul>
+<li>
+<strong>Swine backfat and growth rate</strong>: Selecting for faster growth increases backfat (r_A ≈ +0.2 to +0.4)</li>
+<li>
+<strong>Broiler growth and leg problems</strong>: Faster growth associated with leg soundness issues (r_A ≈ +0.3 to +0.5)</li>
+</ul></section><section id="negative-antagonistic-genetic-correlations" class="level3" data-number="8.4.3"><h3 data-number="8.4.3" class="anchored" data-anchor-id="negative-antagonistic-genetic-correlations">
+<span class="header-section-number">8.4.3</span> Negative (Antagonistic) Genetic Correlations</h3>
+<p>[Content to be developed:]</p>
+<ul>
+<li>
+<strong>Dairy</strong>: Milk yield and fertility (r_A ≈ -0.2 to -0.4)</li>
+<li>
+<strong>Dairy</strong>: Milk yield and body condition score (r_A ≈ -0.3 to -0.5)</li>
+<li>
+<strong>Layers</strong>: Egg production and egg weight (r_A ≈ -0.2 to -0.4)</li>
+<li>
+<strong>Swine</strong>: Litter size and piglet birth weight (r_A ≈ -0.2 to -0.3)</li>
+</ul></section><section id="near-zero-genetic-correlations" class="level3" data-number="8.4.4"><h3 data-number="8.4.4" class="anchored" data-anchor-id="near-zero-genetic-correlations">
+<span class="header-section-number">8.4.4</span> Near-Zero Genetic Correlations</h3>
+<p>[Content to be developed:]</p>
+<ul>
+<li>
+<strong>Beef</strong>: Marbling and lean growth (r_A ≈ 0 to -0.1)</li>
+<li>Traits affecting different physiological systems</li>
+</ul></section></section><section id="correlated-response-to-selection" class="level2" data-number="8.5"><h2 data-number="8.5" class="anchored" data-anchor-id="correlated-response-to-selection">
+<span class="header-section-number">8.5</span> Correlated Response to Selection</h2>
+<p>[Content to be developed: How selection on trait X causes change in trait Y.]</p>
+<section id="equation-for-correlated-response" class="level3" data-number="8.5.1"><h3 data-number="8.5.1" class="anchored" data-anchor-id="equation-for-correlated-response">
+<span class="header-section-number">8.5.1</span> Equation for Correlated Response</h3>
+<p>[Content to be developed:]</p>
+<p><span class="math display">\[
+CR_Y = i \times r_X \times r_A(X,Y) \times \sigma_A(Y) \times \frac{1}{L}
+\]</span></p>
+<p>Where:</p>
+<ul>
+<li>CR_Y = correlated response in trait Y (per year)</li>
+<li>i = selection intensity on trait X</li>
+<li>r_X = accuracy of selection on trait X</li>
+<li>r_A(X,Y) = genetic correlation between X and Y</li>
+<li>σ_A(Y) = additive genetic SD of trait Y</li>
+<li>L = generation interval</li>
+</ul></section><section id="interpreting-correlated-response" class="level3" data-number="8.5.2"><h3 data-number="8.5.2" class="anchored" data-anchor-id="interpreting-correlated-response">
+<span class="header-section-number">8.5.2</span> Interpreting Correlated Response</h3>
+<p>[Content to be developed:]</p>
+<ul>
+<li>If r_A is positive, CR_Y is positive (Y increases when selecting for X)</li>
+<li>If r_A is negative, CR_Y is negative (Y decreases when selecting for X)</li>
+<li>Magnitude depends on r_A and genetic variation in Y</li>
+</ul></section><section id="example-dairy-milk-yield-and-fertility" class="level3" data-number="8.5.3"><h3 data-number="8.5.3" class="anchored" data-anchor-id="example-dairy-milk-yield-and-fertility">
+<span class="header-section-number">8.5.3</span> Example: Dairy Milk Yield and Fertility</h3>
+<p>[Content to be developed:]</p>
+<p>If we select for increased milk yield:</p>
+<ul>
+<li>Direct response: Milk increases (desired)</li>
+<li>Correlated response: Fertility declines (undesired, because r_A ≈ -0.3)</li>
+</ul>
+<p>This creates the need for multi-trait selection (Chapter 9).</p>
+</section></section><section id="why-genetic-correlations-complicate-breeding" class="level2" data-number="8.6"><h2 data-number="8.6" class="anchored" data-anchor-id="why-genetic-correlations-complicate-breeding">
+<span class="header-section-number">8.6</span> Why Genetic Correlations Complicate Breeding</h2>
+<p>[Content to be developed: Antagonistic correlations prevent simultaneous improvement of all traits.]</p>
+<section id="trade-offs" class="level3" data-number="8.6.1"><h3 data-number="8.6.1" class="anchored" data-anchor-id="trade-offs">
+<span class="header-section-number">8.6.1</span> Trade-offs</h3>
+<p>[Content to be developed: Can’t maximize all traits at once if correlations are negative. Must balance improvements.]</p>
+</section><section id="need-for-multi-trait-selection" class="level3" data-number="8.6.2"><h3 data-number="8.6.2" class="anchored" data-anchor-id="need-for-multi-trait-selection">
+<span class="header-section-number">8.6.2</span> Need for Multi-Trait Selection</h3>
+<p>[Content to be developed: Selection indices (Chapter 9) account for genetic correlations and economic weights to optimize overall genetic merit.]</p>
+</section></section><section id="r-demonstration-simulating-genetic-correlations" class="level2" data-number="8.7"><h2 data-number="8.7" class="anchored" data-anchor-id="r-demonstration-simulating-genetic-correlations">
+<span class="header-section-number">8.7</span> R Demonstration: Simulating Genetic Correlations</h2>
+<p>[Content to be developed:]</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Simulate two traits with genetic correlation</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.stats.ox.ac.uk/pub/MASS4/">MASS</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span>
+<span><span class="va">r_A</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">0.4</span>  <span class="co"># Negative genetic correlation</span></span>
+<span><span class="va">sigma_A_X</span> <span class="op">&lt;-</span> <span class="fl">5</span></span>
+<span><span class="va">sigma_A_Y</span> <span class="op">&lt;-</span> <span class="fl">3</span></span>
+<span><span class="va">sigma_E</span> <span class="op">&lt;-</span> <span class="fl">8</span></span>
+<span></span>
+<span><span class="co"># Genetic covariance matrix</span></span>
+<span><span class="va">Sigma_A</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">sigma_A_X</span><span class="op">^</span><span class="fl">2</span>, <span class="va">r_A</span> <span class="op">*</span> <span class="va">sigma_A_X</span> <span class="op">*</span> <span class="va">sigma_A_Y</span>,</span>
+<span>                    <span class="va">r_A</span> <span class="op">*</span> <span class="va">sigma_A_X</span> <span class="op">*</span> <span class="va">sigma_A_Y</span>, <span class="va">sigma_A_Y</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Simulate breeding values</span></span>
+<span><span class="va">BV</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/MASS/man/mvrnorm.html">mvrnorm</a></span><span class="op">(</span><span class="va">n</span>, mu <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>, Sigma <span class="op">=</span> <span class="va">Sigma_A</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">BV</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"BV_X"</span>, <span class="st">"BV_Y"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Add environmental effects</span></span>
+<span><span class="va">E_X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">0</span>, <span class="va">sigma_E</span><span class="op">)</span></span>
+<span><span class="va">E_Y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">0</span>, <span class="va">sigma_E</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Phenotypes</span></span>
+<span><span class="va">P_X</span> <span class="op">&lt;-</span> <span class="va">BV</span><span class="op">[</span>, <span class="st">"BV_X"</span><span class="op">]</span> <span class="op">+</span> <span class="va">E_X</span></span>
+<span><span class="va">P_Y</span> <span class="op">&lt;-</span> <span class="va">BV</span><span class="op">[</span>, <span class="st">"BV_Y"</span><span class="op">]</span> <span class="op">+</span> <span class="va">E_Y</span></span>
+<span></span>
+<span><span class="co"># Plot</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>BV_X <span class="op">=</span> <span class="va">BV</span><span class="op">[</span>, <span class="st">"BV_X"</span><span class="op">]</span>, BV_Y <span class="op">=</span> <span class="va">BV</span><span class="op">[</span>, <span class="st">"BV_Y"</span><span class="op">]</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">BV_X</span>, y <span class="op">=</span> <span class="va">BV_Y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Genetic Correlation r_A ="</span>, <span class="va">r_A</span><span class="op">)</span>,</span>
+<span>       x <span class="op">=</span> <span class="st">"Breeding Value for Trait X"</span>,</span>
+<span>       y <span class="op">=</span> <span class="st">"Breeding Value for Trait Y"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Calculate correlation</span></span>
+<span><span class="va">cor_genetic</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">BV</span><span class="op">[</span>, <span class="st">"BV_X"</span><span class="op">]</span>, <span class="va">BV</span><span class="op">[</span>, <span class="st">"BV_Y"</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Simulated genetic correlation:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">cor_genetic</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="r-demonstration-correlated-response" class="level2" data-number="8.8"><h2 data-number="8.8" class="anchored" data-anchor-id="r-demonstration-correlated-response">
+<span class="header-section-number">8.8</span> R Demonstration: Correlated Response</h2>
+<p>[Content to be developed:]</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Calculate correlated response</span></span>
+<span><span class="va">i</span> <span class="op">&lt;-</span> <span class="fl">1.76</span>         <span class="co"># Selection intensity (top 10%)</span></span>
+<span><span class="va">r_X</span> <span class="op">&lt;-</span> <span class="fl">0.60</span>       <span class="co"># Accuracy of selection on trait X</span></span>
+<span><span class="va">r_A_XY</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">0.35</span>   <span class="co"># Genetic correlation between X and Y</span></span>
+<span><span class="va">sigma_A_Y</span> <span class="op">&lt;-</span> <span class="fl">4</span>    <span class="co"># Genetic SD of trait Y</span></span>
+<span><span class="va">L</span> <span class="op">&lt;-</span> <span class="fl">2</span>            <span class="co"># Generation interval (years)</span></span>
+<span></span>
+<span><span class="va">CR_Y</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">i</span> <span class="op">*</span> <span class="va">r_X</span> <span class="op">*</span> <span class="va">r_A_XY</span> <span class="op">*</span> <span class="va">sigma_A_Y</span><span class="op">)</span> <span class="op">/</span> <span class="va">L</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Correlated response in trait Y:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">CR_Y</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"per year\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Note: Negative CR means trait Y declines when selecting for increased trait X\n"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="summary" class="level2" data-number="8.9"><h2 data-number="8.9" class="anchored" data-anchor-id="summary">
+<span class="header-section-number">8.9</span> Summary</h2>
+<p>[Content to be developed.]</p>
+<section id="key-points" class="level3" data-number="8.9.1"><h3 data-number="8.9.1" class="anchored" data-anchor-id="key-points">
+<span class="header-section-number">8.9.1</span> Key Points</h3>
+<ul>
+<li>Genetic correlation (r_A) measures the degree to which two traits share genetic influences</li>
+<li>Caused by pleiotropy (same genes) or linkage (genes on same chromosome)</li>
+<li>Positive r_A: traits improve together</li>
+<li>Negative r_A: improving one trait worsens the other (antagonistic)</li>
+<li>Correlated response is the change in trait Y when selecting on trait X</li>
+<li>Antagonistic correlations require multi-trait selection methods (Chapter 9)</li>
+</ul></section></section><section id="practice-problems" class="level2" data-number="8.10"><h2 data-number="8.10" class="anchored" data-anchor-id="practice-problems">
+<span class="header-section-number">8.10</span> Practice Problems</h2>
+<p>[Problems to be developed]</p>
+<ol type="1">
+<li><p>Traits X and Y have r_A = +0.60. If you select for increased trait X, what happens to trait Y? Explain.</p></li>
+<li><p>Milk yield and fertility in dairy cattle have r_A ≈ -0.30. Calculate the correlated response in fertility (in genetic SD units) if: i = 2.0, r_X = 0.70, σ_A(fertility) = 0.5, L = 4 years.</p></li>
+<li><p>Explain why genetic correlations caused by pleiotropy are more permanent than those caused by linkage.</p></li>
+<li><p>A breeder selects only for increased milk yield and ignores fertility. Over 10 years, fertility declines substantially. Explain why this happened and what should be done differently.</p></li>
+</ol></section><section id="further-reading" class="level2" data-number="8.11"><h2 data-number="8.11" class="anchored" data-anchor-id="further-reading">
+<span class="header-section-number">8.11</span> Further Reading</h2>
+<p>[References to be added]</p>
+<ul>
+<li>Published genetic parameters for livestock traits</li>
+<li>Papers on antagonistic correlations in dairy, swine, poultry</li>
+</ul>
+
+
+<!-- -->
+
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="../chapters/07-breeding-values.html" class="pagination-link" aria-label="Estimating Breeding Values">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Estimating Breeding Values</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/09-selection-index.html" class="pagination-link" aria-label="Multiple Trait Selection and Selection Index">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Multiple Trait Selection and Selection Index</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Genetic Correlations and Correlated Response {#sec-genetic-correlations}</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"learning-objectives"</span><span class="dt">&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">### Learning Objectives {.unnumbered}</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>By the end of this chapter, you will be able to:</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Define genetic correlation and explain what causes it</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Interpret positive, negative, and zero genetic correlations</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Calculate correlated response to selection</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Explain why antagonistic correlations complicate breeding programs</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Provide examples of important genetic correlations in livestock</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Load required packages</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)  <span class="co"># for simulating correlated data</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Set default theme for plots</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>))</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Most breeding programs aim to improve multiple traits. Understanding genetic correlations is essential for predicting how selection on one trait affects other traits.</span><span class="co">]</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="fu">## What is Genetic Correlation?</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Define genetic correlation (r_A).</span><span class="co">]</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="fu">### Definition</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>r_A(X,Y) = \frac{\text{Cov}_A(X, Y)}{\sigma_A(X) \times \sigma_A(Y)}</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>Where:</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>r_A(X,Y) = genetic correlation between traits X and Y</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Cov_A(X,Y) = additive genetic covariance</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>σ_A(X), σ_A(Y) = additive genetic standard deviations</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>**Range**: -1 to +1</span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a><span class="fu">### Interpreting Genetic Correlations</span></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**r_A &gt; 0 (Positive)**: Selecting for trait X increases trait Y</span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**r_A &lt; 0 (Negative, antagonistic)**: Selecting for trait X decreases trait Y</span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**r_A ≈ 0**: Traits are genetically independent</span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a><span class="fu">## Causes of Genetic Correlations</span></span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Why are traits genetically correlated?</span><span class="co">]</span></span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a><span class="fu">### Pleiotropy</span></span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: The same genes affect multiple traits. Example: Genes affecting overall growth rate influence multiple body weights (birth, weaning, yearling).</span><span class="co">]</span></span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a><span class="fu">### Linkage Disequilibrium</span></span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Genes affecting different traits are physically linked on the same chromosome. Creates temporary correlation that can be broken by recombination over generations.</span><span class="co">]</span></span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a><span class="fu">### Distinguishing Pleiotropy from Linkage</span></span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Pleiotropy is permanent (same gene); linkage is temporary (can be broken). In practice, most genetic correlations arise from pleiotropy.</span><span class="co">]</span></span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a><span class="fu">## Examples of Genetic Correlations in Livestock</span></span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Provide species-specific examples.</span><span class="co">]</span></span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a><span class="fu">### Positive (Favorable) Genetic Correlations</span></span>
+<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Carcass traits**: Loin depth and % lean (r_A ≈ +0.6)</span>
+<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Body weights at different ages**: Weaning weight and yearling weight (r_A ≈ +0.7)</span>
+<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Milk components**: Fat yield and protein yield (r_A ≈ +0.7-0.8)</span>
+<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a><span class="fu">### Positive (Unfavorable) Genetic Correlations</span></span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Swine backfat and growth rate**: Selecting for faster growth increases backfat (r_A ≈ +0.2 to +0.4)</span>
+<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Broiler growth and leg problems**: Faster growth associated with leg soundness issues (r_A ≈ +0.3 to +0.5)</span>
+<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a><span class="fu">### Negative (Antagonistic) Genetic Correlations</span></span>
+<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Dairy**: Milk yield and fertility (r_A ≈ -0.2 to -0.4)</span>
+<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Dairy**: Milk yield and body condition score (r_A ≈ -0.3 to -0.5)</span>
+<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Layers**: Egg production and egg weight (r_A ≈ -0.2 to -0.4)</span>
+<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Swine**: Litter size and piglet birth weight (r_A ≈ -0.2 to -0.3)</span>
+<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a><span class="fu">### Near-Zero Genetic Correlations</span></span>
+<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Beef**: Marbling and lean growth (r_A ≈ 0 to -0.1)</span>
+<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Traits affecting different physiological systems</span>
+<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a><span class="fu">## Correlated Response to Selection</span></span>
+<span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: How selection on trait X causes change in trait Y.</span><span class="co">]</span></span>
+<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a><span class="fu">### Equation for Correlated Response</span></span>
+<span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a>CR_Y = i \times r_X \times r_A(X,Y) \times \sigma_A(Y) \times \frac{1}{L}</span>
+<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a>Where:</span>
+<span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-129"><a href="#cb3-129" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>CR_Y = correlated response in trait Y (per year)</span>
+<span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>i = selection intensity on trait X</span>
+<span id="cb3-131"><a href="#cb3-131" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>r_X = accuracy of selection on trait X</span>
+<span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>r_A(X,Y) = genetic correlation between X and Y</span>
+<span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>σ_A(Y) = additive genetic SD of trait Y</span>
+<span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>L = generation interval</span>
+<span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a><span class="fu">### Interpreting Correlated Response</span></span>
+<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>If r_A is positive, CR_Y is positive (Y increases when selecting for X)</span>
+<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>If r_A is negative, CR_Y is negative (Y decreases when selecting for X)</span>
+<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Magnitude depends on r_A and genetic variation in Y</span>
+<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a><span class="fu">### Example: Dairy Milk Yield and Fertility</span></span>
+<span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a>If we select for increased milk yield:</span>
+<span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-150"><a href="#cb3-150" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Direct response: Milk increases (desired)</span>
+<span id="cb3-151"><a href="#cb3-151" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Correlated response: Fertility declines (undesired, because r_A ≈ -0.3)</span>
+<span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-153"><a href="#cb3-153" aria-hidden="true" tabindex="-1"></a>This creates the need for multi-trait selection (Chapter 9).</span>
+<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a><span class="fu">## Why Genetic Correlations Complicate Breeding</span></span>
+<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Antagonistic correlations prevent simultaneous improvement of all traits.</span><span class="co">]</span></span>
+<span id="cb3-158"><a href="#cb3-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-159"><a href="#cb3-159" aria-hidden="true" tabindex="-1"></a><span class="fu">### Trade-offs</span></span>
+<span id="cb3-160"><a href="#cb3-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Can't maximize all traits at once if correlations are negative. Must balance improvements.</span><span class="co">]</span></span>
+<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a><span class="fu">### Need for Multi-Trait Selection</span></span>
+<span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-165"><a href="#cb3-165" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Selection indices (Chapter 9) account for genetic correlations and economic weights to optimize overall genetic merit.</span><span class="co">]</span></span>
+<span id="cb3-166"><a href="#cb3-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-167"><a href="#cb3-167" aria-hidden="true" tabindex="-1"></a><span class="fu">## R Demonstration: Simulating Genetic Correlations</span></span>
+<span id="cb3-168"><a href="#cb3-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-169"><a href="#cb3-169" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-170"><a href="#cb3-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-173"><a href="#cb3-173" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb3-174"><a href="#cb3-174" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb3-175"><a href="#cb3-175" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb3-176"><a href="#cb3-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-177"><a href="#cb3-177" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate two traits with genetic correlation</span></span>
+<span id="cb3-178"><a href="#cb3-178" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb3-179"><a href="#cb3-179" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb3-180"><a href="#cb3-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-181"><a href="#cb3-181" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb3-182"><a href="#cb3-182" aria-hidden="true" tabindex="-1"></a>r_A <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">0.4</span>  <span class="co"># Negative genetic correlation</span></span>
+<span id="cb3-183"><a href="#cb3-183" aria-hidden="true" tabindex="-1"></a>sigma_A_X <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb3-184"><a href="#cb3-184" aria-hidden="true" tabindex="-1"></a>sigma_A_Y <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb3-185"><a href="#cb3-185" aria-hidden="true" tabindex="-1"></a>sigma_E <span class="ot">&lt;-</span> <span class="dv">8</span></span>
+<span id="cb3-186"><a href="#cb3-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-187"><a href="#cb3-187" aria-hidden="true" tabindex="-1"></a><span class="co"># Genetic covariance matrix</span></span>
+<span id="cb3-188"><a href="#cb3-188" aria-hidden="true" tabindex="-1"></a>Sigma_A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(sigma_A_X<span class="sc">^</span><span class="dv">2</span>, r_A <span class="sc">*</span> sigma_A_X <span class="sc">*</span> sigma_A_Y,</span>
+<span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a>                    r_A <span class="sc">*</span> sigma_A_X <span class="sc">*</span> sigma_A_Y, sigma_A_Y<span class="sc">^</span><span class="dv">2</span>), <span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate breeding values</span></span>
+<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a>BV <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(n, <span class="at">mu =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="at">Sigma =</span> Sigma_A)</span>
+<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(BV) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"BV_X"</span>, <span class="st">"BV_Y"</span>)</span>
+<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a><span class="co"># Add environmental effects</span></span>
+<span id="cb3-196"><a href="#cb3-196" aria-hidden="true" tabindex="-1"></a>E_X <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="dv">0</span>, sigma_E)</span>
+<span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a>E_Y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="dv">0</span>, sigma_E)</span>
+<span id="cb3-198"><a href="#cb3-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-199"><a href="#cb3-199" aria-hidden="true" tabindex="-1"></a><span class="co"># Phenotypes</span></span>
+<span id="cb3-200"><a href="#cb3-200" aria-hidden="true" tabindex="-1"></a>P_X <span class="ot">&lt;-</span> BV[, <span class="st">"BV_X"</span>] <span class="sc">+</span> E_X</span>
+<span id="cb3-201"><a href="#cb3-201" aria-hidden="true" tabindex="-1"></a>P_Y <span class="ot">&lt;-</span> BV[, <span class="st">"BV_Y"</span>] <span class="sc">+</span> E_Y</span>
+<span id="cb3-202"><a href="#cb3-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-203"><a href="#cb3-203" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb3-204"><a href="#cb3-204" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">BV_X =</span> BV[, <span class="st">"BV_X"</span>], <span class="at">BV_Y =</span> BV[, <span class="st">"BV_Y"</span>]) <span class="sc">%&gt;%</span></span>
+<span id="cb3-205"><a href="#cb3-205" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> BV_X, <span class="at">y =</span> BV_Y)) <span class="sc">+</span></span>
+<span id="cb3-206"><a href="#cb3-206" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb3-207"><a href="#cb3-207" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb3-208"><a href="#cb3-208" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"Genetic Correlation r_A ="</span>, r_A),</span>
+<span id="cb3-209"><a href="#cb3-209" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Breeding Value for Trait X"</span>,</span>
+<span id="cb3-210"><a href="#cb3-210" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Breeding Value for Trait Y"</span>) <span class="sc">+</span></span>
+<span id="cb3-211"><a href="#cb3-211" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb3-212"><a href="#cb3-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-213"><a href="#cb3-213" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate correlation</span></span>
+<span id="cb3-214"><a href="#cb3-214" aria-hidden="true" tabindex="-1"></a>cor_genetic <span class="ot">&lt;-</span> <span class="fu">cor</span>(BV[, <span class="st">"BV_X"</span>], BV[, <span class="st">"BV_Y"</span>])</span>
+<span id="cb3-215"><a href="#cb3-215" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Simulated genetic correlation:"</span>, <span class="fu">round</span>(cor_genetic, <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb3-216"><a href="#cb3-216" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-217"><a href="#cb3-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-218"><a href="#cb3-218" aria-hidden="true" tabindex="-1"></a><span class="fu">## R Demonstration: Correlated Response</span></span>
+<span id="cb3-219"><a href="#cb3-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-220"><a href="#cb3-220" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-221"><a href="#cb3-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-224"><a href="#cb3-224" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb3-225"><a href="#cb3-225" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb3-226"><a href="#cb3-226" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb3-227"><a href="#cb3-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-228"><a href="#cb3-228" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate correlated response</span></span>
+<span id="cb3-229"><a href="#cb3-229" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="fl">1.76</span>         <span class="co"># Selection intensity (top 10%)</span></span>
+<span id="cb3-230"><a href="#cb3-230" aria-hidden="true" tabindex="-1"></a>r_X <span class="ot">&lt;-</span> <span class="fl">0.60</span>       <span class="co"># Accuracy of selection on trait X</span></span>
+<span id="cb3-231"><a href="#cb3-231" aria-hidden="true" tabindex="-1"></a>r_A_XY <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">0.35</span>   <span class="co"># Genetic correlation between X and Y</span></span>
+<span id="cb3-232"><a href="#cb3-232" aria-hidden="true" tabindex="-1"></a>sigma_A_Y <span class="ot">&lt;-</span> <span class="dv">4</span>    <span class="co"># Genetic SD of trait Y</span></span>
+<span id="cb3-233"><a href="#cb3-233" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="dv">2</span>            <span class="co"># Generation interval (years)</span></span>
+<span id="cb3-234"><a href="#cb3-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-235"><a href="#cb3-235" aria-hidden="true" tabindex="-1"></a>CR_Y <span class="ot">&lt;-</span> (i <span class="sc">*</span> r_X <span class="sc">*</span> r_A_XY <span class="sc">*</span> sigma_A_Y) <span class="sc">/</span> L</span>
+<span id="cb3-236"><a href="#cb3-236" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Correlated response in trait Y:"</span>, <span class="fu">round</span>(CR_Y, <span class="dv">2</span>), <span class="st">"per year</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb3-237"><a href="#cb3-237" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Note: Negative CR means trait Y declines when selecting for increased trait X</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb3-238"><a href="#cb3-238" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-239"><a href="#cb3-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-240"><a href="#cb3-240" aria-hidden="true" tabindex="-1"></a><span class="fu">## Summary</span></span>
+<span id="cb3-241"><a href="#cb3-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-242"><a href="#cb3-242" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed.</span><span class="co">]</span></span>
+<span id="cb3-243"><a href="#cb3-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-244"><a href="#cb3-244" aria-hidden="true" tabindex="-1"></a><span class="fu">### Key Points</span></span>
+<span id="cb3-245"><a href="#cb3-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-246"><a href="#cb3-246" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Genetic correlation (r_A) measures the degree to which two traits share genetic influences</span>
+<span id="cb3-247"><a href="#cb3-247" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Caused by pleiotropy (same genes) or linkage (genes on same chromosome)</span>
+<span id="cb3-248"><a href="#cb3-248" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Positive r_A: traits improve together</span>
+<span id="cb3-249"><a href="#cb3-249" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Negative r_A: improving one trait worsens the other (antagonistic)</span>
+<span id="cb3-250"><a href="#cb3-250" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Correlated response is the change in trait Y when selecting on trait X</span>
+<span id="cb3-251"><a href="#cb3-251" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Antagonistic correlations require multi-trait selection methods (Chapter 9)</span>
+<span id="cb3-252"><a href="#cb3-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-253"><a href="#cb3-253" aria-hidden="true" tabindex="-1"></a><span class="fu">## Practice Problems</span></span>
+<span id="cb3-254"><a href="#cb3-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-255"><a href="#cb3-255" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Problems to be developed</span><span class="co">]</span></span>
+<span id="cb3-256"><a href="#cb3-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-257"><a href="#cb3-257" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Traits X and Y have r_A = +0.60. If you select for increased trait X, what happens to trait Y? Explain.</span>
+<span id="cb3-258"><a href="#cb3-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-259"><a href="#cb3-259" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Milk yield and fertility in dairy cattle have r_A ≈ -0.30. Calculate the correlated response in fertility (in genetic SD units) if: i = 2.0, r_X = 0.70, σ_A(fertility) = 0.5, L = 4 years.</span>
+<span id="cb3-260"><a href="#cb3-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-261"><a href="#cb3-261" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Explain why genetic correlations caused by pleiotropy are more permanent than those caused by linkage.</span>
+<span id="cb3-262"><a href="#cb3-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-263"><a href="#cb3-263" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>A breeder selects only for increased milk yield and ignores fertility. Over 10 years, fertility declines substantially. Explain why this happened and what should be done differently.</span>
+<span id="cb3-264"><a href="#cb3-264" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-265"><a href="#cb3-265" aria-hidden="true" tabindex="-1"></a><span class="fu">## Further Reading</span></span>
+<span id="cb3-266"><a href="#cb3-266" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-267"><a href="#cb3-267" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">References to be added</span><span class="co">]</span></span>
+<span id="cb3-268"><a href="#cb3-268" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-269"><a href="#cb3-269" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Published genetic parameters for livestock traits</span>
+<span id="cb3-270"><a href="#cb3-270" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Papers on antagonistic correlations in dairy, swine, poultry</span>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

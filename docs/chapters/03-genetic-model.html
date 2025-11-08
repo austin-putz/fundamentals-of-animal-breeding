@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>3&nbsp; The Basic Genetic Model – Foundations of Animal Breeding: Principles and Practice</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/04-quantitative-traits.html" rel="next">
+<link href="../chapters/02-selection-basics.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dd8fe44f7e8d2a1c1a36222b42c75f52.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-f29d4b558c027fdd1c8e949aa5364f62.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><style>html{ scroll-behavior: smooth; }</style>
+<link href="../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../site_libs/pagedtable-1.1/js/pagedtable.js"></script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script><link rel="stylesheet" href="../styles.css">
+</head>
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/01-introduction.html">PART 1: FUNDAMENTALS</a></li><li class="breadcrumb-item"><a href="../chapters/03-genetic-model.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Basic Genetic Model</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Foundations of Animal Breeding: Principles and Practice</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">PART 1: FUNDAMENTALS</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/01-introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Role and Tools of the Modern Animal Breeder</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/02-selection-basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Selection Basics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/03-genetic-model.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Basic Genetic Model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/04-quantitative-traits.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Quantitative vs.&nbsp;Simply Inherited Traits</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/05-heritability-repeatability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Heritability and Repeatability</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">PART 2: SELECTION AND BREEDING STRATEGIES</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/06-breeders-equation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Breeder’s Equation and Selection Response</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/07-breeding-values.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Estimating Breeding Values</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/08-genetic-correlations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Genetic Correlations and Correlated Response</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/09-selection-index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Multiple Trait Selection and Selection Index</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/10-mating-strategies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Mating Strategies and Optimum Contribution Selection</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/11-crossbreeding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Crossbreeding and Hybrid Vigor</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">PART 3: GENOMICS</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/12-genomics-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Introduction to Genomics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/13-genomic-selection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Genomic Selection</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">PART 4: PRACTICAL SKILLS</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/14-practical-skills.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Practical Animal Breeding and Data Skills</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">PART 5: SPECIES-SPECIFIC BREEDING</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/15-swine-breeding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Swine Breeding</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/16-poultry-breeding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Poultry Breeding</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/17-dairy-cattle-breeding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Dairy Cattle Breeding</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/18-beef-cattle-breeding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Beef Cattle Breeding</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/19-sheep-breeding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Sheep Breeding</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/20-camelidae-breeding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Camelidae Breeding</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/21-aquaculture-breeding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Aquaculture Breeding</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/22-companion-animal-breeding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Companion Animal Breeding</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">PART 6: PRECISION LIVESTOCK FARMING</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/23-plf-introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Introduction to Precision Livestock Farming</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/24-wearable-technologies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Wearable Technologies in Livestock</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/25-computer-vision.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Computer Vision and Camera Technologies</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices/datasets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Datasets</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices/r-resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R Resources for Animal Breeding</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices/glossary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Glossary of Genetic Terms</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
+   
+  <ul>
+<li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">3.1</span> Introduction</a></li>
+  <li>
+<a href="#the-basic-model-y-%CE%BC-a-e" id="toc-the-basic-model-y-μ-a-e" class="nav-link" data-scroll-target="#the-basic-model-y-%CE%BC-a-e"><span class="header-section-number">3.2</span> The Basic Model: y = μ + A + E</a>
+  <ul class="collapse">
+<li><a href="#components-of-the-model" id="toc-components-of-the-model" class="nav-link" data-scroll-target="#components-of-the-model"><span class="header-section-number">3.2.1</span> Components of the Model</a></li>
+  <li><a href="#why-this-model-matters" id="toc-why-this-model-matters" class="nav-link" data-scroll-target="#why-this-model-matters"><span class="header-section-number">3.2.2</span> Why This Model Matters</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#types-of-genetic-effects" id="toc-types-of-genetic-effects" class="nav-link" data-scroll-target="#types-of-genetic-effects"><span class="header-section-number">3.3</span> Types of Genetic Effects</a>
+  <ul class="collapse">
+<li><a href="#additive-genetic-effects" id="toc-additive-genetic-effects" class="nav-link" data-scroll-target="#additive-genetic-effects"><span class="header-section-number">3.3.1</span> Additive Genetic Effects</a></li>
+  <li><a href="#dominance-effects" id="toc-dominance-effects" class="nav-link" data-scroll-target="#dominance-effects"><span class="header-section-number">3.3.2</span> Dominance Effects</a></li>
+  <li><a href="#epistatic-effects" id="toc-epistatic-effects" class="nav-link" data-scroll-target="#epistatic-effects"><span class="header-section-number">3.3.3</span> Epistatic Effects</a></li>
+  </ul>
+</li>
+  <li><a href="#why-focus-on-additive-effects" id="toc-why-focus-on-additive-effects" class="nav-link" data-scroll-target="#why-focus-on-additive-effects"><span class="header-section-number">3.4</span> Why Focus on Additive Effects?</a></li>
+  <li>
+<a href="#variance-partitioning" id="toc-variance-partitioning" class="nav-link" data-scroll-target="#variance-partitioning"><span class="header-section-number">3.5</span> Variance Partitioning</a>
+  <ul class="collapse">
+<li><a href="#the-variance-equation" id="toc-the-variance-equation" class="nav-link" data-scroll-target="#the-variance-equation"><span class="header-section-number">3.5.1</span> The Variance Equation</a></li>
+  <li><a href="#further-partitioning-genetic-variance" id="toc-further-partitioning-genetic-variance" class="nav-link" data-scroll-target="#further-partitioning-genetic-variance"><span class="header-section-number">3.5.2</span> Further Partitioning Genetic Variance</a></li>
+  <li><a href="#why-variance-matters" id="toc-why-variance-matters" class="nav-link" data-scroll-target="#why-variance-matters"><span class="header-section-number">3.5.3</span> Why Variance Matters</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#examples-across-species" id="toc-examples-across-species" class="nav-link" data-scroll-target="#examples-across-species"><span class="header-section-number">3.6</span> Examples Across Species</a>
+  <ul class="collapse">
+<li><a href="#example-1-weaning-weight-in-swine" id="toc-example-1-weaning-weight-in-swine" class="nav-link" data-scroll-target="#example-1-weaning-weight-in-swine"><span class="header-section-number">3.6.1</span> Example 1: Weaning Weight in Swine</a></li>
+  <li><a href="#example-2-milk-yield-in-dairy-cattle" id="toc-example-2-milk-yield-in-dairy-cattle" class="nav-link" data-scroll-target="#example-2-milk-yield-in-dairy-cattle"><span class="header-section-number">3.6.2</span> Example 2: Milk Yield in Dairy Cattle</a></li>
+  <li><a href="#example-3-body-weight-in-broilers" id="toc-example-3-body-weight-in-broilers" class="nav-link" data-scroll-target="#example-3-body-weight-in-broilers"><span class="header-section-number">3.6.3</span> Example 3: Body Weight in Broilers</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#parent-offspring-relationships" id="toc-parent-offspring-relationships" class="nav-link" data-scroll-target="#parent-offspring-relationships"><span class="header-section-number">3.7</span> Parent-Offspring Relationships</a>
+  <ul class="collapse">
+<li><a href="#offspring-breeding-value" id="toc-offspring-breeding-value" class="nav-link" data-scroll-target="#offspring-breeding-value"><span class="header-section-number">3.7.1</span> Offspring Breeding Value</a></li>
+  <li><a href="#mendelian-sampling" id="toc-mendelian-sampling" class="nav-link" data-scroll-target="#mendelian-sampling"><span class="header-section-number">3.7.2</span> Mendelian Sampling</a></li>
+  </ul>
+</li>
+  <li><a href="#r-demonstration-simulating-the-basic-model" id="toc-r-demonstration-simulating-the-basic-model" class="nav-link" data-scroll-target="#r-demonstration-simulating-the-basic-model"><span class="header-section-number">3.8</span> R Demonstration: Simulating the Basic Model</a></li>
+  <li>
+<a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">3.9</span> Summary</a>
+  <ul class="collapse">
+<li><a href="#key-points" id="toc-key-points" class="nav-link" data-scroll-target="#key-points"><span class="header-section-number">3.9.1</span> Key Points</a></li>
+  </ul>
+</li>
+  <li><a href="#practice-problems" id="toc-practice-problems" class="nav-link" data-scroll-target="#practice-problems"><span class="header-section-number">3.10</span> Practice Problems</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">3.11</span> Further Reading</a></li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/01-introduction.html">PART 1: FUNDAMENTALS</a></li><li class="breadcrumb-item"><a href="../chapters/03-genetic-model.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Basic Genetic Model</span></a></li></ol></nav><div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title"><span id="sec-genetic-model" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Basic Genetic Model</span></span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><section id="learning-objectives" class="level3 unnumbered learning-objectives"><h3 class="unnumbered anchored" data-anchor-id="learning-objectives">Learning Objectives</h3>
+<p>By the end of this chapter, you will be able to:</p>
+<ol type="1">
+<li>Partition a phenotype into genetic and environmental components</li>
+<li>Distinguish between additive, dominance, and epistatic genetic effects</li>
+<li>Explain why additive effects are the primary focus of animal breeding</li>
+<li>Understand the concept of variance partitioning</li>
+<li>Calculate breeding values from a simple genetic model</li>
+</ol></section><section id="introduction" class="level2" data-number="3.1"><h2 data-number="3.1" class="anchored" data-anchor-id="introduction">
+<span class="header-section-number">3.1</span> Introduction</h2>
+<p>[Content to be developed: Introduce the need for a genetic model to partition phenotypes into heritable and non-heritable components.]</p>
+</section><section id="the-basic-model-y-μ-a-e" class="level2" data-number="3.2"><h2 data-number="3.2" class="anchored" data-anchor-id="the-basic-model-y-μ-a-e">
+<span class="header-section-number">3.2</span> The Basic Model: y = μ + A + E</h2>
+<p>[Content to be developed: Present the fundamental genetic model.]</p>
+<section id="components-of-the-model" class="level3" data-number="3.2.1"><h3 data-number="3.2.1" class="anchored" data-anchor-id="components-of-the-model">
+<span class="header-section-number">3.2.1</span> Components of the Model</h3>
+<p>[Content to be developed: Define each component:]</p>
+<ul>
+<li>
+<strong>y</strong>: Phenotype (observed value)</li>
+<li>
+<strong>μ</strong>: Population mean</li>
+<li>
+<strong>A</strong>: Additive genetic effect (breeding value)</li>
+<li>
+<strong>E</strong>: Environmental deviation (everything else)</li>
+</ul></section><section id="why-this-model-matters" class="level3" data-number="3.2.2"><h3 data-number="3.2.2" class="anchored" data-anchor-id="why-this-model-matters">
+<span class="header-section-number">3.2.2</span> Why This Model Matters</h3>
+<p>[Content to be developed: This simple model is the foundation of animal breeding. It allows us to separate genetic merit from environmental effects.]</p>
+</section></section><section id="types-of-genetic-effects" class="level2" data-number="3.3"><h2 data-number="3.3" class="anchored" data-anchor-id="types-of-genetic-effects">
+<span class="header-section-number">3.3</span> Types of Genetic Effects</h2>
+<p>[Content to be developed: Not all genetic effects are created equal.]</p>
+<section id="additive-genetic-effects" class="level3" data-number="3.3.1"><h3 data-number="3.3.1" class="anchored" data-anchor-id="additive-genetic-effects">
+<span class="header-section-number">3.3.1</span> Additive Genetic Effects</h3>
+<p>[Content to be developed:]</p>
+<ul>
+<li>Definition: Sum of average effects of alleles at all loci</li>
+<li>Breed true (passed from parent to offspring)</li>
+<li>Determine breeding value</li>
+<li>Primary target of selection</li>
+</ul></section><section id="dominance-effects" class="level3" data-number="3.3.2"><h3 data-number="3.3.2" class="anchored" data-anchor-id="dominance-effects">
+<span class="header-section-number">3.3.2</span> Dominance Effects</h3>
+<p>[Content to be developed:]</p>
+<ul>
+<li>Definition: Within-locus interaction between alleles (heterozygote deviates from midparent)</li>
+<li>Do NOT breed true</li>
+<li>Not transmitted reliably to offspring</li>
+<li>Contribute to heterosis in crossbreeding</li>
+</ul></section><section id="epistatic-effects" class="level3" data-number="3.3.3"><h3 data-number="3.3.3" class="anchored" data-anchor-id="epistatic-effects">
+<span class="header-section-number">3.3.3</span> Epistatic Effects</h3>
+<p>[Content to be developed:]</p>
+<ul>
+<li>Definition: Between-locus interactions</li>
+<li>Complex and difficult to predict</li>
+<li>May contribute to heterosis</li>
+<li>Not reliably transmitted</li>
+</ul></section></section><section id="why-focus-on-additive-effects" class="level2" data-number="3.4"><h2 data-number="3.4" class="anchored" data-anchor-id="why-focus-on-additive-effects">
+<span class="header-section-number">3.4</span> Why Focus on Additive Effects?</h2>
+<p>[Content to be developed: Explain the primacy of additive effects in animal breeding:]</p>
+<ol type="1">
+<li>Additive effects are <strong>predictably transmitted</strong> from parent to offspring</li>
+<li>
+<strong>Response to selection</strong> depends on additive genetic variance</li>
+<li>
+<strong>Breeding values</strong> (what we estimate) are additive effects</li>
+<li>Dominance and epistasis don’t breed true</li>
+</ol></section><section id="variance-partitioning" class="level2" data-number="3.5"><h2 data-number="3.5" class="anchored" data-anchor-id="variance-partitioning">
+<span class="header-section-number">3.5</span> Variance Partitioning</h2>
+<p>[Content to be developed: Total phenotypic variance can be partitioned into genetic and environmental components.]</p>
+<section id="the-variance-equation" class="level3" data-number="3.5.1"><h3 data-number="3.5.1" class="anchored" data-anchor-id="the-variance-equation">
+<span class="header-section-number">3.5.1</span> The Variance Equation</h3>
+<p>[Content to be developed:]</p>
+<p><span class="math display">\[
+\sigma^2_P = \sigma^2_G + \sigma^2_E
+\]</span></p>
+<p>Where:</p>
+<ul>
+<li>σ²_P = phenotypic variance</li>
+<li>σ²_G = genetic variance (total)</li>
+<li>σ²_E = environmental variance</li>
+</ul></section><section id="further-partitioning-genetic-variance" class="level3" data-number="3.5.2"><h3 data-number="3.5.2" class="anchored" data-anchor-id="further-partitioning-genetic-variance">
+<span class="header-section-number">3.5.2</span> Further Partitioning Genetic Variance</h3>
+<p>[Content to be developed:]</p>
+<p><span class="math display">\[
+\sigma^2_G = \sigma^2_A + \sigma^2_D + \sigma^2_I
+\]</span></p>
+<p>Where:</p>
+<ul>
+<li>σ²_A = additive genetic variance</li>
+<li>σ²_D = dominance variance</li>
+<li>σ²_I = epistatic (interaction) variance</li>
+</ul></section><section id="why-variance-matters" class="level3" data-number="3.5.3"><h3 data-number="3.5.3" class="anchored" data-anchor-id="why-variance-matters">
+<span class="header-section-number">3.5.3</span> Why Variance Matters</h3>
+<p>[Content to be developed: Variance components determine heritability (Chapter 5) and response to selection (Chapter 6).]</p>
+</section></section><section id="examples-across-species" class="level2" data-number="3.6"><h2 data-number="3.6" class="anchored" data-anchor-id="examples-across-species">
+<span class="header-section-number">3.6</span> Examples Across Species</h2>
+<p>[Content to be developed: Show the basic genetic model applied to real traits.]</p>
+<section id="example-1-weaning-weight-in-swine" class="level3" data-number="3.6.1"><h3 data-number="3.6.1" class="anchored" data-anchor-id="example-1-weaning-weight-in-swine">
+<span class="header-section-number">3.6.1</span> Example 1: Weaning Weight in Swine</h3>
+<p>[Content to be developed: Numerical example showing phenotype, genetic effect, and environmental deviation.]</p>
+</section><section id="example-2-milk-yield-in-dairy-cattle" class="level3" data-number="3.6.2"><h3 data-number="3.6.2" class="anchored" data-anchor-id="example-2-milk-yield-in-dairy-cattle">
+<span class="header-section-number">3.6.2</span> Example 2: Milk Yield in Dairy Cattle</h3>
+<p>[Content to be developed: Numerical example.]</p>
+</section><section id="example-3-body-weight-in-broilers" class="level3" data-number="3.6.3"><h3 data-number="3.6.3" class="anchored" data-anchor-id="example-3-body-weight-in-broilers">
+<span class="header-section-number">3.6.3</span> Example 3: Body Weight in Broilers</h3>
+<p>[Content to be developed: Numerical example.]</p>
+</section></section><section id="parent-offspring-relationships" class="level2" data-number="3.7"><h2 data-number="3.7" class="anchored" data-anchor-id="parent-offspring-relationships">
+<span class="header-section-number">3.7</span> Parent-Offspring Relationships</h2>
+<p>[Content to be developed: How additive effects create resemblance between relatives.]</p>
+<section id="offspring-breeding-value" class="level3" data-number="3.7.1"><h3 data-number="3.7.1" class="anchored" data-anchor-id="offspring-breeding-value">
+<span class="header-section-number">3.7.1</span> Offspring Breeding Value</h3>
+<p>[Content to be developed:]</p>
+<p><span class="math display">\[
+BV_{offspring} = \frac{1}{2} BV_{sire} + \frac{1}{2} BV_{dam} + Mendelian \ sampling
+\]</span></p>
+</section><section id="mendelian-sampling" class="level3" data-number="3.7.2"><h3 data-number="3.7.2" class="anchored" data-anchor-id="mendelian-sampling">
+<span class="header-section-number">3.7.2</span> Mendelian Sampling</h3>
+<p>[Content to be developed: Offspring deviate from midparent average due to random sampling of parental alleles.]</p>
+</section></section><section id="r-demonstration-simulating-the-basic-model" class="level2" data-number="3.8"><h2 data-number="3.8" class="anchored" data-anchor-id="r-demonstration-simulating-the-basic-model">
+<span class="header-section-number">3.8</span> R Demonstration: Simulating the Basic Model</h2>
+<p>[Content to be developed: R code to simulate phenotypes from genetic and environmental components.]</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Simulate phenotypes from genetic and environmental effects</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span><span class="va">n_animals</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span>
+<span></span>
+<span><span class="co"># Population parameters</span></span>
+<span><span class="va">mu</span> <span class="op">&lt;-</span> <span class="fl">100</span>          <span class="co"># Population mean (e.g., kg for weaning weight)</span></span>
+<span><span class="va">sigma_A</span> <span class="op">&lt;-</span> <span class="fl">5</span>       <span class="co"># Additive genetic SD</span></span>
+<span><span class="va">sigma_E</span> <span class="op">&lt;-</span> <span class="fl">10</span>      <span class="co"># Environmental SD</span></span>
+<span></span>
+<span><span class="co"># Simulate breeding values (additive genetic effects)</span></span>
+<span><span class="va">A</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n_animals</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="va">sigma_A</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Simulate environmental deviations</span></span>
+<span><span class="va">E</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n_animals</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="va">sigma_E</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Calculate phenotypes</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">mu</span> <span class="op">+</span> <span class="va">A</span> <span class="op">+</span> <span class="va">E</span></span>
+<span></span>
+<span><span class="co"># Summarize</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  Component <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Mean"</span>, <span class="st">"SD(A)"</span>, <span class="st">"SD(E)"</span>, <span class="st">"SD(y)"</span><span class="op">)</span>,</span>
+<span>  Value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">E</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="summary" class="level2" data-number="3.9"><h2 data-number="3.9" class="anchored" data-anchor-id="summary">
+<span class="header-section-number">3.9</span> Summary</h2>
+<p>[Content to be developed: Recap main points.]</p>
+<section id="key-points" class="level3" data-number="3.9.1"><h3 data-number="3.9.1" class="anchored" data-anchor-id="key-points">
+<span class="header-section-number">3.9.1</span> Key Points</h3>
+<ul>
+<li>Phenotype = Genetic + Environment (y = μ + A + E)</li>
+<li>Genetic effects include additive, dominance, and epistatic components</li>
+<li>Additive effects breed true and are the focus of selection</li>
+<li>Variance partitioning separates genetic from environmental variation</li>
+<li>Only additive genetic variance contributes to response to selection</li>
+</ul></section></section><section id="practice-problems" class="level2" data-number="3.10"><h2 data-number="3.10" class="anchored" data-anchor-id="practice-problems">
+<span class="header-section-number">3.10</span> Practice Problems</h2>
+<p>[Problems to be developed]</p>
+<ol type="1">
+<li><p>A pig has a phenotype of 25 kg for weaning weight. The population mean is 23 kg, and the pig’s breeding value is +3 kg. What is the environmental deviation for this pig?</p></li>
+<li><p>Explain why dominance effects do not contribute to long-term response to selection.</p></li>
+<li><p>If σ²_P = 100, σ²_A = 30, and σ²_E = 60, what is σ²_D + σ²_I?</p></li>
+</ol></section><section id="further-reading" class="level2" data-number="3.11"><h2 data-number="3.11" class="anchored" data-anchor-id="further-reading">
+<span class="header-section-number">3.11</span> Further Reading</h2>
+<p>[References to be added]</p>
+<ul>
+<li>Falconer and Mackay: Introduction to Quantitative Genetics (Chapter 7)</li>
+<li>Lynch and Walsh: Genetics and Analysis of Quantitative Traits</li>
+</ul>
+
+
+<!-- -->
+
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="../chapters/02-selection-basics.html" class="pagination-link" aria-label="Selection Basics">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Selection Basics</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/04-quantitative-traits.html" class="pagination-link" aria-label="Quantitative vs. Simply Inherited Traits">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Quantitative vs.&nbsp;Simply Inherited Traits</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># The Basic Genetic Model {#sec-genetic-model}</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"learning-objectives"</span><span class="dt">&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">### Learning Objectives {.unnumbered}</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>By the end of this chapter, you will be able to:</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Partition a phenotype into genetic and environmental components</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Distinguish between additive, dominance, and epistatic genetic effects</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Explain why additive effects are the primary focus of animal breeding</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Understand the concept of variance partitioning</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Calculate breeding values from a simple genetic model</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Load required packages</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Set default theme for plots</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>))</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Introduce the need for a genetic model to partition phenotypes into heritable and non-heritable components.</span><span class="co">]</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Basic Model: y = μ + A + E</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Present the fundamental genetic model.</span><span class="co">]</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="fu">### Components of the Model</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Define each component:</span><span class="co">]</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**y**: Phenotype (observed value)</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**μ**: Population mean</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**A**: Additive genetic effect (breeding value)</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**E**: Environmental deviation (everything else)</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="fu">### Why This Model Matters</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: This simple model is the foundation of animal breeding. It allows us to separate genetic merit from environmental effects.</span><span class="co">]</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="fu">## Types of Genetic Effects</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Not all genetic effects are created equal.</span><span class="co">]</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="fu">### Additive Genetic Effects</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Definition: Sum of average effects of alleles at all loci</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Breed true (passed from parent to offspring)</span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Determine breeding value</span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Primary target of selection</span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="fu">### Dominance Effects</span></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Definition: Within-locus interaction between alleles (heterozygote deviates from midparent)</span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Do NOT breed true</span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Not transmitted reliably to offspring</span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Contribute to heterosis in crossbreeding</span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a><span class="fu">### Epistatic Effects</span></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Definition: Between-locus interactions</span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Complex and difficult to predict</span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>May contribute to heterosis</span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Not reliably transmitted</span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a><span class="fu">## Why Focus on Additive Effects?</span></span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Explain the primacy of additive effects in animal breeding:</span><span class="co">]</span></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Additive effects are **predictably transmitted** from parent to offspring</span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Response to selection** depends on additive genetic variance</span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Breeding values** (what we estimate) are additive effects</span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Dominance and epistasis don't breed true</span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a><span class="fu">## Variance Partitioning</span></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Total phenotypic variance can be partitioned into genetic and environmental components.</span><span class="co">]</span></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a><span class="fu">### The Variance Equation</span></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>\sigma^2_P = \sigma^2_G + \sigma^2_E</span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>Where:</span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>σ²_P = phenotypic variance</span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>σ²_G = genetic variance (total)</span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>σ²_E = environmental variance</span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a><span class="fu">### Further Partitioning Genetic Variance</span></span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>\sigma^2_G = \sigma^2_A + \sigma^2_D + \sigma^2_I</span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>Where:</span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>σ²_A = additive genetic variance</span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>σ²_D = dominance variance</span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>σ²_I = epistatic (interaction) variance</span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a><span class="fu">### Why Variance Matters</span></span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Variance components determine heritability (Chapter 5) and response to selection (Chapter 6).</span><span class="co">]</span></span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a><span class="fu">## Examples Across Species</span></span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Show the basic genetic model applied to real traits.</span><span class="co">]</span></span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a><span class="fu">### Example 1: Weaning Weight in Swine</span></span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Numerical example showing phenotype, genetic effect, and environmental deviation.</span><span class="co">]</span></span>
+<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a><span class="fu">### Example 2: Milk Yield in Dairy Cattle</span></span>
+<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Numerical example.</span><span class="co">]</span></span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a><span class="fu">### Example 3: Body Weight in Broilers</span></span>
+<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Numerical example.</span><span class="co">]</span></span>
+<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a><span class="fu">## Parent-Offspring Relationships</span></span>
+<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: How additive effects create resemblance between relatives.</span><span class="co">]</span></span>
+<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a><span class="fu">### Offspring Breeding Value</span></span>
+<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a>BV_{offspring} = \frac{1}{2} BV_{sire} + \frac{1}{2} BV_{dam} + Mendelian \ sampling</span>
+<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a><span class="fu">### Mendelian Sampling</span></span>
+<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Offspring deviate from midparent average due to random sampling of parental alleles.</span><span class="co">]</span></span>
+<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a><span class="fu">## R Demonstration: Simulating the Basic Model</span></span>
+<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: R code to simulate phenotypes from genetic and environmental components.</span><span class="co">]</span></span>
+<span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-166"><a href="#cb2-166" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb2-168"><a href="#cb2-168" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb2-169"><a href="#cb2-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-170"><a href="#cb2-170" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate phenotypes from genetic and environmental effects</span></span>
+<span id="cb2-171"><a href="#cb2-171" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb2-172"><a href="#cb2-172" aria-hidden="true" tabindex="-1"></a>n_animals <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb2-173"><a href="#cb2-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-174"><a href="#cb2-174" aria-hidden="true" tabindex="-1"></a><span class="co"># Population parameters</span></span>
+<span id="cb2-175"><a href="#cb2-175" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">100</span>          <span class="co"># Population mean (e.g., kg for weaning weight)</span></span>
+<span id="cb2-176"><a href="#cb2-176" aria-hidden="true" tabindex="-1"></a>sigma_A <span class="ot">&lt;-</span> <span class="dv">5</span>       <span class="co"># Additive genetic SD</span></span>
+<span id="cb2-177"><a href="#cb2-177" aria-hidden="true" tabindex="-1"></a>sigma_E <span class="ot">&lt;-</span> <span class="dv">10</span>      <span class="co"># Environmental SD</span></span>
+<span id="cb2-178"><a href="#cb2-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-179"><a href="#cb2-179" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate breeding values (additive genetic effects)</span></span>
+<span id="cb2-180"><a href="#cb2-180" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n_animals, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> sigma_A)</span>
+<span id="cb2-181"><a href="#cb2-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-182"><a href="#cb2-182" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate environmental deviations</span></span>
+<span id="cb2-183"><a href="#cb2-183" aria-hidden="true" tabindex="-1"></a>E <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n_animals, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> sigma_E)</span>
+<span id="cb2-184"><a href="#cb2-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-185"><a href="#cb2-185" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate phenotypes</span></span>
+<span id="cb2-186"><a href="#cb2-186" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> mu <span class="sc">+</span> A <span class="sc">+</span> E</span>
+<span id="cb2-187"><a href="#cb2-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-188"><a href="#cb2-188" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize</span></span>
+<span id="cb2-189"><a href="#cb2-189" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(</span>
+<span id="cb2-190"><a href="#cb2-190" aria-hidden="true" tabindex="-1"></a>  <span class="at">Component =</span> <span class="fu">c</span>(<span class="st">"Mean"</span>, <span class="st">"SD(A)"</span>, <span class="st">"SD(E)"</span>, <span class="st">"SD(y)"</span>),</span>
+<span id="cb2-191"><a href="#cb2-191" aria-hidden="true" tabindex="-1"></a>  <span class="at">Value =</span> <span class="fu">c</span>(<span class="fu">mean</span>(y), <span class="fu">sd</span>(A), <span class="fu">sd</span>(E), <span class="fu">sd</span>(y))</span>
+<span id="cb2-192"><a href="#cb2-192" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-193"><a href="#cb2-193" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-194"><a href="#cb2-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-195"><a href="#cb2-195" aria-hidden="true" tabindex="-1"></a><span class="fu">## Summary</span></span>
+<span id="cb2-196"><a href="#cb2-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-197"><a href="#cb2-197" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Recap main points.</span><span class="co">]</span></span>
+<span id="cb2-198"><a href="#cb2-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-199"><a href="#cb2-199" aria-hidden="true" tabindex="-1"></a><span class="fu">### Key Points</span></span>
+<span id="cb2-200"><a href="#cb2-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-201"><a href="#cb2-201" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Phenotype = Genetic + Environment (y = μ + A + E)</span>
+<span id="cb2-202"><a href="#cb2-202" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Genetic effects include additive, dominance, and epistatic components</span>
+<span id="cb2-203"><a href="#cb2-203" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Additive effects breed true and are the focus of selection</span>
+<span id="cb2-204"><a href="#cb2-204" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Variance partitioning separates genetic from environmental variation</span>
+<span id="cb2-205"><a href="#cb2-205" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Only additive genetic variance contributes to response to selection</span>
+<span id="cb2-206"><a href="#cb2-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-207"><a href="#cb2-207" aria-hidden="true" tabindex="-1"></a><span class="fu">## Practice Problems</span></span>
+<span id="cb2-208"><a href="#cb2-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-209"><a href="#cb2-209" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Problems to be developed</span><span class="co">]</span></span>
+<span id="cb2-210"><a href="#cb2-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-211"><a href="#cb2-211" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>A pig has a phenotype of 25 kg for weaning weight. The population mean is 23 kg, and the pig's breeding value is +3 kg. What is the environmental deviation for this pig?</span>
+<span id="cb2-212"><a href="#cb2-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-213"><a href="#cb2-213" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Explain why dominance effects do not contribute to long-term response to selection.</span>
+<span id="cb2-214"><a href="#cb2-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-215"><a href="#cb2-215" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>If σ²_P = 100, σ²_A = 30, and σ²_E = 60, what is σ²_D + σ²_I?</span>
+<span id="cb2-216"><a href="#cb2-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-217"><a href="#cb2-217" aria-hidden="true" tabindex="-1"></a><span class="fu">## Further Reading</span></span>
+<span id="cb2-218"><a href="#cb2-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-219"><a href="#cb2-219" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">References to be added</span><span class="co">]</span></span>
+<span id="cb2-220"><a href="#cb2-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-221"><a href="#cb2-221" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Falconer and Mackay: Introduction to Quantitative Genetics (Chapter 7)</span>
+<span id="cb2-222"><a href="#cb2-222" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Lynch and Walsh: Genetics and Analysis of Quantitative Traits</span>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

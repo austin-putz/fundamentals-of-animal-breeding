@@ -1,0 +1,108 @@
+/* Additional custom styles */
+
+/* Learning objectives styling */
+.learning-objectives {
+  background-color: #e8f4f8;
+  border-left: 4px solid #2c5f8d;
+  padding: 1.2rem;
+  margin: 1.5rem 0;
+  border-radius: 0.25rem;
+}
+
+.learning-objectives h3 {
+  margin-top: 0;
+  color: #2c5f8d;
+  border: none;
+}
+
+.learning-objectives ul {
+  margin-bottom: 0;
+}
+
+/* Practice problems styling */
+.practice-problems {
+  background-color: #fef7e0;
+  border-left: 4px solid #f0ad4e;
+  padding: 1.2rem;
+  margin: 1.5rem 0;
+  border-radius: 0.25rem;
+}
+
+.practice-problems h3 {
+  margin-top: 0;
+  color: #d58512;
+  border: none;
+}
+
+/* Example boxes */
+.example {
+  background-color: #f0f7f0;
+  border-left: 4px solid #5e8a4f;
+  padding: 1.2rem;
+  margin: 1.5rem 0;
+  border-radius: 0.25rem;
+}
+
+.example h3, .example h4 {
+  margin-top: 0;
+  color: #5e8a4f;
+  border: none;
+}
+
+/* Key concept boxes */
+.key-concept {
+  background-color: #fff8e1;
+  border: 2px solid #ffc107;
+  padding: 1.2rem;
+  margin: 1.5rem 0;
+  border-radius: 0.25rem;
+}
+
+.key-concept h3, .key-concept h4 {
+  margin-top: 0;
+  color: #d58512;
+  border: none;
+}
+
+/* Equations */
+.equation-block {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background-color: #fafafa;
+  border-radius: 0.25rem;
+}
+
+/* Better spacing for lists in content */
+.content ul, .content ol {
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+/* Code output styling */
+div.cell-output-stdout {
+  background-color: #f8f9fa;
+  border-left: 3px solid #6c757d;
+  padding: 0.5rem;
+}
+
+/* Navigation improvements */
+.sidebar-item {
+  padding: 0.3rem 0;
+}
+
+/* Figure improvements */
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+/* Improve readability */
+p {
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+/* Section spacing */
+section {
+  margin-bottom: 2rem;
+}

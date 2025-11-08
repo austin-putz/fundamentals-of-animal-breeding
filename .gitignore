@@ -1,8 +1,8 @@
 # Quarto
 /.quarto/
 /_site/
-/docs/
 /_freeze/
+# Note: /docs/ is NOT ignored so it can be published to GitHub Pages
 
 # R
 .Rproj.user
@@ -20,7 +20,10 @@
 *.swo
 
 # R output
-*.html
+# Note: HTML files in /docs/ are allowed for GitHub Pages
+/*.html
+chapters/*.html
+appendices/*.html
 *.pdf
 *_files/
 *_cache/

@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>13&nbsp; Genomic Selection – Foundations of Animal Breeding: Principles and Practice</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/14-practical-skills.html" rel="next">
+<link href="../chapters/12-genomics-intro.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dd8fe44f7e8d2a1c1a36222b42c75f52.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-f29d4b558c027fdd1c8e949aa5364f62.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><style>html{ scroll-behavior: smooth; }</style>
+<link href="../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../site_libs/pagedtable-1.1/js/pagedtable.js"></script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script><link rel="stylesheet" href="../styles.css">
+</head>
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/12-genomics-intro.html">PART 3: GENOMICS</a></li><li class="breadcrumb-item"><a href="../chapters/13-genomic-selection.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Genomic Selection</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Foundations of Animal Breeding: Principles and Practice</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">PART 1: FUNDAMENTALS</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/01-introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Role and Tools of the Modern Animal Breeder</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/02-selection-basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Selection Basics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/03-genetic-model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Basic Genetic Model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/04-quantitative-traits.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Quantitative vs.&nbsp;Simply Inherited Traits</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/05-heritability-repeatability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Heritability and Repeatability</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">PART 2: SELECTION AND BREEDING STRATEGIES</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/06-breeders-equation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Breeder’s Equation and Selection Response</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/07-breeding-values.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Estimating Breeding Values</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/08-genetic-correlations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Genetic Correlations and Correlated Response</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/09-selection-index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Multiple Trait Selection and Selection Index</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/10-mating-strategies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Mating Strategies and Optimum Contribution Selection</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/11-crossbreeding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Crossbreeding and Hybrid Vigor</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">PART 3: GENOMICS</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/12-genomics-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Introduction to Genomics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/13-genomic-selection.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Genomic Selection</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">PART 4: PRACTICAL SKILLS</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/14-practical-skills.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Practical Animal Breeding and Data Skills</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">PART 5: SPECIES-SPECIFIC BREEDING</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/15-swine-breeding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Swine Breeding</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/16-poultry-breeding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Poultry Breeding</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/17-dairy-cattle-breeding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Dairy Cattle Breeding</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/18-beef-cattle-breeding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Beef Cattle Breeding</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/19-sheep-breeding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Sheep Breeding</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/20-camelidae-breeding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Camelidae Breeding</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/21-aquaculture-breeding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Aquaculture Breeding</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/22-companion-animal-breeding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Companion Animal Breeding</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">PART 6: PRECISION LIVESTOCK FARMING</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/23-plf-introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Introduction to Precision Livestock Farming</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/24-wearable-technologies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Wearable Technologies in Livestock</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/25-computer-vision.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Computer Vision and Camera Technologies</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices/datasets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Datasets</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices/r-resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R Resources for Animal Breeding</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices/glossary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Glossary of Genetic Terms</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
+   
+  <ul>
+<li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">13.1</span> Introduction</a></li>
+  <li>
+<a href="#what-is-genomic-selection" id="toc-what-is-genomic-selection" class="nav-link" data-scroll-target="#what-is-genomic-selection"><span class="header-section-number">13.2</span> What is Genomic Selection?</a>
+  <ul class="collapse">
+<li><a href="#traditional-selection-pre-genomics" id="toc-traditional-selection-pre-genomics" class="nav-link" data-scroll-target="#traditional-selection-pre-genomics"><span class="header-section-number">13.2.1</span> Traditional Selection (Pre-Genomics)</a></li>
+  <li><a href="#genomic-selection" id="toc-genomic-selection" class="nav-link" data-scroll-target="#genomic-selection"><span class="header-section-number">13.2.2</span> Genomic Selection</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#why-genomic-selection-works" id="toc-why-genomic-selection-works" class="nav-link" data-scroll-target="#why-genomic-selection-works"><span class="header-section-number">13.3</span> Why Genomic Selection Works</a>
+  <ul class="collapse">
+<li><a href="#linkage-disequilibrium-ld" id="toc-linkage-disequilibrium-ld" class="nav-link" data-scroll-target="#linkage-disequilibrium-ld"><span class="header-section-number">13.3.1</span> Linkage Disequilibrium (LD)</a></li>
+  <li><a href="#capturing-additive-genetic-variance" id="toc-capturing-additive-genetic-variance" class="nav-link" data-scroll-target="#capturing-additive-genetic-variance"><span class="header-section-number">13.3.2</span> Capturing Additive Genetic Variance</a></li>
+  <li><a href="#training-population" id="toc-training-population" class="nav-link" data-scroll-target="#training-population"><span class="header-section-number">13.3.3</span> Training Population</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#two-main-approaches-to-genomic-prediction" id="toc-two-main-approaches-to-genomic-prediction" class="nav-link" data-scroll-target="#two-main-approaches-to-genomic-prediction"><span class="header-section-number">13.4</span> Two Main Approaches to Genomic Prediction</a>
+  <ul class="collapse">
+<li><a href="#animal-model-gblup" id="toc-animal-model-gblup" class="nav-link" data-scroll-target="#animal-model-gblup"><span class="header-section-number">13.4.1</span> Animal Model (GBLUP)</a></li>
+  <li><a href="#marker-effects-model" id="toc-marker-effects-model" class="nav-link" data-scroll-target="#marker-effects-model"><span class="header-section-number">13.4.2</span> Marker Effects Model</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#gblup-genomic-blup" id="toc-gblup-genomic-blup" class="nav-link" data-scroll-target="#gblup-genomic-blup"><span class="header-section-number">13.5</span> GBLUP (Genomic BLUP)</a>
+  <ul class="collapse">
+<li><a href="#genomic-relationship-matrix-g" id="toc-genomic-relationship-matrix-g" class="nav-link" data-scroll-target="#genomic-relationship-matrix-g"><span class="header-section-number">13.5.1</span> Genomic Relationship Matrix (G)</a></li>
+  <li><a href="#calculating-g" id="toc-calculating-g" class="nav-link" data-scroll-target="#calculating-g"><span class="header-section-number">13.5.2</span> Calculating G</a></li>
+  <li><a href="#gblup-model" id="toc-gblup-model" class="nav-link" data-scroll-target="#gblup-model"><span class="header-section-number">13.5.3</span> GBLUP Model</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#snp-blup-and-marker-effects-models" id="toc-snp-blup-and-marker-effects-models" class="nav-link" data-scroll-target="#snp-blup-and-marker-effects-models"><span class="header-section-number">13.6</span> SNP-BLUP and Marker Effects Models</a>
+  <ul class="collapse">
+<li><a href="#snp-blup" id="toc-snp-blup" class="nav-link" data-scroll-target="#snp-blup"><span class="header-section-number">13.6.1</span> SNP-BLUP</a></li>
+  <li><a href="#equivalence-of-gblup-and-snp-blup" id="toc-equivalence-of-gblup-and-snp-blup" class="nav-link" data-scroll-target="#equivalence-of-gblup-and-snp-blup"><span class="header-section-number">13.6.2</span> Equivalence of GBLUP and SNP-BLUP</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#bayesian-methods" id="toc-bayesian-methods" class="nav-link" data-scroll-target="#bayesian-methods"><span class="header-section-number">13.7</span> Bayesian Methods</a>
+  <ul class="collapse">
+<li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation"><span class="header-section-number">13.7.1</span> Motivation</a></li>
+  <li><a href="#common-bayesian-methods" id="toc-common-bayesian-methods" class="nav-link" data-scroll-target="#common-bayesian-methods"><span class="header-section-number">13.7.2</span> Common Bayesian Methods</a></li>
+  <li><a href="#when-bayesian-methods-help" id="toc-when-bayesian-methods-help" class="nav-link" data-scroll-target="#when-bayesian-methods-help"><span class="header-section-number">13.7.3</span> When Bayesian Methods Help</a></li>
+  <li><a href="#software" id="toc-software" class="nav-link" data-scroll-target="#software"><span class="header-section-number">13.7.4</span> Software</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#single-step-genomic-blup-ssgblup" id="toc-single-step-genomic-blup-ssgblup" class="nav-link" data-scroll-target="#single-step-genomic-blup-ssgblup"><span class="header-section-number">13.8</span> Single-Step Genomic BLUP (ssGBLUP)</a>
+  <ul class="collapse">
+<li><a href="#motivation-1" id="toc-motivation-1" class="nav-link" data-scroll-target="#motivation-1"><span class="header-section-number">13.8.1</span> Motivation</a></li>
+  <li><a href="#single-step-approach" id="toc-single-step-approach" class="nav-link" data-scroll-target="#single-step-approach"><span class="header-section-number">13.8.2</span> Single-Step Approach</a></li>
+  <li><a href="#h-matrix" id="toc-h-matrix" class="nav-link" data-scroll-target="#h-matrix"><span class="header-section-number">13.8.3</span> H Matrix</a></li>
+  <li><a href="#advantages-of-ssgblup" id="toc-advantages-of-ssgblup" class="nav-link" data-scroll-target="#advantages-of-ssgblup"><span class="header-section-number">13.8.4</span> Advantages of ssGBLUP</a></li>
+  <li><a href="#software-1" id="toc-software-1" class="nav-link" data-scroll-target="#software-1"><span class="header-section-number">13.8.5</span> Software</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#accuracy-of-genomic-predictions" id="toc-accuracy-of-genomic-predictions" class="nav-link" data-scroll-target="#accuracy-of-genomic-predictions"><span class="header-section-number">13.9</span> Accuracy of Genomic Predictions</a>
+  <ul class="collapse">
+<li><a href="#factors-influencing-accuracy" id="toc-factors-influencing-accuracy" class="nav-link" data-scroll-target="#factors-influencing-accuracy"><span class="header-section-number">13.9.1</span> Factors Influencing Accuracy</a></li>
+  <li><a href="#typical-accuracies" id="toc-typical-accuracies" class="nav-link" data-scroll-target="#typical-accuracies"><span class="header-section-number">13.9.2</span> Typical Accuracies</a></li>
+  <li><a href="#deterministic-prediction-of-accuracy" id="toc-deterministic-prediction-of-accuracy" class="nav-link" data-scroll-target="#deterministic-prediction-of-accuracy"><span class="header-section-number">13.9.3</span> Deterministic Prediction of Accuracy</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#impact-of-genomic-selection-on-livestock-breeding" id="toc-impact-of-genomic-selection-on-livestock-breeding" class="nav-link" data-scroll-target="#impact-of-genomic-selection-on-livestock-breeding"><span class="header-section-number">13.10</span> Impact of Genomic Selection on Livestock Breeding</a>
+  <ul class="collapse">
+<li><a href="#dairy-cattle" id="toc-dairy-cattle" class="nav-link" data-scroll-target="#dairy-cattle"><span class="header-section-number">13.10.1</span> Dairy Cattle</a></li>
+  <li><a href="#swine" id="toc-swine" class="nav-link" data-scroll-target="#swine"><span class="header-section-number">13.10.2</span> Swine</a></li>
+  <li><a href="#poultry" id="toc-poultry" class="nav-link" data-scroll-target="#poultry"><span class="header-section-number">13.10.3</span> Poultry</a></li>
+  <li><a href="#beef-cattle" id="toc-beef-cattle" class="nav-link" data-scroll-target="#beef-cattle"><span class="header-section-number">13.10.4</span> Beef Cattle</a></li>
+  </ul>
+</li>
+  <li><a href="#r-demonstration-genomic-relationship-matrix" id="toc-r-demonstration-genomic-relationship-matrix" class="nav-link" data-scroll-target="#r-demonstration-genomic-relationship-matrix"><span class="header-section-number">13.11</span> R Demonstration: Genomic Relationship Matrix</a></li>
+  <li><a href="#r-demonstration-simulating-genomic-prediction-accuracy" id="toc-r-demonstration-simulating-genomic-prediction-accuracy" class="nav-link" data-scroll-target="#r-demonstration-simulating-genomic-prediction-accuracy"><span class="header-section-number">13.12</span> R Demonstration: Simulating Genomic Prediction Accuracy</a></li>
+  <li>
+<a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">13.13</span> Summary</a>
+  <ul class="collapse">
+<li><a href="#key-points" id="toc-key-points" class="nav-link" data-scroll-target="#key-points"><span class="header-section-number">13.13.1</span> Key Points</a></li>
+  </ul>
+</li>
+  <li><a href="#practice-problems" id="toc-practice-problems" class="nav-link" data-scroll-target="#practice-problems"><span class="header-section-number">13.14</span> Practice Problems</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">13.15</span> Further Reading</a></li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/12-genomics-intro.html">PART 3: GENOMICS</a></li><li class="breadcrumb-item"><a href="../chapters/13-genomic-selection.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Genomic Selection</span></a></li></ol></nav><div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title"><span id="sec-genomic-selection" class="quarto-section-identifier"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Genomic Selection</span></span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><section id="learning-objectives" class="level3 unnumbered learning-objectives"><h3 class="unnumbered anchored" data-anchor-id="learning-objectives">Learning Objectives</h3>
+<p>By the end of this chapter, you will be able to:</p>
+<ol type="1">
+<li>Explain the principles and advantages of genomic selection</li>
+<li>Distinguish GBLUP, SNP-BLUP, and Bayesian genomic prediction methods</li>
+<li>Understand single-step genomic BLUP and its practical importance</li>
+<li>Describe how genomic selection has impacted livestock breeding</li>
+<li>Calculate expected accuracy of genomic predictions</li>
+</ol></section><section id="introduction" class="level2" data-number="13.1"><h2 data-number="13.1" class="anchored" data-anchor-id="introduction">
+<span class="header-section-number">13.1</span> Introduction</h2>
+<p>[Content to be developed: Genomic selection uses genome-wide DNA markers to predict breeding values. It has revolutionized livestock breeding by dramatically increasing accuracy for young animals.]</p>
+</section><section id="what-is-genomic-selection" class="level2" data-number="13.2"><h2 data-number="13.2" class="anchored" data-anchor-id="what-is-genomic-selection">
+<span class="header-section-number">13.2</span> What is Genomic Selection?</h2>
+<p>[Content to be developed: Predicting breeding values (GEBV = Genomic Estimated Breeding Value) using SNP genotypes.]</p>
+<section id="traditional-selection-pre-genomics" class="level3" data-number="13.2.1"><h3 data-number="13.2.1" class="anchored" data-anchor-id="traditional-selection-pre-genomics">
+<span class="header-section-number">13.2.1</span> Traditional Selection (Pre-Genomics)</h3>
+<p>[Content to be developed:]</p>
+<ul>
+<li>Relied on: pedigree, own performance, progeny testing</li>
+<li>
+<strong>Accuracy for young animals</strong>: Low (r ≈ 0.30-0.40, based on parent average)</li>
+<li>
+<strong>Accuracy with progeny</strong>: High (r ≈ 0.80-0.90), but long generation interval</li>
+</ul></section><section id="genomic-selection" class="level3" data-number="13.2.2"><h3 data-number="13.2.2" class="anchored" data-anchor-id="genomic-selection">
+<span class="header-section-number">13.2.2</span> Genomic Selection</h3>
+<p>[Content to be developed:]</p>
+<ul>
+<li>Uses: pedigree + SNP genotypes + phenotypes (training population)</li>
+<li>
+<strong>Accuracy for young animals</strong>: Moderate to high (r ≈ 0.50-0.70 at birth)</li>
+<li>
+<strong>Advantage</strong>: High accuracy without waiting for progeny → shorter generation interval</li>
+</ul></section></section><section id="why-genomic-selection-works" class="level2" data-number="13.3"><h2 data-number="13.3" class="anchored" data-anchor-id="why-genomic-selection-works">
+<span class="header-section-number">13.3</span> Why Genomic Selection Works</h2>
+<p>[Content to be developed: The genetic basis.]</p>
+<section id="linkage-disequilibrium-ld" class="level3" data-number="13.3.1"><h3 data-number="13.3.1" class="anchored" data-anchor-id="linkage-disequilibrium-ld">
+<span class="header-section-number">13.3.1</span> Linkage Disequilibrium (LD)</h3>
+<p>[Content to be developed:]</p>
+<ul>
+<li>SNPs are not the causal mutations, but they are in <strong>linkage disequilibrium</strong> (statistical association) with causal mutations</li>
+<li>LD exists because of limited recombination and population structure</li>
+<li>SNPs “tag” nearby causal variants</li>
+</ul></section><section id="capturing-additive-genetic-variance" class="level3" data-number="13.3.2"><h3 data-number="13.3.2" class="anchored" data-anchor-id="capturing-additive-genetic-variance">
+<span class="header-section-number">13.3.2</span> Capturing Additive Genetic Variance</h3>
+<p>[Content to be developed:]</p>
+<ul>
+<li>Thousands of SNPs across the genome capture most additive genetic variation</li>
+<li>No need to know which SNPs are causal - just need enough markers in LD with causal loci</li>
+</ul></section><section id="training-population" class="level3" data-number="13.3.3"><h3 data-number="13.3.3" class="anchored" data-anchor-id="training-population">
+<span class="header-section-number">13.3.3</span> Training Population</h3>
+<p>[Content to be developed:]</p>
+<ul>
+<li>Animals with both <strong>genotypes and phenotypes</strong> (or EBVs)</li>
+<li>Used to estimate the relationship between SNPs and breeding values</li>
+<li>Larger training population → higher accuracy</li>
+</ul></section></section><section id="two-main-approaches-to-genomic-prediction" class="level2" data-number="13.4"><h2 data-number="13.4" class="anchored" data-anchor-id="two-main-approaches-to-genomic-prediction">
+<span class="header-section-number">13.4</span> Two Main Approaches to Genomic Prediction</h2>
+<p>[Content to be developed: Animal models vs.&nbsp;marker effects models.]</p>
+<section id="animal-model-gblup" class="level3" data-number="13.4.1"><h3 data-number="13.4.1" class="anchored" data-anchor-id="animal-model-gblup">
+<span class="header-section-number">13.4.1</span> Animal Model (GBLUP)</h3>
+<p>[Content to be developed: Predict breeding values directly using genomic relationship matrix (G).]</p>
+</section><section id="marker-effects-model" class="level3" data-number="13.4.2"><h3 data-number="13.4.2" class="anchored" data-anchor-id="marker-effects-model">
+<span class="header-section-number">13.4.2</span> Marker Effects Model</h3>
+<p>[Content to be developed: Estimate effect of each SNP, then sum SNP effects to get GEBV.]</p>
+</section></section><section id="gblup-genomic-blup" class="level2" data-number="13.5"><h2 data-number="13.5" class="anchored" data-anchor-id="gblup-genomic-blup">
+<span class="header-section-number">13.5</span> GBLUP (Genomic BLUP)</h2>
+<p>[Content to be developed: Extension of traditional BLUP using genomic relationships.]</p>
+<section id="genomic-relationship-matrix-g" class="level3" data-number="13.5.1"><h3 data-number="13.5.1" class="anchored" data-anchor-id="genomic-relationship-matrix-g">
+<span class="header-section-number">13.5.1</span> Genomic Relationship Matrix (G)</h3>
+<p>[Content to be developed:]</p>
+<ul>
+<li>Computed from SNP genotypes</li>
+<li>Captures <strong>realized relationships</strong> (actual shared genome)</li>
+<li>More accurate than pedigree-based relationship matrix (A)</li>
+</ul></section><section id="calculating-g" class="level3" data-number="13.5.2"><h3 data-number="13.5.2" class="anchored" data-anchor-id="calculating-g">
+<span class="header-section-number">13.5.2</span> Calculating G</h3>
+<p>[Content to be developed:]</p>
+<p><span class="math display">\[
+G = \frac{(M - P)(M - P)'}{2 \sum p_j (1 - p_j)}
+\]</span></p>
+<p>Where:</p>
+<ul>
+<li>M = matrix of SNP genotypes (0, 1, 2)</li>
+<li>P = matrix of expected genotypes under HWE (2 × allele frequency)</li>
+<li>p_j = allele frequency at SNP j</li>
+</ul></section><section id="gblup-model" class="level3" data-number="13.5.3"><h3 data-number="13.5.3" class="anchored" data-anchor-id="gblup-model">
+<span class="header-section-number">13.5.3</span> GBLUP Model</h3>
+<p>[Content to be developed:]</p>
+<p>Same as traditional BLUP, but replace pedigree relationship matrix (A) with genomic relationship matrix (G).</p>
+<p><strong>Advantages</strong>:</p>
+<ul>
+<li>Accounts for Mendelian sampling (realized relationships)</li>
+<li>Higher accuracy than parent average</li>
+<li>Can be applied to young animals without phenotypes</li>
+</ul></section></section><section id="snp-blup-and-marker-effects-models" class="level2" data-number="13.6"><h2 data-number="13.6" class="anchored" data-anchor-id="snp-blup-and-marker-effects-models">
+<span class="header-section-number">13.6</span> SNP-BLUP and Marker Effects Models</h2>
+<p>[Content to be developed: Estimate effects of individual SNPs.]</p>
+<section id="snp-blup" class="level3" data-number="13.6.1"><h3 data-number="13.6.1" class="anchored" data-anchor-id="snp-blup">
+<span class="header-section-number">13.6.1</span> SNP-BLUP</h3>
+<p>[Content to be developed:]</p>
+<ul>
+<li>Estimate effect of each SNP (thousands of effects)</li>
+<li>Assumes all SNPs have equal variance</li>
+<li>Genomic breeding value: sum of SNP effects for an individual</li>
+</ul>
+<p><span class="math display">\[
+GEBV_i = \sum_{j=1}^{m} x_{ij} \hat{\beta}_j
+\]</span></p>
+<p>Where:</p>
+<ul>
+<li>x_ij = genotype at SNP j for individual i (0, 1, or 2)</li>
+<li>β_j = estimated effect of SNP j</li>
+</ul></section><section id="equivalence-of-gblup-and-snp-blup" class="level3" data-number="13.6.2"><h3 data-number="13.6.2" class="anchored" data-anchor-id="equivalence-of-gblup-and-snp-blup">
+<span class="header-section-number">13.6.2</span> Equivalence of GBLUP and SNP-BLUP</h3>
+<p>[Content to be developed: Under certain assumptions, GBLUP and SNP-BLUP give identical results. They are two ways of parameterizing the same model.]</p>
+</section></section><section id="bayesian-methods" class="level2" data-number="13.7"><h2 data-number="13.7" class="anchored" data-anchor-id="bayesian-methods">
+<span class="header-section-number">13.7</span> Bayesian Methods</h2>
+<p>[Content to be developed: Allow SNPs to have different variances.]</p>
+<section id="motivation" class="level3" data-number="13.7.1"><h3 data-number="13.7.1" class="anchored" data-anchor-id="motivation">
+<span class="header-section-number">13.7.1</span> Motivation</h3>
+<p>[Content to be developed:]</p>
+<ul>
+<li>SNP-BLUP assumes all SNPs have equal variance (unrealistic)</li>
+<li>Some traits have large-effect QTL</li>
+<li>Bayesian methods allow different SNPs to have different effects</li>
+</ul></section><section id="common-bayesian-methods" class="level3" data-number="13.7.2"><h3 data-number="13.7.2" class="anchored" data-anchor-id="common-bayesian-methods">
+<span class="header-section-number">13.7.2</span> Common Bayesian Methods</h3>
+<p>[Content to be developed:]</p>
+<ul>
+<li>
+<strong>BayesA</strong>: All SNPs have effects, variances differ (inverse chi-square prior)</li>
+<li>
+<strong>BayesB</strong>: Some SNPs have zero effect (mixture prior), variances differ</li>
+<li>
+<strong>BayesC / BayesCπ</strong>: Estimate proportion of SNPs with zero effect</li>
+<li>
+<strong>Bayesian Lasso</strong>: Regularization approach (double exponential prior)</li>
+</ul></section><section id="when-bayesian-methods-help" class="level3" data-number="13.7.3"><h3 data-number="13.7.3" class="anchored" data-anchor-id="when-bayesian-methods-help">
+<span class="header-section-number">13.7.3</span> When Bayesian Methods Help</h3>
+<p>[Content to be developed:]</p>
+<ul>
+<li>Traits with major QTL (e.g., fat percentage in dairy, some disease resistance traits)</li>
+<li>Can improve accuracy by 0-10% over GBLUP</li>
+<li>More computationally intensive</li>
+</ul></section><section id="software" class="level3" data-number="13.7.4"><h3 data-number="13.7.4" class="anchored" data-anchor-id="software">
+<span class="header-section-number">13.7.4</span> Software</h3>
+<p>[Content to be developed:]</p>
+<ul>
+<li>
+<strong>BGLR</strong>: R package for Bayesian genomic prediction</li>
+<li>
+<strong>GenSel</strong>: Standalone software</li>
+<li>
+<strong>brms</strong>: General Bayesian modeling in R</li>
+</ul></section></section><section id="single-step-genomic-blup-ssgblup" class="level2" data-number="13.8"><h2 data-number="13.8" class="anchored" data-anchor-id="single-step-genomic-blup-ssgblup">
+<span class="header-section-number">13.8</span> Single-Step Genomic BLUP (ssGBLUP)</h2>
+<p>[Content to be developed: The industry standard approach.]</p>
+<section id="motivation-1" class="level3" data-number="13.8.1"><h3 data-number="13.8.1" class="anchored" data-anchor-id="motivation-1">
+<span class="header-section-number">13.8.1</span> Motivation</h3>
+<p>[Content to be developed:]</p>
+<ul>
+<li>Traditional approach: Two-step process (estimate SNP effects in training population, then predict for selection candidates)</li>
+<li>Problem: Genotyped and non-genotyped animals analyzed separately</li>
+</ul></section><section id="single-step-approach" class="level3" data-number="13.8.2"><h3 data-number="13.8.2" class="anchored" data-anchor-id="single-step-approach">
+<span class="header-section-number">13.8.2</span> Single-Step Approach</h3>
+<p>[Content to be developed:]</p>
+<ul>
+<li>Combine pedigree (A) and genomic (G) relationship matrices into <strong>H matrix</strong>
+</li>
+<li>Allows genotyped and non-genotyped animals in the same analysis</li>
+<li>Uses all available information optimally</li>
+</ul></section><section id="h-matrix" class="level3" data-number="13.8.3"><h3 data-number="13.8.3" class="anchored" data-anchor-id="h-matrix">
+<span class="header-section-number">13.8.3</span> H Matrix</h3>
+<p>[Content to be developed:]</p>
+<p><span class="math display">\[
+H^{-1} = A^{-1} + \begin{bmatrix} 0 &amp; 0 \\ 0 &amp; G^{-1} - A_{22}^{-1} \end{bmatrix}
+\]</span></p>
+<p>Where:</p>
+<ul>
+<li>A = pedigree relationship matrix (all animals)</li>
+<li>G = genomic relationship matrix (genotyped animals only)</li>
+<li>A_22 = pedigree relationships among genotyped animals</li>
+</ul></section><section id="advantages-of-ssgblup" class="level3" data-number="13.8.4"><h3 data-number="13.8.4" class="anchored" data-anchor-id="advantages-of-ssgblup">
+<span class="header-section-number">13.8.4</span> Advantages of ssGBLUP</h3>
+<p>[Content to be developed:]</p>
+<ul>
+<li>All animals (genotyped and non-genotyped) in one analysis</li>
+<li>Efficient use of all information</li>
+<li>EBVs and GEBVs on the same scale</li>
+<li>Widely used in dairy, beef, swine, poultry</li>
+</ul></section><section id="software-1" class="level3" data-number="13.8.5"><h3 data-number="13.8.5" class="anchored" data-anchor-id="software-1">
+<span class="header-section-number">13.8.5</span> Software</h3>
+<p>[Content to be developed:]</p>
+<ul>
+<li>
+<strong>BLUPF90 family</strong>: Free software, widely used</li>
+<li>
+<strong>ASReml</strong>: Commercial software</li>
+</ul></section></section><section id="accuracy-of-genomic-predictions" class="level2" data-number="13.9"><h2 data-number="13.9" class="anchored" data-anchor-id="accuracy-of-genomic-predictions">
+<span class="header-section-number">13.9</span> Accuracy of Genomic Predictions</h2>
+<p>[Content to be developed: Factors affecting accuracy.]</p>
+<section id="factors-influencing-accuracy" class="level3" data-number="13.9.1"><h3 data-number="13.9.1" class="anchored" data-anchor-id="factors-influencing-accuracy">
+<span class="header-section-number">13.9.1</span> Factors Influencing Accuracy</h3>
+<p>[Content to be developed:]</p>
+<ol type="1">
+<li>
+<strong>Size of training population</strong>: Larger = higher accuracy</li>
+<li>
+<strong>Heritability of trait</strong>: Higher h² = higher accuracy</li>
+<li>
+<strong>Relationship between training and selection candidates</strong>: Closer = higher accuracy</li>
+<li>
+<strong>Effective population size (N_e)</strong>: Smaller N_e (longer LD) = higher accuracy</li>
+<li>
+<strong>SNP density</strong>: More SNPs = better coverage of genome</li>
+</ol></section><section id="typical-accuracies" class="level3" data-number="13.9.2"><h3 data-number="13.9.2" class="anchored" data-anchor-id="typical-accuracies">
+<span class="header-section-number">13.9.2</span> Typical Accuracies</h3>
+<p>[Content to be developed:]</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 41%">
+<col style="width: 58%">
+</colgroup>
+<thead><tr class="header">
+<th>Scenario</th>
+<th>Accuracy (r)</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Parent average (no genomics)</td>
+<td>0.30-0.45</td>
+</tr>
+<tr class="even">
+<td>Genomic prediction (young animal, h²=0.30, large training pop)</td>
+<td>0.50-0.70</td>
+</tr>
+<tr class="odd">
+<td>Genomic + own phenotype</td>
+<td>0.60-0.80</td>
+</tr>
+<tr class="even">
+<td>Genomic + progeny (n=20)</td>
+<td>0.80-0.90</td>
+</tr>
+</tbody>
+</table></section><section id="deterministic-prediction-of-accuracy" class="level3" data-number="13.9.3"><h3 data-number="13.9.3" class="anchored" data-anchor-id="deterministic-prediction-of-accuracy">
+<span class="header-section-number">13.9.3</span> Deterministic Prediction of Accuracy</h3>
+<p>[Content to be developed:]</p>
+<p><span class="math display">\[
+r = \sqrt{\frac{N h^2}{N h^2 + M_e}}
+\]</span></p>
+<p>Where:</p>
+<ul>
+<li>N = number of records in training population</li>
+<li>h² = heritability</li>
+<li>M_e = effective number of chromosome segments</li>
+</ul></section></section><section id="impact-of-genomic-selection-on-livestock-breeding" class="level2" data-number="13.10"><h2 data-number="13.10" class="anchored" data-anchor-id="impact-of-genomic-selection-on-livestock-breeding">
+<span class="header-section-number">13.10</span> Impact of Genomic Selection on Livestock Breeding</h2>
+<p>[Content to be developed: Genomics has transformed the industry.]</p>
+<section id="dairy-cattle" class="level3" data-number="13.10.1"><h3 data-number="13.10.1" class="anchored" data-anchor-id="dairy-cattle">
+<span class="header-section-number">13.10.1</span> Dairy Cattle</h3>
+<p>[Content to be developed:]</p>
+<ul>
+<li>
+<strong>Before genomics</strong>: Bull studs used progeny testing (6-8 year generation interval)</li>
+<li>
+<strong>After genomics</strong>: Bulls selected at 1-2 years based on GEBV (2-3 year generation interval)</li>
+<li>
+<strong>Result</strong>: ~Doubled rate of genetic gain</li>
+</ul></section><section id="swine" class="level3" data-number="13.10.2"><h3 data-number="13.10.2" class="anchored" data-anchor-id="swine">
+<span class="header-section-number">13.10.2</span> Swine</h3>
+<p>[Content to be developed:]</p>
+<ul>
+<li>Enabled selection for expensive-to-measure traits (e.g., feed efficiency)</li>
+<li>Increased accuracy for low-heritability traits (e.g., litter size)</li>
+<li>Reduced generation interval</li>
+</ul></section><section id="poultry" class="level3" data-number="13.10.3"><h3 data-number="13.10.3" class="anchored" data-anchor-id="poultry">
+<span class="header-section-number">13.10.3</span> Poultry</h3>
+<p>[Content to be developed:]</p>
+<ul>
+<li>Very large training populations (thousands to tens of thousands)</li>
+<li>High accuracies (r &gt; 0.70 for many traits)</li>
+<li>Fast genetic progress</li>
+</ul></section><section id="beef-cattle" class="level3" data-number="13.10.4"><h3 data-number="13.10.4" class="anchored" data-anchor-id="beef-cattle">
+<span class="header-section-number">13.10.4</span> Beef Cattle</h3>
+<p>[Content to be developed:]</p>
+<ul>
+<li>Genomic EPDs widely available</li>
+<li>Increased accuracy for young bulls</li>
+<li>Useful for hard-to-measure traits (e.g., carcass traits, feed efficiency)</li>
+</ul></section></section><section id="r-demonstration-genomic-relationship-matrix" class="level2" data-number="13.11"><h2 data-number="13.11" class="anchored" data-anchor-id="r-demonstration-genomic-relationship-matrix">
+<span class="header-section-number">13.11</span> R Demonstration: Genomic Relationship Matrix</h2>
+<p>[Content to be developed:]</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Calculate genomic relationship matrix (G) from SNP genotypes</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rramadeu/AGHmatrix">AGHmatrix</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Simulate genotype matrix (5 animals, 1000 SNPs)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span><span class="va">n_animals</span> <span class="op">&lt;-</span> <span class="fl">5</span></span>
+<span><span class="va">n_snps</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span>
+<span><span class="va">M</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">2</span>, <span class="va">n_animals</span> <span class="op">*</span> <span class="va">n_snps</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="va">n_animals</span>, ncol <span class="op">=</span> <span class="va">n_snps</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">M</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"Animal_"</span>, <span class="fl">1</span><span class="op">:</span><span class="va">n_animals</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Calculate G matrix</span></span>
+<span><span class="va">G</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/AGHmatrix/man/Gmatrix.html">Gmatrix</a></span><span class="op">(</span><span class="va">M</span>, method <span class="op">=</span> <span class="st">"VanRaden"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">G</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Compare to pedigree relationships (if available)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="r-demonstration-simulating-genomic-prediction-accuracy" class="level2" data-number="13.12"><h2 data-number="13.12" class="anchored" data-anchor-id="r-demonstration-simulating-genomic-prediction-accuracy">
+<span class="header-section-number">13.12</span> R Demonstration: Simulating Genomic Prediction Accuracy</h2>
+<p>[Content to be developed:]</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Deterministic prediction of genomic accuracy</span></span>
+<span><span class="va">h2</span> <span class="op">&lt;-</span> <span class="fl">0.30</span></span>
+<span><span class="va">training_sizes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">500</span>, <span class="fl">1000</span>, <span class="fl">2000</span>, <span class="fl">5000</span>, <span class="fl">10000</span><span class="op">)</span></span>
+<span><span class="va">Me</span> <span class="op">&lt;-</span> <span class="fl">1000</span>  <span class="co"># Effective number of chromosome segments (example)</span></span>
+<span></span>
+<span><span class="va">accuracy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">(</span><span class="va">training_sizes</span> <span class="op">*</span> <span class="va">h2</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="va">training_sizes</span> <span class="op">*</span> <span class="va">h2</span> <span class="op">+</span> <span class="va">Me</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>Training_Size <span class="op">=</span> <span class="va">training_sizes</span>, Accuracy <span class="op">=</span> <span class="va">accuracy</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Training_Size</span>, y <span class="op">=</span> <span class="va">Accuracy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_line</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"blue"</span>, size <span class="op">=</span> <span class="fl">1.2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"blue"</span>, size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Genomic Prediction Accuracy vs Training Population Size"</span>,</span>
+<span>       x <span class="op">=</span> <span class="st">"Training Population Size"</span>,</span>
+<span>       y <span class="op">=</span> <span class="st">"Accuracy of Genomic Prediction"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="summary" class="level2" data-number="13.13"><h2 data-number="13.13" class="anchored" data-anchor-id="summary">
+<span class="header-section-number">13.13</span> Summary</h2>
+<p>[Content to be developed.]</p>
+<section id="key-points" class="level3" data-number="13.13.1"><h3 data-number="13.13.1" class="anchored" data-anchor-id="key-points">
+<span class="header-section-number">13.13.1</span> Key Points</h3>
+<ul>
+<li>Genomic selection uses SNP genotypes to predict breeding values (GEBVs)</li>
+<li>GBLUP uses genomic relationship matrix (G); SNP-BLUP estimates individual SNP effects</li>
+<li>Bayesian methods allow SNPs to have different variances</li>
+<li>Single-step GBLUP (ssGBLUP) is the industry standard</li>
+<li>Genomic selection has dramatically increased rates of genetic gain (especially dairy)</li>
+<li>Accuracy depends on training population size, heritability, and relationships</li>
+</ul></section></section><section id="practice-problems" class="level2" data-number="13.14"><h2 data-number="13.14" class="anchored" data-anchor-id="practice-problems">
+<span class="header-section-number">13.14</span> Practice Problems</h2>
+<p>[Problems to be developed]</p>
+<ol type="1">
+<li><p>Explain why genomic selection is particularly beneficial for traits with low heritability (e.g., fertility).</p></li>
+<li><p>A dairy breeding program has a training population of 5,000 bulls with phenotypes and genotypes. For a trait with h² = 0.25, estimate the accuracy of genomic predictions using the deterministic formula (assume M_e = 1200).</p></li>
+<li><p>Compare GBLUP and SNP-BLUP. When might Bayesian methods provide an advantage?</p></li>
+<li><p>Explain how single-step GBLUP (ssGBLUP) combines pedigree and genomic information.</p></li>
+</ol></section><section id="further-reading" class="level2" data-number="13.15"><h2 data-number="13.15" class="anchored" data-anchor-id="further-reading">
+<span class="header-section-number">13.15</span> Further Reading</h2>
+<p>[References to be added]</p>
+<ul>
+<li>Meuwissen, Hayes, Goddard (2001): Original genomic selection paper</li>
+<li>VanRaden (2008): Efficient methods for genomic prediction</li>
+<li>Genomic selection reviews for different species</li>
+</ul>
+
+
+<!-- -->
+
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="../chapters/12-genomics-intro.html" class="pagination-link" aria-label="Introduction to Genomics">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Introduction to Genomics</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/14-practical-skills.html" class="pagination-link" aria-label="Practical Animal Breeding and Data Skills">
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Practical Animal Breeding and Data Skills</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Genomic Selection {#sec-genomic-selection}</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"learning-objectives"</span><span class="dt">&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">### Learning Objectives {.unnumbered}</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>By the end of this chapter, you will be able to:</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Explain the principles and advantages of genomic selection</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Distinguish GBLUP, SNP-BLUP, and Bayesian genomic prediction methods</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Understand single-step genomic BLUP and its practical importance</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Describe how genomic selection has impacted livestock breeding</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Calculate expected accuracy of genomic predictions</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Load required packages</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Set default theme for plots</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>))</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Genomic selection uses genome-wide DNA markers to predict breeding values. It has revolutionized livestock breeding by dramatically increasing accuracy for young animals.</span><span class="co">]</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="fu">## What is Genomic Selection?</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Predicting breeding values (GEBV = Genomic Estimated Breeding Value) using SNP genotypes.</span><span class="co">]</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="fu">### Traditional Selection (Pre-Genomics)</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Relied on: pedigree, own performance, progeny testing</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Accuracy for young animals**: Low (r ≈ 0.30-0.40, based on parent average)</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Accuracy with progeny**: High (r ≈ 0.80-0.90), but long generation interval</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a><span class="fu">### Genomic Selection</span></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Uses: pedigree + SNP genotypes + phenotypes (training population)</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Accuracy for young animals**: Moderate to high (r ≈ 0.50-0.70 at birth)</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Advantage**: High accuracy without waiting for progeny → shorter generation interval</span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a><span class="fu">## Why Genomic Selection Works</span></span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: The genetic basis.</span><span class="co">]</span></span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a><span class="fu">### Linkage Disequilibrium (LD)</span></span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>SNPs are not the causal mutations, but they are in **linkage disequilibrium** (statistical association) with causal mutations</span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>LD exists because of limited recombination and population structure</span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>SNPs "tag" nearby causal variants</span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a><span class="fu">### Capturing Additive Genetic Variance</span></span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Thousands of SNPs across the genome capture most additive genetic variation</span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>No need to know which SNPs are causal - just need enough markers in LD with causal loci</span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a><span class="fu">### Training Population</span></span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Animals with both **genotypes and phenotypes** (or EBVs)</span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Used to estimate the relationship between SNPs and breeding values</span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Larger training population → higher accuracy</span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a><span class="fu">## Two Main Approaches to Genomic Prediction</span></span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Animal models vs. marker effects models.</span><span class="co">]</span></span>
+<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a><span class="fu">### Animal Model (GBLUP)</span></span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Predict breeding values directly using genomic relationship matrix (G).</span><span class="co">]</span></span>
+<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a><span class="fu">### Marker Effects Model</span></span>
+<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Estimate effect of each SNP, then sum SNP effects to get GEBV.</span><span class="co">]</span></span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a><span class="fu">## GBLUP (Genomic BLUP)</span></span>
+<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Extension of traditional BLUP using genomic relationships.</span><span class="co">]</span></span>
+<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a><span class="fu">### Genomic Relationship Matrix (G)</span></span>
+<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Computed from SNP genotypes</span>
+<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Captures **realized relationships** (actual shared genome)</span>
+<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>More accurate than pedigree-based relationship matrix (A)</span>
+<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a><span class="fu">### Calculating G</span></span>
+<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a>G = \frac{(M - P)(M - P)'}{2 \sum p_j (1 - p_j)}</span>
+<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a>Where:</span>
+<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>M = matrix of SNP genotypes (0, 1, 2)</span>
+<span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>P = matrix of expected genotypes under HWE (2 × allele frequency)</span>
+<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>p_j = allele frequency at SNP j</span>
+<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a><span class="fu">### GBLUP Model</span></span>
+<span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a>Same as traditional BLUP, but replace pedigree relationship matrix (A) with genomic relationship matrix (G).</span>
+<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a>**Advantages**:</span>
+<span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Accounts for Mendelian sampling (realized relationships)</span>
+<span id="cb3-129"><a href="#cb3-129" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Higher accuracy than parent average</span>
+<span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Can be applied to young animals without phenotypes</span>
+<span id="cb3-131"><a href="#cb3-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a><span class="fu">## SNP-BLUP and Marker Effects Models</span></span>
+<span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Estimate effects of individual SNPs.</span><span class="co">]</span></span>
+<span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a><span class="fu">### SNP-BLUP</span></span>
+<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Estimate effect of each SNP (thousands of effects)</span>
+<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Assumes all SNPs have equal variance</span>
+<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Genomic breeding value: sum of SNP effects for an individual</span>
+<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a>GEBV_i = \sum_{j=1}^{m} x_{ij} \hat{\beta}_j</span>
+<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a>Where:</span>
+<span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-150"><a href="#cb3-150" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>x_ij = genotype at SNP j for individual i (0, 1, or 2)</span>
+<span id="cb3-151"><a href="#cb3-151" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>β_j = estimated effect of SNP j</span>
+<span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-153"><a href="#cb3-153" aria-hidden="true" tabindex="-1"></a><span class="fu">### Equivalence of GBLUP and SNP-BLUP</span></span>
+<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Under certain assumptions, GBLUP and SNP-BLUP give identical results. They are two ways of parameterizing the same model.</span><span class="co">]</span></span>
+<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a><span class="fu">## Bayesian Methods</span></span>
+<span id="cb3-158"><a href="#cb3-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-159"><a href="#cb3-159" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Allow SNPs to have different variances.</span><span class="co">]</span></span>
+<span id="cb3-160"><a href="#cb3-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a><span class="fu">### Motivation</span></span>
+<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-165"><a href="#cb3-165" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>SNP-BLUP assumes all SNPs have equal variance (unrealistic)</span>
+<span id="cb3-166"><a href="#cb3-166" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Some traits have large-effect QTL</span>
+<span id="cb3-167"><a href="#cb3-167" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Bayesian methods allow different SNPs to have different effects</span>
+<span id="cb3-168"><a href="#cb3-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-169"><a href="#cb3-169" aria-hidden="true" tabindex="-1"></a><span class="fu">### Common Bayesian Methods</span></span>
+<span id="cb3-170"><a href="#cb3-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-171"><a href="#cb3-171" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-172"><a href="#cb3-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-173"><a href="#cb3-173" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**BayesA**: All SNPs have effects, variances differ (inverse chi-square prior)</span>
+<span id="cb3-174"><a href="#cb3-174" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**BayesB**: Some SNPs have zero effect (mixture prior), variances differ</span>
+<span id="cb3-175"><a href="#cb3-175" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**BayesC / BayesCπ**: Estimate proportion of SNPs with zero effect</span>
+<span id="cb3-176"><a href="#cb3-176" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Bayesian Lasso**: Regularization approach (double exponential prior)</span>
+<span id="cb3-177"><a href="#cb3-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-178"><a href="#cb3-178" aria-hidden="true" tabindex="-1"></a><span class="fu">### When Bayesian Methods Help</span></span>
+<span id="cb3-179"><a href="#cb3-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-180"><a href="#cb3-180" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-181"><a href="#cb3-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-182"><a href="#cb3-182" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Traits with major QTL (e.g., fat percentage in dairy, some disease resistance traits)</span>
+<span id="cb3-183"><a href="#cb3-183" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Can improve accuracy by 0-10% over GBLUP</span>
+<span id="cb3-184"><a href="#cb3-184" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>More computationally intensive</span>
+<span id="cb3-185"><a href="#cb3-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-186"><a href="#cb3-186" aria-hidden="true" tabindex="-1"></a><span class="fu">### Software</span></span>
+<span id="cb3-187"><a href="#cb3-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-188"><a href="#cb3-188" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**BGLR**: R package for Bayesian genomic prediction</span>
+<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**GenSel**: Standalone software</span>
+<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**brms**: General Bayesian modeling in R</span>
+<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a><span class="fu">## Single-Step Genomic BLUP (ssGBLUP)</span></span>
+<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-196"><a href="#cb3-196" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: The industry standard approach.</span><span class="co">]</span></span>
+<span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-198"><a href="#cb3-198" aria-hidden="true" tabindex="-1"></a><span class="fu">### Motivation</span></span>
+<span id="cb3-199"><a href="#cb3-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-200"><a href="#cb3-200" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-201"><a href="#cb3-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-202"><a href="#cb3-202" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Traditional approach: Two-step process (estimate SNP effects in training population, then predict for selection candidates)</span>
+<span id="cb3-203"><a href="#cb3-203" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Problem: Genotyped and non-genotyped animals analyzed separately</span>
+<span id="cb3-204"><a href="#cb3-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-205"><a href="#cb3-205" aria-hidden="true" tabindex="-1"></a><span class="fu">### Single-Step Approach</span></span>
+<span id="cb3-206"><a href="#cb3-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-207"><a href="#cb3-207" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-208"><a href="#cb3-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-209"><a href="#cb3-209" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Combine pedigree (A) and genomic (G) relationship matrices into **H matrix**</span>
+<span id="cb3-210"><a href="#cb3-210" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Allows genotyped and non-genotyped animals in the same analysis</span>
+<span id="cb3-211"><a href="#cb3-211" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Uses all available information optimally</span>
+<span id="cb3-212"><a href="#cb3-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-213"><a href="#cb3-213" aria-hidden="true" tabindex="-1"></a><span class="fu">### H Matrix</span></span>
+<span id="cb3-214"><a href="#cb3-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-215"><a href="#cb3-215" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-216"><a href="#cb3-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-217"><a href="#cb3-217" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb3-218"><a href="#cb3-218" aria-hidden="true" tabindex="-1"></a>H^{-1} = A^{-1} + \begin{bmatrix} 0 &amp; 0 <span class="sc">\\</span> 0 &amp; G^{-1} - A_{22}^{-1} \end{bmatrix}</span>
+<span id="cb3-219"><a href="#cb3-219" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb3-220"><a href="#cb3-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-221"><a href="#cb3-221" aria-hidden="true" tabindex="-1"></a>Where:</span>
+<span id="cb3-222"><a href="#cb3-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-223"><a href="#cb3-223" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>A = pedigree relationship matrix (all animals)</span>
+<span id="cb3-224"><a href="#cb3-224" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>G = genomic relationship matrix (genotyped animals only)</span>
+<span id="cb3-225"><a href="#cb3-225" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>A_22 = pedigree relationships among genotyped animals</span>
+<span id="cb3-226"><a href="#cb3-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-227"><a href="#cb3-227" aria-hidden="true" tabindex="-1"></a><span class="fu">### Advantages of ssGBLUP</span></span>
+<span id="cb3-228"><a href="#cb3-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-229"><a href="#cb3-229" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-230"><a href="#cb3-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-231"><a href="#cb3-231" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>All animals (genotyped and non-genotyped) in one analysis</span>
+<span id="cb3-232"><a href="#cb3-232" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Efficient use of all information</span>
+<span id="cb3-233"><a href="#cb3-233" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>EBVs and GEBVs on the same scale</span>
+<span id="cb3-234"><a href="#cb3-234" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Widely used in dairy, beef, swine, poultry</span>
+<span id="cb3-235"><a href="#cb3-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-236"><a href="#cb3-236" aria-hidden="true" tabindex="-1"></a><span class="fu">### Software</span></span>
+<span id="cb3-237"><a href="#cb3-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-238"><a href="#cb3-238" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-239"><a href="#cb3-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-240"><a href="#cb3-240" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**BLUPF90 family**: Free software, widely used</span>
+<span id="cb3-241"><a href="#cb3-241" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**ASReml**: Commercial software</span>
+<span id="cb3-242"><a href="#cb3-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-243"><a href="#cb3-243" aria-hidden="true" tabindex="-1"></a><span class="fu">## Accuracy of Genomic Predictions</span></span>
+<span id="cb3-244"><a href="#cb3-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-245"><a href="#cb3-245" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Factors affecting accuracy.</span><span class="co">]</span></span>
+<span id="cb3-246"><a href="#cb3-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-247"><a href="#cb3-247" aria-hidden="true" tabindex="-1"></a><span class="fu">### Factors Influencing Accuracy</span></span>
+<span id="cb3-248"><a href="#cb3-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-249"><a href="#cb3-249" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-250"><a href="#cb3-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-251"><a href="#cb3-251" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Size of training population**: Larger = higher accuracy</span>
+<span id="cb3-252"><a href="#cb3-252" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Heritability of trait**: Higher h² = higher accuracy</span>
+<span id="cb3-253"><a href="#cb3-253" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Relationship between training and selection candidates**: Closer = higher accuracy</span>
+<span id="cb3-254"><a href="#cb3-254" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Effective population size (N_e)**: Smaller N_e (longer LD) = higher accuracy</span>
+<span id="cb3-255"><a href="#cb3-255" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>**SNP density**: More SNPs = better coverage of genome</span>
+<span id="cb3-256"><a href="#cb3-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-257"><a href="#cb3-257" aria-hidden="true" tabindex="-1"></a><span class="fu">### Typical Accuracies</span></span>
+<span id="cb3-258"><a href="#cb3-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-259"><a href="#cb3-259" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-260"><a href="#cb3-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-261"><a href="#cb3-261" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Scenario <span class="pp">|</span> Accuracy (r) <span class="pp">|</span></span>
+<span id="cb3-262"><a href="#cb3-262" aria-hidden="true" tabindex="-1"></a><span class="pp">|----------|--------------|</span></span>
+<span id="cb3-263"><a href="#cb3-263" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Parent average (no genomics) <span class="pp">|</span> 0.30-0.45 <span class="pp">|</span></span>
+<span id="cb3-264"><a href="#cb3-264" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Genomic prediction (young animal, h²=0.30, large training pop) <span class="pp">|</span> 0.50-0.70 <span class="pp">|</span></span>
+<span id="cb3-265"><a href="#cb3-265" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Genomic + own phenotype <span class="pp">|</span> 0.60-0.80 <span class="pp">|</span></span>
+<span id="cb3-266"><a href="#cb3-266" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Genomic + progeny (n=20) <span class="pp">|</span> 0.80-0.90 <span class="pp">|</span></span>
+<span id="cb3-267"><a href="#cb3-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-268"><a href="#cb3-268" aria-hidden="true" tabindex="-1"></a><span class="fu">### Deterministic Prediction of Accuracy</span></span>
+<span id="cb3-269"><a href="#cb3-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-270"><a href="#cb3-270" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-271"><a href="#cb3-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-272"><a href="#cb3-272" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb3-273"><a href="#cb3-273" aria-hidden="true" tabindex="-1"></a>r = \sqrt{\frac{N h^2}{N h^2 + M_e}}</span>
+<span id="cb3-274"><a href="#cb3-274" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb3-275"><a href="#cb3-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-276"><a href="#cb3-276" aria-hidden="true" tabindex="-1"></a>Where:</span>
+<span id="cb3-277"><a href="#cb3-277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-278"><a href="#cb3-278" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>N = number of records in training population</span>
+<span id="cb3-279"><a href="#cb3-279" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>h² = heritability</span>
+<span id="cb3-280"><a href="#cb3-280" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>M_e = effective number of chromosome segments</span>
+<span id="cb3-281"><a href="#cb3-281" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-282"><a href="#cb3-282" aria-hidden="true" tabindex="-1"></a><span class="fu">## Impact of Genomic Selection on Livestock Breeding</span></span>
+<span id="cb3-283"><a href="#cb3-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-284"><a href="#cb3-284" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed: Genomics has transformed the industry.</span><span class="co">]</span></span>
+<span id="cb3-285"><a href="#cb3-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-286"><a href="#cb3-286" aria-hidden="true" tabindex="-1"></a><span class="fu">### Dairy Cattle</span></span>
+<span id="cb3-287"><a href="#cb3-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-288"><a href="#cb3-288" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-289"><a href="#cb3-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-290"><a href="#cb3-290" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Before genomics**: Bull studs used progeny testing (6-8 year generation interval)</span>
+<span id="cb3-291"><a href="#cb3-291" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**After genomics**: Bulls selected at 1-2 years based on GEBV (2-3 year generation interval)</span>
+<span id="cb3-292"><a href="#cb3-292" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Result**: ~Doubled rate of genetic gain</span>
+<span id="cb3-293"><a href="#cb3-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-294"><a href="#cb3-294" aria-hidden="true" tabindex="-1"></a><span class="fu">### Swine</span></span>
+<span id="cb3-295"><a href="#cb3-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-296"><a href="#cb3-296" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-297"><a href="#cb3-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-298"><a href="#cb3-298" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Enabled selection for expensive-to-measure traits (e.g., feed efficiency)</span>
+<span id="cb3-299"><a href="#cb3-299" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Increased accuracy for low-heritability traits (e.g., litter size)</span>
+<span id="cb3-300"><a href="#cb3-300" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Reduced generation interval</span>
+<span id="cb3-301"><a href="#cb3-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-302"><a href="#cb3-302" aria-hidden="true" tabindex="-1"></a><span class="fu">### Poultry</span></span>
+<span id="cb3-303"><a href="#cb3-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-304"><a href="#cb3-304" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-305"><a href="#cb3-305" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-306"><a href="#cb3-306" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Very large training populations (thousands to tens of thousands)</span>
+<span id="cb3-307"><a href="#cb3-307" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>High accuracies (r &gt; 0.70 for many traits)</span>
+<span id="cb3-308"><a href="#cb3-308" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Fast genetic progress</span>
+<span id="cb3-309"><a href="#cb3-309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-310"><a href="#cb3-310" aria-hidden="true" tabindex="-1"></a><span class="fu">### Beef Cattle</span></span>
+<span id="cb3-311"><a href="#cb3-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-312"><a href="#cb3-312" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-313"><a href="#cb3-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-314"><a href="#cb3-314" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Genomic EPDs widely available</span>
+<span id="cb3-315"><a href="#cb3-315" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Increased accuracy for young bulls</span>
+<span id="cb3-316"><a href="#cb3-316" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Useful for hard-to-measure traits (e.g., carcass traits, feed efficiency)</span>
+<span id="cb3-317"><a href="#cb3-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-318"><a href="#cb3-318" aria-hidden="true" tabindex="-1"></a><span class="fu">## R Demonstration: Genomic Relationship Matrix</span></span>
+<span id="cb3-319"><a href="#cb3-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-320"><a href="#cb3-320" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-321"><a href="#cb3-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-324"><a href="#cb3-324" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb3-325"><a href="#cb3-325" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb3-326"><a href="#cb3-326" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb3-327"><a href="#cb3-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-328"><a href="#cb3-328" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate genomic relationship matrix (G) from SNP genotypes</span></span>
+<span id="cb3-329"><a href="#cb3-329" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(AGHmatrix)</span>
+<span id="cb3-330"><a href="#cb3-330" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-331"><a href="#cb3-331" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate genotype matrix (5 animals, 1000 SNPs)</span></span>
+<span id="cb3-332"><a href="#cb3-332" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb3-333"><a href="#cb3-333" aria-hidden="true" tabindex="-1"></a>n_animals <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb3-334"><a href="#cb3-334" aria-hidden="true" tabindex="-1"></a>n_snps <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb3-335"><a href="#cb3-335" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>, n_animals <span class="sc">*</span> n_snps, <span class="at">replace =</span> <span class="cn">TRUE</span>), <span class="at">nrow =</span> n_animals, <span class="at">ncol =</span> n_snps)</span>
+<span id="cb3-336"><a href="#cb3-336" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(M) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Animal_"</span>, <span class="dv">1</span><span class="sc">:</span>n_animals)</span>
+<span id="cb3-337"><a href="#cb3-337" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-338"><a href="#cb3-338" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate G matrix</span></span>
+<span id="cb3-339"><a href="#cb3-339" aria-hidden="true" tabindex="-1"></a>G <span class="ot">&lt;-</span> <span class="fu">Gmatrix</span>(M, <span class="at">method =</span> <span class="st">"VanRaden"</span>)</span>
+<span id="cb3-340"><a href="#cb3-340" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">round</span>(G, <span class="dv">3</span>))</span>
+<span id="cb3-341"><a href="#cb3-341" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-342"><a href="#cb3-342" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare to pedigree relationships (if available)</span></span>
+<span id="cb3-343"><a href="#cb3-343" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-344"><a href="#cb3-344" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-345"><a href="#cb3-345" aria-hidden="true" tabindex="-1"></a><span class="fu">## R Demonstration: Simulating Genomic Prediction Accuracy</span></span>
+<span id="cb3-346"><a href="#cb3-346" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-347"><a href="#cb3-347" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed:</span><span class="co">]</span></span>
+<span id="cb3-348"><a href="#cb3-348" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-351"><a href="#cb3-351" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb3-352"><a href="#cb3-352" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb3-353"><a href="#cb3-353" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb3-354"><a href="#cb3-354" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-355"><a href="#cb3-355" aria-hidden="true" tabindex="-1"></a><span class="co"># Deterministic prediction of genomic accuracy</span></span>
+<span id="cb3-356"><a href="#cb3-356" aria-hidden="true" tabindex="-1"></a>h2 <span class="ot">&lt;-</span> <span class="fl">0.30</span></span>
+<span id="cb3-357"><a href="#cb3-357" aria-hidden="true" tabindex="-1"></a>training_sizes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">500</span>, <span class="dv">1000</span>, <span class="dv">2000</span>, <span class="dv">5000</span>, <span class="dv">10000</span>)</span>
+<span id="cb3-358"><a href="#cb3-358" aria-hidden="true" tabindex="-1"></a>Me <span class="ot">&lt;-</span> <span class="dv">1000</span>  <span class="co"># Effective number of chromosome segments (example)</span></span>
+<span id="cb3-359"><a href="#cb3-359" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-360"><a href="#cb3-360" aria-hidden="true" tabindex="-1"></a>accuracy <span class="ot">&lt;-</span> <span class="fu">sqrt</span>((training_sizes <span class="sc">*</span> h2) <span class="sc">/</span> (training_sizes <span class="sc">*</span> h2 <span class="sc">+</span> Me))</span>
+<span id="cb3-361"><a href="#cb3-361" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-362"><a href="#cb3-362" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">Training_Size =</span> training_sizes, <span class="at">Accuracy =</span> accuracy) <span class="sc">%&gt;%</span></span>
+<span id="cb3-363"><a href="#cb3-363" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Training_Size, <span class="at">y =</span> Accuracy)) <span class="sc">+</span></span>
+<span id="cb3-364"><a href="#cb3-364" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb3-365"><a href="#cb3-365" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb3-366"><a href="#cb3-366" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Genomic Prediction Accuracy vs Training Population Size"</span>,</span>
+<span id="cb3-367"><a href="#cb3-367" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Training Population Size"</span>,</span>
+<span id="cb3-368"><a href="#cb3-368" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Accuracy of Genomic Prediction"</span>) <span class="sc">+</span></span>
+<span id="cb3-369"><a href="#cb3-369" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb3-370"><a href="#cb3-370" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-371"><a href="#cb3-371" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-372"><a href="#cb3-372" aria-hidden="true" tabindex="-1"></a><span class="fu">## Summary</span></span>
+<span id="cb3-373"><a href="#cb3-373" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-374"><a href="#cb3-374" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Content to be developed.</span><span class="co">]</span></span>
+<span id="cb3-375"><a href="#cb3-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-376"><a href="#cb3-376" aria-hidden="true" tabindex="-1"></a><span class="fu">### Key Points</span></span>
+<span id="cb3-377"><a href="#cb3-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-378"><a href="#cb3-378" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Genomic selection uses SNP genotypes to predict breeding values (GEBVs)</span>
+<span id="cb3-379"><a href="#cb3-379" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>GBLUP uses genomic relationship matrix (G); SNP-BLUP estimates individual SNP effects</span>
+<span id="cb3-380"><a href="#cb3-380" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Bayesian methods allow SNPs to have different variances</span>
+<span id="cb3-381"><a href="#cb3-381" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Single-step GBLUP (ssGBLUP) is the industry standard</span>
+<span id="cb3-382"><a href="#cb3-382" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Genomic selection has dramatically increased rates of genetic gain (especially dairy)</span>
+<span id="cb3-383"><a href="#cb3-383" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Accuracy depends on training population size, heritability, and relationships</span>
+<span id="cb3-384"><a href="#cb3-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-385"><a href="#cb3-385" aria-hidden="true" tabindex="-1"></a><span class="fu">## Practice Problems</span></span>
+<span id="cb3-386"><a href="#cb3-386" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-387"><a href="#cb3-387" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Problems to be developed</span><span class="co">]</span></span>
+<span id="cb3-388"><a href="#cb3-388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-389"><a href="#cb3-389" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Explain why genomic selection is particularly beneficial for traits with low heritability (e.g., fertility).</span>
+<span id="cb3-390"><a href="#cb3-390" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-391"><a href="#cb3-391" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>A dairy breeding program has a training population of 5,000 bulls with phenotypes and genotypes. For a trait with h² = 0.25, estimate the accuracy of genomic predictions using the deterministic formula (assume M_e = 1200).</span>
+<span id="cb3-392"><a href="#cb3-392" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-393"><a href="#cb3-393" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Compare GBLUP and SNP-BLUP. When might Bayesian methods provide an advantage?</span>
+<span id="cb3-394"><a href="#cb3-394" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-395"><a href="#cb3-395" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Explain how single-step GBLUP (ssGBLUP) combines pedigree and genomic information.</span>
+<span id="cb3-396"><a href="#cb3-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-397"><a href="#cb3-397" aria-hidden="true" tabindex="-1"></a><span class="fu">## Further Reading</span></span>
+<span id="cb3-398"><a href="#cb3-398" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-399"><a href="#cb3-399" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">References to be added</span><span class="co">]</span></span>
+<span id="cb3-400"><a href="#cb3-400" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-401"><a href="#cb3-401" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Meuwissen, Hayes, Goddard (2001): Original genomic selection paper</span>
+<span id="cb3-402"><a href="#cb3-402" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>VanRaden (2008): Efficient methods for genomic prediction</span>
+<span id="cb3-403"><a href="#cb3-403" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Genomic selection reviews for different species</span>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
