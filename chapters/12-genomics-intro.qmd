@@ -21,272 +21,1096 @@ By the end of this chapter, you will be able to:
 # Load required packages
 library(tidyverse)
 library(knitr)
+library(patchwork)
 
 # Set default theme for plots
 theme_set(theme_minimal(base_size = 12))
+
+# Set seed for reproducibility
+set.seed(42)
 ```
 
 ## Introduction
 
-[Content to be developed: Genomics has revolutionized animal breeding. By using DNA information, we can predict breeding values more accurately and at earlier ages.]
+In 2009, the dairy cattle breeding industry experienced a revolution. For decades, young bulls required expensive progeny testing—waiting 5-6 years to evaluate daughters' milk production before widespread use. This changed dramatically when the USDA and dairy breed associations implemented **genomic selection**. Suddenly, a small tissue sample from a newborn calf could predict its genetic merit with remarkable accuracy, without waiting for daughters or even the bull's own performance records.
+
+This breakthrough stemmed from sequencing animal genomes and developing technologies to measure thousands of DNA variants across the genome simultaneously. The impact was immediate and profound: genetic progress in dairy cattle essentially doubled overnight. Generation intervals dropped from 6-7 years to 2-3 years. Young bulls no longer needed progeny testing. The cost per genetic improvement plummeted.
+
+What happened in dairy cattle has since spread across livestock breeding—swine, poultry, beef cattle, sheep, horses, and even companion animals now routinely use genomic technologies. Commercial breeding companies have restructured their entire operations around genomic selection. The transformation is so complete that today, genomics is simply how modern animal breeding is done.
+
+This chapter introduces the genomic technologies that made this revolution possible. We'll explore what DNA markers (SNPs) are, how we measure them, how we ensure data quality, and what applications they enable beyond genomic selection. By the end, you'll understand the foundation on which modern breeding programs are built—and be prepared for Chapter 13, where we'll dive into genomic selection methods themselves.
 
 ## What is Genomics in Breeding?
 
-[Content to be developed: Using DNA markers (genotypes) to improve genetic predictions and make better selection decisions.]
+**Genomics in animal breeding** refers to using genome-wide DNA information to improve genetic predictions and make better selection decisions. Instead of relying solely on pedigrees (who the parents are) and phenotypes (what the animal looks like or produces), we can now look directly at an animal's DNA to predict its genetic merit.
 
-### Before Genomics
+### Three Key Advantages of Genomics
 
-[Content to be developed: Relied on pedigrees, phenotypes, and progeny testing. Slow (especially for low-heritability traits) and expensive.]
+Genomics provides three major improvements over traditional breeding methods:
 
-### After Genomics
+**1. Direct measurement of genotype**
+With traditional methods, we infer an animal's genotype from its relatives' and own performance. Genomics lets us measure the genotype directly by sequencing DNA. This captures **Mendelian sampling**—the random shuffling of chromosomes during gamete formation that makes full siblings genetically different.
 
-[Content to be developed: Use DNA markers to predict breeding values at birth. Faster, cheaper, and more accurate for young animals.]
+**2. Early selection**
+We can genotype animals at birth (or even as embryos), predict their breeding values immediately, and make selection decisions years before they would express the trait or produce offspring. This dramatically reduces generation intervals.
+
+**3. Selection on expensive or sex-limited traits**
+Some traits are difficult or expensive to measure (e.g., feed efficiency requiring individual intake measurement, or carcass quality requiring slaughter). Others can only be measured in one sex (e.g., milk production in females). Genomics enables accurate selection on these traits using DNA samples and data from relatives.
+
+### Before and After Genomics
+
+Let's contrast traditional breeding with genomic breeding using dairy cattle as an example:
+
+| Aspect | Traditional Breeding (Pre-2009) | Genomic Breeding (Post-2009) |
+|--------|--------------------------------|------------------------------|
+| **Information source** | Pedigree + phenotypes from progeny | Pedigree + phenotypes + DNA markers |
+| **Young bull evaluation** | Progeny test: 5-6 years, 100+ daughters | Genomic test: birth, no daughters needed |
+| **Generation interval** | 6-7 years (waiting for progeny) | 2-3 years (select at birth) |
+| **Accuracy for young bull** | ~0.30 (parent average) | ~0.65 (genomic prediction) |
+| **Cost per evaluation** | $25,000-$50,000 (progeny testing) | $50-150 (genomic testing) |
+| **Annual genetic gain** | ~1% per year | ~2% per year (doubled) |
+
+The transformation has been similarly dramatic in other species, though the specifics vary. Swine breeding companies now genotype thousands of selection candidates annually. Broiler breeding programs use genomics to improve disease resistance and leg health. Even dog and cat breeders use genomic tools to screen for genetic diseases and verify parentage.
 
 ### Timeline of Genomics in Livestock
 
-[Content to be developed:]
+The genomic revolution in animal breeding unfolded rapidly:
 
-- **2001**: Human genome sequenced
-- **2004-2009**: Livestock genome assemblies (cattle, chicken, pig, sheep, horse)
-- **2008-2010**: First genomic selection implementations (dairy cattle, broilers)
+- **2001**: Human genome sequenced (reference for all mammalian genomics)
+- **2004-2009**: Livestock genome assemblies completed:
+  - Chicken (2004)
+  - Cattle (2009)
+  - Pig (2009)
+  - Sheep (2010)
+  - Horse (2009)
+- **2008-2010**: First genomic selection implementations
+  - Dairy cattle (2009, USA and Netherlands)
+  - Broiler chickens (~2010)
 - **2010s**: Widespread adoption across species
-- **2020s**: Whole genome sequencing becomes more accessible
+  - Swine breeding companies (2011-2014)
+  - Beef cattle breed associations (2012+)
+  - Salmon breeding (2012+)
+- **2015-2020**: Single-step genomic BLUP becomes industry standard
+- **2020+**: Whole genome sequencing reference panels, advanced methods
+
+Each species' adoption timeline depended on industry structure, generation interval, and economic incentives. Dairy cattle adopted quickly due to long generation intervals and expensive progeny testing. Poultry breeding companies integrated genomics into existing family-based selection schemes. The common thread: once adopted, genomics transformed every breeding program.
 
 ## DNA Markers: Single Nucleotide Polymorphisms (SNPs)
 
-[Content to be developed: SNPs are the most common type of genetic variation.]
+To use genomics, we need **genetic markers**—specific locations in the genome where individuals differ. The most common and useful type of marker is the SNP (pronounced "snip").
 
 ### What is a SNP?
 
-[Content to be developed:]
+A **Single Nucleotide Polymorphism (SNP)** is a location in the DNA sequence where a single nucleotide (base pair) differs between individuals in a population.
 
-- **Single Nucleotide Polymorphism**: One base pair difference in DNA sequence
-- Example: One animal has "A" at a position, another has "G"
-- Millions of SNPs exist across the genome
+DNA consists of four nucleotide bases: **A** (adenine), **T** (thymine), **G** (guanine), and **C** (cytosine). At most locations in the genome, all individuals have the same base. But at some locations—roughly 1 in every 1,000 bases—variation exists.
+
+**Example SNP:**
+
+Animal 1: ...ATCG**A**TTGCA...
+Animal 2: ...ATCG**G**TTGCA...
+
+At this SNP position, Animal 1 has an **A** allele and Animal 2 has a **G** allele. This single base difference is a SNP. Mammals have billions of base pairs, so millions of SNPs exist across the genome—far more than we need for breeding applications.
+
+**Where do SNPs come from?**
+SNPs arise from random mutations that occurred in ancestral populations and were passed down through generations. Most SNPs are selectively neutral (don't affect fitness), but some are located in or near genes and influence traits of interest. Even neutral SNPs are useful because they're **linked** to causal mutations through linkage disequilibrium (more on this shortly).
 
 ### SNP Genotypes
 
-[Content to be developed:]
+Each animal inherits one copy of each chromosome from its sire and one from its dam. Therefore, at each SNP location, an animal has **two alleles**—one from each parent.
 
-Each animal has two copies of each chromosome (one from sire, one from dam).
+Let's say a SNP has two possible alleles: **A** and **G**. An individual can have one of three genotypes:
 
-**Genotype notation**:
+1. **AA** (homozygous for A)
+2. **AG** (heterozygous)
+3. **GG** (homozygous for G)
 
-- **0** = Homozygous for allele 1 (e.g., AA)
-- **1** = Heterozygous (e.g., AG)
-- **2** = Homozygous for allele 2 (e.g., GG)
+In genomic datasets, we typically code SNP genotypes numerically:
+
+- **0** = homozygous for the first allele (AA)
+- **1** = heterozygous (AG)
+- **2** = homozygous for the second allele (GG)
+
+**Important:** The choice of which allele is "0" vs. "2" is arbitrary. We usually designate the allele that was more common when the SNP panel was designed as "0" (the reference allele) and the alternative allele as "2."
+
+**Example genotypes for 5 animals at 3 SNPs:**
+
+| Animal | SNP1 | SNP2 | SNP3 |
+|--------|------|------|------|
+| 1      | 0    | 1    | 2    |
+| 2      | 1    | 0    | 1    |
+| 3      | 2    | 2    | 0    |
+| 4      | 0    | 1    | 1    |
+| 5      | 1    | 2    | 0    |
+
+Animal 1 is homozygous AA at SNP1 (genotype = 0), heterozygous at SNP2 (genotype = 1), and homozygous GG at SNP3 (genotype = 2).
 
 ### Allele Frequency
 
-[Content to be developed:]
+An important property of each SNP is its **allele frequency**—the proportion of chromosomes in the population carrying each allele.
+
+If we have genotype data for many animals, we can calculate the frequency of allele A as:
 
 $$
-p = \frac{2 \times n_{AA} + n_{AG}}{2 \times n_{total}}
+p = \frac{2 \times n_{AA} + n_{AG}}{2 \times n_{\text{total}}}
 $$
 
-Where p is the frequency of the A allele.
+Where:
 
-### Why SNPs are Useful
+- $n_{AA}$ = number of animals with genotype AA (coded as 0)
+- $n_{AG}$ = number of animals with genotype AG (coded as 1)
+- $n_{\text{total}}$ = total number of animals
+- We multiply by 2 because each animal has 2 alleles
 
-[Content to be developed:]
+The frequency of allele G is simply $q = 1 - p$.
 
-- Common across the genome (millions available)
-- Stable (don't change within an individual)
-- Easy to genotype with modern technology
-- In linkage disequilibrium (LD) with causal mutations
-- Can predict breeding values
+**Example:**
+Suppose we genotyped 100 cattle at a SNP and observed:
+
+- 25 animals with genotype 0 (AA)
+- 50 animals with genotype 1 (AG)
+- 25 animals with genotype 2 (GG)
+
+The frequency of allele A is:
+
+$$
+p = \frac{2(25) + 50}{2(100)} = \frac{100}{200} = 0.50
+$$
+
+So allele A has frequency 50% in this population, and allele G also has frequency 50%.
+
+**Minor Allele Frequency (MAF):**
+The **minor allele frequency** is the frequency of the less common allele. If $p = 0.50$, MAF = 0.50. If $p = 0.90$, MAF = 0.10 (the G allele is minor). MAF is important for quality control (low-MAF SNPs provide less information and may be genotyping errors).
+
+### Why SNPs are Useful for Breeding
+
+SNPs are the workhorses of genomic selection for several reasons:
+
+**1. Abundant across the genome**
+Millions of SNPs exist in livestock species. We can select thousands to hundreds of thousands that are evenly spaced across chromosomes, ensuring genome-wide coverage.
+
+**2. Biallelic (simple)**
+Most SNPs have only two alleles (A/G, C/T, etc.), making them easy to genotype and analyze. Contrast with older markers like microsatellites, which often had many alleles and were more complex.
+
+**3. Stable within an individual**
+Your genotype at a SNP doesn't change throughout your life. We can genotype an animal once (at birth) and use that information forever.
+
+**4. High-throughput genotyping**
+Modern SNP chips can genotype 50,000 to 800,000 SNPs simultaneously from a single DNA sample, at low cost. This was impossible with older marker technologies.
+
+**5. Linkage disequilibrium (LD) with causal mutations**
+Most SNPs we genotype are not themselves causing variation in traits. Instead, they are **linked** (physically close on the chromosome) to causal mutations. When SNPs and causal mutations are inherited together (in LD), we can use SNP genotypes to predict breeding values even if we never identify the causal mutations themselves.
+
+**Linkage disequilibrium** is the key concept making genomic selection work. LD means certain alleles at different loci are inherited together more often than expected by chance (because they're close together and recombination is rare between them). By genotyping SNPs across the genome, we effectively "tag" chromosomal segments and their associated genetic effects on traits.
+
+**Example: Coat color in horses**
+The "agouti" gene determines whether a horse is bay (black body with brown points) or black (entirely black). A SNP in the agouti gene is in perfect LD with the causal mutation. By genotyping this SNP, we can predict coat color without sequencing the entire gene. Similarly, thousands of SNPs across the genome tag segments affecting milk production, growth rate, disease resistance, etc.
 
 ## SNP Chips (Arrays)
 
-[Content to be developed: Platforms for genotyping many SNPs simultaneously.]
+Now that we understand what SNPs are, how do we genotype thousands of them efficiently? The answer is **SNP chips** (also called SNP arrays or bead chips).
 
 ### What is a SNP Chip?
 
-[Content to be developed: A microarray that genotypes thousands to hundreds of thousands of SNPs in a single assay.]
+A **SNP chip** is a piece of glass or silicon (about the size of a thumbnail) onto which hundreds of thousands of DNA probes have been attached. Each probe corresponds to a specific SNP location in the genome. When DNA from an animal is applied to the chip, it binds to the probes, and a scanner detects which alleles are present at each SNP.
 
-### Common SNP Chips in Livestock
+**Key features:**
 
-[Content to be developed:]
-
-| Species | SNP Chip | Number of SNPs | Cost (approx) |
-|---------|----------|----------------|---------------|
-| Cattle  | BovineHD | 777,000 | $150 |
-| Cattle  | GGP-F250 | 250,000 | $40-60 |
-| Swine   | PorcineSNP60 | 60,000 | $50-80 |
-| Poultry | Axiom (custom) | 600,000 | Proprietary |
-| Sheep   | OvineSNP50 | 50,000 | $50-80 |
-| Horse   | EquineSNP70 | 70,000 | $70-100 |
+- **Pre-designed panel:** Each chip genotypes a fixed set of SNPs chosen during chip design
+- **High-throughput:** One chip genotypes 50,000 to 800,000 SNPs from one DNA sample
+- **Low cost per SNP:** Though the chip itself costs $30-$150, the cost per SNP is often < $0.001
+- **Species-specific:** Different chips exist for cattle, swine, poultry, horses, dogs, etc.
 
 ### How SNP Chips Work (Simplified)
 
-[Content to be developed:]
+The genotyping process involves several steps:
 
-1. Extract DNA from tissue sample (blood, hair, tissue)
-2. DNA binds to chip at SNP locations
-3. Fluorescent probes detect which alleles are present
-4. Software "calls" genotypes (0, 1, 2)
+**1. DNA Extraction**
+DNA is extracted from a tissue sample—typically blood, hair follicles, ear tissue, or nasal swabs. The sample is processed in a lab to isolate high-quality DNA.
 
-### Decreasing Costs
+**2. DNA Processing and Chip Hybridization**
+The DNA is fragmented, amplified, and labeled with fluorescent markers. It's then applied to the chip, where it binds (hybridizes) to probes corresponding to each SNP location.
 
-[Content to be developed: SNP chip costs have dropped dramatically. Enabled widespread adoption in breeding programs.]
+**3. Scanning**
+A laser scanner excites the fluorescent labels, and the emitted light indicates which alleles are present. Different alleles emit different fluorescence patterns (e.g., red for AA, yellow for AG, green for GG).
 
-## Bioinformatics Basics
+**4. Genotype Calling**
+Software analyzes the fluorescence intensities and "calls" genotypes (0, 1, or 2) for each SNP in each animal. Quality scores indicate confidence in each call.
 
-[Content to be developed: Processing genotype data requires quality control.]
+You don't need to understand the detailed chemistry—the important point is that SNP chips enable cost-effective, accurate, high-throughput genotyping.
 
-### Genotype Quality Control
+### Common SNP Chips by Species
 
-[Content to be developed: Remove low-quality SNPs and samples.]
+Different livestock and companion animal species have breed- and purpose-specific SNP chips. Here's a comprehensive table of widely used panels:
+
+| Species | SNP Chip Name | Number of SNPs | Typical Cost (USD) | Primary Uses |
+|---------|---------------|----------------|--------------------|--------------|
+| **Cattle (Dairy/Beef)** | BovineHD | 777,962 | $100-150 | Research, reference panels, high-density |
+| | GGP Bovine 100K | 100,000 | $35-50 | Genomic selection, routine evaluation |
+| | GGP Bovine 50K | 50,000 | $30-40 | Genomic selection, crossbred animals |
+| | GGP Bovine LD (Low Density) | 30,000 | $15-25 | Females, terminal animals (imputed to HD) |
+| **Swine** | PorcineSNP60 (Illumina) | 60,000 | $50-80 | Genomic selection, parentage |
+| | GGP Porcine 50K | 50,000 | $40-60 | Commercial breeding programs |
+| | GGP Porcine LD | 20,000 | $20-30 | Crossbred commercial pigs (imputed) |
+| **Poultry** | Axiom Chicken HD (custom) | 600,000 | Proprietary | Broiler and layer breeding (company-specific) |
+| | Affymetrix 600K | 600,000 | Proprietary | Research and breeding (custom content) |
+| **Sheep** | OvineSNP50 | 50,000 | $50-80 | LAMBPLAN, genomic selection |
+| | Ovine Infinium HD | 600,000 | $100-150 | Research, reference panels |
+| **Goat** | GoatSNP50 | 50,000 | $60-90 | Genomic selection, research |
+| **Horse** | EquineSNP70 | 70,000 | $70-100 | Racing, breeding, parentage, coat color |
+| | Equine Axiom | 670,000 | $120-180 | Research, high-density applications |
+| **Dog** | CanineHD (Illumina) | 173,662 | $100-200 | Breed identification, health screening, research |
+| | Canine LD | 20,000 | $60-100 | Breed-specific health panels, parentage |
+| **Cat** | Feline Infinium iSelect | 63,000 | $80-150 | Breed identification, health testing (PKD, HCM) |
+| **Salmon** | Affymetrix Axiom (custom) | 200,000-500,000 | Proprietary | Disease resistance, growth, commercial breeding |
+| **Trout** | Rainbow Trout Axiom | 57,000 | Proprietary | Aquaculture breeding programs |
+
+**Notes:**
+
+- **GGP** = GeneSeek Genomic Profiler (Neogen), widely used in cattle and swine
+- **LD, MD, HD** = Low Density, Medium Density, High Density
+- Costs are approximate (2024-2025) and vary by volume, region, and service provider
+- Poultry and some aquaculture arrays are proprietary to breeding companies
+- Many species have multiple chip options (low vs. high density) for cost-effective imputation strategies
+
+### Density Trade-offs: When to Use Which Chip?
+
+Breeding programs often genotype animals with different density chips depending on their role:
+
+**High-density chips (500K-800K SNPs):**
+
+- **Reference animals:** Influential sires, elite dams, animals in training populations
+- **Research:** Fine-mapping QTL, whole-genome sequencing imputation reference
+- **Long-term value:** Animals whose genotypes will be used repeatedly for relationship estimation
+
+**Medium-density chips (50K-100K SNPs):**
+
+- **Selection candidates:** Animals being evaluated for breeding decisions
+- **Routine genomic evaluations:** Cost-effective, sufficient accuracy when imputed
+- **Good balance:** Adequate LD coverage for most populations
+
+**Low-density chips (10K-30K SNPs):**
+
+- **Commercial females:** Replacement females not expected to be top-tier breeders
+- **Crossbred animals:** Terminal market animals if breed composition is of interest
+- **Cost savings:** Can be imputed to higher density with modest accuracy loss
+
+**Imputation strategy:**
+Most programs genotype key animals (e.g., top 10%) with high-density chips, most selection candidates with medium-density, and commercial animals (if genotyped at all) with low-density. Missing genotypes are imputed using the high-density reference panel. This maximizes information while minimizing cost.
+
+**Example: Dairy cattle genomic strategy**
+A typical dairy breeding program might:
+
+- Genotype elite bulls with BovineHD (777K) or sequence them → reference panel
+- Genotype bull calves (selection candidates) with GGP 50K → impute to HD
+- Genotype females with GGP-LD (30K) → impute to 50K or HD
+- Total cost per bull calf: ~$35, vs. $25,000+ for progeny testing
+
+### Cost Trends: The Genomic Revolution Became Affordable
+
+One reason genomics spread so rapidly is that genotyping costs plummeted.
+
+**SNP chip cost trends (per animal):**
+
+- **2008:** BovineHD chip = $250
+- **2010:** Bovine50K chip = $150
+- **2015:** GGP 50K = $40
+- **2020:** GGP 50K = $30, GGP-LD = $15
+- **2025:** GGP 50K = $30-35, GGP-LD = $15-20
+
+This dramatic cost reduction—nearly 10-fold for routine genotyping—made genomics economically viable even for traits with modest economic value. Combined with imputation, programs can now genotype thousands of animals per year at costs far below traditional phenotyping and progeny testing.
+
+**Whole genome sequencing** (discussed next) is also declining in cost but remains more expensive (~$500-$2000/animal), so it's reserved for key reference animals.
+
+## Bioinformatics Basics: Quality Control and Imputation
+
+Once animals are genotyped, raw data must be processed and quality-controlled before use in genetic evaluations. **Bioinformatics** pipelines handle these steps.
+
+### Genotype Quality Control (QC)
+
+Not all genotypes are called correctly. Poor-quality DNA, technical errors, or rare variants can lead to incorrect genotype calls. Quality control filters remove unreliable SNPs and samples before analysis.
 
 #### Call Rate
 
-[Content to be developed: Proportion of SNPs successfully genotyped per animal, and proportion of animals successfully genotyped per SNP.]
+**Call rate** measures the proportion of SNPs (or animals) successfully genotyped.
 
-- **Animal call rate**: % of SNPs called for an animal (threshold: > 90%)
-- **SNP call rate**: % of animals with genotype for a SNP (threshold: > 95%)
+- **Animal call rate:** Percentage of SNPs with successful genotype calls for a given animal
+- **SNP call rate:** Percentage of animals with successful genotype calls for a given SNP
+
+**Thresholds (typical):**
+
+- **Animal call rate:** ≥ 90% (remove animals below this)
+- **SNP call rate:** ≥ 95-98% (remove SNPs below this)
+
+**Why filter by call rate?**
+Low call rates indicate poor DNA quality (for animals) or problematic SNP assays (for SNPs). Including them adds noise and can bias estimates.
+
+**Example:**
+You genotype 1,000 pigs on a 60K SNP chip:
+
+- One pig has genotypes called for only 48,000 SNPs (call rate = 80%). → Remove this animal.
+- One SNP is successfully called in only 850 animals (call rate = 85%). → Remove this SNP.
+
+After filtering, you have ~995 pigs and ~58,000 SNPs remaining.
 
 #### Minor Allele Frequency (MAF)
 
-[Content to be developed: Remove SNPs with very low MAF (e.g., < 0.01 or 0.05) as they provide little information and may be genotyping errors.]
+**Minor allele frequency (MAF)** is the frequency of the rarer allele at a SNP. Very low-MAF SNPs provide little information for genomic selection and are often genotyping errors or rare mutations.
+
+**Typical MAF thresholds:**
+
+- **MAF < 0.01 or 0.05:** Remove SNP
+- Rationale: Rare alleles contribute little to accuracy and increase computational burden
+
+**Why low-MAF SNPs are problematic:**
+
+1. Low information content (most animals have the same genotype)
+2. Potentially genotyping errors (singletons or doubletons)
+3. Poor imputation accuracy (rare alleles hard to impute)
+
+**Example:**
+A SNP in Holstein cattle has the following genotypes in 1,000 animals:
+
+- Genotype 0 (AA): 980 animals
+- Genotype 1 (AG): 18 animals
+- Genotype 2 (GG): 2 animals
+
+Allele frequency for G: $q = \frac{2(2) + 18}{2(1000)} = \frac{22}{2000} = 0.011$
+
+MAF = 0.011 (1.1%). This SNP would be removed if we use a MAF > 0.05 threshold.
 
 #### Hardy-Weinberg Equilibrium (HWE)
 
-[Content to be developed: Test if genotype frequencies match expected under HWE. Large deviations may indicate genotyping errors.]
+**Hardy-Weinberg Equilibrium** is a principle from population genetics stating that, under random mating and no selection or mutation, genotype frequencies should follow:
+
+$$
+P(AA) = p^2, \quad P(AG) = 2pq, \quad P(GG) = q^2
+$$
+
+Where $p$ and $q$ are allele frequencies.
+
+**Why test for HWE?**
+Large deviations from HWE can indicate:
+
+- Genotyping errors (e.g., heterozygotes miscalled as homozygotes)
+- Population substructure (non-random mating)
+- Selection at the locus
+
+**HWE filtering:**
+SNPs with extreme HWE p-values (e.g., $p < 10^{-6}$) are often removed. However, some deviation is expected in selected populations, so thresholds must be chosen carefully.
+
+**Example:**
+Suppose we observe 100 animals with:
+
+- Genotype 0: 50 animals
+- Genotype 1: 20 animals
+- Genotype 2: 30 animals
+
+Expected under HWE (if $p = 0.60$):
+
+- $P(AA) = 0.36$ → 36 animals
+- $P(AG) = 0.48$ → 48 animals
+- $P(GG) = 0.16$ → 16 animals
+
+Observed heterozygosity (20) is much lower than expected (48), suggesting possible genotyping errors. A chi-square test would flag this SNP for removal.
 
 ### Imputation
 
-[Content to be developed: Predicting missing or low-density genotypes using a high-density reference panel.]
+**Imputation** is the process of predicting missing genotypes or "filling in" low-density genotypes to higher density using a reference panel of animals genotyped at high density.
 
 #### Why Imputation?
 
-[Content to be developed:]
+Imputation enables cost-effective genotyping strategies:
 
-- Genotype selection candidates with low-density (cheap) chips
-- Impute to high-density using reference panel (animals genotyped with high-density chips)
-- Saves money while retaining most information
+1. **Cost savings:** Genotype most animals with cheap low-density chips; impute to high-density
+2. **Combining datasets:** Merge animals genotyped on different chips
+3. **Whole-genome sequence imputation:** Impute chip genotypes to full sequence using sequenced reference animals
+
+**Example:**
+A swine breeding program genotypes 5,000 selection candidates per year:
+
+- **Without imputation:** Genotype all with 60K chip at $60/animal = $300,000/year
+- **With imputation:** Genotype with 20K chip at $25/animal = $125,000/year; impute to 60K using reference panel
+
+**Savings:** $175,000/year (58% reduction)
+
+#### How Imputation Works (Conceptually)
+
+Imputation exploits **linkage disequilibrium** and **pedigree relationships**.
+
+1. **Reference panel:** Animals genotyped at high density (or sequenced)
+2. **Target animals:** Animals genotyped at low density (subset of SNPs)
+3. **Shared haplotypes:** Target animals share chromosome segments (haplotypes) with reference animals due to common ancestry
+4. **Prediction:** For each missing SNP in target animals, predict genotype based on reference haplotypes that match surrounding SNPs
+
+**Software:** Commonly used imputation programs include FImpute, Beagle, Minimac4, and Eagle.
 
 #### Accuracy of Imputation
 
-[Content to be developed: Depends on relationship to reference panel and SNP density. Typically > 95% accurate for common SNPs.]
+Imputation accuracy depends on:
+
+- **Reference panel size:** Larger reference = better accuracy
+- **Relationship to reference:** Close relatives impute more accurately
+- **LD in population:** High LD (recent common ancestors) = better accuracy
+- **SNP density:** Denser low-density chip = better imputation
+- **MAF of SNP:** Common alleles impute better than rare alleles
+
+**Typical accuracy (correlation between true and imputed genotypes):**
+
+- Low-density (10K) → medium-density (50K): 0.90-0.95
+- Medium-density (50K) → high-density (770K): 0.95-0.98
+- High-density → sequence: 0.85-0.95 (depends on MAF and reference panel)
+
+**Example:**
+Dairy cattle are imputed from GGP-LD (30K) to BovineHD (777K) using a reference panel of 5,000 sequenced bulls. Imputation accuracy for common SNPs (MAF > 0.05) exceeds 0.98, meaning <2% of imputed genotypes are incorrect. For rare variants (MAF < 0.01), accuracy may drop to 0.70-0.80.
+
+#### Economic Calculation: Imputation Cost-Benefit
+
+Let's calculate the cost-effectiveness of imputation for a beef cattle seedstock operation:
+
+**Scenario:**
+- Evaluate 500 bull calves per year for genomic EPDs
+- Option A: Genotype all with 50K chip ($40/animal)
+- Option B: Genotype all with LD chip ($18/animal), impute to 50K
+
+**Costs:**
+
+- **Option A:** $40 × 500 = $20,000/year
+- **Option B:** $18 × 500 + $2,000 (reference panel maintenance) = $11,000/year
+
+**Accuracy loss:**
+Imputed 50K genotypes have ~0.95 correlation with true genotypes. This causes a small reduction in genomic prediction accuracy (maybe 0.02-0.03 correlation units), but the cost savings far outweigh the minor accuracy loss.
+
+**Decision:** Most programs choose Option B (imputation).
 
 ## Whole Genome Sequencing (WGS)
 
-[Content to be developed: The ultimate resolution - sequence every base pair.]
+While SNP chips genotype selected locations, **whole genome sequencing** determines the DNA sequence at every base pair.
 
-### What is WGS?
+### What is Whole Genome Sequencing?
 
-[Content to be developed: Determining the complete DNA sequence of an organism's genome (~3 billion base pairs in mammals).]
+**Whole genome sequencing (WGS)** is the process of determining the complete DNA sequence of an organism's genome—roughly 3 billion base pairs in cattle, 2.8 billion in pigs, 1 billion in chickens.
+
+Modern sequencing technologies (Illumina short-read sequencing, PacBio long-read sequencing) can sequence entire genomes in days at decreasing cost. The result is a file containing every nucleotide in the genome, including all SNPs, insertions, deletions, and structural variants.
 
 ### WGS vs. SNP Chips
 
-[Content to be developed:]
+How do SNP chips and WGS compare?
 
 | Feature | SNP Chip | Whole Genome Sequencing |
 |---------|----------|-------------------------|
-| SNPs genotyped | 50K-800K (fixed panel) | Millions (all variants) |
-| Cost per animal | $40-150 | $500-2000 |
-| Coverage | Selected SNPs | Entire genome |
-| Causal mutations | Likely in LD with SNPs | Can identify directly |
+| **Variants detected** | 50,000-800,000 (fixed panel) | Millions (all variants) |
+| **Cost per animal (2025)** | $15-150 | $300-2,000 |
+| **Sequencing depth** | Not applicable | 10-30× (coverage per base) |
+| **Causal mutations** | Likely in LD with causals | Can identify directly |
+| **Structural variants** | Not detected | Detected (insertions, deletions, CNVs) |
+| **Data size** | ~5-50 MB per animal | 30-100 GB per animal |
+| **Processing time** | Hours | Days to weeks |
+| **Primary use** | Routine genomic selection | Research, reference panels, QTN discovery |
 
-### Uses of WGS
+**Key differences:**
 
-[Content to be developed:]
+1. **Coverage:** WGS captures all genetic variation; chips capture only pre-selected SNPs
+2. **Cost:** WGS is 10-100× more expensive per animal
+3. **Causal variants:** WGS can find the actual mutations causing trait variation; chips rely on LD
+4. **Data management:** WGS generates massive datasets requiring significant storage and computing
 
-- Identify causal mutations (QTN - Quantitative Trait Nucleotides)
-- Build high-density reference panels for imputation
-- Discover structural variants (insertions, deletions, copy number)
-- Research on gene function and regulation
+### Uses of Whole Genome Sequencing
 
-### WGS in Livestock Breeding
+WGS is not yet routine for all animals but has several important applications:
 
-[Content to be developed: Key animals (elite sires, dams) are sequenced to create reference panels. Most selection candidates genotyped with SNP chips and imputed to sequence.]
+#### 1. Identifying Causal Mutations (QTN)
 
-## Applications of Genomics in Breeding
+The "holy grail" of genomics is finding **Quantitative Trait Nucleotides (QTN)**—the specific mutations causing variation in traits. WGS enables this through:
 
-[Content to be developed: Genomics has many uses beyond genomic selection.]
+- **Fine-mapping:** Narrow GWAS signals to single genes or variants
+- **Candidate gene sequencing:** Sequence genes in QTL regions to find causal mutations
+- **Functional validation:** Test whether variants affect gene expression or protein function
 
-### Genomic Selection (Chapter 13)
+**Example: POLLED mutation in cattle**
+Horns vs. polled (naturally hornless) cattle is controlled by a variant in the POLLED gene on chromosome 1. WGS identified the causal variant—a duplication and complex rearrangement. Now breeders can genotype this variant directly (via SNP chip or targeted test) to select for polled cattle, eliminating the need for dehorning.
 
-[Content to be developed: Predict breeding values using genome-wide SNPs. Increases accuracy and reduces generation interval.]
+#### 2. Building Imputation Reference Panels
 
-### Parentage Verification
+Many breeding programs sequence key influential animals (elite sires, foundation dams) to create reference panels. Other animals are genotyped on chips and imputed to sequence level.
 
-[Content to be developed: Use SNPs to verify or correct pedigrees. Errors are common in recorded pedigrees.]
+**Benefits:**
 
-### Genome-Wide Association Studies (GWAS)
+- Capture rare variants that aren't on chips
+- Increase genomic prediction accuracy (slightly)
+- Enable QTN discovery in the population
 
-[Content to be developed: Identify SNPs (or regions) associated with traits. Helps discover causal genes.]
+**Example: 1000 Bull Genomes Project**
+An international consortium sequenced >10,000 cattle (bulls and cows) from many breeds. This reference panel is used worldwide to impute chip genotypes to sequence, enabling discovery of breed-specific and rare variants.
 
-### Genomic Management of Inbreeding
+#### 3. Structural Variants (SVs)
 
-[Content to be developed: Genomic relationships reveal realized inbreeding (Mendelian sampling). More accurate than pedigree-based relationships.]
+SNP chips detect single-base changes but miss larger variants:
 
-### Identification of Genetic Defects
+- **Insertions/deletions (indels):** Small (1-1000 bp) or large (>1 kb)
+- **Copy number variants (CNVs):** Duplications or deletions of large segments
+- **Inversions:** Flipped chromosomal segments
+- **Translocations:** Movement of segments between chromosomes
 
-[Content to be developed: Find causal mutations for genetic diseases. Test animals and avoid producing affected offspring.]
+Some SVs have large effects on traits. WGS is required to detect them.
 
-## R Demonstration: Working with Genotype Data
+**Example: KIT duplication in pigs**
+A duplication in the KIT gene causes the "dominant white" coat color in pigs (used in Large White and Landrace breeds). This variant is a CNV not easily detected by SNP chips.
 
-[Content to be developed:]
+#### 4. Research Applications
+
+WGS is essential for:
+
+- Genome assembly and annotation (building reference genomes)
+- Evolutionary studies (comparing species, breeds)
+- Functional genomics (gene expression, regulation)
+- Rare disease gene discovery
+
+### WGS in Practice: Cost-Effective Strategies
+
+While WGS is expensive, strategic use makes it feasible:
+
+**Key animal sequencing strategy:**
+
+- Sequence top 1-5% of population (elite sires, influential dams)
+- Use these as reference panel
+- Genotype all selection candidates on chips ($30-50)
+- Impute chip genotypes to sequence level
+- Use imputed sequence for genomic prediction
+
+**Example: Salmon breeding**
+A salmon breeding company sequences 200 elite fish (cost: ~$200,000). They genotype 20,000 selection candidates on custom 200K SNP chips (cost: $500,000). Impute to sequence. Total cost: $700,000 for 20,000 animals sequenced-equivalent = $35/animal (much cheaper than sequencing all).
+
+## From Genotypes to Genomic Predictions
+
+We've discussed what SNPs are, how we measure them, and how we process the data. Now: how do genotypes predict breeding values?
+
+The short answer: genotypes across the genome capture variation in **true breeding values** because SNPs are in **linkage disequilibrium** with the actual causal mutations affecting traits. By estimating effects of many SNPs simultaneously (using phenotypic and genotypic data from a training population), we can predict the breeding value of any genotyped animal—even newborns with no phenotype or progeny.
+
+### Genomic Relationship Matrix (Preview)
+
+One key concept we'll explore further in Chapter 13 is the **genomic relationship matrix (G)**. This matrix quantifies the genetic similarity between all pairs of animals based on their SNP genotypes.
+
+Unlike pedigree-based relationships (which are expected values), genomic relationships are **realized relationships**—they capture the actual sharing of chromosome segments due to inheritance.
+
+**Key idea:**
+Two full siblings share 50% of their genes *on average* (pedigree relationship = 0.50), but the actual sharing varies due to **Mendelian sampling** (random segregation of chromosomes). One sibling might inherit more favorable alleles, the other fewer. Genomic relationships capture this realized variation.
+
+We'll calculate the G matrix and use it for genomic predictions in Chapter 13. For now, understand that genotypes provide far more information than pedigrees alone.
+
+## Applications of Genomics in Animal Breeding
+
+Genomics has many applications beyond genomic selection (which we'll cover in Chapter 13). Here are the most important uses in modern breeding programs:
+
+### 1. Genomic Selection
+
+**Genomic selection** is the primary application—using genome-wide SNP data to predict breeding values and make selection decisions. It has revolutionized animal breeding by increasing accuracy and reducing generation intervals.
+
+**Key points:**
+
+- Predict breeding values (GEBVs) at birth
+- Accuracy often 0.50-0.70 for young animals without own phenotypes
+- Much higher than parent average (~0.30-0.40)
+- Enabled dairy cattle to double genetic gain per year
+
+We'll explore genomic selection methods in detail in Chapter 13.
+
+### 2. Parentage Verification and Pedigree Correction
+
+Recorded pedigrees often contain errors—misidentified sires or dams, incorrect birth records, etc. Errors are especially common in:
+
+- Multi-sire breeding (multiple bulls with a group of cows)
+- Natural mating (paternity uncertain)
+- Record-keeping errors
+
+SNP genotypes enable accurate parentage verification and correction.
+
+**How it works:**
+Each offspring inherits exactly one allele at each SNP from each parent. By comparing offspring and candidate parents' genotypes, we can identify true parents (many SNPs match Mendelian inheritance) and exclude false parents (many SNPs violate Mendelian rules).
+
+**Software:** Parentage programs (e.g., COLONY, AlphaAssign, BreedAssign) calculate likelihood ratios for each candidate parent pair.
+
+**Example: Beef cattle**
+A commercial cow-calf operation uses multi-sire breeding (4 bulls with 200 cows). After calving, all calves and bulls are genotyped. Parentage analysis assigns each calf to its true sire with >99% confidence. This enables accurate pedigree-based or genomic evaluation, improving selection accuracy.
+
+**Impact:**
+Pedigree errors reduce genetic progress. Correcting pedigrees with genomics increases accuracy by 0.05-0.10 correlation units—a substantial gain.
+
+### 3. Genome-Wide Association Studies (GWAS)
+
+**Genome-Wide Association Studies (GWAS)** scan the genome to identify SNPs (or chromosomal regions) associated with traits of interest.
+
+**Procedure:**
+
+1. Measure phenotypes for a trait (e.g., milk yield) in many animals
+2. Genotype all animals on SNP chip
+3. Test each SNP for association with the trait (regression or ANOVA)
+4. Identify SNPs with significant associations (after correcting for multiple testing)
+5. Investigate nearby genes as candidates for causal mutations
+
+**GWAS can:**
+
+- Discover QTL (Quantitative Trait Loci) affecting traits
+- Identify candidate genes for further study
+- Prioritize causal variants for functional testing
+- Improve genomic predictions (if causal variants are included)
+
+**Example: Milk fat percentage in dairy cattle**
+GWAS identified a strong signal on chromosome 14 associated with milk fat percentage. The causal gene was later confirmed to be DGAT1 (diacylglycerol acyltransferase 1), which encodes an enzyme in fat synthesis. A specific SNP in DGAT1 (K232A) explains ~50% of genetic variance in fat percentage.
+
+**Limitations:**
+GWAS requires large sample sizes (thousands of animals) and only detects common variants with moderate-to-large effects. Rare variants and small-effect loci are missed.
+
+### 4. Genomic Management of Inbreeding
+
+Inbreeding reduces performance (inbreeding depression) and should be managed carefully. Traditional approaches use **pedigree-based** inbreeding coefficients, but these are expected values—they don't capture actual inbreeding due to Mendelian sampling.
+
+**Genomic inbreeding** measures realized inbreeding directly from SNP genotypes. Several methods exist:
+
+- **Runs of homozygosity (ROH):** Long stretches of homozygous SNPs indicate recent inbreeding
+- **Genomic inbreeding coefficient (F_G):** Deviation of observed homozygosity from expected
+- **Genomic relationship to base population:** Diagonal elements of G matrix
+
+**Why genomic inbreeding matters:**
+Two animals with the same pedigree inbreeding (e.g., $F = 0.10$) can have different realized inbreeding. Genomic measures reveal which animals are truly inbred, enabling better mating decisions.
+
+**Application: Optimum contribution selection (OCS)**
+Modern mating programs use genomic relationships to minimize inbreeding while maximizing genetic gain. This balances selection intensity with genetic diversity.
+
+**Example: Dutch Holstein cattle**
+Genomic selection increased selection intensity, accelerating inbreeding rate. To counteract this, breeding organizations implemented genomic OCS, constraining inbreeding by limiting mating of close genomic relatives. Genetic diversity was stabilized while maintaining rapid genetic gain.
+
+### 5. Identification of Genetic Defects and Disease Mutations
+
+Some inherited diseases are caused by single genes with large effects (recessive lethals, dominant disorders). Genomics enables discovery and management of these mutations.
+
+**Process:**
+
+1. Identify affected animals (e.g., calves with lethal defect)
+2. Sequence affected and normal animals
+3. Find causal mutation (often recessive)
+4. Develop diagnostic test (SNP chip or targeted assay)
+5. Test breeding animals; avoid matings producing affected offspring
+
+**Examples in cattle:**
+
+- **CVM (Complex Vertebral Malformation):** Recessive lethal in Holsteins. Carriers identified via SNP test; matings between carriers avoided.
+- **Cholesterol deficiency:** Recessive lethal in Holsteins. Causative mutation in APOB gene identified via WGS.
+- **Tibial hemimelia:** Recessive lethal in Herefords. Mutation in ULBP23 gene identified.
+
+**Examples in dogs:**
+
+- **Progressive Retinal Atrophy (PRA):** Causes blindness in many breeds. Multiple gene mutations identified (e.g., PRCD-PRA); DNA tests available.
+- **Degenerative Myelopathy (DM):** Neurological disease in German Shepherds and others. Mutation in SOD1 gene; testing prevents affected puppies.
+- **von Willebrand Disease (vWD):** Bleeding disorder in Dobermans and other breeds. Mutation in VWF gene; genotype before breeding.
+
+**Example in cats:**
+
+- **Polycystic Kidney Disease (PKD):** Inherited kidney disease in Persians and related breeds. Mutation in PKD1 gene identified; testing eliminates disease from breeding populations.
+
+**Impact:**
+Genomic testing has virtually eliminated many lethal recessives from purebred livestock and companion animal populations. This improves animal welfare and reduces economic losses.
+
+### 6. Crossbred Performance and Breed Composition
+
+In crossbreeding systems (common in swine, beef cattle, sheep), knowing an animal's **breed composition** is valuable. Genomics can estimate breed proportions and predict crossbred performance.
+
+**Breed composition from SNPs:**
+Different breeds have distinct allele frequencies at many SNPs. By comparing an animal's genotypes to reference populations (purebred animals from each breed), we can estimate the percentage of each breed in its ancestry.
+
+**Software:** ADMIXTURE, STRUCTURE
+
+**Example: Beef cattle**
+A commercial cow is genotyped. Analysis reveals she is 60% Angus, 30% Hereford, 10% Simmental. This information can guide mating decisions (e.g., use terminal sire to maximize heterosis) and explain performance (e.g., higher marbling from Angus ancestry).
+
+**Crossbred genomic prediction:**
+Recent methods extend genomic selection to crossbreds by modeling breed-specific SNP effects. This improves accuracy in commercial crossbred populations.
+
+## R Demonstrations: Working with Genotype Data
+
+Let's work through some practical examples using R to explore SNP genotype data, calculate allele frequencies, perform quality control, and preview genomic relationships.
+
+### Demo 1: Simulating and Exploring SNP Genotype Data
+
+First, we'll simulate a SNP genotype dataset for 100 animals and 1,000 SNPs. In practice, you'd load real data from a file (e.g., PLINK format, VCF), but simulation lets us understand the structure.
 
 ```{r}
 #| echo: true
-#| eval: false
+#| message: false
 
-# Simulate SNP genotype data
-set.seed(123)
+# Simulate SNP genotypes for 100 animals, 1000 SNPs
+set.seed(42)
 n_animals <- 100
 n_snps <- 1000
 
-# Genotypes: 0, 1, 2
-genotypes <- matrix(sample(0:2, n_animals * n_snps, replace = TRUE, prob = c(0.25, 0.5, 0.25)),
-                    nrow = n_animals, ncol = n_snps)
+# Generate genotypes (0, 1, 2) assuming Hardy-Weinberg proportions
+# Allele frequency p ~ Uniform(0.2, 0.8) for each SNP
+allele_freq <- runif(n_snps, min = 0.20, max = 0.80)
 
-# Calculate allele frequencies
-allele_freq <- colMeans(genotypes) / 2
-hist(allele_freq, breaks = 20, main = "Allele Frequency Distribution",
-     xlab = "Allele Frequency", col = "lightblue")
+# Genotype matrix: rows = animals, columns = SNPs
+genotypes <- matrix(NA, nrow = n_animals, ncol = n_snps)
 
-# Quality control: Call rate
-animal_call_rate <- rowMeans(!is.na(genotypes))
-snp_call_rate <- colMeans(!is.na(genotypes))
+for (i in 1:n_snps) {
+  p <- allele_freq[i]
+  # Hardy-Weinberg genotype frequencies
+  freq_0 <- (1 - p)^2  # P(AA)
+  freq_1 <- 2 * p * (1 - p)  # P(AG)
+  freq_2 <- p^2  # P(GG)
 
-cat("Mean animal call rate:", round(mean(animal_call_rate), 3), "\n")
-cat("Mean SNP call rate:", round(mean(snp_call_rate), 3), "\n")
+  genotypes[, i] <- sample(c(0, 1, 2), size = n_animals, replace = TRUE,
+                           prob = c(freq_0, freq_1, freq_2))
+}
 
-# Filter SNPs by MAF
-maf_threshold <- 0.05
-snps_pass <- allele_freq >= maf_threshold & allele_freq <= (1 - maf_threshold)
-cat("SNPs passing MAF filter:", sum(snps_pass), "/", n_snps, "\n")
+# Add some missing data (simulate incomplete genotyping)
+missing_idx <- sample(1:(n_animals * n_snps), size = 0.01 * n_animals * n_snps)
+genotypes[missing_idx] <- NA
+
+# Create a tibble for easier manipulation
+animal_ids <- paste0("Animal_", 1:n_animals)
+snp_ids <- paste0("SNP_", 1:n_snps)
+
+geno_df <- as_tibble(genotypes, .name_repair = "minimal")
+colnames(geno_df) <- snp_ids
+geno_df <- geno_df %>% mutate(Animal_ID = animal_ids, .before = 1)
+
+# Display first few animals and SNPs
+geno_df %>% select(1:11) %>% head()
 ```
+
+Each row is an animal, each column (except the first) is a SNP. Values are 0, 1, 2, or NA (missing).
+
+### Demo 2: Calculate and Visualize Allele Frequencies
+
+Let's calculate allele frequencies for all SNPs and visualize the distribution.
+
+```{r}
+#| echo: true
+#| fig.width: 8
+#| fig.height: 5
+
+# Calculate allele frequencies (frequency of "2" allele)
+# Allele freq p = (2 * n_2 + n_1) / (2 * n_total)
+calc_allele_freq <- function(geno_vec) {
+  geno_vec <- geno_vec[!is.na(geno_vec)]  # Remove missing
+  if (length(geno_vec) == 0) return(NA)
+
+  n_0 <- sum(geno_vec == 0)
+  n_1 <- sum(geno_vec == 1)
+  n_2 <- sum(geno_vec == 2)
+
+  p <- (2 * n_2 + n_1) / (2 * length(geno_vec))
+  return(p)
+}
+
+# Apply to all SNPs
+allele_freqs <- apply(genotypes, 2, calc_allele_freq)
+
+# Create data frame
+freq_df <- tibble(
+  SNP = snp_ids,
+  Allele_Frequency = allele_freqs,
+  MAF = ifelse(allele_freqs <= 0.5, allele_freqs, 1 - allele_freqs)
+)
+
+# Visualize allele frequency distribution
+ggplot(freq_df, aes(x = Allele_Frequency)) +
+  geom_histogram(bins = 30, fill = "steelblue", color = "black", alpha = 0.7) +
+  labs(title = "Distribution of Allele Frequencies Across SNPs",
+       x = "Allele Frequency (p)",
+       y = "Number of SNPs") +
+  theme_minimal()
+
+# Summary statistics
+freq_df %>%
+  summarise(
+    Mean_AF = mean(Allele_Frequency, na.rm = TRUE),
+    Min_AF = min(Allele_Frequency, na.rm = TRUE),
+    Max_AF = max(Allele_Frequency, na.rm = TRUE),
+    Mean_MAF = mean(MAF, na.rm = TRUE)
+  )
+```
+
+The histogram shows most SNPs have intermediate allele frequencies (0.3-0.7), which is typical in commercial populations after selection for many generations.
+
+### Demo 3: Quality Control Workflow
+
+Now let's perform quality control by filtering SNPs and animals based on call rate and MAF.
+
+```{r}
+#| echo: true
+
+# Step 1: Calculate SNP call rate (proportion of animals with genotype)
+snp_call_rate <- apply(genotypes, 2, function(x) sum(!is.na(x)) / length(x))
+
+# Step 2: Calculate animal call rate (proportion of SNPs with genotype)
+animal_call_rate <- apply(genotypes, 1, function(x) sum(!is.na(x)) / length(x))
+
+# Summary
+cat("SNP call rate summary:\n")
+summary(snp_call_rate)
+cat("\nAnimal call rate summary:\n")
+summary(animal_call_rate)
+
+# Step 3: Filter SNPs by call rate (threshold: 95%)
+snp_pass_callrate <- snp_call_rate >= 0.95
+cat("\nSNPs passing call rate filter (>=95%):", sum(snp_pass_callrate), "/", n_snps, "\n")
+
+# Step 4: Filter SNPs by MAF (threshold: 5%)
+snp_pass_maf <- freq_df$MAF >= 0.05
+cat("SNPs passing MAF filter (>=0.05):", sum(snp_pass_maf, na.rm = TRUE), "/", n_snps, "\n")
+
+# Combined filter
+snp_pass <- snp_pass_callrate & snp_pass_maf
+cat("SNPs passing all QC:", sum(snp_pass, na.rm = TRUE), "/", n_snps, "\n")
+
+# Step 5: Filter animals by call rate (threshold: 90%)
+animal_pass <- animal_call_rate >= 0.90
+cat("\nAnimals passing call rate filter (>=90%):", sum(animal_pass), "/", n_animals, "\n")
+
+# Apply filters
+genotypes_qc <- genotypes[animal_pass, snp_pass]
+cat("\nFinal dataset after QC: ", nrow(genotypes_qc), "animals x", ncol(genotypes_qc), "SNPs\n")
+```
+
+After QC, we've removed low-quality SNPs and animals, leaving a clean dataset for genomic analysis.
+
+**Quality control summary:**
+
+- **Before QC:** 100 animals, 1,000 SNPs
+- **After QC:** ~99 animals, ~980 SNPs (numbers vary due to random simulation)
+
+In real datasets, QC might remove 1-5% of SNPs and <1% of animals.
+
+### Demo 4: Calculate Genomic Relationship Matrix (Preview)
+
+The **genomic relationship matrix (G)** quantifies genetic similarity between animals based on SNP genotypes. We'll calculate a simplified version here; Chapter 13 will explore this in detail.
+
+**Formula (VanRaden, 2008):**
+
+$$
+\mathbf{G} = \frac{(\mathbf{Z} - \mathbf{P})(\mathbf{Z} - \mathbf{P})^\top}{2 \sum p_i (1 - p_i)}
+$$
+
+Where:
+
+- $\mathbf{Z}$ = genotype matrix (animals × SNPs), coded 0, 1, 2
+- $\mathbf{P}$ = matrix of expected genotypes ($2p_i$ for SNP $i$)
+- $p_i$ = allele frequency at SNP $i$
+
+Diagonal elements of $\mathbf{G}$ represent an animal's relationship to itself (close to 1). Off-diagonal elements represent relationships between pairs (0 = unrelated, 0.5 = parent-offspring or full siblings).
+
+```{r}
+#| echo: true
+
+# Use QC-filtered genotypes
+Z <- genotypes_qc
+
+# Calculate allele frequencies for QC-filtered SNPs
+p_vec <- apply(Z, 2, calc_allele_freq)
+
+# Center genotypes: Z - P
+P <- matrix(rep(2 * p_vec, each = nrow(Z)), nrow = nrow(Z))
+Z_centered <- Z - P
+
+# Handle missing data: set to 0 (mean imputation)
+Z_centered[is.na(Z_centered)] <- 0
+
+# Calculate G matrix
+denominator <- 2 * sum(p_vec * (1 - p_vec), na.rm = TRUE)
+G <- (Z_centered %*% t(Z_centered)) / denominator
+
+# Add animal IDs
+rownames(G) <- colnames(G) <- animal_ids[animal_pass]
+
+# Display diagonal elements (self-relationships, should be ~1)
+cat("Diagonal elements of G (self-relationships):\n")
+summary(diag(G))
+
+# Display off-diagonal elements (pairwise relationships)
+G_offdiag <- G[lower.tri(G)]
+cat("\nOff-diagonal elements of G (pairwise relationships):\n")
+summary(G_offdiag)
+
+# Visualize distribution of genomic relationships
+tibble(Relationship = G_offdiag) %>%
+  ggplot(aes(x = Relationship)) +
+  geom_histogram(bins = 40, fill = "coral", color = "black", alpha = 0.7) +
+  labs(title = "Distribution of Genomic Relationships (off-diagonal elements)",
+       x = "Genomic Relationship",
+       y = "Frequency") +
+  theme_minimal()
+```
+
+**Interpretation:**
+
+- **Diagonal elements** (self-relationships) are close to 1.0, as expected
+- **Off-diagonal elements** (relationships between animals) average near 0 in this simulated unrelated population
+- In real populations with pedigree structure, you'd see clusters: unrelated (~0), half-siblings (~0.25), full siblings or parent-offspring (~0.5)
+
+**Key insight:** The G matrix captures realized genetic similarity. Animals with similar SNP genotypes have high G values, even if pedigree relationships are unknown. This is why genomics works in populations with incomplete or erroneous pedigrees.
 
 ## Summary
 
-[Content to be developed.]
+This chapter introduced genomics and its transformative role in animal breeding. Let's recap the key points:
 
-### Key Points
+**DNA markers (SNPs):**
 
-- SNPs (Single Nucleotide Polymorphisms) are common genetic markers
-- SNP chips genotype thousands to millions of SNPs per animal
-- Genotype quality control is essential (call rate, MAF, HWE)
-- Imputation predicts missing genotypes using reference panels
-- Whole genome sequencing provides ultimate resolution but is more expensive
-- Genomics enables genomic selection, parentage testing, GWAS, and more
+- Single Nucleotide Polymorphisms (SNPs) are single-base differences in DNA
+- Genotypes coded as 0 (AA), 1 (AG), or 2 (GG)
+- Millions of SNPs exist across genomes; we genotype thousands to hundreds of thousands
+- SNPs are useful because they're abundant, stable, and in linkage disequilibrium with causal mutations
+
+**SNP chips:**
+
+- Microarrays that genotype 10,000 to 800,000 SNPs simultaneously
+- Species-specific chips for cattle, swine, poultry, horses, dogs, cats, sheep, aquaculture species
+- Costs have dropped dramatically ($15-$150 per animal, depending on density)
+- High-, medium-, and low-density options enable cost-effective imputation strategies
+
+**Quality control and imputation:**
+
+- Genotype data must be quality-controlled (call rate, MAF, HWE)
+- Imputation predicts missing or low-density genotypes using high-density reference panels
+- Imputation enables cost savings (genotype most animals with cheap chips, impute to high density)
+- Accuracy of imputation typically >95% for common SNPs
+
+**Whole genome sequencing:**
+
+- Sequences every base pair (~3 billion in cattle)
+- More expensive than SNP chips ($500-2000 vs. $30-150)
+- Enables identification of causal mutations (QTN), structural variants, and rare alleles
+- Used strategically: sequence elite animals, impute others to sequence
+
+**Applications:**
+
+- **Genomic selection** (Chapter 13): Predict breeding values using genome-wide SNPs
+- **Parentage verification:** Correct pedigree errors using SNP-based parentage
+- **GWAS:** Discover QTL and candidate genes for traits
+- **Genomic inbreeding management:** Measure realized inbreeding, optimize matings
+- **Genetic defect identification:** Find and manage lethal recessives and disease mutations
+- **Crossbred performance:** Estimate breed composition, predict crossbred merit
+
+**Impact:**
+
+Genomics has revolutionized animal breeding. Genetic gain has doubled in dairy cattle, swine, and poultry breeding programs. Generation intervals have shortened. Selection accuracy has increased, especially for young animals and expensive-to-measure traits. Today, genomics is standard practice in commercial breeding worldwide.
+
+In Chapter 13, we'll dive into **genomic selection** methods—how we use SNP genotypes to predict breeding values and make selection decisions.
 
 ## Practice Problems
 
-[Problems to be developed]
+Test your understanding with these problems:
 
-1. What is a SNP? Explain how SNPs are used in genomic selection.
+**1. SNP Basics**
 
-2. A SNP chip costs $50 per animal and genotypes 50,000 SNPs. Whole genome sequencing costs $1000 per animal. For a breeding program with 10,000 selection candidates, compare the total costs and benefits of each approach.
+a) What does SNP stand for? Describe what a SNP is in one sentence.
 
-3. Explain what imputation is and why it is useful in genomic selection.
+b) A SNP has two alleles: C and T. An animal has genotype CT. How would this be coded numerically (0, 1, or 2)?
+
+c) Why are SNPs useful for predicting breeding values even though most SNPs are not themselves causal mutations?
+
+**2. Allele Frequency Calculation**
+
+You genotype 200 beef cattle at a SNP and observe:
+
+- 50 animals with genotype 0 (CC)
+- 100 animals with genotype 1 (CT)
+- 50 animals with genotype 2 (TT)
+
+a) Calculate the frequency of the C allele.
+
+b) Calculate the frequency of the T allele.
+
+c) What is the minor allele frequency (MAF)?
+
+d) Would this SNP pass a MAF filter of ≥0.05? Why or why not?
+
+**3. Genotyping Strategy Cost-Benefit**
+
+A swine breeding company evaluates 10,000 pigs per year. They have two genotyping options:
+
+- **Option A:** Genotype all pigs with a 60K SNP chip at $50 per animal
+- **Option B:** Genotype all pigs with a 20K SNP chip at $20 per animal and impute to 60K (reference panel maintenance costs $10,000/year)
+
+a) Calculate the total annual cost for each option.
+
+b) Which option is more cost-effective?
+
+c) If imputation reduces genomic prediction accuracy by 0.02 correlation units, would you still choose the cheaper option? Explain your reasoning.
+
+**4. Imputation**
+
+Explain in 2-3 sentences:
+
+a) What is imputation in the context of genomic data?
+
+b) Why is imputation economically valuable for breeding programs?
+
+c) What factors influence imputation accuracy?
+
+**5. SNP Chips vs. Whole Genome Sequencing**
+
+You are designing a genomics strategy for a dairy cattle breeding program.
+
+a) Which animals would you choose to sequence (whole genome sequencing), and why?
+
+b) Which animals would you genotype on SNP chips?
+
+c) Justify your strategy in terms of cost, information, and breeding goals.
+
+**6. Quality Control**
+
+You receive genotype data for 500 animals genotyped on a 50K SNP chip. Quality control reveals:
+
+- 5 animals with call rate <85%
+- 200 SNPs with call rate <90%
+- 1,500 SNPs with MAF <0.01
+
+a) Which animals would you remove from the dataset? Why?
+
+b) Which SNPs would you remove (assume call rate threshold = 95%, MAF threshold = 0.05)? Roughly how many SNPs remain?
+
+c) Why is it important to perform quality control before genomic evaluation?
+
+**7. Application Scenario**
+
+A beef cattle breeder wants to use genomics in their seedstock operation. Describe two applications of genomics (other than genomic selection) that would benefit this breeder. For each application, explain:
+
+a) What it does
+
+b) How it works (briefly)
+
+c) What benefit it provides
 
 ## Further Reading
 
-[References to be added]
+**Foundational Papers:**
 
-- Hayes and Goddard: Genomic selection
-- SNP chip papers for each species
-- Whole genome sequencing in livestock
+- **Hayes, B. J., & Goddard, M. E. (2010).** Genome-wide association and genomic selection in animal breeding. *Genome*, 53(11), 876-883.
+  → Excellent overview of how GWAS and genomic selection revolutionized breeding
+
+- **VanRaden, P. M. (2008).** Efficient methods to compute genomic predictions. *Journal of Dairy Science*, 91(11), 4414-4423.
+  → Describes calculation of the genomic relationship matrix (G)
+
+- **Meuwissen, T. H., Hayes, B. J., & Goddard, M. E. (2001).** Prediction of total genetic value using genome-wide dense marker maps. *Genetics*, 157(4), 1819-1829.
+  → The original paper proposing genomic selection
+
+**Species-Specific Genomics:**
+
+- **Dairy Cattle:** VanRaden et al. (2009). Invited review: Reliability of genomic predictions for North American Holstein bulls. *Journal of Dairy Science*, 92(1), 16-24.
+
+- **Swine:** Boichard et al. (2016). Genomic selection in domestic animals: Principles, applications and perspectives. *Comptes Rendus Biologies*, 339(7-8), 274-277.
+
+- **Poultry:** Wolc et al. (2016). Response and inbreeding from a genomic selection experiment in layer chickens. *Genetics Selection Evolution*, 47(1), 59.
+
+- **Companion Animals:** Karlsson & Lindblad-Toh (2008). Leader of the pack: gene mapping in dogs and other model organisms. *Nature Reviews Genetics*, 9(9), 713-725.
+
+**Online Resources:**
+
+- **Council on Dairy Cattle Breeding (CDCB):** https://www.uscdcb.com/ → Genomic evaluations, reference populations
+- **USDA Animal Genomics and Improvement Laboratory:** https://www.ars.usda.gov/animalgenomics/ → Research, tools
+- **1000 Bull Genomes Project:** http://www.1000bullgenomes.com/ → Cattle whole genome sequences
+- **International Society for Animal Genetics (ISAG):** https://www.isag.us/ → Conferences, working groups on genomics
+
+---
+
+**Next Chapter Preview:** In Chapter 13, we'll explore how genotype data is used in **genomic selection**—the methods for predicting breeding values (GEBVs), the accuracy of predictions, and the impact on genetic improvement programs.
