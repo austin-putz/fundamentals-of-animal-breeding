@@ -25,16 +25,18 @@ book:
         - chapters/07-breeding-values.qmd
         - chapters/08-genetic-correlations.qmd
         - chapters/09-selection-index.qmd
+    - part: "PART 3: INBREEDING, MATING, AND CROSSBREEDING"
+      chapters:
         - chapters/10-mating-strategies.qmd
         - chapters/11-crossbreeding.qmd
-    - part: "PART 3: GENOMICS"
+    - part: "PART 4: GENOMICS"
       chapters:
         - chapters/12-genomics-intro.qmd
         - chapters/13-genomic-selection.qmd
-    - part: "PART 4: PRACTICAL SKILLS"
+    - part: "PART 5: PRACTICAL SKILLS"
       chapters:
         - chapters/14-practical-skills.qmd
-    - part: "PART 5: SPECIES-SPECIFIC BREEDING"
+    - part: "PART 6: SPECIES-SPECIFIC BREEDING"
       chapters:
         - chapters/15-swine-breeding.qmd
         - chapters/16-poultry-breeding.qmd
@@ -44,7 +46,7 @@ book:
         - chapters/20-camelidae-breeding.qmd
         - chapters/21-aquaculture-breeding.qmd
         - chapters/22-companion-animal-breeding.qmd
-    - part: "PART 6: PRECISION LIVESTOCK FARMING"
+    - part: "PART 7: PRECISION LIVESTOCK FARMING"
       chapters:
         - chapters/23-plf-introduction.qmd
         - chapters/24-wearable-technologies.qmd

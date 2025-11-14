@@ -250,24 +250,27 @@ Try the [Selection Intensity Calculator](link-to-shiny-app) to explore how chang
 
 ## Book Structure
 
-The book is organized into six major parts:
+The book is organized into seven major parts:
 
 **PART 1: FUNDAMENTALS** (Chapters 1-5)
 - Core concepts of animal breeding, genetics, traits, heritability, and variance components
 
-**PART 2: SELECTION AND BREEDING STRATEGIES** (Chapters 6-11)
-- Selection theory, breeding value estimation, genetic correlations, selection indices, mating systems, and crossbreeding
+**PART 2: SELECTION AND BREEDING STRATEGIES** (Chapters 6-9)
+- Selection theory, breeding value estimation, genetic correlations, and selection indices
 
-**PART 3: GENOMICS** (Chapters 12-13)
+**PART 3: INBREEDING, MATING, AND CROSSBREEDING** (Chapters 10-11)
+- Mating strategies, optimum contribution selection, inbreeding management, crossbreeding systems, and hybrid vigor
+
+**PART 4: GENOMICS** (Chapters 12-13)
 - Introduction to genomic technologies and genomic selection methods
 
-**PART 4: PRACTICAL SKILLS** (Chapter 14)
+**PART 5: PRACTICAL SKILLS** (Chapter 14)
 - Data management, databases, APIs, and professional skills for animal breeding
 
-**PART 5: SPECIES-SPECIFIC BREEDING** (Chapters 15-22)
+**PART 6: SPECIES-SPECIFIC BREEDING** (Chapters 15-22)
 - Deep dives into breeding programs and unique considerations for each major livestock species
 
-**PART 6: PRECISION LIVESTOCK FARMING** (Chapters 23-25)
+**PART 7: PRECISION LIVESTOCK FARMING** (Chapters 23-25)
 - Modern technologies for automated phenotyping and data collection
 
 **APPENDICES**
@@ -832,6 +835,8 @@ The book is organized into six major parts:
 
 ---
 
+## PART 3: INBREEDING, MATING, AND CROSSBREEDING
+
 ### Chapter 10: Mating Strategies and Optimum Contribution Selection
 
 **Purpose**: Explain mating decisions, crossbreeding strategies, and modern mating optimization
@@ -968,7 +973,7 @@ The book is organized into six major parts:
 
 ---
 
-## PART 3: GENOMICS
+## PART 4: GENOMICS
 
 ### Chapter 12: Introduction to Genomics
 
@@ -1116,7 +1121,7 @@ The book is organized into six major parts:
 
 ---
 
-## PART 4: PRACTICAL SKILLS
+## PART 5: PRACTICAL SKILLS
 
 ### Chapter 14: Practical Animal Breeding and Data Skills
 
@@ -1189,7 +1194,7 @@ The book is organized into six major parts:
 
 ---
 
-## PART 5: SPECIES-SPECIFIC BREEDING
+## PART 6: SPECIES-SPECIFIC BREEDING
 
 ### Chapter 15: Swine Breeding
 
@@ -1872,7 +1877,7 @@ The book is organized into six major parts:
 
 ---
 
-## PART 6: PRECISION LIVESTOCK FARMING
+## PART 7: PRECISION LIVESTOCK FARMING
 
 ### Chapter 23: Introduction to Precision Livestock Farming
 
