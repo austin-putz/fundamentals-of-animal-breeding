@@ -2,7 +2,8 @@
 /.quarto/
 /_site/
 /_freeze/
-# Note: /docs/ is NOT ignored so it can be published to GitHub Pages
+/docs/
+# Note: GitHub Actions now handles deployment via _site/ directory
 
 # R
 .Rproj.user
@@ -20,7 +21,7 @@
 *.swo
 
 # R output
-# Note: HTML files in /docs/ are allowed for GitHub Pages
+# HTML files are ignored (GitHub Actions builds and deploys automatically)
 /*.html
 chapters/*.html
 appendices/*.html
