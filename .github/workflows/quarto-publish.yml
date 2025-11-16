@@ -1,0 +1,151 @@
+name: Render and Publish Quarto Book
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.4.549
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: '4.3.2'
+          use-public-rspm: true
+
+      - name: Set up pandoc
+        uses: r-lib/actions/setup-pandoc@v2
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libcurl4-openssl-dev \
+            libssl-dev \
+            libxml2-dev \
+            libfontconfig1-dev \
+            libharfbuzz-dev \
+            libfribidi-dev \
+            libfreetype6-dev \
+            libpng-dev \
+            libtiff5-dev \
+            libjpeg-dev \
+            libgit2-dev
+
+      - name: Cache R packages
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.R_LIBS_USER }}
+          key: ${{ runner.os }}-r-${{ hashFiles('**/DESCRIPTION') }}-${{ hashFiles('**/*.qmd') }}
+          restore-keys: |
+            ${{ runner.os }}-r-
+
+      - name: Install R packages
+        run: |
+          # Core data manipulation and visualization
+          install.packages("tidyverse", dependencies = TRUE)
+          install.packages("scales", dependencies = TRUE)
+          install.packages("patchwork", dependencies = TRUE)
+
+          # Tables and reporting
+          install.packages("knitr", dependencies = TRUE)
+          install.packages("kableExtra", dependencies = TRUE)
+
+          # Pedigree and relationships
+          install.packages("pedigree", dependencies = TRUE)
+          install.packages("nadiv", dependencies = TRUE)
+          install.packages("AGHmatrix", dependencies = TRUE)
+
+          # Mixed models and genetic evaluation
+          install.packages("lme4", dependencies = TRUE)
+          install.packages("lmerTest", dependencies = TRUE)
+          install.packages("MCMCglmm", dependencies = TRUE)
+
+          # Genomic prediction
+          install.packages("BGLR", dependencies = TRUE)
+          install.packages("rrBLUP", dependencies = TRUE)
+          install.packages("brms", dependencies = TRUE)
+
+          # Simulation
+          install.packages("AlphaSimR", dependencies = TRUE)
+
+          # Database
+          install.packages("DBI", dependencies = TRUE)
+          install.packages("RSQLite", dependencies = TRUE)
+
+          # Statistical functions
+          install.packages("MASS", dependencies = TRUE)
+          install.packages("reshape2", dependencies = TRUE)
+
+          # API and web
+          install.packages("httr", dependencies = TRUE)
+          install.packages("jsonlite", dependencies = TRUE)
+
+          # Interactive learning
+          install.packages("swirl", dependencies = TRUE)
+        shell: Rscript {0}
+
+      - name: Verify R package installation
+        run: |
+          cat("Checking installed packages...\n")
+          packages <- c(
+            "tidyverse", "scales", "patchwork", "knitr", "kableExtra",
+            "pedigree", "nadiv", "AGHmatrix", "lme4", "lmerTest", "MCMCglmm",
+            "BGLR", "rrBLUP", "brms", "AlphaSimR", "DBI", "RSQLite",
+            "MASS", "reshape2", "httr", "jsonlite", "swirl"
+          )
+          missing <- packages[!sapply(packages, requireNamespace, quietly = TRUE)]
+          if (length(missing) > 0) {
+            cat("Missing packages:", paste(missing, collapse = ", "), "\n")
+            quit(status = 1)
+          }
+          cat("All required packages are installed!\n")
+        shell: Rscript {0}
+
+      - name: Render Quarto Book
+        run: |
+          quarto render
+
+      - name: Upload artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
